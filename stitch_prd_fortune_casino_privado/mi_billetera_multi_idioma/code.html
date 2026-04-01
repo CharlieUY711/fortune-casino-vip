@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Royale - Mi Billetera</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "tertiary-container": "#7fc290",
+                        "on-primary": "#3c2f00",
+                        "on-surface-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#ff9a8a",
+                        "surface": "#131313",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "outline-variant": "#4d4635",
+                        "outline": "#99907c",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary": "#00391a",
+                        "inverse-on-surface": "#313030",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed": "#410000",
+                        "surface-container-highest": "#353534",
+                        "surface-variant": "#353534",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#055029",
+                        "on-secondary": "#690000",
+                        "surface-container-high": "#2a2a2a",
+                        "background": "#131313",
+                        "on-error": "#690005",
+                        "tertiary": "#9adeaa",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "primary-container": "#d4af37",
+                        "on-primary-container": "#554300",
+                        "secondary-container": "#920703",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "primary": "#f2ca50",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#ffe088",
+                        "surface-bright": "#3a3939",
+                        "secondary-fixed": "#ffdad4",
+                        "tertiary-fixed": "#adf2bc",
+                        "on-surface": "#e5e2e1",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .gold-gradient {
+            background: linear-gradient(45deg, #f2ca50, #d4af37);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen pb-24">
+<div class="noise-overlay fixed inset-0 z-[100]"></div>
+<!-- TopAppBar Component -->
+<header class="bg-[#131313] fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-none">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/30">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="font-serif text-[#f2ca50] uppercase tracking-widest text-xs hidden sm:block">VIP Member</span>
+</div>
+<div class="text-xl font-bold tracking-tighter text-[#f2ca50] italic font-headline">
+                MIDNIGHT ROYALE
+            </div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1 text-[#f2ca50] font-sans text-sm font-bold active:scale-95 duration-200">
+                    EN <span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-8">
+<!-- Balance Highlight Section -->
+<section class="relative overflow-hidden bg-surface-container-low rounded-xl p-8 border border-outline-variant/10">
+<div class="relative z-10">
+<h2 class="text-on-surface-variant text-xs uppercase tracking-[0.2em] mb-2 font-medium">Saldo Actual</h2>
+<div class="flex items-baseline gap-2">
+<span class="text-primary font-headline text-5xl md:text-6xl font-bold tracking-tighter">$ 24,550.00</span>
+<span class="text-primary-fixed-dim font-sans text-lg font-medium">USD</span>
+</div>
+<div class="mt-8 flex flex-wrap gap-4">
+<button class="gold-gradient text-on-primary font-bold px-8 py-3 rounded shadow-lg active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                        DEPOSITAR
+                    </button>
+<button class="bg-surface-container-high border border-outline-variant/30 text-on-surface font-bold px-8 py-3 rounded active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                        RETIRAR
+                    </button>
+</div>
+</div>
+<!-- Decorative accent -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Admin Message Banner -->
+<div class="bg-secondary-container/10 border border-secondary-container/20 p-4 flex items-start gap-4 rounded">
+<span class="material-symbols-outlined text-secondary-container">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed italic">
+                Todas las transacciones requieren aprobación del administrador para garantizar la seguridad de su cuenta. Los retiros pueden tardar hasta 24 horas hábiles.
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Payment Methods -->
+<div class="lg:col-span-1 space-y-4">
+<h3 class="font-headline text-xl text-primary font-bold">Métodos de Pago</h3>
+<div class="space-y-3">
+<div class="bg-surface-container-high p-4 flex items-center justify-between rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center overflow-hidden">
+<img class="w-8 grayscale brightness-200 group-hover:grayscale-0 transition-all" data-alt="Official PayPal brand logo in high definition with blue and white color palette for digital payment integration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4acL0C3eR57sRcA7yMywISZZVNcc9mV7vslkGoQiYfdNY8OwKwzQEJHP-Y9T1HhKssqYOmQaAXtmQrPDIf47ZU5HKijdD4eU2TJKaGaYoqs0E4Haa4T4O2J10HEzXPpZpXVTvNQer399Q_B-6vS5HLYk2sOP2MO2yHzv0SFKuMOWmoyZ8QfMOywFgvRHH6bqfjtLLvdhzIVdCKWDoqY52G9N0t0k5zRlHmHwEstt1cUi33z1FRnOD-cGqmhe7veZi6dKRC-z2Nata"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">PayPal</p>
+<p class="text-xs text-on-surface-variant">Instantáneo</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="bg-surface-container-high p-4 flex items-center justify-between rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center overflow-hidden">
+<img class="w-8 grayscale brightness-200 group-hover:grayscale-0 transition-all" data-alt="Golden Binance crypto logo symbol against dark background representing digital currency exchange and blockchain technology" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd4lrQGxTChi3g37lgRjKrsG9_vEu-TmaS2kU9takEmYc1TPmUKhZfSBGFNidBHV1892-jYpHdyFCybloCKcdANNLdVO3EKRpUu41GOA37eSkOTpl2lh_wzQLM6M4DoL2EwXW6JyR5pYuz7WBKO6oabL8JAZc4v4PHZUOAe08nDDY5NoBgO6ApincuQZeaycmDPX9-rWEFftXSbnWd5hlmXH4Rup7eHruXmj2iPRASEfVZUXtFXFtjaMnZsdAMFy65MUDWXUmM5HKt"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Binance Pay</p>
+<p class="text-xs text-on-surface-variant">Criptoactivos</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Transaction History -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline text-xl text-primary font-bold">Historial de Transacciones</h3>
+<button class="text-primary text-xs uppercase font-bold tracking-widest border-b border-primary/20 pb-1">Ver Todo</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-2">
+<thead class="text-on-surface-variant text-xs uppercase tracking-wider">
+<tr>
+<th class="px-4 py-2 font-medium">Movimiento</th>
+<th class="px-4 py-2 font-medium">Fecha</th>
+<th class="px-4 py-2 font-medium">Estado</th>
+<th class="px-4 py-2 font-medium text-right">Monto</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<!-- Row 1 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-high transition-colors">
+<td class="px-4 py-4 rounded-l-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container">arrow_downward</span>
+<span class="font-bold">Depósito Binance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-on-surface-variant italic">24 Oct, 2023</td>
+<td class="px-4 py-4">
+<span class="flex items-center gap-1 text-tertiary-container text-xs font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        Aprobado
+                                    </span>
+</td>
+<td class="px-4 py-4 rounded-r-lg text-right font-headline font-bold text-tertiary-container">+$ 1,200.00</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-high transition-colors">
+<td class="px-4 py-4 rounded-l-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container">arrow_upward</span>
+<span class="font-bold">Retiro PayPal</span>
+</div>
+</td>
+<td class="px-4 py-4 text-on-surface-variant italic">23 Oct, 2023</td>
+<td class="px-4 py-4">
+<span class="flex items-center gap-1 text-primary-container text-xs font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                                        Pendiente
+                                    </span>
+</td>
+<td class="px-4 py-4 rounded-r-lg text-right font-headline font-bold text-on-surface">-$ 500.00</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-container-high transition-colors">
+<td class="px-4 py-4 rounded-l-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container">arrow_downward</span>
+<span class="font-bold">Depósito Binance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-on-surface-variant italic">20 Oct, 2023</td>
+<td class="px-4 py-4">
+<span class="flex items-center gap-1 text-tertiary-container text-xs font-bold uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        Aprobado
+                                    </span>
+</td>
+<td class="px-4 py-4 rounded-r-lg text-right font-headline font-bold text-tertiary-container">+$ 3,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-[#1c1b1b]/90 backdrop-blur-md z-50 rounded-t-xl border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] font-medium tracking-wide uppercase mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#f2ca50]/10 rounded-xl px-4 py-1 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-sans text-[10px] font-medium tracking-wide uppercase mt-1">Billetera</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[10px] font-medium tracking-wide uppercase mt-1">Perfil</span>
+</a>
+</nav>
+</body></html>

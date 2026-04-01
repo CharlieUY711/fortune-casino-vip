@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Casino - Lobby VIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            background-color: #131313;
+            color: #d0c5af;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f2ca50 50%, #d4af37 100%);
+        }
+        .card-bg {
+            background: #1c1b1b;
+            border: 1px solid rgba(77, 70, 53, 0.2);
+        }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 bg-[#131313] h-16 flex justify-between items-center px-6 shadow-lg border-b border-[#4d4635]/20">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#1c1b1b] flex items-center justify-center border border-[#d4af37]/30">
+                <span class="material-icons text-[#f2ca50]">account_circle</span>
+            </div>
+            <div>
+                <p class="text-[10px] uppercase tracking-tighter opacity-60">Balance</p>
+                <p class="text-[#f2ca50] font-bold">$24,550.00</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1 bg-[#1c1b1b] px-2 py-1 rounded-md border border-[#4d4635]/30">
+                <span class="material-icons text-[14px] text-[#f2ca50]">language</span>
+                <select id="lang-selector" class="bg-transparent text-[12px] font-bold text-[#f2ca50] outline-none">
+                    <option value="es">ES</option>
+                    <option value="en">EN</option>
+                    <option value="pt">PT</option>
+                </select>
+            </div>
+            <span class="material-icons text-[#d0c5af]">notifications</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mt-20 px-4">
+        
+        <!-- Hero Banner -->
+        <section class="relative w-full h-48 rounded-2xl overflow-hidden mb-8 group">
+            <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&q=80&w=800" alt="Casino Banner" class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-[#131313] to-transparent">
+                <h1 class="font-serif text-3xl text-[#f2ca50] font-bold leading-tight">El Tesoro de Fortune</h1>
+                <p class="text-sm opacity-80 mb-4">Accede al salón exclusivo con bonos VIP.</p>
+                <button class="gold-gradient text-[#131313] font-bold py-2 px-6 rounded-lg self-start active:scale-95 transition-transform">
+                    RECLAMAR BONO
+                </button>
+            </div>
+        </section>
+
+        <!-- Game Categories -->
+        <div class="grid grid-cols-2 gap-3 mb-8">
+            <a href="#" class="card-bg p-4 rounded-xl flex flex-col items-center gap-2 hover:bg-[#252424] transition-colors">
+                <span class="material-icons text-3xl text-[#f2ca50]">casino</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Ruleta</span>
+            </a>
+            <a href="#" class="card-bg p-4 rounded-xl flex flex-col items-center gap-2 hover:bg-[#252424] transition-colors">
+                <span class="material-icons text-3xl text-[#f2ca50]">style</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Blackjack</span>
+            </a>
+            <a href="#" class="card-bg p-4 rounded-xl flex flex-col items-center gap-2 hover:bg-[#252424] transition-colors">
+                <span class="material-icons text-3xl text-[#f2ca50]">playing_cards</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Poker</span>
+            </a>
+            <a href="#" class="card-bg p-4 rounded-xl flex flex-col items-center gap-2 hover:bg-[#252424] transition-colors">
+                <span class="material-icons text-3xl text-[#f2ca50]">auto_awesome</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Slots</span>
+            </a>
+        </div>
+
+        <!-- Popular Games Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="font-serif text-2xl text-[#f2ca50]">Salón de Populares</h2>
+                <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-[#d4af37] border-b border-[#d4af37]">Ver Todos</a>
+            </div>
+
+            <!-- Game Card -->
+            <div class="card-bg rounded-2xl overflow-hidden mb-4 relative group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&q=80&w=600" alt="Roulette Noir" class="w-full h-40 object-cover brightness-75 group-hover:brightness-100 transition-all">
+                <div class="p-4 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif text-xl">Roulette Platinum</h3>
+                        <p class="text-[10px] opacity-60">APUESTA MÍNIMA: $10</p>
+                    </div>
+                    <span class="material-icons text-[#f2ca50]">play_circle_filled</span>
+                </div>
+            </div>
+
+            <!-- Game Card -->
+            <div class="card-bg rounded-2xl overflow-hidden mb-4 relative group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&q=80&w=600" alt="Midnight Poker" class="w-full h-40 object-cover brightness-75 group-hover:brightness-100 transition-all">
+                <div class="p-4 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif text-xl">Midnight Poker</h3>
+                        <p class="text-[10px] opacity-60">TORNEO VIP DISPONIBLE</p>
+                    </div>
+                    <span class="material-icons text-[#f2ca50]">play_circle_filled</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[#1c1b1b]/90 backdrop-blur-md h-20 flex justify-around items-center px-4 border-t border-[#4d4635]/20 z-50">
+        <a href="#" class="flex flex-col items-center gap-1 text-[#f2ca50]">
+            <span class="material-icons">casino</span>
+            <span class="text-[9px] font-bold uppercase tracking-tighter">Lobby</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 opacity-40 hover:opacity-100 transition-opacity">
+            <span class="material-icons">payments</span>
+            <span class="text-[9px] font-bold uppercase tracking-tighter">Billetera</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-1 opacity-40 hover:opacity-100 transition-opacity">
+            <span class="material-icons">person</span>
+            <span class="text-[9px] font-bold uppercase tracking-tighter">Perfil</span>
+        </a>
+    </nav>
+
+    <!-- Localization Script Placeholder -->
+    <script>
+        // Lógica para cambio de idioma (ES, EN, PT)
+        const translations = {
+            es: { balance: "Saldo", lobby: "Lobby", wallet: "Billetera", profile: "Perfil" },
+            en: { balance: "Balance", lobby: "Lobby", wallet: "Wallet", profile: "Profile" },
+            pt: { balance: "Saldo", lobby: "Lobby", wallet: "Carteira", profile: "Perfil" }
+        };
+
+        document.getElementById('lang-selector').addEventListener('change', (e) => {
+            const lang = e.target.value;
+            console.log('Cambiando idioma a:', lang);
+            // Aquí se activaría la lógica de i18next o similar
+        });
+
+        // Simulación de carga inicial de Supabase (Próximamente)
+        console.log('Conectando a Supabase para la versión TESTING...');
+    </script>
+</body>
+</html>

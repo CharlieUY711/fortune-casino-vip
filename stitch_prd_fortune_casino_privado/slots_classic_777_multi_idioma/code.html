@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classic 777 - Noir Casino</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#99907c",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-dim": "#131313",
+              "secondary-container": "#920703",
+              "surface-bright": "#3a3939",
+              "on-primary-fixed-variant": "#574500",
+              "on-error-container": "#ffdad6",
+              "on-surface": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-container": "#554300",
+              "tertiary-container": "#7fc290",
+              "primary-fixed": "#ffe088",
+              "on-tertiary-fixed-variant": "#08522a",
+              "on-secondary-fixed": "#410000",
+              "on-primary": "#3c2f00",
+              "surface-tint": "#e9c349",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "background": "#131313",
+              "on-background": "#e5e2e1",
+              "surface-variant": "#353534",
+              "surface-container": "#201f1f",
+              "surface-container-low": "#1c1b1b",
+              "on-secondary-container": "#ff9a8a",
+              "on-secondary": "#690000",
+              "tertiary-fixed-dim": "#92d6a2",
+              "on-error": "#690005",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary": "#00391a",
+              "on-surface-variant": "#d0c5af",
+              "error-container": "#93000a",
+              "on-primary-fixed": "#241a00",
+              "secondary-fixed-dim": "#ffb4a8",
+              "tertiary": "#9adeaa",
+              "primary-fixed-dim": "#e9c349",
+              "primary": "#f2ca50",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-highest": "#353534",
+              "primary-container": "#d4af37",
+              "outline-variant": "#4d4635",
+              "on-tertiary-container": "#055029",
+              "error": "#ffb4ab",
+              "surface": "#131313",
+              "secondary-fixed": "#ffdad4",
+              "inverse-primary": "#735c00",
+              "tertiary-fixed": "#adf2bc",
+              "inverse-on-surface": "#313030"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reel-gradient {
+            background: linear-gradient(180deg, rgba(14,14,14,1) 0%, rgba(42,42,42,0) 25%, rgba(42,42,42,0) 75%, rgba(14,14,14,1) 100%);
+        }
+        .gold-shimmer {
+            background: linear-gradient(45deg, #f2ca50 0%, #ffe088 50%, #d4af37 100%);
+        }
+        .red-velvet {
+            background: radial-gradient(circle, #920703 0%, #410000 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] flex justify-between items-center px-6 py-4 shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="text-[#f2ca50] font-['Noto_Serif'] font-bold tracking-tighter uppercase text-lg">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 text-[#d0c5af] font-medium text-xs tracking-widest uppercase">
+<span class="text-[#f2ca50] cursor-pointer transition-colors">Games</span>
+<span class="hover:text-[#ffe088] cursor-pointer transition-colors">Promotions</span>
+<span class="hover:text-[#ffe088] cursor-pointer transition-colors">VIP</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded border border-outline-variant/20">
+<span class="text-[#f2ca50] font-headline text-xs font-bold tracking-widest">EN</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-4 max-w-5xl mx-auto w-full flex flex-col gap-8">
+<!-- Royal Jackpot Display -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-low p-1 border border-outline-variant/10">
+<div class="red-velvet rounded-lg py-6 px-8 flex flex-col items-center justify-center text-center relative">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGDJzxvyRyVHaMGXOjNIQub4CjLOts36HZ6BCy5pExxtxhwVxR5aouEom6X2UuUPILRCibFoZmVkC8Cu-xGs5Wp18R4CvMMZ-0oSnxWllXtljwmW8c2usDHhraVi8v8qhY7RRs9t13XoNpWhfKmyp5jWkK41dy0yZUzw0n5m3Q0UVTqjXBAKKEJLmolr9oRne9tKkyQ54bYDGSvoJi9RF9NHZ04JQ1WV9tpX0mefaW6IK16AeqNEX7vJw6b-g-FI7QVgdsaS4-kVci');"></div>
+<h2 class="text-primary-fixed font-headline text-sm uppercase tracking-[0.3em] mb-2">ROYAL JACKPOT</h2>
+<div class="flex items-baseline gap-2">
+<span class="text-primary font-headline text-2xl md:text-4xl">$</span>
+<span class="text-white font-headline text-4xl md:text-6xl font-bold tracking-tighter drop-shadow-[0_0_15px_rgba(242,202,80,0.5)]">1,284,502.40</span>
+</div>
+</div>
+</section>
+<!-- Slot Machine Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Reels Section -->
+<section class="lg:col-span-8 flex flex-col gap-6">
+<div class="relative bg-surface-container-highest rounded-xl p-4 md:p-8 shadow-2xl border-x-4 border-outline-variant/30">
+<div class="grid grid-cols-3 gap-2 md:gap-4 relative bg-surface-container-lowest rounded overflow-hidden h-[300px] md:h-[450px]">
+<!-- Reel 1 -->
+<div class="relative flex flex-col items-center justify-around py-4 border-r border-outline-variant/10">
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-secondary" style="font-variation-settings: 'FILL' 1;">cheer</span>
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div class="z-10 py-8 px-4 bg-surface-container-high/40 backdrop-blur-sm rounded-lg border border-primary/20 scale-110">
+<span class="text-6xl md:text-8xl font-headline font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">7</span>
+</div>
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="relative flex flex-col items-center justify-around py-4 border-r border-outline-variant/10">
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="material-symbols-outlined text-6xl text-secondary" style="font-variation-settings: 'FILL' 1;">cheer</span>
+</div>
+<div class="z-10 py-8 px-4 bg-surface-container-high/40 backdrop-blur-sm rounded-lg border border-primary/20 scale-110">
+<span class="text-6xl md:text-8xl font-headline font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">7</span>
+</div>
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-tertiary" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="relative flex flex-col items-center justify-around py-4">
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div class="z-10 py-8 px-4 bg-surface-container-high/40 backdrop-blur-sm rounded-lg border border-primary/20 scale-110">
+<span class="text-6xl md:text-8xl font-headline font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">7</span>
+</div>
+<div class="opacity-40 grayscale flex flex-col items-center gap-12">
+<span class="material-symbols-outlined text-6xl text-secondary" style="font-variation-settings: 'FILL' 1;">cheer</span>
+</div>
+</div>
+<!-- Glass Overlays -->
+<div class="absolute inset-0 reel-gradient pointer-events-none"></div>
+<div class="absolute inset-y-0 left-0 w-px bg-white/5"></div>
+<div class="absolute inset-y-0 right-0 w-px bg-white/5"></div>
+</div>
+<!-- Payout Lines Indicator -->
+<div class="absolute -left-2 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+<div class="w-4 h-4 rounded-full bg-primary shadow-[0_0_8px_rgba(242,202,80,0.8)]"></div>
+</div>
+<div class="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+<div class="w-4 h-4 rounded-full bg-primary shadow-[0_0_8px_rgba(242,202,80,0.8)]"></div>
+</div>
+</div>
+<!-- Info Banner -->
+<div class="flex justify-between items-center px-4 py-3 bg-surface-container rounded-lg border border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm">stars</span>
+<span class="text-xs uppercase tracking-widest text-on-surface-variant">Classic 777: Modern High Stakes</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] text-on-surface-variant font-medium uppercase tracking-tighter">RTP: 98.4%</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer">info</span>
+</div>
+</div>
+</section>
+<!-- Betting Controls Sidebar -->
+<section class="lg:col-span-4 flex flex-col gap-6">
+<!-- Game Title Section -->
+<div class="flex flex-col gap-1">
+<h3 class="font-headline text-3xl font-bold tracking-tighter text-white">Classic 777</h3>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">Noir Series No. 04</p>
+</div>
+<!-- Balance & Bet Display -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Balance</p>
+<p class="text-xl font-headline font-bold text-white">$ 24,050.00</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Total Win</p>
+<p class="text-xl font-headline font-bold text-tertiary">$ 0.00</p>
+</div>
+</div>
+<!-- Bet Amount Controls -->
+<div class="bg-surface-container p-6 rounded-xl flex flex-col gap-6 border border-outline-variant/10 shadow-lg">
+<div class="flex flex-col gap-3">
+<label class="text-xs uppercase tracking-widest text-on-surface-variant font-medium">Bet Amount</label>
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 rounded border border-outline-variant/30">
+<button class="w-10 h-10 flex items-center justify-center text-primary-fixed hover:bg-surface-variant transition-colors rounded">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="text-xl font-headline font-bold text-primary">$ 100.00</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary-fixed hover:bg-surface-variant transition-colors rounded">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10 uppercase">min</button>
+<button class="py-2 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10 uppercase">2x</button>
+<button class="py-2 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10 uppercase">5x</button>
+<button class="py-2 bg-surface-container-high rounded text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10 uppercase">max</button>
+</div>
+<!-- Spin Button -->
+<button class="gold-shimmer w-full py-6 rounded-lg shadow-[0_8px_32px_rgba(242,202,80,0.3)] group relative overflow-hidden active:scale-[0.98] transition-all">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="relative font-headline text-2xl font-black uppercase tracking-[0.2em] text-on-primary">Spin</span>
+</button>
+<div class="flex gap-2">
+<button class="flex-1 py-3 bg-surface-container-highest rounded border border-outline-variant/20 text-[11px] uppercase tracking-widest font-bold text-on-surface active:bg-surface-variant">Auto Play</button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-highest rounded border border-outline-variant/20 text-on-surface active:bg-surface-variant">
+<span class="material-symbols-outlined text-lg">bolt</span>
+</button>
+</div>
+</div>
+<!-- Recent Big Wins -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<h4 class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-4 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                        Live Winners
+                    </h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Player_402</span>
+<span class="text-tertiary font-bold">+$1,450.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">VIP_James</span>
+<span class="text-tertiary font-bold">+$800.00</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Noir_King</span>
+<span class="text-tertiary font-bold">+$2,200.00</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#1c1b1b]/95 backdrop-blur-md flex justify-around items-center px-4 pb-safe z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+<!-- Ambient Shadow Overlay for Modal feel -->
+<div class="fixed inset-0 pointer-events-none z-[1] shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]"></div>
+</body></html>

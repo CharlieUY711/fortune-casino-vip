@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#99907c",
+            "on-secondary-fixed-variant": "#920703",
+            "surface-dim": "#131313",
+            "secondary-container": "#920703",
+            "surface-bright": "#3a3939",
+            "on-primary-fixed-variant": "#574500",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e5e2e1",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary-container": "#554300",
+            "tertiary-container": "#7fc290",
+            "primary-fixed": "#ffe088",
+            "on-tertiary-fixed-variant": "#08522a",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#3c2f00",
+            "surface-tint": "#e9c349",
+            "secondary": "#ffb4a8",
+            "on-tertiary-fixed": "#00210d",
+            "background": "#131313",
+            "on-background": "#e5e2e1",
+            "surface-variant": "#353534",
+            "surface-container": "#201f1f",
+            "surface-container-low": "#1c1b1b",
+            "on-secondary-container": "#ff9a8a",
+            "on-secondary": "#690000",
+            "tertiary-fixed-dim": "#92d6a2",
+            "on-error": "#690005",
+            "surface-container-high": "#2a2a2a",
+            "on-tertiary": "#00391a",
+            "on-surface-variant": "#d0c5af",
+            "error-container": "#93000a",
+            "on-primary-fixed": "#241a00",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary": "#9adeaa",
+            "primary-fixed-dim": "#e9c349",
+            "primary": "#f2ca50",
+            "inverse-surface": "#e5e2e1",
+            "surface-container-highest": "#353534",
+            "primary-container": "#d4af37",
+            "outline-variant": "#4d4635",
+            "on-tertiary-container": "#055029",
+            "error": "#ffb4ab",
+            "surface": "#131313",
+            "secondary-fixed": "#ffdad4",
+            "inverse-primary": "#735c00",
+            "tertiary-fixed": "#adf2bc",
+            "inverse-on-surface": "#313030"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .abyssal-gradient {
+      background: linear-gradient(180deg, #131313 0%, #0a191e 100%);
+    }
+    .slot-reel-glow {
+      box-shadow: inset 0 0 40px rgba(127, 194, 144, 0.05);
+    }
+    .glass-panel {
+      backdrop-filter: blur(12px);
+      background: rgba(28, 27, 27, 0.85);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body abyssal-gradient min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer" data-icon="menu">menu</span>
+<h1 class="text-[#f2ca50] font-headline font-bold tracking-tighter text-lg uppercase">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 font-headline uppercase tracking-widest text-xs">
+<span class="text-[#f2ca50] cursor-pointer">Lobby</span>
+<span class="text-[#d0c5af] hover:text-[#ffe088] transition-colors cursor-pointer">Slots</span>
+<span class="text-[#d0c5af] hover:text-[#ffe088] transition-colors cursor-pointer">Live</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded border border-outline-variant/20">
+<span class="material-symbols-outlined text-xs text-[#f2ca50]" data-icon="language">language</span>
+<select class="bg-transparent border-none text-[10px] font-bold text-[#d0c5af] focus:ring-0 cursor-pointer uppercase tracking-tighter">
+<option>EN</option>
+<option>ES</option>
+<option>PT</option>
+</select>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-5xl mx-auto">
+<!-- Game Title & Jackpot -->
+<div class="text-center mb-10">
+<h2 class="font-headline text-3xl md:text-5xl font-bold tracking-tight text-on-surface mb-2">Deep Sea Riches</h2>
+<div class="inline-flex flex-col items-center">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-primary/60">ABYSSAL JACKPOT</span>
+<div class="font-headline text-4xl md:text-6xl font-extrabold text-primary drop-shadow-[0_0_15px_rgba(242,202,80,0.3)]">
+          $1,284,509.<span class="text-2xl">42</span>
+</div>
+</div>
+</div>
+<!-- Slot Machine Interface -->
+<div class="relative group">
+<!-- Background Decorative Elements -->
+<div class="absolute -inset-4 bg-tertiary/5 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
+<!-- Slot Reels Container -->
+<div class="relative glass-panel rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl">
+<div class="grid grid-cols-3 md:grid-cols-5 gap-1 p-1 md:p-2 bg-surface-container-lowest">
+<!-- Reel 1 -->
+<div class="flex flex-col gap-1 slot-reel-glow">
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain filter drop-shadow-md" data-alt="close-up of a large glowing white pearl sitting inside a dark iridescent oyster shell under deep teal water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARyj10vY6Bip0Fyo3K4kgE3z0AicicODIYd24kWIb7Vf5LtDTXNKM_wFIAfb_XFhI3DfcLWbyVi8RU9a2FcQOSbRmBf_3Eey8GaYZrXogCUD4TujNkVNxyFPBCjJLJQtDeZ8hQ_uQsGvgjl0jIDMcjx6y0jZ5GyHCSd50yjDU4vxTCbY6BzJXXQJIlaS0syIydGGjgsH9kmpcln--cXBzbVb2EP4838Yo0HVuXZLC8ZhT4VaDPeNcWxExOlFPAYtdCyd-JCrVN6rj4"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="ancient wooden treasure chest overflowing with gold coins and emeralds submerged in dark blue ocean water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjbLO-qVnWd-3DU1BFcJbHIxEWn03VWTt7vnLAztNO7zfmf4uQ_MDTVETRmJbEcQhtHtYqnlmq_bKZWJHBP3nLlZydbdcjtf-98T7msDMrx6HltMoXAsveMmkDY_GthTgFr-drAE7OT4karDMjOKIOCcDZ6BDmc_LVzbz-5XxwASePjYxQ1BMHzGfHeRBTE2dq17X-7MSSBqshdxZLTCr0jB-AjVYWIZhxOvomegc_LSTxISIVCM_ehqLnf4T_SATRMlpdXv7Kqvuf"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="mythical giant octopus with glowing bioluminescent suckers on its tentacles in a dark underwater abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOH400VaudyAYE3j4vnyutsBCGw_RV--y5wnSzYGvJ_yA_x_6Gaf4XGY23LSQmpQlyNZ3O17XtP8VnbI9bx-EUJOBsZjeKmPhmxhU9L1Xc_sOq17ie49l2wKHJMBDHEsFtQ5hZyFPJIPVSIt9kldsCjHn-eqhIA0DzXc9R94u7opFNZmjcBUfMwyyc86CiGsOHymzTzyy6cYOnCbAwAn8KMu4TYbpQ7H-GjB0XUcTAk97w9KRKG8aY-cSeqs0b6Hc8OfqChtoQr74F"/>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="flex flex-col gap-1 slot-reel-glow">
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="mythical giant octopus with glowing bioluminescent suckers on its tentacles in a dark underwater abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCctc7Scni9TDH1ACCWNop8X0cQX2WSgH7nSkygAQAjcVxTLlVphxfX4AWpdxWKUg4ApD6tWtuox2C1Dmyg3P4let7-iz6Il2QBExyKdcqSzXmV0fIebvWfhJ6iZxl-zpG9GGs92WBZS_IIKHoQPprOKyUSoIdlGiJq45KJ0Atpp9roRpSXXWmW_jG_HYvwGP4ljZYRLk2WJTsfthCQFIHUCX5y3qvyxAFAVZhei6aW0CJ0ydkIfs7QwAvSmbnym4bv_euRVxxZLB8p"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4 border-2 border-primary/40 bg-primary/5">
+<img class="w-full h-full object-contain scale-110" data-alt="close-up of a large glowing white pearl sitting inside a dark iridescent oyster shell under deep teal water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8ttvI7T548FLHB-cewDpAGnmpl1ytsMNUJOvFPFnODYqZOUDI-9hWfZa9Edza0bGdoCr98Imov99SnAtdIKSYlninpYY2efnyqY670HU0vCwsilGha3YUoLsZIq5BzmQbkmV7bK-vwBh74sA_tP8QzzXGHGMCr6d5rbbt4NGdGAzhoyZdqz09w-28ekrG2rODxGjqaNSnYCYmt4oUBSgH5KqEMdXYExle35xI34gGUEaBfGt9GdN53Mh8-9uVfZ8QsM9fuznNUPld"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="ancient wooden treasure chest overflowing with gold coins and emeralds submerged in dark blue ocean water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRsZSm58WYeo-hUR5pL0j-YAAEMkcgxVupJT7sJZjwgb7w4-OURGffR9W6MSSX2n5T3vemzztbZQB7Ao19diiVoKRV0VrLlBBIu1LoX5TiUfwqJp-mLG-Bx4bic8f6UoSRnE7rIxYc4p6OF4jwjYmXq4ZneWJUEF81RsH9wEgyt5yQGGeXjmofkN7U4CKzajdq0FhxdV4kaYNEORubErkEbubEtjNewqfi1JFqLgrKMndIUpor37W8rBAPEwNXglpW1FdHhz083Ojf"/>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="flex flex-col gap-1 slot-reel-glow">
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="ancient wooden treasure chest overflowing with gold coins and emeralds submerged in dark blue ocean water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrI96lFBLL-XuYu_cQgEXMpO8sLaUf-54vMYRfB12wnyVThS-hvWXCA-dFa995UBghmg3V89osOHxwFcIsAv_Mn-9OpbRZnOG5OuZzgfplzjf6bPtdoFlGEVJrUBZLVOrxJo3Mj8DSBgkP7LJkKJBDKnlBWdNZq_26OlYuXE1-xiMx0fQVsqQ_xwisYnm0g2Td9Wtur04sbyTJkNaCnGf58-mLwhrgtL3tiCVwkHhxClS-sP6r1vam9u6f7-aFsZG1_jTyKMubLAvZ"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4 border-2 border-primary/40 bg-primary/5">
+<img class="w-full h-full object-contain scale-110" data-alt="close-up of a large glowing white pearl sitting inside a dark iridescent oyster shell under deep teal water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1Hl9anxnYIFETPA5X54Q6G76YxaievDx4bUa-GhV9C_HN6jlIJAm2FzvNRGE_fFIHHuDm0h7I0ZWtwugzyzHmPshO-6TV9jmVpZdU3EU4Z9oCNeMbTBzhYRufLT8uXfqBZzT9RYJfadGdfCFN-Gxxm8I_FvPk4oPCl197-yUSMgSklvsKruDpkFPTh18NqfjDfEMb-UHwcK_QQCeM74xoP2KfNa5b3NXyZ83ebUP1Y3kZa7RJFi4A0fq68Z4kfnZpyYftjf0HQQVp"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="mythical giant octopus with glowing bioluminescent suckers on its tentacles in a dark underwater abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdkG-jsSUxUiUGBozxxLzGrB7sct-6MvW_VTKWc8S7UaUM2y5EO9dB34CIZzjmZkoEPonNnCp20Z78WRS7wk_VGIzui5xcjAYXywDZ6HghUFzwfWuN_2lhOYcTdyzmDNPSMQkcaso3zzI_tQ_1DgRqUtcg1hC33PdhyBYYKb17uuxKrI85BAGtniyKZP7o1Ix5iBEfErOxAjqYhcgVM4n9L5zsH0KnvRG6NBsfMXc9OamdiRPg859_AXNucRbHPcROvN3vj6pZlx-m"/>
+</div>
+</div>
+<!-- Reel 4 (Visible on Desktop) -->
+<div class="hidden md:flex flex-col gap-1 slot-reel-glow">
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="mythical giant octopus with glowing bioluminescent suckers on its tentacles in a dark underwater abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeNxbxUmlbUMnRZtl9zTab8sDq2RwxFrvO4Y7gN3EJjoifUbrXDiLJoiy7tD3LpGjaAmAgO-zNmGd-VXfPmjadNFiD7doVsYR6HQXJ8-uMH1MPk9TRBzvZpkdH61zsNVkGg4pHW1V2fkyfht-JIYhg7rM3dkE_kZ4Gu_R-IBqCL3cJSu4Q-4GN2w0XjW2N0UU3SYvUpEaR2TNgfydKHeqJQYf_sJVcdNKXniU8eouxfO881p-8nWaES14N3NtkFK5drnoy_fYr5ntT"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4 border-2 border-primary/40 bg-primary/5">
+<img class="w-full h-full object-contain scale-110" data-alt="close-up of a large glowing white pearl sitting inside a dark iridescent oyster shell under deep teal water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYelIHUxb5ziiTM7slhaaO-Ney-HzPS_zuSvMBtz0N--9g69eVoQNJ0Z1YwM4S_pqui1XYrpxQVDZ7L0Uygw6AJXc2Vhe_tdSdWwnWfI6riuIiSZ9ErSNlTrknohvo_SNlvnXO1GtcyWfHjJxTqSbSkPceoW63i9mejCr9EMDNXi5-zZOEDw8wz6QjXbYvtKYRIDpMQCxEeLKxkHIjKxKa4zZ2s6OV1t1MYg8bSJAyjYhl0x4WnGxKGsYPTR3MOoB8f2TGgMcZKHLc"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="ancient wooden treasure chest overflowing with gold coins and emeralds submerged in dark blue ocean water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIRnWWBc-acLjqo9sNimyYLH7WFVrloOR5qO9Cyi7RTBBZQq8EWesYjn1EIKjOi0JlwEZxTFKtNudUFPLu2WQVIHHbXUlF4PsaZXYpmjH-xFm98oEQ-D4VqfTGwKxZvQiTX1uns6LXivGMFnLgYZuwsEdHVw0l-0zX4QUxC3xtLuUbSAIlYoumUAtpj-4KYkOb87oFBI8HIutHH5NW6TFOzMDX5RNKV-2VbUFohkV62VOmYjgyyx8nURGdR9dYcvILMssEBYEaCOmU"/>
+</div>
+</div>
+<!-- Reel 5 (Visible on Desktop) -->
+<div class="hidden md:flex flex-col gap-1 slot-reel-glow">
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="ancient wooden treasure chest overflowing with gold coins and emeralds submerged in dark blue ocean water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUzTkHIDsed7yptqc0MJWzyAEoEBSyPtWY4ynq1mvz_xmveoiFQvZsjRyWo1Ut3FxaOTO_Ya4Me4oo2C7PpQiCrhpv_HRUu12FxcefITcFagntsDZG2JL8FKMr6s_HhnW-6xmz2TzjKnkxCO6POqZosut-sEReTdQi0kZf91QcryKULLr4og913g7AMU4NjFrftdYy5-oX6CKW6Pb-7JpTuLyOcbSGBLuaQp4Dnx40kbQkdjpLkl1yzB5XXuWMmQ--OA9vQcOIL8V8"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="mythical giant octopus with glowing bioluminescent suckers on its tentacles in a dark underwater abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB__BRLqhkyWYnZwMWRHHf_HNEqlQ9-wMvwdyhITwkr18eaeuuJAlmWa2pqarwpOeoKth5C5M4ONyhsR4yzQd9np3g_mNETs4GHW1aOqMnwGbsYnztXlRLs4fRZ7vw_9M2uKkZR0I4iosjZAj0wa4Tq7xe3l6NryIhmp9AN_oCgq8eQdiuo1hrIB4JbtgTYLnDBqTvFIm2UWv21J6MyakeoWivKA8OWvb0yeLo9Kbn2KoT__eHC4jF37LUhjjJFL4PsM3aKiq1dX-j5"/>
+</div>
+<div class="aspect-square bg-surface-container-high flex items-center justify-center p-4">
+<img class="w-full h-full object-contain" data-alt="close-up of a large glowing white pearl sitting inside a dark iridescent oyster shell under deep teal water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYBZDD0sPS8QMIJ5T6TVRCbSGlezdpx7ags7F4PQH8cUDvft1W-Hx4PqlxyUsNmrDs-BKx-LU17W4YtoRtZORWyUhE66qgdhPnP-VWzeTrkMcvSB375yJNvraz3vkQnI8EtoikkHOyvUbnG0B-_D0u8dL2bGTfXbP_4fuu6XZiOlUf2kFW-7ugnzxsGKlyGIG5IHCsPZhx7IkbPHi1ljmMIUBHGwREzev5RJVX50xfFcL5wudtMd2384ZoogUzv5HSckHEJ5Pr5aBI"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Winning Line Overlay (Conceptual) -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-primary shadow-[0_0_10px_#f2ca50] opacity-30 pointer-events-none"></div>
+</div>
+<!-- Controls Area -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+<!-- Bet Info -->
+<div class="flex flex-col gap-4 md:items-start items-center">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Total Balance</span>
+<span class="font-headline text-xl text-on-surface">$24,500.00</span>
+</div>
+<div class="flex items-center gap-4 bg-surface-container p-2 rounded border border-outline-variant/10">
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<div class="flex flex-col items-center min-w-[80px]">
+<span class="text-[9px] uppercase font-bold text-on-surface-variant">Bet</span>
+<span class="font-headline text-lg">$10.00</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Spin Button -->
+<div class="flex justify-center order-first md:order-none">
+<button class="group relative w-24 h-24 md:w-32 md:h-32 rounded-full p-1 bg-gradient-to-tr from-primary-container to-primary shadow-[0_0_40px_rgba(242,202,80,0.2)] active:scale-95 transition-transform duration-150">
+<div class="w-full h-full rounded-full bg-surface-container-lowest flex flex-col items-center justify-center border-2 border-primary/20 overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors"></div>
+<span class="font-headline text-2xl md:text-3xl font-black text-primary tracking-tighter z-10">SPIN</span>
+<span class="text-[8px] md:text-[10px] text-on-surface-variant font-bold tracking-widest z-10">GIRAR</span>
+</div>
+</button>
+</div>
+<!-- Auto Play & Win Info -->
+<div class="flex flex-col gap-4 md:items-end items-center">
+<div class="flex flex-col md:items-end">
+<span class="font-label text-[10px] text-tertiary uppercase tracking-widest">Last Win</span>
+<span class="font-headline text-xl text-tertiary">$120.00</span>
+</div>
+<div class="flex gap-2">
+<button class="px-6 py-2 rounded bg-surface-container border border-outline-variant/20 hover:bg-surface-container-high transition-all text-xs font-bold uppercase tracking-widest text-on-surface">
+            Auto
+          </button>
+<button class="px-6 py-2 rounded bg-surface-container border border-outline-variant/20 hover:bg-surface-container-high transition-all text-xs font-bold uppercase tracking-widest text-on-surface">
+            Max Bet
+          </button>
+</div>
+</div>
+</div>
+<!-- Payout Information (Editorial Section) -->
+<section class="mt-20 border-t border-outline-variant/10 pt-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Abyssal Mechanics</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+            Dive into the deepest trenches of the ocean where the Kraken guards the ultimate jackpot. 
+            Align 5 Pearls to trigger the bioluminescent resonance feature, multiplying your current bet by up to 500x.
+          </p>
+<div class="flex gap-4">
+<div class="flex-1 bg-surface-container-low p-4 rounded">
+<span class="text-[10px] text-primary uppercase font-black block mb-2">Wild Symbol</span>
+<img class="w-10 h-10 mb-2" data-alt="stylized small icon of a glowing teal octopus tentacle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI4aWWNzSoVvjecVpC_Za89BLzvmzMHfk-8lux75X0DBI7QxQCoFAvNheWPq2dKunTFHgBx9YyJ1drIg-R5X7JlMXjCR4VjtUzzpbONy5pMVQmZhkBM7Kw7sUfb--S0wUVA-7aASEb8ijy1k5hvpuG1FHJSy8r8jDyQ0ZSTgUbNsbD4hzYOnl1kK7ZVyGOoqGTPl_0i_DflOBJzAtNb95qIahA_AylDu0vNh6K1ANJI1v-Ra1FfZaWM0gFCotZzjUEmkAomrkr3wQK"/>
+<span class="text-xs text-on-surface-variant">Substitutes all symbols except bonus.</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-4 rounded">
+<span class="text-[10px] text-tertiary uppercase font-black block mb-2">Free Spins</span>
+<img class="w-10 h-10 mb-2" data-alt="stylized small icon of a treasure chest key glowing emerald green" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8-5fADrEveYtYJjE54zbg9K51G3jdbIbOBVEbXHe87Afa5KDzwtS2-LNVDKTGjrQwekHoi5iuMu-7sNEpDjtALTtrnQoZ56QhqK87i8vXtn8W6eML3sO0HPsYuHvj1AE_hRMBTI2ZwFTNHzRT4Xb95j1_2mPDHmPKqGw16V4IJ7sGV5d1mK87MxJh1PZBa8uPCAGuLPrQN_kCEKSMT88zAuq4WaNj3P9ePE3TdJ-J52PltPTL8K41K6RNsuNgGmUCRsLsKTEUwFMR"/>
+<span class="text-xs text-on-surface-variant">3 Chests trigger 15 Abyssal Spins.</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-video bg-surface-container-high rounded flex flex-col items-center justify-center relative group overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" data-alt="cinematic underwater wide shot of coral reefs and shafts of light piercing through deep blue water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoO8_BYWizDKIQEv4vGdXr0blc_uRc6FV3phpf0UdxwB_MUbbYKyrEo2CP3nmeDDw1Y9ujJwWEy3BjXQLYMKqnwrzxjJ5MDO9joeFaEZKX8E6Y8cT6ynIxLvC7fUIlqE8F3LmJhIB90g7n9tbFVsrwCaseeyWh3aP61LsMXID6iDyKqsyiBu2Qz-aUu0ypfrtPA8PqKSWL0iHSmyKa7hzONf1yYBVyiUDFpKK7ngAzmv38MCJoY5K0eo0e8khYarm6jcoX3wlMN4UC"/>
+<span class="relative font-headline text-lg italic">View Paytable</span>
+</div>
+<div class="aspect-video bg-surface-container-high rounded flex flex-col items-center justify-center relative group overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" data-alt="macro photography of sparkling underwater sand and tiny gold particles settling in the deep ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABp0N4Rc4BuaRCnRlv2lV4Y2beepd1515zDHuPD36fULWcGrCwkRAtjz0nqVL5CaxNM05HUykVDEbFdgWNYUum2rt0Pfv8Q7KmfAigpRowkyG7Pq36GGwjBLsObpqM-9bao8nsoeVUfgHARFHClJLKpvV7GK3x2ejlfEtnlmb9-pcjLYuhN_szLgl_GFcUX01C9D-k7dRGH9IxD_Iajgk2r0oWoNB0xP36unR0ncQHe1a1VKtBSMpiRt13UZbPk08QjSbNu_tNPcc9"/>
+<span class="relative font-headline text-lg italic">Game History</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe bg-[#1c1b1b]/95 backdrop-blur-md border-t border-[#4d4635]/20 z-50 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)]">
+<span class="material-symbols-outlined mb-1" data-icon="casino">casino</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Lobby</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deep Sea Slot - Producción Final</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Serif:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary-fixed": "#ffdad4",
+                "primary": "#f2ca50",
+                "primary-fixed-dim": "#e9c349",
+                "on-tertiary-fixed-variant": "#08522a",
+                "surface-container-low": "#1c1b1b",
+                "tertiary-fixed-dim": "#92d6a2",
+                "outline": "#99907c",
+                "surface-container-highest": "#353534",
+                "primary-container": "#d4af37",
+                "on-error-container": "#ffdad6",
+                "tertiary": "#9adeaa",
+                "surface-variant": "#353534",
+                "on-primary-fixed": "#241a00",
+                "on-error": "#690005",
+                "surface-bright": "#3a3939",
+                "secondary-container": "#920703",
+                "secondary": "#ffb4a8",
+                "on-tertiary-container": "#055029",
+                "secondary-fixed-dim": "#ffb4a8",
+                "on-surface": "#e5e2e1",
+                "background": "#131313",
+                "on-primary-container": "#554300",
+                "error": "#ffb4ab",
+                "on-tertiary-fixed": "#00210d",
+                "inverse-surface": "#e5e2e1",
+                "surface-dim": "#131313",
+                "outline-variant": "#4d4635",
+                "on-tertiary": "#00391a",
+                "surface-tint": "#e9c349",
+                "on-secondary-container": "#ff9a8a",
+                "error-container": "#93000a",
+                "surface-container-high": "#2a2a2a",
+                "on-secondary-fixed-variant": "#920703",
+                "on-secondary-fixed": "#410000",
+                "on-primary-fixed-variant": "#574500",
+                "on-surface-variant": "#d0c5af",
+                "inverse-on-surface": "#313030",
+                "on-secondary": "#690000",
+                "tertiary-fixed": "#adf2bc",
+                "surface-container": "#201f1f",
+                "on-background": "#e5e2e1",
+                "inverse-primary": "#735c00",
+                "primary-fixed": "#ffe088",
+                "tertiary-container": "#7fc290",
+                "surface-container-lowest": "#0e0e0e",
+                "surface": "#131313",
+                "on-primary": "#3c2f00"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .ocean-gradient {
+            background: radial-gradient(circle at center, #1a3a4a 0%, #0d1a24 100%);
+        }
+        .glass-card {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar (JSON Anchor) -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] dark:bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/20">
+<img alt="High Roller Profile" class="w-8 h-8 rounded-full" data-alt="Stylized 3D avatar of a sophisticated casino high roller with gold accessories and a dark suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFT254RIKF_DuaWwwUMe8OTbGQ2PdyAA3dSUR9sOnMzGQm1jk26tx1KO50rqJmN7yYohKoyMGByDvoJOSibvWX2RBWeyj7GtQHXtt_VzMykUiJbspF4P9NTsXOsVRy2KRDlC0yatA_JHVFO3ac6n4uvswDhRWP2pdjknz4P2X1NBLIGuw1qxMX7nIdRXhl6Oo2HmQ2fBW6rE64un8QFJCwRyO_4v4hR62al3ffCX34i_q52DhJ2KoWFtNnvm6aq_Bf1MAC1GdH-1X1"/>
+</div>
+<div>
+<p class="font-label text-xs uppercase tracking-widest text-[#d0c5af] opacity-70">VIP BALANCE</p>
+<h1 class="font-headline text-2xl font-bold tracking-tight text-[#f2ca50]">$1,250,500</h1>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4">
+<span class="font-label text-xs uppercase tracking-widest text-[#f2ca50] font-bold cursor-pointer">Lobby</span>
+<span class="font-label text-xs uppercase tracking-widest text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-2 py-1 rounded cursor-pointer">Slots</span>
+<span class="font-label text-xs uppercase tracking-widest text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-2 py-1 rounded cursor-pointer">Live</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-center rounded hover:bg-[#2a2a2a] transition-colors duration-300 cursor-pointer">
+<span class="material-symbols-outlined text-[#f2ca50]">settings</span>
+</div>
+</div>
+</div>
+<div class="bg-[#1c1b1b] h-px w-full opacity-20"></div>
+</header>
+<main class="pt-24 pb-28 min-h-screen ocean-gradient relative">
+<!-- Floating Bubbles Decorative Elements -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-1/4 left-1/4 w-32 h-32 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-1/3 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute top-1/2 left-10 w-24 h-24 border border-tertiary/20 rounded-full opacity-30"></div>
+<div class="absolute top-1/3 right-1/4 w-12 h-12 border border-primary/20 rounded-full opacity-20"></div>
+</div>
+<div class="max-w-6xl mx-auto px-4 relative z-10">
+<!-- Hero Title & Language Selector -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+<div class="space-y-1">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-tertiary font-semibold">The Abyss Awaits</span>
+<h2 class="font-headline text-5xl md:text-7xl italic font-bold text-on-surface uppercase tracking-tighter">Deep Sea Slot</h2>
+</div>
+<div class="flex gap-2 bg-surface-container-lowest p-1 rounded-lg border border-outline-variant/10">
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-primary text-on-primary">EN</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded text-on-surface-variant hover:bg-surface-container-high transition-colors">ES</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded text-on-surface-variant hover:bg-surface-container-high transition-colors">PT</button>
+</div>
+</div>
+<!-- Slot Machine Main Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- The Grid -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-2xl relative">
+<div class="grid grid-cols-5 gap-2 md:gap-4 aspect-[5/3]">
+<!-- Slot Column 1 -->
+<div class="bg-surface-container-high/40 rounded-lg flex flex-col justify-around items-center py-4 border border-outline-variant/5">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">sailing</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">set_meal</span>
+</div>
+<!-- Slot Column 2 -->
+<div class="bg-surface-container-high/40 rounded-lg flex flex-col justify-around items-center py-4 border border-outline-variant/5">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">brightness_high</span>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">waves</span>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">capture</span>
+</div>
+<!-- Slot Column 3 (Active Win State Highlight) -->
+<div class="bg-tertiary-container/10 rounded-lg flex flex-col justify-around items-center py-4 border-2 border-tertiary shadow-[0_0_20px_rgba(154,222,170,0.2)]">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<div class="relative group">
+<div class="absolute -inset-4 bg-tertiary/20 rounded-full blur-lg animate-pulse"></div>
+<span class="material-symbols-outlined text-6xl text-tertiary relative z-10" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+</div>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<!-- Slot Column 4 -->
+<div class="bg-surface-container-high/40 rounded-lg flex flex-col justify-around items-center py-4 border border-outline-variant/5">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">sailing</span>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<!-- Slot Column 5 -->
+<div class="bg-surface-container-high/40 rounded-lg flex flex-col justify-around items-center py-4 border border-outline-variant/5">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">tsunami</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">sailing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Controls & Stats Side Panel -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Winning Stats Card -->
+<div class="glass-card rounded-xl p-6 border border-outline-variant/20">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Last Win</h3>
+<span class="text-tertiary text-xs font-bold px-2 py-0.5 bg-tertiary/10 rounded">BIG WIN</span>
+</div>
+<div class="font-headline text-4xl text-tertiary font-bold">$12,450.00</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Multiplier</span>
+<span class="font-headline text-lg italic text-primary">x250</span>
+</div>
+</div>
+<!-- Bet Controls -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end px-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Bet Amount</label>
+<span class="font-headline text-xl text-primary">$500.00</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-3 bg-surface-container-high hover:bg-surface-bright transition-all rounded-lg border border-outline-variant/20 font-bold text-on-surface-variant text-sm">-</button>
+<button class="flex-[3] py-3 bg-surface-container-high hover:bg-surface-bright transition-all rounded-lg border border-outline-variant/20 font-bold text-on-surface text-sm">MIN</button>
+<button class="flex-[3] py-3 bg-surface-container-high hover:bg-surface-bright transition-all rounded-lg border border-outline-variant/20 font-bold text-on-surface text-sm">MAX</button>
+<button class="flex-1 py-3 bg-surface-container-high hover:bg-surface-bright transition-all rounded-lg border border-outline-variant/20 font-bold text-on-surface-variant text-sm">+</button>
+</div>
+<button class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-2xl italic font-bold rounded-xl shadow-[0_10px_40px_rgba(242,202,80,0.2)] active:scale-95 transition-transform">
+                            GIRAR
+                        </button>
+</div>
+<!-- Jackpot Banner -->
+<div class="relative overflow-hidden rounded-xl h-24 group cursor-pointer">
+<div class="absolute inset-0 bg-secondary-container/80 z-10"></div>
+<img alt="Underwater Treasure" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Dark mysterious underwater scene with glowing golden treasure chests and schools of glowing jellyfish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoFWavOqaSB6GCPiLYsMP5sM8NkQ5ndT5JqccfGsacnK0JiooRLRZQmgkX5HhIut0y_0MspB7-E-c-n3sfc6BfM_S0u-pNfppAjpZngxV4MAdm_KVw7qq5P9NjGvXnn2NbR1j7A4cXeRpUSXQgmkxVktSORjK9R35R78SOj0fMKQ68S8RnKqO4tpPcoAi9WGjBWFSjOvebECnk8yo29Tu5s7yGU7NmE2ZxQiO2wHSLm1vgy4bXtF0SvKEyxMDKLgReK9l2GiD90PVp"/>
+<div class="relative z-20 h-full flex flex-col justify-center px-6">
+<p class="font-label text-[10px] uppercase tracking-[0.4em] text-on-secondary-container">Mega Jackpot</p>
+<h4 class="font-headline text-2xl text-on-surface font-bold italic">$8,245,120</h4>
+</div>
+<div class="absolute right-4 bottom-4 z-20">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl animate-pulse">lock_open</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Features Section -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-2 glass-card p-8 rounded-2xl border border-outline-variant/10 flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">scuba_diving</span>
+</div>
+<div>
+<h4 class="font-headline text-xl text-on-surface mb-2">Ocean Expedition</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Dive deep into the coral reefs to unlock secret multipliers and free spin pearls hidden in the sand.</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-2xl border border-outline-variant/10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4">verified</span>
+<div>
+<h4 class="font-headline text-lg text-on-surface mb-1">RTP 98.5%</h4>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Certified Premium</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-2xl border border-outline-variant/10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4">local_fire_department</span>
+<div>
+<h4 class="font-headline text-lg text-on-surface mb-1">High Volatility</h4>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Elite Stakes</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (JSON Anchor) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-safe h-20 bg-[#131313]/95 backdrop-blur-xl z-50 rounded-t-xl border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined text-2xl">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest mt-1">Lobby</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#f2ca50] bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-t-lg pt-2 pb-1 transition-all active:scale-105">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest mt-1">Slots</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined text-2xl">diamond</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest mt-1">VIP</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined text-2xl">local_offer</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest mt-1">Promos</span>
+</button>
+</nav>
+<!-- Floating Action Button Contextual (Hidden on game screen but part of system) -->
+<div class="fixed right-6 bottom-24 z-40 md:hidden">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</button>
+</div>
+</body></html>

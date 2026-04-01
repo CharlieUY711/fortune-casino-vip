@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jungle Quest - Noir Casino</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline": "#99907c",
+                        "on-secondary-fixed-variant": "#920703",
+                        "surface-dim": "#131313",
+                        "secondary-container": "#920703",
+                        "surface-bright": "#3a3939",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#554300",
+                        "tertiary-container": "#7fc290",
+                        "primary-fixed": "#ffe088",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-secondary-fixed": "#410000",
+                        "on-primary": "#3c2f00",
+                        "surface-tint": "#e9c349",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-fixed": "#00210d",
+                        "background": "#131313",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#ff9a8a",
+                        "on-secondary": "#690000",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary": "#00391a",
+                        "on-surface-variant": "#d0c5af",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "tertiary": "#9adeaa",
+                        "primary-fixed-dim": "#e9c349",
+                        "primary": "#f2ca50",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#d4af37",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary-container": "#055029",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "inverse-primary": "#735c00",
+                        "tertiary-fixed": "#adf2bc",
+                        "inverse-on-surface": "#313030"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .jungle-gradient {
+            background: radial-gradient(circle at center, #1c3d2a 0%, #0e0e0e 100%);
+        }
+        .reel-glass {
+            background: linear-gradient(180deg, rgba(42, 42, 42, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body select-none">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer">menu</span>
+<h1 class="text-[#f2ca50] font-['Noto_Serif'] font-bold tracking-tighter uppercase text-lg">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 text-[#d0c5af] font-['Noto_Serif'] uppercase tracking-widest text-sm">
+<a class="text-[#f2ca50] hover:text-[#ffe088] transition-colors" href="#">Lobby</a>
+<a class="hover:text-[#ffe088] transition-colors" href="#">Games</a>
+<a class="hover:text-[#ffe088] transition-colors" href="#">VIP</a>
+</nav>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded border border-outline-variant/20">
+<span class="text-[#f2ca50] text-xs font-bold uppercase tracking-tighter">EN</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 min-h-screen jungle-gradient relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover grayscale" data-alt="dramatic overhead view of a dense tropical jungle canopy with deep shadows and mist between emerald green trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLUUsXHCBcbNWISPtzm3kt_TUGD1U4BHi1S49C4nI-YhtIYzxApvsBa2GPKNbieVsldTUcRHmKNyf3YDD2CBaHvHRPFtVk51DNan6b5rOpWPezd6pApordTmQCcW3G2uyy9l2qySUgKvI65ggowFsqc8LKDKZE1XgbFO5uKjmHLobqaac9RdzPDs4VNEttwFIBcVi-HhL1sDr0pl00IL5ttt32kJ1ZH472G-DVF3VNwNN4i83OlvG2QcLKfc9xefNo3_EyGHCAv6uR"/>
+</div>
+<div class="max-w-5xl mx-auto px-4 relative z-10">
+<!-- Game Header -->
+<div class="text-center mb-8">
+<h2 class="font-headline text-display-lg text-primary tracking-widest uppercase mb-2 drop-shadow-lg">Jungle Quest</h2>
+<div class="inline-flex items-center gap-3 bg-surface-container-highest px-6 py-2 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-headline text-xl text-primary tracking-tighter uppercase">TEMPLE JACKPOT: $452,190.00</span>
+</div>
+</div>
+<!-- Slot Machine Reels -->
+<div class="grid grid-cols-5 gap-2 md:gap-4 mb-10 p-2 md:p-6 bg-[#1c1b1b] rounded-xl border border-outline-variant/30 shadow-2xl relative">
+<!-- Reel 1 -->
+<div class="reel-glass rounded-lg border border-outline-variant/10 h-80 md:h-[450px] overflow-hidden flex flex-col items-center justify-around py-4">
+<div class="flex flex-col items-center gap-8">
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain filter drop-shadow-[0_0_10px_rgba(255,165,0,0.3)]" data-alt="vibrant tropical mango fruit with glossy texture and droplets of water on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6GQuix4XJevi4rzvQhOsLTV1_rN95chZd4M5x2LrMTOOXqHx7UDa_TXyVMsz4_9jEqlZBBr4AP8wPZ8ESGZN6qqS0ysVlGpUbE6I_q56ecNvEKujiyfywF-AkLWPCGl74Y_moMMFZCm5SQnGxXCV7BZjeYehiZt2Ns2itbSDC77D3ycL_9DmUEn714N-iWTGBBrdJGJACXIK9zqAnLgY-bGKVdJh5Dh9-r6_Pdb9REqeRdzH2G3ag7ZGJvHM1yvbJjhrNUEyRZkNZ"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain filter brightness-125" data-alt="ancient stone aztec temple icon with moss and glowing emerald eyes in the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhr7irs9KuELYxP8CYYViQYgLMZiyjN1162wAccBN7I3rIpof_QxLKmFVtjRDYzWYV7yhbnmwultfxY7Zmx1frc6ScjEdJ4RNlkoWRwaZCOOKaqa_ZcHXeNipspx40wGsdIh0AChS3bycP8_y3zllBkE7gN1l24Z1zk83wVzu7S9xe3bmJ_m11ZJGWHQjkNnYJVnFVM9YNpZjPJGQuTevsdy2JBPuxRt4c5V04zThgoYuDSnz13bZ_ihcxn49FgqF0dhFvtjIwxYBK"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="sliced exotic papaya fruit showing dark seeds and bright orange flesh on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsgBtVn6xlSS3zaGIifyxeYyR4hTjLE5jJVNvjf-0UzIEGDDvR7X63eGOpglSdPSWCKWTQaIz1z20N8oQpHuPNwEPYV6YjELdl9LBdPRy9umY31PcCoOl39MTX7xF-91rKRxP3rcVSwqeOUQ_O-fTpgwApQcOXirjISTqujQDKByXSFPC0VbdRLOw-q6aU5zzB2P9YTuT2Yr2kOHQYZCeFzRlwuZBxSog0RFW5s72S4Edvlu7wklV8BK1GICDZDzKYBtcukYYujsWG"/>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="reel-glass rounded-lg border border-outline-variant/10 h-80 md:h-[450px] overflow-hidden flex flex-col items-center justify-around py-4">
+<div class="flex flex-col items-center gap-8">
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain scale-125" data-alt="majestic bengal tiger face looking forward with glowing golden eyes in a premium illustrative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7u8Bl372Jto-1ImtB_tdjfcQux2EIjWfC3gbQynH6R6E0Yz_FxvVgcFSum7_n6I5pn8a6OK-mMXS8-RtV1KUiC2U3YO1iWLnAV2lEla-3FPNbArQoBP8Fo2R5azrJmuaiPlFObfCqJIWl03x1aBCLNhAGxfxrZlag0VsUFWXIjS3-joMpCy806VX6_XfxEEoHgPJaydgrp0tFefhwyX5VxsuW9cZRPGIfj5wI5hMEJNrUPpFoA-fG2P2JnEJMBMQRcjisvBTzxTID"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="dragon fruit pitaya cut in half showing pink exterior and white speckled interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKWljHeYevVRt-zCFNM6QXvuk5hysIrcFWGuD1Cpp9nyPLsWN9YjjSrAw2usYLswcf3jYz4zZe7Ak_3CVmqWDrru-cb8SI6UWtNAXzuGSV2ylnL231HNLwfrFXLBO2hNE461r6KL7NT4yaECi27O2M3XXhLOCNdttBvB4Mp4zkcymXQC6wop6vbtw7BR0h6djfBTE2WfUi14GyHKp8xXSPcEcgo5yAVHMGiwKp7Kk5bdxE_rxfKPeT4Sej4QIXlNVQNYb6zz8-sGd2"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain opacity-40 grayscale" data-alt="ancient stone aztec temple icon with moss and glowing emerald eyes in the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4DtSzB5eKmFpPmNqF0R1ZOp-9-b-6J4Idagvp71QM_2r7_8wKdE_Z0MGCxHvEQpwD233MSeRQhO1v85Rueq3qTtjX1XU9rT6x6RyIOg1aveA6FsCBXaC9hUAnQjg9tXwOXGbfqNkpqu_4SbGI8IIT4doX7E7laOblsS7QwZDtHhH0IjEbcEmM6JYLu_Ae2NsOvMjc4WIyomZeg7bT9HpjsSAClJfwvBqRqjBqxVD9DoZAFNA6u2ldD67rEIGO1w2imG_Kxn0q863J"/>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="reel-glass rounded-lg border border-primary/40 h-80 md:h-[450px] overflow-hidden flex flex-col items-center justify-around py-4 bg-tertiary-container/5">
+<div class="flex flex-col items-center gap-8">
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="ancient stone aztec temple icon with moss and glowing emerald eyes in the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB08vLUBAlKW_AfRbTSWD_cEXMOdCTM8wgf7gHdoiZDoBegGhPZlKlSazqaQn7elxTjbfK0TN0kjvzgECzpmvRKFRf7GK8EtnuOx1nm0asxl-dK_GwV2c-Ol1o4zWkmPEli4cLXNfo6FC4OHT-xr-HGaNxebm18knSajdN6S3hu_NCrnHu_0R1LL3PuvGdLEhLbTgLuDGK9dGULlrqdNPoJV0FHxayVzhl_qWJJ2JU2lSHdKzLImBo7uLW2vhTwLzuxRomhiGV4Ezzb"/>
+<div class="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl md:text-8xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="majestic bengal tiger face looking forward with glowing golden eyes in a premium illustrative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXU9y0eVGVr-_hAoITNR6tSL1zcj-0zVq49P2N3zKLN6AXAa7GE9u9bCjeeR1pU2BMCgXNx8sSP4ou5p_nBv-O3alP29IVbf1-e_H2UEEZXe8PL4Pd2HsnHRhyjXumI1DTD_RDzp7XibNvv1vL-dxqpGiBB8PypLqtnn1F1ypZMYzckW_oExDZSqnThV2fgGmehF9I9Odxp53GkTGE6saJCOrLzd28WHrVu9N6JtbIwqYbdrxOzaE7w4xxlhnEXgkDKP0EYY4Pd4Ua"/>
+</div>
+</div>
+<!-- Reel 4 -->
+<div class="reel-glass rounded-lg border border-outline-variant/10 h-80 md:h-[450px] overflow-hidden flex flex-col items-center justify-around py-4">
+<div class="flex flex-col items-center gap-8">
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="bunch of ripe yellow tropical bananas with high contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1tyDW7owzRHxqrJy0w_u-NATBeWx__27Gn8ij3YHOtzGj6NG4iJ1OltL6D9PYqLd-3HqtE01NOgzH8ZSNB5Xp18oqB0gatUOxFvpsXEV6qryCbSV-h0oohcmuljefSNwo9w-ldvk6c8Z2L6vTWxMFAyNDN7pXPPu0mNEziUHw-wD-0U8H68Iz8rvJegaHAesJsnKlVq9lW3Rd3m9CCPg5SCd0hlj0hhoOzn9iFiqgLTmZHkA1mlbn8MLcNlFVGlyYw3QY0zYqyk_"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="majestic bengal tiger face looking forward with glowing golden eyes in a premium illustrative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVnrW9_44XtAxLilHDSrbSK9hurwwVrB20xJfCZVirSanRvkOvnZ_xVF9Fv414rn6GvqcUrBHMTUaubTOekGP5ishK4UKG-lvb4BvC2KoESuCKGnxKJ_mJnfJo48FhOkpGvgszsJ85nA6Y8UXaifOtKPohoQtipA5BVE3Pm1Xx_ucJqrUY3G47YMtEOxT276hVp2L4aAfUJLivHMENf8xOiPT8CbT7pdkns176Cpq_vnnYOO8WFpmP40uutaELZ-aAAwzbk3veEzRb"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="ancient stone aztec temple icon with moss and glowing emerald eyes in the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc2P23AtLNk46kj3dx26s8o2M5PQrPHmCSd7cL5ft7eW4VmqhtMHSROfp8IX8HW2wpdpnS6s-W_SaWOOSK5ReDuq-diJ0W973MStCw_rocibR0jvSuoB2cDB8iAs9SPXw4UJKvAxzTJhWhY9oLv0BjQmtN3hZMuf7pOvST8r3m3YqTJ2eZjycxo26vDIq3a_MC9nQM0Os73_S1Pl6ufnP-GHiNYBjpe67dmptltwBGWPH_E31jvrgWYEiyywIY9rKis6eNaZJi2ObD"/>
+</div>
+</div>
+<!-- Reel 5 -->
+<div class="reel-glass rounded-lg border border-outline-variant/10 h-80 md:h-[450px] overflow-hidden flex flex-col items-center justify-around py-4">
+<div class="flex flex-col items-center gap-8">
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="ancient stone aztec temple icon with moss and glowing emerald eyes in the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwpjMWd-DohxtVzAIlzT-zWCaxn8iwIvPHzl9-kjiula3ZsQK2TvDwTpzJInxM1wWKleL510Wk1cIuLrFX9LaVgmMxnXHUkbErS2oQm-OSRkWKk-wXi9c6wpLEIuG2BXajy4fc6wm9qxYqehK5ejmy8mv8PAP575mRxm_U0KiNejSztHmkJbqACPj1FoP_djHN-xF4EGa8vyTMNN1koDPjVktcAAd3OMcypP9LAeOVPdNr9vEszxgxnNJhQr2nQsYb_C-TvH155QyJ"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="vibrant tropical mango fruit with glossy texture and droplets of water on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7YT2fGJwEbH80zqrf0QDsirAmpMhiznObf5NqPQ0DXtUNYxKJpbr3R9FMmgtjuVCbfXyNfUaujgOMdB4xm-mZcbOSFNQ6Ne07Z_Fwkt6gVet4UcYPG0_Eks5g7OYD07OSgLqSvNo_iSct_nOR-7YM1R0hGW21AUujGX5cnoQaT1QiJohfRiraH401Tn0RRvSFEVrhc9Jxp-p0S-KqvkeXEyDVtC5UfNsFXp0EAT7XasbfExiA4WoHYMp-NoaoMqSYVcd_uRYdiJBB"/>
+<img class="w-12 h-12 md:w-20 md:h-20 object-contain" data-alt="majestic bengal tiger face looking forward with glowing golden eyes in a premium illustrative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArE-m_iMojK1T6tcqN4ubR5KKw3X4GMs4M0iSxVbFdYPR8W81DqfwmlGHy6E1OZLyWVGaWd7ZpvGWTXn-IVm_sUEu5mr-vtcz7vpDU26ouCzjjIj2tx9weWP4yU9HEDFDOzB3PZpUbARu4c-yaa7iGMWvg3q-UwqpFSFiZQqtKLtssqfySVpyV0k_Mn-vOAU8YhUiiO-cpiq1QIrJssz-sGbqJGSRbrzjgWjjFxu_EHX1bjak67lSqwzT3DqW1Zpa1mK7A9x9VIvUr"/>
+</div>
+</div>
+<!-- Payline Guide -->
+<div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-primary/20 pointer-events-none"></div>
+</div>
+<!-- Controls Panel -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 shadow-xl">
+<!-- Bet Controls -->
+<div class="flex flex-col gap-4">
+<span class="text-on-surface-variant font-label text-[10px] uppercase tracking-widest text-center md:text-left">Select Bet</span>
+<div class="flex items-center justify-between bg-surface-container-highest p-2 rounded border border-outline-variant/20">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors rounded">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="text-center">
+<span class="font-headline text-2xl text-on-surface">$25.00</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors rounded">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Spin Button -->
+<div class="flex justify-center">
+<button class="group relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center bg-gradient-to-br from-primary to-primary-container rounded-full shadow-[0_0_30px_rgba(242,202,80,0.3)] active:scale-95 duration-150 overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none"></div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-on-primary text-4xl md:text-5xl font-bold">refresh</span>
+<span class="text-on-primary font-headline text-xs md:text-sm font-bold tracking-tighter uppercase mt-1">Spin</span>
+</div>
+</button>
+</div>
+<!-- Balance & Win Info -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center bg-surface-container-highest/50 px-4 py-2 rounded">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-wider">Balance</span>
+<span class="font-headline text-primary">$12,840.45</span>
+</div>
+<div class="flex justify-between items-center bg-tertiary-container/10 px-4 py-3 rounded border border-tertiary/20">
+<span class="text-tertiary text-[10px] uppercase tracking-wider font-bold">Last Win</span>
+<span class="font-headline text-tertiary text-xl">$150.00</span>
+</div>
+</div>
+</div>
+<!-- Bottom Stats -->
+<div class="flex flex-wrap justify-center gap-8 mt-12 text-on-surface-variant font-label text-[10px] uppercase tracking-[0.2em]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>RTP: 96.5%</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>HIGH VOLATILITY</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>243 PAYLINES</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-[#1c1b1b]/95 backdrop-blur-md flex justify-around items-center px-4 pb-safe z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] active:scale-90 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Lobby</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Wallet</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

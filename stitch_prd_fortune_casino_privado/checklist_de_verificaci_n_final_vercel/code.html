@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Consola de Gestión de Despliegue - MIDNIGHT ROYALE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "on-secondary-fixed": "#410000",
+                        "error": "#ffb4ab",
+                        "primary-container": "#d4af37",
+                        "surface-tint": "#e9c349",
+                        "surface-dim": "#131313",
+                        "tertiary-container": "#7fc290",
+                        "surface-bright": "#3a3939",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container": "#201f1f",
+                        "tertiary": "#9adeaa",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#adf2bc",
+                        "on-secondary": "#690000",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-container": "#055029",
+                        "primary-fixed-dim": "#e9c349",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#ffe088",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "surface-variant": "#353534",
+                        "outline": "#99907c",
+                        "on-surface-variant": "#d0c5af",
+                        "on-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-primary-container": "#554300",
+                        "inverse-primary": "#735c00",
+                        "surface": "#131313",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary": "#00391a",
+                        "background": "#131313",
+                        "primary": "#f2ca50",
+                        "on-secondary-container": "#ff9a8a",
+                        "secondary-container": "#920703",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "on-tertiary-fixed-variant": "#08522a"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>body {
+    background-color: #131313;
+    color: #e5e2e1;
+    font-family: "Inter", sans-serif
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.gold-gradient {
+    background: linear-gradient(45deg, #f2ca50, #d4af37)
+    }
+.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAPxTjxSHIqLYHhnJ6ylYLjJam8rPgGQu2hgTwPuM5Au53NXjebzfs4vGm0BvXo_hE366fUUGdltPWrSdhQw1i-0aHDtOC1wOSkwP3CUzdWdf97z9xUbkIK72D8q9xxZWvDsetyUmgWOXXJoXiGt7lkIqTsE1ty6nWqUxwFUnAU8uuXJqq1iOc7rpSMdcYCkEV12H9OzuP8BIJKdW0J7mBtcsdDxPCbQIOE9fSlbyEnfMWiV7PjSFs60ADuRRqClm3NscH2bEXs4run);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.glass-panel {
+    background: rgba(42, 42, 42, 0.8);
+    backdrop-filter: blur(8px)
+    }</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<div class="fixed inset-0 noise-overlay z-0"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full border-b border-outline-variant/20 bg-[#131313] flex justify-between items-center px-6 h-16 z-50 shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex items-center gap-4">
+<span class="font-headline text-xl font-bold text-primary tracking-tighter">MIDNIGHT ROYALE ADMIN</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6 font-headline text-lg tracking-widest uppercase">
+<span class="text-on-surface-variant/60 hover:text-primary transition-all duration-300 cursor-pointer">Security</span>
+<span class="text-primary border-b-2 border-primary">Deploy</span>
+<span class="text-on-surface-variant/60 hover:text-primary transition-all duration-300 cursor-pointer">Vault</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high p-2 transition-all rounded">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high p-2 transition-all rounded">settings</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkRArt8qijzC1pYAI3ODd9rM5iRDTYxpBjZoPp51Fk-dlmUiGwvbfdN06QjOQwunKZErZ91RB1j3eoQji0W65kdlyvzcNb4jF8wHhya61uB0sIXhk5ytYAgl5xQ17UV4PMZjybEO6WbLfueVc2HQ40EwBlq3_MsV7m58bACwE9jt67FtuK6D-Ogz2b087IzPl8s0h4bX-sNuZHl9uu0pB15YT1kwSblOX2UtXUzjO3HTepbonQnYkk4iZfgGcYDyXfOId-U6WFD6GW"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-outline-variant/20 bg-surface-container-low flex flex-col pt-4 z-40 hidden md:flex">
+<div class="px-6 py-4 mb-4 border-b border-outline-variant/10">
+<div class="flex items-center gap-3 mb-1">
+<img alt="Admin Avatar" class="w-10 h-10 rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-wr6Fn5NW-1VJKQauUN64E_6tjMABDOd_Hw87aNAf3hW6Dio1SDrC1TMjAMibPDJZn5qTpmIlfyZeQxIGKYNCXbhgul0cJYqVv_wScMV-lnZFnyyAWawJ7RKsn5zYeJXd9wjvaYQ-0isOrSGD0OT57ZbDdfGfAnFlqcWTNBABG2DoLq-OxFfU7BthYuDtdrk2Qq3SFdsQvuwxCpp79XXn79Dp_JT_tXQs2pZ6p2XLs5Eglv2AgyUwphPV-JQ6P_5GtZxr1ewFsrSB"/>
+<div>
+<p class="font-headline text-primary text-lg leading-tight">System Console</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/50">Elite Access Only</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 px-2">
+<div class="text-on-surface-variant/50 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high/50 hover:text-primary transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body text-sm font-medium tracking-wide">Dashboard</span>
+</div>
+<div class="text-on-surface-variant/50 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high/50 hover:text-primary transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">dns</span>
+<span class="font-body text-sm font-medium tracking-wide">Server Status</span>
+</div>
+<div class="bg-surface-container-high text-primary border-l-4 border-primary px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-body text-sm font-medium tracking-wide">Deployment</span>
+</div>
+<div class="text-on-surface-variant/50 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high/50 hover:text-primary transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">language</span>
+<span class="font-body text-sm font-medium tracking-wide">Domain Config</span>
+</div>
+<div class="text-on-surface-variant/50 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high/50 hover:text-primary transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-body text-sm font-medium tracking-wide">Support Tickets</span>
+</div>
+</div>
+<div class="mt-auto p-4">
+<button class="w-full bg-secondary-container text-on-surface py-3 text-xs font-bold tracking-[0.2em] hover:brightness-125 transition-all">
+                    REBOOT SERVERS
+                </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-8 relative z-10">
+<div class="max-w-5xl mx-auto space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<p class="text-primary font-headline tracking-[0.3em] text-xs uppercase mb-2">Vercel Automation</p>
+<h1 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">Consola de Gestión de Despliegue</h1>
+</div>
+<div class="flex gap-4">
+<button class="gold-gradient text-on-primary font-bold px-6 py-3 rounded-lg text-sm tracking-wider uppercase hover:scale-[1.02] transition-transform active:scale-95 shadow-lg shadow-primary/10">
+                            FORZAR REDEPLOY
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Status Card 1 -->
+<div class="glass-panel border border-outline-variant/20 p-6 space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="text-[10px] uppercase tracking-widest text-tertiary-container flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span> Sincronizado
+                            </span>
+</div>
+<h3 class="font-headline text-lg text-on-surface">Estado del Repositorio</h3>
+<div class="bg-surface-container-lowest p-3 border border-outline-variant/10">
+<p class="text-xs text-on-surface-variant font-mono">GitHub</p>
+<p class="text-sm text-primary font-mono truncate">CharlieUY711/fortune-casino-vip</p>
+</div>
+</div>
+<!-- Status Card 2 -->
+<div class="glass-panel border border-outline-variant/20 p-6 space-y-4">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary">public</span>
+<span class="text-[10px] uppercase tracking-widest text-secondary-container flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Pendiente
+                            </span>
+</div>
+<h3 class="font-headline text-lg text-on-surface">Estado del Dominio</h3>
+<div class="bg-surface-container-lowest p-3 border border-outline-variant/10">
+<p class="text-xs text-on-surface-variant font-mono">Vercel Host</p>
+<p class="text-sm text-on-surface font-mono">fortune.core.com.uy</p>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 italic">En espera de propagación DNS por parte de Vercel.</p>
+</div>
+<!-- Visual Accent Card -->
+<div class="relative overflow-hidden group border border-outline-variant/20">
+<img class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:scale-110 transition-transform duration-700" data-alt="Abstract 3D digital visualization of server racks and encryption nodes with golden light paths in a dark noir environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVs2O6TTthH6UeTJj1OdpwFUAd_ujE_Tcl7cl3MHIFifE5QeW6xkbRGfo2_h5DGuiSzGNv9xdDci_57dso0NzfS-mNU3nv-D3S6QFbF__beHox2bZ5KSXEdCOWYHDTi0zuUZmKfOk6WctWG372stkg6-uJGnWODsINlf3dS7z4R_z24yyDQ8SWkOTda84Y-X9_Si6HJ0fzFz_28BPqyBnsL7YZBBxIImQBbEUL_8qfRueidvSnwMOYqIRjpbMIPOTSPRXL4PyJ3jWk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="relative p-6 h-full flex flex-col justify-end">
+<p class="text-xs font-bold tracking-[0.2em] text-primary uppercase">Security Protocol</p>
+<h4 class="font-headline text-xl text-on-surface">Encrypted Node 09</h4>
+<button class="mt-4 text-[10px] font-bold text-on-surface border border-primary/40 px-4 py-2 hover:bg-primary hover:text-on-primary transition-all w-fit">
+                                VER CONFIGURACIÓN DNS
+                            </button>
+</div>
+</div>
+</div>
+<!-- Checklist Section -->
+<div class="glass-panel border border-outline-variant/20 p-8 space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">fact_check</span>
+<div>
+<h2 class="font-headline text-2xl text-on-surface tracking-tight">Checklist de Errores Comunes</h2>
+<p class="text-on-surface-variant text-sm">Verifique los siguientes puntos para asegurar un despliegue exitoso.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Checklist Item 1 -->
+<div class="flex items-start gap-4 p-5 bg-surface-container/50 border border-outline-variant/10 hover:border-primary/30 transition-colors group">
+<div class="w-6 h-6 border-2 border-outline-variant group-hover:border-primary flex-shrink-0 mt-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100">check</span>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface font-medium">¿Se ejecutó el Redepoy manual?</p>
+<p class="text-on-surface-variant text-xs leading-relaxed">Instrucciones: <span class="text-primary-fixed">Vercel &gt; Proyecto &gt; Deployments &gt; Redeploy</span>. Esto asegura que los últimos cambios sean compilados.</p>
+</div>
+</div>
+<!-- Checklist Item 2 -->
+<div class="flex items-start gap-4 p-5 bg-surface-container/50 border border-outline-variant/10 hover:border-primary/30 transition-colors group">
+<div class="w-6 h-6 border-2 border-outline-variant group-hover:border-primary flex-shrink-0 mt-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100">check</span>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface font-medium">Variables de Entorno (Supabase)</p>
+<p class="text-on-surface-variant text-xs leading-relaxed">¿Las variables <code class="bg-surface-container-highest px-1 text-primary">NEXT_PUBLIC_SUPABASE_URL</code> y <code class="bg-surface-container-highest px-1 text-primary">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> están configuradas en 'Settings &gt; Environment Variables'?</p>
+</div>
+</div>
+<!-- Checklist Item 3 -->
+<div class="flex items-start gap-4 p-5 bg-surface-container/50 border border-outline-variant/10 hover:border-primary/30 transition-colors group">
+<div class="w-6 h-6 border-2 border-outline-variant group-hover:border-primary flex-shrink-0 mt-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm opacity-0 group-hover:opacity-100">check</span>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface font-medium">Verificación del Dominio</p>
+<p class="text-on-surface-variant text-xs leading-relaxed">¿El dominio tiene el check verde en Vercel? Si aparece una alerta roja, revise los registros CNAME o A en su proveedor de DNS.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-outline-variant/10 py-4 bg-[#131313] flex justify-between items-center px-8 z-50">
+<p class="font-body text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/30">© 2024 MIDNIGHT ROYALE ENCRYPTION. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<span class="font-body text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/30 hover:text-primary cursor-pointer transition-colors">Security Protocol</span>
+<span class="font-body text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/30 hover:text-primary cursor-pointer transition-colors">API Docs</span>
+<span class="font-body text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/30 hover:text-primary cursor-pointer transition-colors">System Logs</span>
+</div>
+</footer>
+</body></html>

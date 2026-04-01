@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ancient Sphinx - Noir Casino</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface": "#131313",
+              "on-tertiary-container": "#055029",
+              "on-error-container": "#ffdad6",
+              "on-surface": "#e5e2e1",
+              "error-container": "#93000a",
+              "surface-tint": "#e9c349",
+              "tertiary-container": "#7fc290",
+              "on-primary-container": "#554300",
+              "on-primary": "#3c2f00",
+              "secondary-container": "#920703",
+              "on-secondary": "#690000",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-container-high": "#2a2a2a",
+              "surface-container": "#201f1f",
+              "background": "#131313",
+              "tertiary-fixed-dim": "#92d6a2",
+              "tertiary-fixed": "#adf2bc",
+              "on-tertiary-fixed": "#00210d",
+              "secondary": "#ffb4a8",
+              "on-secondary-fixed": "#410000",
+              "inverse-primary": "#735c00",
+              "surface-container-highest": "#353534",
+              "surface-variant": "#353534",
+              "primary": "#f2ca50",
+              "on-primary-fixed-variant": "#574500",
+              "error": "#ffb4ab",
+              "surface-bright": "#3a3939",
+              "on-error": "#690005",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "secondary-fixed": "#ffdad4",
+              "on-background": "#e5e2e1",
+              "inverse-on-surface": "#313030",
+              "primary-fixed": "#ffe088",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-container-lowest": "#0e0e0e",
+              "tertiary": "#9adeaa",
+              "outline-variant": "#4d4635",
+              "outline": "#99907c",
+              "on-secondary-container": "#ff9a8a",
+              "surface-dim": "#131313",
+              "on-tertiary": "#00391a",
+              "on-surface-variant": "#d0c5af",
+              "on-primary-fixed": "#241a00",
+              "primary-container": "#d4af37",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .egyptian-gradient {
+            background: linear-gradient(135deg, #1c1b1b 0%, #131313 100%);
+            position: relative;
+        }
+        .egyptian-gradient::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23f2ca50' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        .reel-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden selection:bg-primary/30">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#1c1b1b] border-none shadow-[0_4px_20px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Noto_Serif'] headline-md uppercase tracking-widest text-[#f2ca50] font-bold text-xl tracking-tighter">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#f2ca50] font-['Noto_Serif'] headline-md uppercase tracking-widest text-sm transition-colors duration-300" href="#">Lobby</a>
+<a class="text-[#d0c5af] hover:text-[#ffe088] font-['Noto_Serif'] headline-md uppercase tracking-widest text-sm transition-colors duration-300" href="#">Games</a>
+<a class="text-[#d0c5af] hover:text-[#ffe088] font-['Noto_Serif'] headline-md uppercase tracking-widest text-sm transition-colors duration-300" href="#">Promos</a>
+</div>
+<div class="flex items-center bg-surface-container-lowest px-4 py-1.5 rounded-full border border-outline-variant/20 shadow-inner">
+<span class="text-primary-fixed text-sm font-bold tracking-tight mr-2">$</span>
+<span class="text-on-surface font-headline font-bold text-lg leading-none">24,500.00</span>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 min-h-screen flex flex-col items-center justify-center p-4 egyptian-gradient">
+<!-- Game Title Section -->
+<div class="text-center mb-8 relative">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="temple_hindu">temple_hindu</span>
+</div>
+<h2 class="font-headline text-4xl md:text-6xl text-primary font-black tracking-[0.2em] mb-2 uppercase drop-shadow-2xl">Ancient Sphinx</h2>
+<div class="flex items-center justify-center gap-2">
+<span class="h-px w-12 bg-outline-variant"></span>
+<span class="text-on-surface-variant font-label text-xs tracking-[0.3em] uppercase">The Velvet Vault Series</span>
+<span class="h-px w-12 bg-outline-variant"></span>
+</div>
+</div>
+<!-- Slot Machine Canvas -->
+<div class="relative w-full max-w-5xl aspect-[16/9] md:aspect-[21/9] bg-surface-container-low rounded-xl p-4 border border-outline-variant/10 shadow-[0_0_100px_rgba(0,0,0,0.8)] overflow-hidden">
+<!-- Paylines Indicators (L/R) -->
+<div class="absolute inset-y-0 left-2 flex flex-col justify-around py-8 opacity-40">
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">1</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">3</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">5</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">7</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">9</span>
+</div>
+<!-- Reels Grid -->
+<div class="grid grid-cols-5 gap-2 h-full reel-mask">
+<!-- Reel 1 -->
+<div class="flex flex-col gap-2 overflow-hidden bg-surface-container-lowest/50 rounded-lg border border-outline-variant/5">
+<div class="h-full flex flex-col justify-around py-4">
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container-high/30 rounded-xl backdrop-blur-sm">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="brightness_7">brightness_7</span>
+<span class="text-[10px] mt-2 text-on-surface-variant font-bold">RA</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 border border-primary/20 bg-primary/5 rounded-xl animate-pulse">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="text-[10px] mt-2 text-primary font-bold">WILD</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="pentagon">pentagon</span>
+</div>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="flex flex-col gap-2 overflow-hidden bg-surface-container-lowest/50 rounded-lg border border-outline-variant/5">
+<div class="h-full flex flex-col justify-around py-4">
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="change_history">change_history</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container-high/30 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-secondary-container" data-icon="local_fire_department">local_fire_department</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="square">square</span>
+</div>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="flex flex-col gap-2 overflow-hidden bg-surface-container-lowest/50 rounded-lg border border-outline-variant/5">
+<div class="h-full flex flex-col justify-around py-4">
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="adjust">adjust</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 bg-primary/10 border border-primary/30 rounded-xl">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="face_5" style="font-variation-settings: 'FILL' 1;">face_5</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="circle">circle</span>
+</div>
+</div>
+</div>
+<!-- Reel 4 -->
+<div class="flex flex-col gap-2 overflow-hidden bg-surface-container-lowest/50 rounded-lg border border-outline-variant/5">
+<div class="h-full flex flex-col justify-around py-4">
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="star">star</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container-high/30 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-tertiary-container" data-icon="eco">eco</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="interests">interests</span>
+</div>
+</div>
+</div>
+<!-- Reel 5 -->
+<div class="flex flex-col gap-2 overflow-hidden bg-surface-container-lowest/50 rounded-lg border border-outline-variant/5">
+<div class="h-full flex flex-col justify-around py-4">
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="favorite">favorite</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4 bg-surface-container-high/30 rounded-xl">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="architecture">architecture</span>
+</div>
+<div class="flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="hexagon">hexagon</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Paylines Indicators (R) -->
+<div class="absolute inset-y-0 right-2 flex flex-col justify-around py-8 opacity-40">
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">2</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">4</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">6</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">8</span>
+<span class="text-[10px] font-bold text-primary-fixed bg-surface-container-highest px-1 rounded">10</span>
+</div>
+</div>
+<!-- Controls Dashboard -->
+<div class="w-full max-w-5xl mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Stats / Info Panel -->
+<div class="col-span-1 md:col-span-3 grid grid-cols-3 gap-4 bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<!-- Multi-Language Selector -->
+<div class="absolute -top-10 left-0 flex gap-2">
+<button class="px-3 py-1 bg-surface-container-highest text-[10px] font-bold rounded border border-primary/20 text-primary">EN</button>
+<button class="px-3 py-1 bg-surface-container-low text-[10px] font-bold rounded border border-outline-variant/20 text-on-surface-variant hover:text-on-surface">ES</button>
+<button class="px-3 py-1 bg-surface-container-low text-[10px] font-bold rounded border border-outline-variant/20 text-on-surface-variant hover:text-on-surface">PT</button>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-bold mb-1">TOTAL BALANCE</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-2xl font-bold text-primary">$24,500</span>
+<span class="text-xs text-on-surface-variant">.00</span>
+</div>
+</div>
+<div class="flex flex-col justify-center border-x border-outline-variant/10 px-4">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-bold mb-1">LAST WIN</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline text-2xl font-bold text-tertiary-container">+$450</span>
+<span class="text-xs text-tertiary-container/70">.00</span>
+</div>
+</div>
+<div class="flex flex-col justify-center items-center">
+<span class="text-on-surface-variant text-[10px] uppercase tracking-widest font-bold mb-2">BET SELECTION</span>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<span class="font-headline text-xl font-bold text-on-surface w-12 text-center">10.00</span>
+<button class="w-8 h-8 rounded-full border border-primary/50 flex items-center justify-center hover:bg-primary/10 active:scale-90 transition-all text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SPIN BUTTON -->
+<div class="col-span-1">
+<button class="w-full h-full bg-gradient-to-br from-primary to-primary-container hover:from-primary-fixed hover:to-primary text-on-primary rounded-xl flex flex-col items-center justify-center gap-1 shadow-[0_10px_40px_rgba(212,175,55,0.2)] active:scale-95 transition-transform group relative overflow-hidden">
+<!-- Glow effect -->
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl group-hover:rotate-180 transition-transform duration-700" data-icon="autorenew">autorenew</span>
+<span class="font-headline text-2xl font-black uppercase tracking-tighter">SPIN</span>
+</button>
+</div>
+</div>
+<!-- Decorative Egypt Accents -->
+<div class="mt-12 flex items-center gap-12 opacity-20 grayscale">
+<span class="material-symbols-outlined text-4xl" data-icon="potted_plant">potted_plant</span>
+<span class="material-symbols-outlined text-6xl" data-icon="castle">castle</span>
+<span class="material-symbols-outlined text-4xl" data-icon="potted_plant">potted_plant</span>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-lg bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-[#d0c5af]" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]" href="#">
+<span class="material-symbols-outlined" data-icon="track_changes">track_changes</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Roulette</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#d4af37]/10 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="slot_machine" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]" href="#">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Promos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Account</span>
+</a>
+</nav>
+<!-- Side Navigation Drawer (Desktop Context) -->
+<aside class="hidden lg:flex fixed left-0 top-16 bottom-0 w-16 hover:w-64 transition-all duration-300 z-40 bg-[#131313] border-r border-[#4d4635]/20 overflow-hidden flex flex-col group py-8">
+<div class="flex flex-col gap-8 px-4">
+<div class="flex items-center gap-4 text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer whitespace-nowrap">
+<span class="material-symbols-outlined shrink-0" data-icon="language">language</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-body text-sm">Language: EN</span>
+</div>
+<div class="flex items-center gap-4 text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer whitespace-nowrap">
+<span class="material-symbols-outlined shrink-0" data-icon="history">history</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-body text-sm">Game History</span>
+</div>
+<div class="flex items-center gap-4 text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer whitespace-nowrap">
+<span class="material-symbols-outlined shrink-0" data-icon="verified_user">verified_user</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-body text-sm">Responsible Gaming</span>
+</div>
+<div class="flex items-center gap-4 text-[#d0c5af] hover:text-[#f2ca50] transition-colors cursor-pointer whitespace-nowrap">
+<span class="material-symbols-outlined shrink-0" data-icon="support_agent">support_agent</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-body text-sm">Support</span>
+</div>
+</div>
+<!-- Profile Mini-Card at bottom -->
+<div class="mt-auto px-4 py-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-4 whitespace-nowrap">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-xs font-bold text-primary">VIP Gold Member</p>
+<p class="text-[10px] text-on-surface-variant">ID: 882341</p>
+</div>
+</div>
+</div>
+</aside>
+</body></html>

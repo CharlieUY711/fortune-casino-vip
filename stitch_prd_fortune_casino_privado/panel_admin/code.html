@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Admin - SuperAdmin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "surface-dim": "#131313",
+              "on-tertiary": "#00391a",
+              "outline-variant": "#4d4635",
+              "inverse-surface": "#e5e2e1",
+              "on-secondary-fixed-variant": "#920703",
+              "on-secondary-fixed": "#410000",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed": "#adf2bc",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "on-surface-variant": "#d0c5af",
+              "on-primary-fixed-variant": "#574500",
+              "primary-fixed": "#ffe088",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-primary": "#3c2f00",
+              "on-background": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "inverse-primary": "#735c00",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-low": "#1c1b1b",
+              "primary": "#f2ca50",
+              "secondary-fixed": "#ffdad4",
+              "tertiary": "#9adeaa",
+              "on-error": "#690005",
+              "on-primary-fixed": "#241a00",
+              "surface-variant": "#353534",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#d4af37",
+              "outline": "#99907c",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-container-highest": "#353534",
+              "secondary": "#ffb4a8",
+              "on-tertiary-container": "#055029",
+              "secondary-container": "#920703",
+              "surface-bright": "#3a3939",
+              "on-primary-container": "#554300",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#00210d",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "secondary-fixed-dim": "#ffb4a8"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.noise-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBUldDGBfzT9P8fDl_JVm3GCen6_Eid_GWIkcKqomrlOB6oDCysK9-noFwvOe3IE4pEaI4cXll0-RhTrRBJ3DCELmKN0acHf8jCW5VXUFy4ZKqdC82VcAseTpf8IH2e17CHHqRKNquuAcFAmoW1eyd6PW_8D5lVu_n4pGuHxXEee0uAHW3P9wcQxYid-3gvnuokIwulb53eHKBaUZQXyrWOxmg4pkmBXg55YPE1qanEXz7ra7hA8DWjOCFVI_jxThcLxKcjCNElz9qb);
+    opacity: 0.03;
+    pointer-events: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-background font-body selection:bg-primary selection:text-on-primary">
+<div class="fixed inset-0 noise-bg z-[60]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#131313] shadow-[0_32px_32px_rgba(212,175,55,0.06)] border-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h1 class="font-serif text-2xl font-bold tracking-tighter text-[#f2ca50]">Fortune</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 text-[11px] font-medium Inter uppercase tracking-widest text-[#d0c5af]">
+<a class="hover:text-[#ffe088] transition-all" href="#">Dashboard</a>
+<a class="text-[#f2ca50] transition-all" href="#">Admin Panel</a>
+<a class="hover:text-[#ffe088] transition-all" href="#">Logs</a>
+</div>
+<span class="material-symbols-outlined text-[#d0c5af] hover:text-[#f2ca50] cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-12 max-w-7xl mx-auto space-y-12">
+<!-- Hero Section: Global Balance Stats -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-[11px] font-medium uppercase tracking-widest text-on-surface-variant mb-2">Ingresos Globales</p>
+<h2 class="font-headline text-4xl text-tertiary-container">$4.829.000</h2>
+<div class="mt-4 flex items-center gap-2 text-xs text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+<span>+12.4% vs semana anterior</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="trending_down">trending_down</span>
+</div>
+<p class="text-[11px] font-medium uppercase tracking-widest text-on-surface-variant mb-2">Salidas Globales</p>
+<h2 class="font-headline text-4xl text-secondary-container">$2.150.400</h2>
+<div class="mt-4 flex items-center gap-2 text-xs text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="south_east">south_east</span>
+<span>+2.1% incremento de retiro</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 relative overflow-hidden group border-l-2 border-primary/20">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="account_balance">account_balance</span>
+</div>
+<p class="text-[11px] font-medium uppercase tracking-widest text-on-surface-variant mb-2">Reserva de la Casa</p>
+<h2 class="font-headline text-4xl text-primary">$2.678.600</h2>
+<div class="mt-4 flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+<span>Ratio de liquidez estable</span>
+</div>
+</div>
+</section>
+<!-- Main Admin Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: User Approvals & Table Settings -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Solicitudes de Registro -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-2xl">Solicitudes Pendientes</h3>
+<span class="bg-secondary-container/20 text-secondary-container px-3 py-1 text-[10px] font-bold tracking-widest uppercase">4 Acciones Requeridas</span>
+</div>
+<div class="space-y-4">
+<!-- Request Card -->
+<div class="bg-surface-container-high/80 backdrop-blur-md p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Julian Montenegro</p>
+<p class="text-xs text-on-surface-variant">j.monte@mail.com • ID: #9921</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-wider text-secondary-container border border-secondary-container/30 hover:bg-secondary-container hover:text-white transition-all">Rechazar</button>
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-primary to-primary-container text-on-primary hover:brightness-110 transition-all">Aceptar</button>
+</div>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Elena Rossi</p>
+<p class="text-xs text-on-surface-variant">elena.r@casino.eu • ID: #9918</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-wider text-secondary-container border border-secondary-container/30 hover:bg-secondary-container hover:text-white transition-all">Rechazar</button>
+<button class="px-6 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-primary to-primary-container text-on-primary hover:brightness-110 transition-all">Aceptar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Configuración de Límites -->
+<div>
+<h3 class="font-headline text-2xl mb-6">Límites de Mesa</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 border-b border-outline-variant/20">
+<div class="flex items-center justify-between mb-6">
+<span class="text-primary font-headline italic">The Velvet Roulette</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] uppercase tracking-tighter text-on-surface-variant mb-1">Apuesta Mínima</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface font-headline p-0 pb-1 text-xl" type="text" value="100.00"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-tighter text-on-surface-variant mb-1">Apuesta Máxima</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface font-headline p-0 pb-1 text-xl" type="text" value="50,000.00"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 border-b border-outline-variant/20">
+<div class="flex items-center justify-between mb-6">
+<span class="text-primary font-headline italic">Noir Blackjack</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-[10px] uppercase tracking-tighter text-on-surface-variant mb-1">Apuesta Mínima</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface font-headline p-0 pb-1 text-xl" type="text" value="500.00"/>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-tighter text-on-surface-variant mb-1">Apuesta Máxima</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface font-headline p-0 pb-1 text-xl" type="text" value="100,000.00"/>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 text-right">
+<button class="bg-surface-container-high px-8 py-3 text-xs font-bold uppercase tracking-widest text-primary border border-primary/20 hover:bg-primary hover:text-on-primary transition-all">Guardar Cambios Globales</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Active Users & Balances -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low p-6 shadow-[0_32px_32px_rgba(0,0,0,0.2)]">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-xl">Usuarios Activos</h3>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">124 ONLINE</span>
+</div>
+</div>
+<div class="space-y-6">
+<!-- User Item -->
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 object-cover rounded-full grayscale hover:grayscale-0 transition-all" data-alt="Close-up portrait of a professional man in a dark studio setting with cinematic rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDni2T1_kaGk0PvKR3EUTr5hhjIH-3DwRm7J6DVjUYbAltkPg1ZQtvqGor8526Dg85ZwyFP21MdSjWb3sFUmHR2vbsdnSzJJP7YvzjpbWsImz1eBzyBUlaGneLU_yiUubJWUpfnSvwAMqaKHwKy3JLLPFJ4_Ttw-1IxwQPAIqdPUAQL0YvSD_3W8-nDPJwmQOMz4kLzX5qvQfeL4ple1ssxz-Ay8obh0p6vqPeSEgFMErRSLGeMReePQor0EJICNTbbRAtCmhZSPxWm"/>
+<div>
+<p class="text-sm font-medium">Marco Valenti</p>
+<span class="text-[10px] text-tertiary-container uppercase tracking-widest">En mesa: Roulette A</span>
+</div>
+</div>
+<p class="font-headline text-primary-fixed">$42.100</p>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 object-cover rounded-full grayscale hover:grayscale-0 transition-all" data-alt="Studio portrait of a woman with sophisticated lighting, dark background, neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFMZxSznRr4d4wnru_xYjJvt6BPQFja-U5LZJO0Q8F6ZjHdLLP6FzebGzaaSVhvI3_2xhH3sFdAYPeOz0lz3idMyib-RR1fHbw4eOkqs9ZCl-7CpIDz5o1d7ViSs6evrCEPkNpp0G0Q5S7f8J1KKMbDk9ivW7GdevkQjivfrLgHOhO-XvBV2Z2B8Kc95FC-aGgZzIDv-Hs-Scc9SLn50LSMME2xgC83mrJvFLjh36iLytV3JM3mKjETJv_o1S7jCxOtQq4TrSZcpM3"/>
+<div>
+<p class="text-sm font-medium">Sofia K.</p>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Navegando Lobby</span>
+</div>
+</div>
+<p class="font-headline text-primary-fixed">$128.500</p>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-variant rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+<div>
+<p class="text-sm font-medium">Rick Sanchez</p>
+<span class="text-[10px] text-tertiary-container uppercase tracking-widest">En mesa: Blackjack</span>
+</div>
+</div>
+<p class="font-headline text-primary-fixed">$2.400</p>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 object-cover rounded-full grayscale hover:grayscale-0 transition-all" data-alt="Professional headshot of a mature man with subtle lighting against a dark textured wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV-ZQgeLy5RplX1rfh9oHBkZu-SADxiyCR6LV6FtrpYlUdIwwPFK3kKLUbtwXFBEz_XTIimBdB0qS1TsxQMxqLUKZVjgFkakBk890f8bzC-NrFim3z2tvv8VOtcRV7adelVC9ht9a_S16YKcFA8VklYjf6hzB6dclzk1MgU0OCxZy-1v_P9lhcCucDI2dkYLnKfRLWvT-8A17-4ESQd30k8w47CpsGzygm6rMKeCiCZocHVzzH8xTQRAZcCjRm-abU8leO3177AWDU"/>
+<div>
+<p class="text-sm font-medium">Daniel Weber</p>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Inactivo (5m)</span>
+</div>
+</div>
+<p class="font-headline text-primary-fixed">$940.000</p>
+</div>
+</div>
+<button class="w-full mt-8 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-all">Ver todos los usuarios</button>
+</div>
+<!-- Quick Action Modal-like area -->
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container-low p-6 border-t-2 border-primary">
+<h4 class="font-headline text-lg mb-4">Mantenimiento de Sistema</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">
+                        El cierre de mesas programado para la actualización de balances se realizará en 02:45:12.
+                    </p>
+<button class="flex items-center justify-center gap-2 w-full bg-secondary-container/10 border border-secondary-container/40 py-3 text-[10px] font-bold uppercase tracking-widest text-secondary-container hover:bg-secondary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="lock_clock">lock_clock</span>
+                        Bloquear Apuestas
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 rounded-t-xl shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Admin</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Perfil</span>
+</a>
+</nav>
+</body></html>

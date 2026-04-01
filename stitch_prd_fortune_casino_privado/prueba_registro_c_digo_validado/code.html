@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MIDNIGHT ROYALE | VIP Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-tint": "#e9c349",
+              "surface": "#131313",
+              "surface-dim": "#131313",
+              "surface-container-highest": "#353534",
+              "on-background": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "outline-variant": "#4d4635",
+              "tertiary-fixed": "#adf2bc",
+              "on-surface-variant": "#d0c5af",
+              "surface-bright": "#3a3939",
+              "outline": "#99907c",
+              "on-primary-fixed": "#241a00",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#f2ca50",
+              "on-primary-fixed-variant": "#574500",
+              "on-tertiary-fixed": "#00210d",
+              "error-container": "#93000a",
+              "tertiary-container": "#7fc290",
+              "on-secondary-fixed-variant": "#920703",
+              "tertiary": "#9adeaa",
+              "secondary-fixed": "#ffdad4",
+              "background": "#131313",
+              "secondary": "#ffb4a8",
+              "primary-fixed": "#ffe088",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "primary-container": "#d4af37",
+              "error": "#ffb4ab",
+              "on-surface": "#e5e2e1",
+              "on-error": "#690005",
+              "on-secondary-fixed": "#410000",
+              "on-secondary-container": "#ff9a8a",
+              "inverse-surface": "#e5e2e1",
+              "secondary-container": "#920703",
+              "on-error-container": "#ffdad6",
+              "inverse-primary": "#735c00",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-variant": "#353534",
+              "on-tertiary": "#00391a",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary-fixed-variant": "#08522a",
+              "on-primary-container": "#554300",
+              "on-primary": "#3c2f00"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+      [v-cloak] { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="fixed inset-0 bg-noise pointer-events-none z-[100]"></div>
+<!-- TopAppBar -->
+<header class="bg-[#131313] dark:bg-[#131313] shadow-[0_32px_64px_-15px_rgba(212,175,55,0.06)] docked full-width top-0 z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="text-xl font-serif italic text-[#f2ca50] dark:text-[#f2ca50] tracking-widest font-headline font-bold">MIDNIGHT ROYALE</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-[#f2ca50] text-sm">language</span>
+<select class="bg-transparent border-none text-xs text-[#d0c5af] font-label uppercase tracking-widest focus:ring-0 cursor-pointer" id="lang-selector">
+<option value="es">ES</option>
+<option value="en">EN</option>
+<option value="pt">PT</option>
+</select>
+</div>
+</div>
+</header>
+<main class="min-h-screen flex items-center justify-center pt-16 px-4 pb-12 relative overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl aspect-square opacity-10 blur-[120px] pointer-events-none">
+<div class="w-full h-full rounded-full bg-gradient-to-tr from-primary to-transparent"></div>
+</div>
+<section class="w-full max-w-lg relative z-10">
+<!-- Header Branding -->
+<div class="text-center mb-10">
+<h1 class="font-headline text-4xl md:text-5xl font-bold text-primary mb-3 tracking-tight" id="title-text">Registro VIP</h1>
+<p class="text-on-surface-variant italic font-serif opacity-80" id="subtitle-text">Reservado para los pocos elegidos.</p>
+</div>
+<!-- Registration Card -->
+<div class="bg-surface-container-low/80 backdrop-blur-xl p-8 md:p-12 shadow-2xl relative border-t border-primary/20">
+<!-- Status Messages -->
+<div class="mb-8" id="status-container">
+<div class="flex items-center gap-3 p-4 text-sm bg-tertiary-container/20 border-l-2 border-tertiary-container text-on-tertiary-container" id="status-content">
+<span class="material-symbols-outlined text-lg" id="status-icon">check_circle</span>
+<span id="status-text">Código VIP-FORTUNE-001 validado correctamente. Proceda con el registro.</span>
+</div>
+</div>
+<form class="space-y-8" id="registration-form">
+<!-- Invitation Code Field -->
+<div class="space-y-2 group">
+<label class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold" id="label-invite">Código de Invitación</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined group-focus-within:text-primary transition-colors text-primary">check_circle</span>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 pl-8 text-xl font-headline focus:border-primary focus:ring-0 transition-all placeholder:text-outline-variant/30 text-primary uppercase border-primary" id="invite-code" placeholder="XXXX-XXXX-XXXX" required="" type="text" value="VIP-FORTUNE-001"/>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 italic" id="hint-invite">Este código es único y válido para un solo registro.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold" id="label-name">Nombre Completo</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-2 focus:border-primary focus:ring-0 transition-all placeholder:text-outline-variant/30 text-on-surface" id="full-name" placeholder="John Doe" required="" type="text"/>
+</div>
+<!-- Username -->
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold" id="label-username">Usuario</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-2 focus:border-primary focus:ring-0 transition-all placeholder:text-outline-variant/30 text-on-surface" id="username" placeholder="@highroller" required="" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold" id="label-email">Correo Electrónico</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-2 focus:border-primary focus:ring-0 transition-all placeholder:text-outline-variant/30 text-on-surface" id="email" placeholder="vip@midnightroyale.com" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold" id="label-pass">Contraseña de Seguridad</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-2 focus:border-primary focus:ring-0 transition-all placeholder:text-outline-variant/30 text-on-surface" id="password" placeholder="••••••••••••" required="" type="password"/>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-lg font-bold py-4 mt-4 active:scale-[0.98] transition-transform shadow-[0_10px_20px_rgba(212,175,55,0.2)] flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed" id="submit-btn" type="submit">
+<span id="btn-text">RECLAMAR ACCESO VIP</span>
+<span class="material-symbols-outlined">stars</span>
+</button>
+</form>
+<div class="mt-10 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-xs text-on-surface-variant">
+<span id="footer-login">¿Ya verificado?</span> <a class="text-primary hover:text-primary-fixed transition-colors underline underline-offset-4" href="#" id="link-login">Entrar al Lounge</a>
+</p>
+</div>
+</div>
+<!-- Security Badge -->
+<div class="mt-8 flex items-center justify-center gap-6 grayscale opacity-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="text-[10px] uppercase tracking-widest">Supabase Secured</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-[10px] uppercase tracking-widest">AES-256 Encryption</span>
+</div>
+</div>
+</section>
+<!-- Asymmetric Decorative Elements -->
+<div class="hidden lg:block absolute bottom-12 right-12 w-64 h-64 border border-outline-variant/10 rounded-full"></div>
+<div class="hidden lg:block absolute -top-24 -left-24 w-96 h-96 bg-primary-container/5 rounded-full blur-[100px]"></div>
+</main>
+<!-- Contextual Information -->
+<section class="max-w-6xl mx-auto px-6 pb-24 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container p-6 border border-outline-variant/10 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">token</span>
+<h3 class="font-headline text-xl text-primary" id="feature1-title">Emisión Exclusiva</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" id="feature1-desc">Solo quedan 12 asientos para esta sesión exclusiva. Su código otorga acceso a mesas de alto riesgo.</p>
+</div>
+<div class="bg-surface-container p-6 border border-outline-variant/10 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
+<h3 class="font-headline text-xl text-primary" id="feature2-title">Liquidez Instantánea</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" id="feature2-desc">La validación en tiempo real a través de Supabase Auth garantiza que sus fondos estén protegidos.</p>
+</div>
+<div class="bg-surface-container p-6 border border-outline-variant/10 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+<h3 class="font-headline text-xl text-primary" id="feature3-title">Nivel VIP</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed" id="feature3-desc">Los primeros en registrarse reciben automáticamente el estatus VIP de Nivel 9 con gestores personales.</p>
+</div>
+</section>
+<!-- Decorative Background Images -->
+<div class="fixed top-20 -right-20 w-80 h-[500px] -rotate-12 opacity-10 pointer-events-none overflow-hidden rounded-xl border border-primary/20">
+<img alt="luxurious billiard balls" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCXE3rKaq5WFolzDiV6SHbitbFK6lYqZuU0nP15GXVKEKl3DXvcDAfnaS2vS6E4todfmbZB3pgirBcN3Cl_ZinDc56WN7PXcO-NRh1Cwstbg_cRjlQGbdYnKj1MNTQr8gfHjDs5QoGgBOtuKSU_OJznyTW9mF-Y4MWhjLMrPSfjlhTZvjIJFve6pF54JuggYVbaCN2LVlDlybmgPTEgxTBN-iRspqn_gKxy9QMp2F37jt41kR8HL8kpjoNgU5vC68qpKgjxNZUqaws"/>
+</div>
+<div class="fixed -bottom-20 -left-20 w-80 h-[400px] rotate-12 opacity-10 pointer-events-none overflow-hidden rounded-xl border border-primary/20">
+<img alt="golden casino chips" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkeZrbhrQDBCY2_of9Uye9gDxi3-5dBL_Ovt3e0olg5xYRHQ-kP5OJhqC7aWCPiXvuNh-mRXZnTIfaNyS9je7ZL3yM0G1M7pz9ljrcwjTOMFLHW9Qlv19bKgQi36gLXCJAFO-4oaXsxV_CHNSRqi0e9NyBHWhGNmUl1G7x9NR-8US7mVjs8Bn9qGAM_sT9UTi-0q4g5OAAAqoyT8vkCbIRg-T7FjY4qas-OYu5wmt6aOo8nXd8zpfgNzYxWic3D9wJ2qYY_gXXiN-4"/>
+</div>
+<script>
+        const SUPABASE_URL = 'https://gfxxhquajzcdslayhmnh.supabase.co';
+        const SUPABASE_ANON_KEY = '{{DATA:TEXT:TEXT_112}}';
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const translations = {
+            es: {
+                title: 'Registro VIP',
+                subtitle: 'Reservado para los pocos elegidos.',
+                labelInvite: 'Código de Invitación',
+                hintInvite: 'Este código es único y válido para un solo registro.',
+                labelName: 'Nombre Completo',
+                labelUsername: 'Usuario',
+                labelEmail: 'Correo Electrónico',
+                labelPass: 'Contraseña de Seguridad',
+                btn: 'RECLAMAR ACCESO VIP',
+                btnLoading: 'VERIFICANDO...',
+                footerLogin: '¿Ya verificado?',
+                linkLogin: 'Entrar al Lounge',
+                errInvite: 'Código de invitación inválido o ya utilizado.',
+                errGeneral: 'Ocurrió un error. Por favor, intente de nuevo.',
+                success: 'Registro exitoso. Su perfil está pendiente de aprobación.',
+                f1t: 'Emisión Exclusiva',
+                f1d: 'Solo quedan 12 asientos para esta sesión exclusiva. Su código otorga acceso a mesas de alto riesgo.',
+                f2t: 'Liquidez Instantánea',
+                f2d: 'La validación en tiempo real a través de Supabase Auth garantiza que sus fondos estén protegidos.',
+                f3t: 'Nivel VIP',
+                f3d: 'Los primeros en registrarse reciben automáticamente el estatus VIP de Nivel 9 con gestores personales.'
+            },
+            en: {
+                title: 'VIP Registration',
+                subtitle: 'Reserved for the selected few.',
+                labelInvite: 'Invitation Code',
+                hintInvite: 'This code is unique and valid for one registration only.',
+                labelName: 'Full Name',
+                labelUsername: 'Username',
+                labelEmail: 'Email Address',
+                labelPass: 'Security Passphrase',
+                btn: 'CLAIM VIP ACCESS',
+                btnLoading: 'VERIFYING...',
+                footerLogin: 'Already verified?',
+                linkLogin: 'Sign in to the Lounge',
+                errInvite: 'Invalid or already used invitation code.',
+                errGeneral: 'An error occurred. Please try again.',
+                success: 'Registration successful. Your profile is pending approval.',
+                f1t: 'Exclusive Mint',
+                f1d: 'Only 12 seats remain for this exclusive session. Your invitation code grants access to high-stakes tables.',
+                f2t: 'Instant Liquidity',
+                f2d: 'Real-time validation via Supabase Auth ensures your funds and winnings are secured.',
+                f3t: 'VIP Tiering',
+                f3d: 'Early registrants receive automatic Level 9 VIP status, including personal account managers.'
+            },
+            pt: {
+                title: 'Registro VIP',
+                subtitle: 'Reservado para os poucos escolhidos.',
+                labelInvite: 'Código de Convite',
+                hintInvite: 'Este código é único e válido apenas para um registro.',
+                labelName: 'Nome Completo',
+                labelUsername: 'Usuário',
+                labelEmail: 'E-mail',
+                labelPass: 'Senha de Segurança',
+                btn: 'REIVINDICAR ACESSO VIP',
+                btnLoading: 'VERIFICANDO...',
+                footerLogin: 'Já verificado?',
+                linkLogin: 'Entrar no Lounge',
+                errInvite: 'Código de convite inválido ou já utilizado.',
+                errGeneral: 'Ocorreu um erro. Por favor, tente novamente.',
+                success: 'Registro bem-sucedido. Seu perfil está aguardando aprovação.',
+                f1t: 'Emissão Exclusiva',
+                f1d: 'Restam apenas 12 lugares para esta sessão exclusiva. Seu código garante acesso a mesas de alto risco.',
+                f2t: 'Liquidez Instantânea',
+                f2d: 'A validação em tempo real via Supabase Auth garante que seus fundos estejam protegidos.',
+                f3t: 'Nível VIP',
+                f3d: 'Os primeiros a se registrar recebem automaticamente o status VIP Nível 9 com gestores pessoais.'
+            }
+        };
+
+        const elements = {
+            lang: document.getElementById('lang-selector'),
+            title: document.getElementById('title-text'),
+            subtitle: document.getElementById('subtitle-text'),
+            labelInvite: document.getElementById('label-invite'),
+            hintInvite: document.getElementById('hint-invite'),
+            labelName: document.getElementById('label-name'),
+            labelUsername: document.getElementById('label-username'),
+            labelEmail: document.getElementById('label-email'),
+            labelPass: document.getElementById('label-pass'),
+            btn: document.getElementById('submit-btn'),
+            btnText: document.getElementById('btn-text'),
+            footerLogin: document.getElementById('footer-login'),
+            linkLogin: document.getElementById('link-login'),
+            status: document.getElementById('status-container'),
+            statusContent: document.getElementById('status-content'),
+            statusIcon: document.getElementById('status-icon'),
+            statusText: document.getElementById('status-text'),
+            f1t: document.getElementById('feature1-title'),
+            f1d: document.getElementById('feature1-desc'),
+            f2t: document.getElementById('feature2-title'),
+            f2d: document.getElementById('feature2-desc'),
+            f3t: document.getElementById('feature3-title'),
+            f3d: document.getElementById('feature3-desc'),
+            form: document.getElementById('registration-form')
+        };
+
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            elements.title.innerText = t.title;
+            elements.subtitle.innerText = t.subtitle;
+            elements.labelInvite.innerText = t.labelInvite;
+            elements.hintInvite.innerText = t.hintInvite;
+            elements.labelName.innerText = t.labelName;
+            elements.labelUsername.innerText = t.labelUsername;
+            elements.labelEmail.innerText = t.labelEmail;
+            elements.labelPass.innerText = t.labelPass;
+            elements.btnText.innerText = t.btn;
+            elements.footerLogin.innerText = t.footerLogin;
+            elements.linkLogin.innerText = t.linkLogin;
+            elements.f1t.innerText = t.f1t;
+            elements.f1d.innerText = t.f1d;
+            elements.f2t.innerText = t.f2t;
+            elements.f2d.innerText = t.f2d;
+            elements.f3t.innerText = t.f3t;
+            elements.f3d.innerText = t.f3d;
+        }
+
+        elements.lang.addEventListener('change', (e) => updateLanguage(e.target.value));
+
+        function showStatus(type, message) {
+            elements.status.classList.remove('hidden');
+            elements.statusContent.className = `flex items-center gap-3 p-4 text-sm ${type === 'error' ? 'bg-secondary-container/20 border-l-2 border-secondary-container text-on-secondary-container' : 'bg-tertiary-container/20 border-l-2 border-tertiary-container text-on-tertiary-container'}`;
+            elements.statusIcon.innerText = type === 'error' ? 'error' : 'check_circle';
+            elements.statusText.innerText = message;
+        }
+
+        elements.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const lang = elements.lang.value;
+            const t = translations[lang];
+            
+            elements.btn.disabled = true;
+            elements.btnText.innerText = t.btnLoading;
+            elements.status.classList.add('hidden');
+
+            const code = document.getElementById('invite-code').value.trim();
+            const fullName = document.getElementById('full-name').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // 1. Validate Invite Code
+                const { data: invite, error: inviteErr } = await _supabase
+                    .from('invitations')
+                    .select('*')
+                    .eq('code', code)
+                    .eq('is_used', false)
+                    .single();
+
+                if (inviteErr || !invite) {
+                    showStatus('error', t.errInvite);
+                    elements.btn.disabled = false;
+                    elements.btnText.innerText = t.btn;
+                    return;
+                }
+
+                // 2. Auth Signup
+                const { data: authData, error: authErr } = await _supabase.auth.signUp({
+                    email,
+                    password,
+                    options: {
+                        data: { full_name: fullName, username: username }
+                    }
+                });
+
+                if (authErr) {
+                    showStatus('error', authErr.message);
+                    elements.btn.disabled = false;
+                    elements.btnText.innerText = t.btn;
+                    return;
+                }
+
+                // 3. Create profile in 'pending' status
+                const { error: profileErr } = await _supabase
+                    .from('profiles')
+                    .insert([
+                        { 
+                            id: authData.user.id, 
+                            full_name: fullName, 
+                            username: username, 
+                            status: 'pending',
+                            invitation_code: code
+                        }
+                    ]);
+
+                // 4. Mark invitation as used
+                await _supabase
+                    .from('invitations')
+                    .update({ is_used: true, used_by: authData.user.id })
+                    .eq('id', invite.id);
+
+                showStatus('success', t.success);
+                elements.form.reset();
+                elements.btnText.innerText = 'DONE';
+
+            } catch (err) {
+                console.error(err);
+                showStatus('error', t.errGeneral);
+                elements.btn.disabled = false;
+                elements.btnText.innerText = t.btn;
+            }
+        });
+
+        // Initialize
+        updateLanguage('es');
+    </script>
+</body></html>

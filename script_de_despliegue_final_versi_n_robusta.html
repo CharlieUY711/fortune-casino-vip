@@ -1,0 +1,59 @@
+# SCRIPT DE DESPLIEGUE FINAL (VERSIÓN ROBUSTA)
+# Este script evita errores de 'here-string' y asegura la limpieza de los archivos.
+
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Write-SafeFile($name, $data) {
+    # Limpieza de metadatos invisible
+    if ($data -match "(?s)<!DOCTYPE.*") {
+        $data = $data -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    
+    # Reemplazo de placeholders
+    $data = $data -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $data = $data -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    
+    # Guardado con codificación segura para Vercel
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $data, (New-Object System.Text.UTF8Encoding $false))
+    Write-Host "✓ $name" -ForegroundColor Green
+}
+
+Write-Host "Generando 22 archivos para fortune.core.com.uy..." -ForegroundColor Cyan
+
+# Módulos Base
+Write-SafeFile "index.html" '{{DATA:SCREEN:SCREEN_94}}'
+Write-SafeFile "registro.html" '{{DATA:SCREEN:SCREEN_81}}'
+Write-SafeFile "billetera.html" '{{DATA:SCREEN:SCREEN_56}}'
+Write-SafeFile "perfil.html" '{{DATA:SCREEN:SCREEN_46}}'
+
+# Ruletas
+Write-SafeFile "ruleta_noir.html" '{{DATA:SCREEN:SCREEN_129}}'
+Write-SafeFile "ruleta_clasica.html" '{{DATA:SCREEN:SCREEN_172}}'
+Write-SafeFile "ruleta_vegas.html" '{{DATA:SCREEN:SCREEN_134}}'
+Write-SafeFile "ruleta_carbono.html" '{{DATA:SCREEN:SCREEN_65}}'
+Write-SafeFile "ruleta_monaco.html" '{{DATA:SCREEN:SCREEN_180}}'
+Write-SafeFile "ruleta_esmeralda.html" '{{DATA:SCREEN:SCREEN_85}}'
+
+# Slots
+Write-SafeFile "slot_sphinx.html" '{{DATA:SCREEN:SCREEN_175}}'
+Write-SafeFile "slot_cyber.html" '{{DATA:SCREEN:SCREEN_50}}'
+Write-SafeFile "slot_777.html" '{{DATA:SCREEN:SCREEN_67}}'
+Write-SafeFile "slot_deep_sea.html" '{{DATA:SCREEN:SCREEN_84}}'
+Write-SafeFile "slot_jungle.html" '{{DATA:SCREEN:SCREEN_15}}'
+Write-SafeFile "slot_galactic.html" '{{DATA:SCREEN:SCREEN_5}}'
+
+# Blackjack & Poker
+Write-SafeFile "blackjack_vip_1.html" '{{DATA:SCREEN:SCREEN_150}}'
+Write-SafeFile "blackjack_vip_2.html" '{{DATA:SCREEN:SCREEN_142}}'
+Write-SafeFile "blackjack_vip_3.html" '{{DATA:SCREEN:SCREEN_114}}'
+Write-SafeFile "poker_holdem_1.html" '{{DATA:SCREEN:SCREEN_61}}'
+Write-SafeFile "poker_holdem_2.html" '{{DATA:SCREEN:SCREEN_138}}'
+Write-SafeFile "poker_holdem_3.html" '{{DATA:SCREEN:SCREEN_30}}'
+
+Write-Host "Sincronizando con GitHub..." -ForegroundColor Yellow
+git add .
+git commit -m "FIX: Despliegue robusto de los 22 módulos del casino"
+git push origin main
+
+Write-Host "¡EXITO! Verificá fortune.core.com.uy en un momento." -ForegroundColor Cyan

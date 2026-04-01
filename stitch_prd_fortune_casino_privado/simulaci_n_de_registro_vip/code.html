@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#920703",
+              "surface-container-lowest": "#0e0e0e",
+              "tertiary": "#9adeaa",
+              "on-tertiary-fixed-variant": "#08522a",
+              "secondary": "#ffb4a8",
+              "surface-tint": "#e9c349",
+              "surface-container-low": "#1c1b1b",
+              "background": "#131313",
+              "on-error-container": "#ffdad6",
+              "surface-container-high": "#2a2a2a",
+              "inverse-surface": "#e5e2e1",
+              "outline": "#99907c",
+              "on-secondary": "#690000",
+              "primary-fixed-dim": "#e9c349",
+              "on-primary-fixed": "#241a00",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary-container": "#ff9a8a",
+              "on-primary-fixed-variant": "#574500",
+              "on-error": "#690005",
+              "on-tertiary-container": "#055029",
+              "tertiary-fixed": "#adf2bc",
+              "surface": "#131313",
+              "surface-container-highest": "#353534",
+              "on-secondary-fixed": "#410000",
+              "inverse-primary": "#735c00",
+              "surface-bright": "#3a3939",
+              "on-surface": "#e5e2e1",
+              "surface-dim": "#131313",
+              "primary-container": "#d4af37",
+              "secondary-fixed-dim": "#ffb4a8",
+              "secondary-container": "#920703",
+              "error": "#ffb4ab",
+              "surface-variant": "#353534",
+              "on-primary-container": "#554300",
+              "tertiary-fixed-dim": "#92d6a2",
+              "primary-fixed": "#ffe088",
+              "primary": "#f2ca50",
+              "outline-variant": "#4d4635",
+              "on-background": "#e5e2e1",
+              "secondary-fixed": "#ffdad4",
+              "surface-container": "#201f1f",
+              "on-primary": "#3c2f00",
+              "inverse-on-surface": "#313030",
+              "on-surface-variant": "#d0c5af",
+              "tertiary-container": "#7fc290",
+              "error-container": "#93000a",
+              "on-tertiary": "#00391a"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .gold-shimmer {
+        background: linear-gradient(45deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%);
+        background-size: 200% auto;
+      }
+      .noir-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col relative overflow-x-hidden">
+<div class="fixed inset-0 noir-noise pointer-events-none"></div>
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#131313] dark:bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)] z-[60] h-16 flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer duration-300 hover:text-[#ffe088]">close</span>
+</div>
+<h1 class="text-xl font-bold tracking-[0.2em] text-[#f2ca50] font-serif uppercase">MIDNIGHT ROYALE</h1>
+<div class="w-6"></div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-6 py-12 relative z-10">
+<!-- Decoration Background -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-primary/5 to-transparent -z-10 blur-3xl rounded-full opacity-50"></div>
+<!-- Section Title -->
+<div class="text-center mb-12 max-w-2xl">
+<h2 class="font-headline text-display-lg md:text-5xl text-primary mb-4 leading-tight tracking-tight uppercase">Registro VIP: Simulación de Prueba</h2>
+<p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-md mx-auto">
+                Acceda a la bóveda privada. Ingrese sus credenciales exclusivas para iniciar el proceso de acreditación.
+            </p>
+</div>
+<!-- Glassmorphism Form Container -->
+<div class="w-full max-w-lg bg-surface-container-high/80 backdrop-blur-xl p-8 md:p-12 border border-outline-variant/20 shadow-2xl relative overflow-hidden">
+<!-- Decorative Accent -->
+<div class="absolute top-0 left-0 w-1 h-full gold-shimmer"></div>
+<form class="space-y-8">
+<!-- Invitation Code Field -->
+<div class="space-y-2 group">
+<label class="block text-xs font-semibold tracking-widest text-primary/70 uppercase font-label">Código de Invitación</label>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 font-headline text-xl text-primary focus:outline-none focus:border-primary transition-colors cursor-not-allowed" readonly="" type="text" value="VIP-FORTUNE-001"/>
+<span class="material-symbols-outlined absolute right-0 top-3 text-primary/50 text-sm">lock</span>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 font-body">Código pre-llenado para entorno de simulación.</p>
+</div>
+<!-- Username Field -->
+<div class="space-y-2 group">
+<label class="block text-xs font-semibold tracking-widest text-on-surface-variant uppercase font-label">Nombre de Usuario</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 font-body text-lg text-on-surface focus:outline-none focus:border-primary transition-colors" type="text" value="CharlieTester"/>
+</div>
+<!-- Email Field -->
+<div class="space-y-2 group">
+<label class="block text-xs font-semibold tracking-widest text-on-surface-variant uppercase font-label">Email Personal</label>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 font-body text-lg text-on-surface focus:outline-none focus:border-primary transition-colors placeholder:text-on-surface-variant/30" placeholder="tester@midnightroyale.vip" type="email"/>
+</div>
+<!-- Password Field -->
+<div class="space-y-2 group">
+<label class="block text-xs font-semibold tracking-widest text-on-surface-variant uppercase font-label">Contraseña</label>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 font-body text-lg text-on-surface focus:outline-none focus:border-primary transition-colors" type="password" value="********"/>
+<span class="material-symbols-outlined absolute right-0 top-3 text-on-surface-variant cursor-pointer hover:text-primary">visibility_off</span>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="pt-6">
+<button class="w-full gold-shimmer h-14 font-headline text-on-primary text-xl font-bold tracking-widest uppercase shadow-[0_10px_30px_rgba(242,202,80,0.2)] hover:shadow-[0_15px_40px_rgba(242,202,80,0.3)] hover:scale-[1.01] transition-all duration-300" type="button">
+                        SOLICITAR MEMBRESÍA
+                    </button>
+</div>
+</form>
+</div>
+<!-- Success Feedback (Conditional Simulation) -->
+<div class="mt-8 flex items-center gap-4 p-4 bg-tertiary-container/10 border border-tertiary-container/30 rounded-lg max-w-lg w-full">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-headline text-tertiary text-sm font-bold tracking-wide">Solicitud Enviada</p>
+<p class="font-body text-on-surface-variant text-xs">Su perfil VIP ha sido enviado al administrador para su aprobación inmediata.</p>
+</div>
+</div>
+<!-- Imagery Background Component -->
+<div class="mt-20 grid grid-cols-2 gap-4 w-full max-w-4xl opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
+<div class="aspect-video bg-surface-container-low overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover" data-alt="interior of a luxury dark velvet private casino room with gold accents and warm amber spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzA62heKyXIKb4AWced_lr2DVekQElwJa7tizP1ZgijKUSw7fFBXNsDN02SfSQ0GrT3A59Bosg0Wq2rsjlr9o948zh6ZcHHzITQOyUjSylD5BhDKAmj0lidq4vuBzp0AdQhQg5RSgf_7-rHe6XC7CQka0kjMfusg8Xbbz6ThNsDhOIjGI11HPGbXEL0Oqn13mX_gi451-WpJDnpyiv6coIMS6kgbv1x63KlpZ6JOVp_gs2UpaeJO1e5sgl4I7PoKb5G1xHT0_IQ3x7"/>
+</div>
+<div class="aspect-video bg-surface-container-low overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover" data-alt="close up of a premium black credit card with embossed gold lettering on a dark marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-JjTh56EgkUBc4IGC5DG1aViCeZ77_SOHmRC-MDyhaXcO1yB6vE4UcyuWrOmJcXgguy9sDYzcNoNAP1S4yAjrz_3Dbi75OEuFAn1cbnICTjIxGgezc-OK-S0jIUi2I_w-gUQCfn7z4FBZ9ENXkH5zfPtD3-qDe1vnzV4t0ctwpZOpEncYqBYgupb1r9w4MuaM1rAtfxxgPvZfGhD-w9X2uKnsfoV9v8_Nz3qrb8fKOXEMMg9IU_XXhzI0_T6-7ByIrQHq64L_10cT"/>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-[#131313]/90 backdrop-blur-md z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<!-- Lounge -->
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity cursor-pointer duration-200 active:scale-95">
+<span class="material-symbols-outlined text-2xl">nightlife</span>
+<span class="font-sans text-[10px] font-medium tracking-tighter uppercase mt-1">Lounge</span>
+</div>
+<!-- Mesas -->
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity cursor-pointer duration-200 active:scale-95">
+<span class="material-symbols-outlined text-2xl">casino</span>
+<span class="font-sans text-[10px] font-medium tracking-tighter uppercase mt-1">Mesas</span>
+</div>
+<!-- Promos -->
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity cursor-pointer duration-200 active:scale-95">
+<span class="material-symbols-outlined text-2xl">military_tech</span>
+<span class="font-sans text-[10px] font-medium tracking-tighter uppercase mt-1">Promos</span>
+</div>
+<!-- Soporte (Active for Registration context) -->
+<div class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 transition-transform cursor-pointer duration-200">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<span class="font-sans text-[10px] font-medium tracking-tighter uppercase mt-1">Soporte</span>
+</div>
+</nav>
+<!-- Padding for bottom nav -->
+<div class="h-20 w-full shrink-0"></div>
+</body></html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino VIP | Lobby</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #d0c5af; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .gold-gradient { background: linear-gradient(135deg, #b8860b 0%, #f1c40f 50%, #b8860b 100%); }
+        .glass-panel { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(184, 134, 11, 0.15); }
+        .nav-active { color: #f1c40f; filter: drop-shadow(0 0 8px rgba(241, 196, 15, 0.4)); }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        .premium-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); animation: shine 3s infinite; }
+    </style>
+</head>
+<body class="pb-28">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 glass-panel h-16 flex items-center justify-between px-6 border-b border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#b8860b] to-[#f1c40f] flex items-center justify-center shadow-lg shadow-yellow-900/20">
+<span class="material-symbols-outlined text-black text-[20px] font-bold">diamond</span>
+</div>
+<h1 class="font-serif italic font-bold text-[#f1c40f] text-xl tracking-tighter">Fortune</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-black/40 border border-[#b8860b]/30 px-3 py-1.5 rounded-full flex items-center gap-2" id="balance-display">
+<span class="material-symbols-outlined text-[#f1c40f] text-[18px]">account_balance_wallet</span>
+<span class="text-[#f1c40f] font-bold text-sm tracking-wide" id="txt-balance">$ --.--</span>
+</div>
+<select class="bg-transparent border-none text-[10px] font-bold text-[#d0c5af] opacity-80 focus:ring-0 uppercase cursor-pointer" id="lang-selector" onchange="changeLanguage(this.value)">
+<option class="bg-black" value="es">ES</option>
+<option class="bg-black" value="en">EN</option>
+<option class="bg-black" value="pt">PT</option>
+</select>
+</div>
+</header>
+<!-- Main Content -->
+<main class="mt-20 px-4">
+<!-- Hero Banner -->
+<section class="relative h-44 rounded-3xl overflow-hidden mb-8 border border-white/5 premium-shimmer">
+<img alt="Midnight Royale" class="w-full h-full object-cover brightness-[0.4]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXKazkYPz6dcarB9abgTLjMCZWuwaiRixW7X05U6MhYZPbOVtg3pE5gNGe8hImOkQxq-hu8pa14W7mhuIrwLuCUuE_FaEVbJnAxoANDy-fJovJORURJO5BqeLXuFJQFPd4sv1-qb5FEHJ1fr4sp-nuXmmoAdtbXSYYJLdZJuqcCr50or_iHlSId43CxYNiWRNEB-ZaOPw2xu4fAxPU7SrVgVi-vTWHhnY9Z58qF-pDCPklsAr-L5tvDePsPKq0EN1J0dTwk419jxNe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+<div class="absolute bottom-5 left-6">
+<p class="text-[10px] uppercase tracking-[0.3em] text-[#f1c40f] font-bold mb-1" id="txt-hero-sub">Bienvenido al Vault</p>
+<h2 class="font-serif text-2xl font-bold text-white leading-tight" id="txt-hero-title">Midnight Royale <br/><span class="text-[#f1c40f]">Exclusivo VIP</span></h2>
+</div>
+</section>
+<!-- Main Categories -->
+<div class="grid grid-cols-2 gap-3 mb-8">
+<a class="glass-panel p-5 rounded-2xl flex flex-col items-center gap-3 active:scale-[0.98] transition-all hover:bg-white/5 group" href="ruleta-pro.html">
+<div class="w-12 h-12 rounded-xl bg-[#b8860b]/10 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors">
+<span class="material-symbols-outlined text-[#f1c40f] text-3xl">casino</span>
+</div>
+<span class="text-[11px] font-bold uppercase tracking-[0.15em] text-[#d0c5af]" data-i18n="cat_ruleta">Ruleta</span>
+</a>
+<a class="glass-panel p-5 rounded-2xl flex flex-col items-center gap-3 active:scale-[0.98] transition-all hover:bg-white/5 group" href="slots-olympus.html">
+<div class="w-12 h-12 rounded-xl bg-[#b8860b]/10 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors">
+<span class="material-symbols-outlined text-[#f1c40f] text-3xl">slot_machine</span>
+</div>
+<span class="text-[11px] font-bold uppercase tracking-[0.15em] text-[#d0c5af]" data-i18n="cat_slots">Slots</span>
+</a>
+</div>
+<!-- Games Grid -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-5 px-1">
+<h3 class="font-serif text-lg font-bold text-white" data-i18n="section_games">Nuestra Selección</h3>
+<span class="text-[9px] text-[#f1c40f] font-bold uppercase tracking-widest opacity-80" data-i18n="view_all">Ver Todos</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Ruleta 1 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="ruleta-noir.html">
+<img alt="Roulette" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnFG089hq0tJj5ZszC3HUzxOTGM9L8svXzgjnsaurgDhz9nzyFXXGTBTJx9BhcNrvQDhNCxPIBZyx_9ORSe3wL3njbXkM91OTqVkYJSS3WJ4kMtG5z839hiITzPS1oAweX7N5OoPYiHZ7QmH4KOKonyGmHyuPu6aTrz7WOgqG8pnuki2QwWH3uzhz14-nQOpzk-jbJr7_8cJiuF13U1gZaaJAFkCaSubumRw64q_gSIY1NPaODwXG6WByGif20kAtw-VPXiWmDvF-L"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Roulette Noir</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">Privé</p>
+</div>
+</a>
+<!-- Slot 1 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="slots-gold.html">
+<img alt="Slots" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcCRI_4MWAGibkwfAgRyChL1S1fugbrKYUNPMJNo_Omap6OUrd8Xd-xFA4MIiJxa6-JE4ZtVt5M0I72Ct2tj5AmO1F2jkUofwniYOhZDD_lW2Gjyv22sL8N6I9pDrqpRb2S9JpcpiEBn6LfX6wcIXDS8VT9ayvvL93FC9pZhik-QgwjdECoVyPv564SgQL1R4nSk-D7eunuHdLfaJqQMgfgGbUq6O9HZNPlIPvV_LOtjcDkVykG2A6SA69WNfN5EJZ3wzPs_YBn0ZY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Aztec Gold</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">High Roller</p>
+</div>
+</a>
+<!-- Ruleta 2 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="ruleta-latina.html">
+<img alt="Roulette" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHgqKoYeJA706dBHfjGsWuPr7tI-oH5ao_EdMmrcO-S_PVfxwB9YL1VEPJPZTaX-3bWoPEnI6Wccnbi4K5gYwRMjktt3PAssAN3xS8xWSlLrTXW9RUK22a_6vEvDzsVqcC6ctn1jcr0Llgxsksgl3NBUMiVDItutXUzRIcAc5wnQznyoiNxRDuWqfOTkE-fTvexiK44lKNmcthGbhNfUvUdSshAt4J72xnh0BCPAjWItfERlhGgndWs8r5QPF_Peq7Mcde9ieGsjee"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Ruleta Latina</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">Live</p>
+</div>
+</a>
+<!-- Slot 2 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="slots-fruit.html">
+<img alt="Slots" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhrH1tf3Mzddt4BrtGyTZQ6Lpg0Fw0Y2OOV9qjT2cNxuesmEL5ACNikawkgEJn1vWEw3-6OFmNnlhEfNsQ-zFSpiR0M6Z7jOhP_M0Wzeua2thCHr-Rt8C-cu_5kZdNuFd0Z9Fb7n238kcWeTxRBj6iiXXE9SPbavZ3uP898rRqI4krAAASFjun21yEzLbyQnkpr8lvj-lPHygVe5veNmmNdYKZJebpcXAyLiYw5-JK5xMUyBaN-gHt0ubbsBgOKW52s0kn89F4UicQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Fruit Party</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">Popular</p>
+</div>
+</a>
+<!-- Slot 3 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="slots-zeus.html">
+<img alt="Slots" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfsT1uAfpST0DnjfaH2TvnoccgEUVoOiNCXMCzVUvbtTtEqr9teiQWz7j7JxtL6Xa0Ig5F8erfI7iGToPrUp_U1Hd5cm_pc8yWtsbA6cg2xIJ6H5gvFEj_RDWRBO2qon60Hxa97l2I40CKRDwEXDmTGEy-3lH5aJYeJr-SnOCbSnTJYyzKoCMOri6g0SBPRBk1HvoUuxqLaTc4kpUUooqqrpikGi6TDOqpuQlezLvJV7Kwoe-L-74qp72PSmpBrQtGsqVuxQ4jwyBh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Zeus Thunder</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">Classic</p>
+</div>
+</a>
+<!-- Ruleta 3 -->
+<a class="relative aspect-square rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform" href="ruleta-speed.html">
+<img alt="Roulette" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR8tNMouYzJtSvrRVL02dMRBABMP1ar4VbKh1sWD2ge0zIRvbRyNM1Hj7Q9MYijUHPMXiTft5fRQb4ziy30OhvtlwH89TgkfstJhrhfxK6caeDRx-pbdqkdZLqgn6qAF4OHQlJNd3oms9ul0yUcxAtFdJ35W70jDbiN0pxMwTjszOy28yWy_KHzItYlYKGfLgjipP-th1v4PpojPtaKOXVw3y0QTqGlEwM9BmqMJ9soGqHJi9Bnkb9NWNEBajBGBjCACxomqZW02_Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-[10px] font-bold text-white">Speed Roulette</p>
+<p class="text-[8px] text-[#f1c40f] uppercase tracking-tighter opacity-70">Turbo</p>
+</div>
+</a>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full glass-panel h-20 rounded-t-[32px] flex justify-around items-center px-4 z-50 shadow-2xl shadow-black">
+<a class="flex flex-col items-center gap-1 nav-active" href="index.html">
+<span class="material-symbols-outlined text-[28px]">space_dashboard</span>
+<span class="text-[9px] font-bold uppercase tracking-widest" data-i18n="nav_lobby">Lobby</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#d0c5af]/50 hover:text-[#f1c40f] transition-colors" href="billetera.html">
+<span class="material-symbols-outlined text-[28px]">payments</span>
+<span class="text-[9px] font-bold uppercase tracking-widest" data-i18n="nav_wallet">Billetera</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#d0c5af]/50 hover:text-[#f1c40f] transition-colors" href="perfil.html">
+<span class="material-symbols-outlined text-[28px]">account_circle</span>
+<span class="text-[9px] font-bold uppercase tracking-widest" data-i18n="nav_profile">Perfil</span>
+</a>
+</nav>
+<script>
+        // --- PRODUCTION CONFIGURATION ---
+        const SUPABASE_URL = 'https://gfxxhquajzcdslayhmhs.supabase.co'; 
+        const SUPABASE_KEY = '{{DATA:INPUT:INIT}}'; 
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // --- I18N CONTENT ---
+        const translations = {
+            es: {
+                cat_ruleta: "Ruleta", cat_slots: "Slots", section_games: "Nuestra Selección",
+                view_all: "Ver Todos", nav_lobby: "Lobby", nav_wallet: "Billetera",
+                nav_profile: "Perfil", hero_sub: "Bienvenido al Vault", hero_title: "Midnight Royale<br><span class='text-[#f1c40f]'>Exclusivo VIP</span>"
+            },
+            en: {
+                cat_ruleta: "Roulette", cat_slots: "Slots", section_games: "Our Selection",
+                view_all: "View All", nav_lobby: "Lobby", nav_wallet: "Wallet",
+                nav_profile: "Profile", hero_sub: "Welcome to the Vault", hero_title: "Midnight Royale<br><span class='text-[#f1c40f]'>VIP Exclusive</span>"
+            },
+            pt: {
+                cat_ruleta: "Roleta", cat_slots: "Slots", section_games: "Nossa Seleção",
+                view_all: "Ver Todos", nav_lobby: "Lobby", nav_wallet: "Carteira",
+                nav_profile: "Perfil", hero_sub: "Bem-vindo ao Vault", hero_title: "Midnight Royale<br><span class='text-[#f1c40f]'>Exclusivo VIP</span>"
+            }
+        };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('fortune_lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            document.getElementById('txt-hero-sub').innerText = translations[lang].hero_sub;
+            document.getElementById('txt-hero-title').innerHTML = translations[lang].hero_title;
+        }
+
+        // --- REAL-TIME LOGIC ---
+        async function fetchInitialBalance() {
+            const { data: { user } } = await supabaseClient.auth.getUser();
+            if (user) {
+                const { data, error } = await supabaseClient
+                    .from('profiles')
+                    .select('balance')
+                    .eq('id', user.id)
+                    .single();
+                
+                if (data) {
+                    updateBalanceUI(data.balance);
+                } else if (error) {
+                    console.error("Error fetching balance:", error.message);
+                }
+            } else {
+                // If not authenticated, the app normally handles redirect to login elsewhere
+                // but we keep UI safe
+                updateBalanceUI(0);
+            }
+        }
+
+        function updateBalanceUI(amount) {
+            const balanceEl = document.getElementById('txt-balance');
+            const currentAmount = amount || 0;
+            balanceEl.innerText = `$ ${currentAmount.toLocaleString('es-UY', { minimumFractionDigits: 2 })}`;
+        }
+
+        function setupRealtimeBalance() {
+            supabaseClient.auth.getUser().then(({ data: { user } }) => {
+                if (!user) return;
+
+                supabaseClient
+                    .channel('balance_updates')
+                    .on('postgres_changes', { 
+                        event: 'UPDATE', 
+                        schema: 'public', 
+                        table: 'profiles',
+                        filter: `id=eq.${user.id}`
+                    }, payload => {
+                        updateBalanceUI(payload.new.balance);
+                    })
+                    .subscribe();
+            });
+        }
+
+        // --- INITIALIZATION ---
+        window.onload = () => {
+            const savedLang = localStorage.getItem('fortune_lang') || 'es';
+            document.getElementById('lang-selector').value = savedLang;
+            changeLanguage(savedLang);
+            
+            fetchInitialBalance();
+            setupRealtimeBalance();
+        };
+    </script>
+</body></html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOIR | SuperAdmin Launch &amp; Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#353534",
+              "outline-variant": "#4d4635",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-low": "#1c1b1b",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-secondary-fixed": "#410000",
+              "outline": "#99907c",
+              "on-primary-fixed-variant": "#574500",
+              "secondary-container": "#920703",
+              "surface-container": "#201f1f",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-dim": "#131313",
+              "surface-bright": "#3a3939",
+              "error-container": "#93000a",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-container": "#7fc290",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "on-primary-fixed": "#241a00",
+              "surface-variant": "#353534",
+              "secondary": "#ffb4a8",
+              "inverse-primary": "#735c00",
+              "on-tertiary-fixed": "#00210d",
+              "surface": "#131313",
+              "primary-container": "#d4af37",
+              "on-surface": "#e5e2e1",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "on-background": "#e5e2e1",
+              "surface-container-lowest": "#0e0e0e",
+              "error": "#ffb4ab",
+              "on-tertiary-container": "#055029",
+              "on-primary-container": "#554300",
+              "on-primary": "#3c2f00",
+              "tertiary": "#9adeaa",
+              "primary-fixed-dim": "#e9c349",
+              "background": "#131313",
+              "primary-fixed": "#ffe088",
+              "on-tertiary": "#00391a",
+              "on-surface-variant": "#d0c5af",
+              "on-error": "#690005",
+              "tertiary-fixed": "#adf2bc"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-noise {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDF7OnI__f17SZ_MYfnNBiQnP23_n3et_Uyf7Q4PSnGb9VCVdWFGzaO7FzhxMDu5FCtD-9JuhF-ptKesydn0KKZ284T_G8coaAO5vv8fu5GAnWnBVlw-xZyOV71fBAZLrxDnIGo327e103lc85JHQPUwG_K3rTLRI2-0pTeUl0phi0bokVcITWvZNykVkO6ohmmRcATYATnpweuihLv7pPutoF13yBJlDeUdm7K6FssAdmrUAAixLwF3MwaHxngJHU5t3DhIrKPa1vq);
+    opacity: 0.03
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="SuperAdmin Profile" data-alt="Close up portrait of a professional male executive in a sharp black suit with gold details, cinematic lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBijqbEbJo8fJ8fe3lXJshoCio8nEvUh3Y7ctwjYF_Fl9db3m2GuKljCaPwli3BFiwyoAWmLk5hWdz5KrIYWR8D7CiIIXkXx3YBtFYmKW5yUJRVJpgUe8eLNDKvKD8Yp6G8Fz0ufsDlmyen9pgvsBechRnAV33gq_CnbMoxtFwTK59zMAplKYfzNMRT-O0PZbV7Y_7fX2cl55kgVqJz7QdX-LEEAwYaqzzgrcf36fw1x-mchyTQ_zoWwQwE1_51JWqR5cM1mOcUYAXm"/>
+</div>
+<span class="text-2xl font-headline font-black uppercase text-[#d4af37] tracking-widest">NOIR</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant/20">
+<span class="font-headline font-bold tracking-tight text-[#f2ca50]">$25,400.00</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-6 max-w-screen-xl mx-auto relative">
+<!-- Noise Overlay -->
+<div class="fixed inset-0 pointer-events-none bg-noise"></div>
+<!-- Hero Section -->
+<div class="mb-12">
+<h1 class="font-headline text-display-lg text-4xl md:text-5xl font-black mb-2 text-on-surface tracking-tight">
+                Launch <span class="text-primary">&amp;</span> Verification
+            </h1>
+<p class="text-on-surface-variant max-w-2xl font-light italic opacity-80 border-l-2 border-primary/40 pl-4">
+                Production deployment checklist for <span class="text-primary-fixed underline decoration-primary/30">fortune.core.com.uy</span>. Complete these steps to ensure system integrity.
+            </p>
+</div>
+<!-- Bento Grid Checklist -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Step 1: Access -->
+<div class="md:col-span-1 bg-surface-container-high/80 backdrop-blur-md p-6 rounded-lg border-l-4 border-primary shadow-lg transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Step 01</span>
+</div>
+<h3 class="font-headline text-xl mb-2 text-on-surface">Access Public URL</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                    Navigate to the live production environment and verify SSL certificate validity.
+                </p>
+<div class="mt-6 flex items-center gap-2 text-primary-fixed-dim text-xs font-mono bg-black/40 p-2 rounded">
+<span class="material-symbols-outlined text-xs" data-icon="link">link</span>
+                    fortune.core.com.uy
+                </div>
+</div>
+<!-- Step 2: Register -->
+<div class="md:col-span-1 bg-surface-container-high/80 backdrop-blur-md p-6 rounded-lg border-l-4 border-outline-variant/30 shadow-lg transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 flex items-center justify-center bg-outline-variant/10 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person_add">person_add</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold opacity-50">Step 02</span>
+</div>
+<h3 class="font-headline text-xl mb-2 text-on-surface">Test Registration</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                    Register a new account using the high-priority verification code.
+                </p>
+<div class="mt-6 flex items-center justify-between bg-surface-container-lowest p-3 border border-outline-variant/20">
+<span class="font-mono text-primary font-bold tracking-widest">VIP-FORTUNE-001</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer text-sm" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<!-- Step 3: Approve -->
+<div class="md:col-span-1 bg-surface-container-high/80 backdrop-blur-md p-6 rounded-lg border-l-4 border-outline-variant/30 shadow-lg transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 flex items-center justify-center bg-outline-variant/10 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="how_to_reg">how_to_reg</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold opacity-50">Step 03</span>
+</div>
+<h3 class="font-headline text-xl mb-2 text-on-surface">Admin Approval</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                    Locate the new user in the SuperAdmin dashboard and grant active status.
+                </p>
+<div class="mt-6">
+<div class="w-full h-1 bg-outline-variant/20 rounded">
+<div class="w-1/3 h-full bg-primary-container rounded"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant mt-2 block">Pending Approval Queue: 1</span>
+</div>
+</div>
+<!-- Step 4 & 5 Large Card -->
+<div class="md:col-span-2 bg-surface-container-low border border-outline-variant/10 rounded-lg p-8 relative overflow-hidden">
+<!-- Background decorative element -->
+<div class="absolute -right-20 -bottom-20 opacity-5">
+<span class="material-symbols-outlined text-[200px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="text-2xl font-headline font-bold text-primary">04</span>
+<h3 class="font-headline text-2xl text-on-surface">Verify Initial Balance</h3>
+</div>
+<p class="text-on-surface-variant mb-6 leading-relaxed">
+                            Log in as the test user. Confirm that the default wallet allocation is correctly displayed in the lobby interface.
+                        </p>
+<div class="inline-flex items-baseline gap-2 bg-surface-container-highest px-6 py-4 rounded-lg">
+<span class="text-primary-fixed-dim font-headline text-3xl font-black">$10,000</span>
+<span class="text-on-tertiary-container text-xs font-bold uppercase tracking-widest">Expected</span>
+</div>
+</div>
+<div class="flex-1 border-t md:border-t-0 md:border-l border-outline-variant/20 pt-8 md:pt-0 md:pl-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="text-2xl font-headline font-bold text-primary">05</span>
+<h3 class="font-headline text-2xl text-on-surface">Test Bet Execution</h3>
+</div>
+<p class="text-on-surface-variant mb-6 leading-relaxed">
+                            Enter <span class="text-primary italic">Ruleta Noir</span>. Place a minimum bet and confirm real-time balance subtraction.
+                        </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="casino">casino</span>
+</div>
+<div class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">
+                                Game Engine: <span class="text-tertiary-fixed">Online</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Launch CTA Card -->
+<div class="md:col-span-1 flex flex-col gap-6">
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container-low p-6 rounded-lg border border-primary/20 flex-1 flex flex-col justify-center text-center">
+<h4 class="font-headline text-on-surface text-lg mb-4">Verification Complete?</h4>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg py-4 px-6 rounded shadow-[0_10px_20px_-10px_rgba(242,202,80,0.5)] hover:opacity-90 active:scale-95 transition-all">
+                        GO TO CASINO
+                    </button>
+<p class="text-[10px] text-on-surface-variant mt-4 uppercase tracking-[0.2em] font-medium">System Status: Live / Production</p>
+</div>
+</div>
+</div>
+<!-- Additional Verification Details -->
+<div class="mt-12 overflow-hidden rounded-lg border border-outline-variant/10 bg-surface-container-low/50">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-highest/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">Check Point</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">Result</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr>
+<td class="px-6 py-4 font-headline text-on-surface">SSL Certificate</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant italic">Let's Encrypt - Valid 90 Days</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-headline text-on-surface">Wallet API Latency</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant italic">14ms Average</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-headline text-on-surface">Database Sync</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant italic">Master-Slave Replicated</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-[#1c1b1b]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<button class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-body text-[10px] font-medium uppercase tracking-tighter mt-1">Lobby</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="task_alt" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-body text-[10px] font-medium uppercase tracking-tighter mt-1">Verify</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body text-[10px] font-medium uppercase tracking-tighter mt-1">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

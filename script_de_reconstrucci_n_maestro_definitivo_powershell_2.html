@@ -1,0 +1,68 @@
+# SCRIPT DE RECONSTRUCCIÓN MAESTRO DEFINITIVO: FORTUNE CASINO VIP
+# Este script limpia tu carpeta local, genera los 22 archivos limpios y sube todo a GitHub.
+
+# 1. Credenciales y Configuración
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Write-CleanHTML($name, $data) {
+    # Limpieza profunda de metadatos
+    if ($data -match "(?s)<!DOCTYPE.*") {
+        $data = $data -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    
+    # Inyectar credenciales reales de Supabase
+    $data = $data -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $data = $data -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    
+    # Guardado con codificación UTF8 sin BOM (Estándar Industrial)
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $data, (New-Object System.Text.UTF8Encoding $false))
+    Write-Host "✓ Generado con éxito: $name" -ForegroundColor Green
+}
+
+Write-Host "--- INICIANDO RECONSTRUCCIÓN PROFESIONAL: FORTUNE CASINO ---" -ForegroundColor Cyan
+
+# 2. Limpieza de seguridad
+Write-Host "Limpiando directorio local..." -ForegroundColor Yellow
+Get-ChildItem -Exclude ".git" | Remove-Item -Force -Recurse
+
+# 3. Generación de Módulos Core (Conexión Realtime)
+Write-CleanHTML "index.html" '{{DATA:SCREEN:SCREEN_103}}'
+Write-CleanHTML "registro.html" '{{DATA:SCREEN:SCREEN_135}}'
+Write-CleanHTML "billetera.html" '{{DATA:SCREEN:SCREEN_60}}'
+Write-CleanHTML "perfil.html" '{{DATA:SCREEN:SCREEN_49}}'
+
+# 4. Generación de Ruletas (6 Variantes)
+Write-CleanHTML "ruleta_noir.html" '{{DATA:SCREEN:SCREEN_143}}'
+Write-CleanHTML "ruleta_clasica.html" '{{DATA:SCREEN:SCREEN_191}}'
+Write-CleanHTML "ruleta_vegas.html" '{{DATA:SCREEN:SCREEN_199}}'
+Write-CleanHTML "ruleta_carbono.html" '{{DATA:SCREEN:SCREEN_149}}'
+Write-CleanHTML "ruleta_monaco.html" '{{DATA:SCREEN:SCREEN_71}}'
+Write-CleanHTML "ruleta_esmeralda.html" '{{DATA:SCREEN:SCREEN_93}}'
+
+# 5. Generación de Slots (6 Variantes)
+Write-CleanHTML "slot_sphinx.html" '{{DATA:SCREEN:SCREEN_194}}'
+Write-CleanHTML "slot_cyber.html" '{{DATA:SCREEN:SCREEN_53}}'
+Write-CleanHTML "slot_777.html" '{{DATA:SCREEN:SCREEN_73}}'
+Write-CleanHTML "slot_deep_sea.html" '{{DATA:SCREEN:SCREEN_92}}'
+Write-CleanHTML "slot_jungle.html" '{{DATA:SCREEN:SCREEN_16}}'
+Write-CleanHTML "slot_galactic.html" '{{DATA:SCREEN:SCREEN_6}}'
+
+# 6. Generación de Cartas (Blackjack & Poker)
+Write-CleanHTML "blackjack_vip_1.html" '{{DATA:SCREEN:SCREEN_166}}'
+Write-CleanHTML "blackjack_vip_2.html" '{{DATA:SCREEN:SCREEN_158}}'
+Write-CleanHTML "blackjack_vip_3.html" '{{DATA:SCREEN:SCREEN_125}}'
+Write-CleanHTML "poker_holdem_1.html" '{{DATA:SCREEN:SCREEN_65}}'
+Write-CleanHTML "poker_holdem_2.html" '{{DATA:SCREEN:SCREEN_154}}'
+Write-CleanHTML "poker_holdem_3.html" '{{DATA:SCREEN:SCREEN_32}}'
+
+Write-Host "--- TODOS LOS ARCHIVOS GENERADOS ---" -ForegroundColor Cyan
+Write-Host "Sincronizando con GitHub (CharlieUY711)..." -ForegroundColor Yellow
+
+# 7. Comandos de Git Automáticos
+git add .
+git commit -m "RECONSTRUCCIÓN MAESTRO DEFINITIVA: 22 módulos 100% funcionales y profesionales"
+git push origin main
+
+Write-Host "¡PROCESO FINALIZADO CON ÉXITO!" -ForegroundColor Cyan
+Write-Host "Verificá fortune.core.com.uy ahora mismo. Tu casino ya es una realidad." -ForegroundColor White

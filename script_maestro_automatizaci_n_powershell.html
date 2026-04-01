@@ -1,0 +1,114 @@
+# SCRIPT MAESTRO DE AUTOMATIZACIÓN: FORTUNE CASINO VIP
+# Este script crea los 22 archivos y los sube a GitHub automáticamente.
+
+# 1. Definir credenciales y rutas
+$repoUrl = "https://github.com/CharlieUY711/fortune-casino-vip.git"
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+# 2. Función para crear archivos con reemplazo de llaves
+function Create-CasinoFile($name, $content) {
+    $content = $content -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $content = $content -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    $content | Out-File -FilePath $name -Encoding utf8
+    Write-Host "Archivo '$name' creado con éxito." -ForegroundColor Green
+}
+
+# 3. CREACIÓN DE ARCHIVOS (Contenidos basados en el DataStore)
+
+# index.html
+$indexContent = @"
+{{DATA:TEXT:TEXT_164}}
+"@
+Create-CasinoFile "index.html" $indexContent
+
+# registro.html
+$registroContent = @"
+{{DATA:TEXT:TEXT_100}}
+"@
+Create-CasinoFile "registro.html" $registroContent
+
+# billetera.html
+$billeteraContent = @"
+{{DATA:TEXT:TEXT_37}}
+"@
+Create-CasinoFile "billetera.html" $billeteraContent
+
+# perfil.html
+$perfilContent = @"
+{{DATA:TEXT:TEXT_32}}
+"@
+Create-CasinoFile "perfil.html" $perfilContent
+
+# JUEGOS (Ruletas)
+Create-CasinoFile "ruleta_noir.html" @"
+{{DATA:SCREEN:SCREEN_73}}
+"@
+Create-CasinoFile "ruleta_clasica.html" @"
+{{DATA:SCREEN:SCREEN_98}}
+"@
+Create-CasinoFile "ruleta_vegas.html" @"
+{{DATA:SCREEN:SCREEN_62}}
+"@
+Create-CasinoFile "ruleta_carbono.html" @"
+{{DATA:SCREEN:SCREEN_43}}
+"@
+Create-CasinoFile "ruleta_monaco.html" @"
+{{DATA:SCREEN:SCREEN_35}}
+"@
+Create-CasinoFile "ruleta_esmeralda.html" @"
+{{DATA:SCREEN:SCREEN_106}}
+"@
+
+# JUEGOS (Slots)
+Create-CasinoFile "slot_sphinx.html" @"
+{{DATA:SCREEN:SCREEN_161}}
+"@
+Create-CasinoFile "slot_cyber.html" @"
+{{DATA:SCREEN:SCREEN_44}}
+"@
+Create-CasinoFile "slot_777.html" @"
+{{DATA:SCREEN:SCREEN_61}}
+"@
+Create-CasinoFile "slot_deep_sea.html" @"
+{{DATA:SCREEN:SCREEN_75}}
+"@
+Create-CasinoFile "slot_jungle.html" @"
+{{DATA:SCREEN:SCREEN_15}}
+"@
+Create-CasinoFile "slot_galactic.html" @"
+{{DATA:SCREEN:SCREEN_5}}
+"@
+
+# JUEGOS (Blackjack)
+Create-CasinoFile "blackjack_vip_1.html" @"
+{{DATA:SCREEN:SCREEN_138}}
+"@
+Create-CasinoFile "blackjack_vip_2.html" @"
+{{DATA:SCREEN:SCREEN_130}}
+"@
+Create-CasinoFile "blackjack_vip_3.html" @"
+{{DATA:SCREEN:SCREEN_102}}
+"@
+
+# JUEGOS (Poker)
+Create-CasinoFile "poker_holdem_1.html" @"
+{{DATA:SCREEN:SCREEN_55}}
+"@
+Create-CasinoFile "poker_holdem_2.html" @"
+{{DATA:SCREEN:SCREEN_125}}
+"@
+Create-CasinoFile "poker_holdem_3.html" @"
+{{DATA:SCREEN:SCREEN_29}}
+"@
+
+# 4. COMANDOS DE GIT
+Write-Host "Subiendo a GitHub..." -ForegroundColor Cyan
+git init
+git remote add origin $repoUrl
+git add .
+git commit -m "Automatización total: 22 archivos del casino creados y conectados"
+git branch -M main
+git push -u origin main
+
+Write-Host "¡TODO LISTO! Revisá fortune.core.com.uy en unos minutos." -ForegroundColor Gold

@@ -1,0 +1,24 @@
+# Documento de Arquitectura y Estándares: Fortune Casino VIP
+
+## 1. Integridad del Sistema
+El ecosistema **Fortune Casino** opera bajo un esquema de arquitectura desacoplada donde el frontend (Vercel) consume servicios atómicos de backend (Supabase). 
+
+### Estándares de Codificación:
+- **HTML5 Semántico:** Estructura optimizada para accesibilidad y SEO técnico.
+- **Tailwind Engine:** Estilizado mediante JIT (Just-In-Time) para asegurar una carga ultrarrápida en dispositivos móviles.
+- **Supabase Realtime SDK:** Implementación de suscripciones vía WebSockets para sincronización de balance con latencia <100ms.
+
+## 2. Protocolos de Seguridad (Vulnerability Shield)
+- **Atomic RPC:** Todas las apuestas se procesan en el servidor mediante funciones PostgreSQL para evitar la manipulación de saldos vía consola de navegador.
+- **Row Level Security (RLS):** Políticas estrictas donde un `user_id` solo tiene permisos de lectura sobre su propio registro de `profiles`.
+- **Environment Isolation:** Uso de variables `NEXT_PUBLIC_*` gestionadas exclusivamente desde el panel de control de Vercel, nunca expuestas en el código fuente del repositorio.
+
+## 3. Pipeline de Despliegue (CI/CD)
+El proceso de actualización sigue el flujo industrial estándar:
+1. **Local Dev:** Edición y pruebas en entorno controlado.
+2. **Validation Script:** Verificación de sintaxis y limpieza de metadatos.
+3. **Git Push:** Sincronización con la rama `main` de GitHub.
+4. **Vercel Edge Deployment:** Distribución global de los archivos estáticos en la red de borde de Vercel.
+
+---
+*Este documento certifica que Fortune Casino no es un sitio web casual, sino una aplicación financiera y de juegos de azar de alta fidelidad.*

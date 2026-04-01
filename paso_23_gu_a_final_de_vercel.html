@@ -1,0 +1,29 @@
+# GUÍA DE DESPLIEGUE FINAL EN VERCEL
+
+Seguí estos pasos para que tu código de GitHub se convierta en tu sitio web oficial:
+
+### 1. Entrar a Vercel
+Iniciá sesión en [Vercel](https://vercel.com/) usando tu cuenta de **GitHub**.
+
+### 2. Importar el Proyecto
+1. Hacé clic en **"Add New"** -> **"Project"**.
+2. Buscá tu repositorio `fortune-casino-vip` y dale a **"Import"**.
+
+### 3. Configurar Variables de Entorno (CRÍTICO)
+Antes de darle al botón "Deploy", desplegá la sección **"Environment Variables"** y añadí estas dos:
+
+*   **Variable 1:** `NEXT_PUBLIC_SUPABASE_URL`
+    *   **Valor:** `https://gfxxhquajzcdslayhmhs.supabase.co`
+*   **Variable 2:** `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+    *   **Valor:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc`
+
+### 4. Deploy
+Hacé clic en **"Deploy"**. Vercel tardará un minuto en compilar todo.
+
+### 5. Dominio Personalizado
+1. Una vez que termine, ve a la pestaña **"Settings"** -> **"Domains"**.
+2. Escribí `fortune.core.com.uy` y dale a **"Add"**.
+3. Vercel te dará unos registros (A o CNAME). Copialos y pegalos en el panel de control de tu dominio (donde lo compraste).
+
+---
+**¿Te gustaría que te ayude con algún paso específico de la configuración de DNS o ya estás dentro de Vercel?**

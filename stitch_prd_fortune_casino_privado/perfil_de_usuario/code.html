@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#920703",
+              "surface-container-highest": "#353534",
+              "on-tertiary-container": "#055029",
+              "inverse-primary": "#735c00",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "tertiary": "#9adeaa",
+              "on-secondary": "#690000",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#92d6a2",
+              "on-primary-fixed-variant": "#574500",
+              "on-primary-container": "#554300",
+              "surface": "#131313",
+              "primary-container": "#d4af37",
+              "on-tertiary-fixed": "#00210d",
+              "on-background": "#e5e2e1",
+              "error": "#ffb4ab",
+              "surface-container-low": "#1c1b1b",
+              "primary": "#f2ca50",
+              "on-secondary-container": "#ff9a8a",
+              "primary-fixed": "#ffe088",
+              "on-tertiary-fixed-variant": "#08522a",
+              "tertiary-container": "#7fc290",
+              "surface-container": "#201f1f",
+              "on-surface-variant": "#d0c5af",
+              "error-container": "#93000a",
+              "on-secondary-fixed-variant": "#920703",
+              "background": "#131313",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#241a00",
+              "tertiary-fixed": "#adf2bc",
+              "on-primary": "#3c2f00",
+              "on-error-container": "#ffdad6",
+              "secondary-fixed": "#ffdad4",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-tertiary": "#00391a",
+              "surface-tint": "#e9c349",
+              "primary-fixed-dim": "#e9c349",
+              "inverse-surface": "#e5e2e1",
+              "secondary": "#ffb4a8",
+              "outline-variant": "#4d4635",
+              "surface-variant": "#353534",
+              "outline": "#99907c",
+              "inverse-on-surface": "#313030",
+              "on-secondary-fixed": "#410000",
+              "surface-dim": "#131313",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.gold-leaf-gradient {
+    background: linear-gradient(45deg, #f2ca50, #d4af37)
+    }
+.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDXSCxp6R0B5u6a_lFbZXnwOLq-O3C4abj8cnj_se7a8w7JUu86BISQbMJJ9yjkqjvTYYFkfCASo75TcmaXhNRxnjrkEDFBcs3wx1ET8iP1VE6xGCFqh86Meq5wjCCUfgI-OoDRAcCrloZrEWG6aKJaY3NWjJNNFFrrj5QmGvCc20-0ZNRYNWO2rha6nV7K7494SaXH7c-7a06WlQNc9VxGAap_2PmSSek1tIlDJHy6x7cmVRuCTRSilhjtwbZvvZNaTveHkT6YRfQ-);
+    opacity: 0.03
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary/30 min-h-screen">
+<div class="fixed inset-0 noise-overlay pointer-events-none"></div>
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-xl mx-auto bg-[#1c1b1b]">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-primary/30 object-cover" data-alt="Close up portrait of a sophisticated man in a dark suit with dramatic lighting in a luxury setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGeSUfMNysr3ffIv_4Gm8uUFsFK0Ptttyvt-4qAWaKMDENrjrx4HctLABxAiNWc2pSkA9oOaXAqCnwtKbr1-0o_AUTZXUw_zWWmfAsi0zeo81ro1unt1YBJ5jMwPiu2RSqvdpwtEnRssXFRpCrig6SLsD4WSg47Ea1TS3dvGifMhSCr1_WefUUC71MSHmOvAC1xJd8QW0rfx671vKueMMwt4kHEVMZzHY6NXu-z8a2wNiv7_LUwGspXFp-VCe8Mool-zupjt_FOu3C"/>
+<span class="text-2xl font-['Noto_Serif'] font-black uppercase text-[#d4af37] tracking-widest">NOIR</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#f2ca50]">account_balance_wallet</span>
+<span class="text-[#f2ca50] font-['Noto_Serif'] font-bold tracking-tight">$25,400.00</span>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-screen-xl mx-auto space-y-12">
+<!-- Header Section -->
+<section class="flex flex-col items-center text-center space-y-4">
+<div class="inline-block px-4 py-1 border border-outline-variant/20 rounded-full bg-surface-container-low">
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Diamante Noir</span>
+</div>
+<h1 class="font-headline text-5xl md:text-6xl font-black text-on-surface">Alexander Vance</h1>
+<div class="flex flex-col items-center pt-4">
+<p class="text-on-surface-variant text-sm uppercase tracking-widest mb-1">Current Balance</p>
+<p class="font-headline text-display-lg text-primary drop-shadow-[0_0_15px_rgba(242,202,80,0.2)]">$124,500.00</p>
+</div>
+<div class="pt-6">
+<button class="gold-leaf-gradient px-12 py-4 rounded text-on-primary font-headline text-lg font-bold uppercase tracking-widest shadow-xl active:scale-95 transition-transform">
+                    Deposit Credits
+                </button>
+</div>
+</section>
+<!-- Bento Layout for Stats and Activity -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Security & Settings -->
+<div class="md:col-span-4 space-y-6">
+<div class="bg-surface-container-low p-8 border border-outline-variant/10 rounded-lg backdrop-blur-md">
+<h2 class="font-headline text-xl text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">security</span> Security
+                    </h2>
+<ul class="space-y-6">
+<li class="flex justify-between items-center group cursor-pointer">
+<div>
+<p class="text-on-surface font-medium">Two-Factor Auth</p>
+<p class="text-tertiary text-xs">Enabled</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer">
+<div>
+<p class="text-on-surface font-medium">Biometric Access</p>
+<p class="text-on-surface-variant text-xs">Touch ID / Face ID</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</li>
+<li class="flex justify-between items-center group cursor-pointer pt-6 border-t border-outline-variant/10">
+<div>
+<p class="text-secondary font-medium">Logout</p>
+<p class="text-on-surface-variant text-xs">End active session</p>
+</div>
+<span class="material-symbols-outlined text-secondary">logout</span>
+</li>
+</ul>
+</div>
+<!-- VIP Card Decor -->
+<div class="relative h-48 rounded-lg overflow-hidden border border-outline-variant/20">
+<img alt="VIP Card Background" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="Luxurious black and gold textured surface with abstract patterns mimicking gold veins in dark marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfmi2Fh_4wLa93-FTlrIGjpNjO3sXbavvVN140hOfM1UB6b4GBtVe5JyCiyKjD7XK6Dw7HWotN3EqFeCwH-3HkJQD9K9sBsz-vZX-BZGIUS1nXxe6uMO_WH3Xw1fjLkAznsRp8Y0peZ7DBsmd2OoYX-Sa359wTKqLlOKavknHZgasSluRuN79ak6ZBCFkSaSf5zjPdCZ4cyrrz6wdeprj6ehxSCd0lvHEuKvjaRaDOmTY7sEPv0hLGdPzxAP6Mh-4vs39HAtyO7r9Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<p class="text-xs uppercase tracking-[0.3em] text-primary mb-1">Membership</p>
+<p class="font-headline text-2xl text-on-surface">The Vault Elite</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="md:col-span-8 bg-surface-container-low p-8 border border-outline-variant/10 rounded-lg backdrop-blur-md">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-2xl text-on-surface">Recent Activity</h2>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest mt-1">Transaction History</p>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Activity Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 rounded border border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">casino</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Won on Roulette</p>
+<p class="text-on-surface-variant text-xs">Table #42 • 2 mins ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-tertiary font-headline font-bold">+$500.00</p>
+<p class="text-[10px] text-tertiary-container uppercase">Success</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 rounded border border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">style</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Lost on Poker</p>
+<p class="text-on-surface-variant text-xs">High Stakes Room • 1 hour ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-secondary font-headline font-bold">-$200.00</p>
+<p class="text-[10px] text-secondary-container uppercase">Settled</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 rounded border border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">sports_esports</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Won on Dragon Slot</p>
+<p class="text-on-surface-variant text-xs">Main Lobby • 4 hours ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-tertiary font-headline font-bold">+$1,250.00</p>
+<p class="text-[10px] text-tertiary-container uppercase">Success</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high/50 rounded border border-outline-variant/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Account Deposit</p>
+<p class="text-on-surface-variant text-xs">Bank Transfer • Yesterday</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-headline font-bold">+$10,000.00</p>
+<p class="text-[10px] text-primary-container uppercase">Completed</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-lg bg-[#1c1b1b]/90 backdrop-blur-md border-t border-[#4d4635]/20">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-tighter">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-tighter">Invites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-tighter">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

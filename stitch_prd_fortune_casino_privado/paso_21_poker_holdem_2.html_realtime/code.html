@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Royal Velvet Poker | Midnight Royale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#adf2bc",
+                        "on-secondary-fixed": "#410000",
+                        "on-primary-fixed": "#241a00",
+                        "on-tertiary-fixed": "#00210d",
+                        "surface-variant": "#353534",
+                        "surface-tint": "#e9c349",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "inverse-primary": "#735c00",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#4d4635",
+                        "primary-container": "#d4af37",
+                        "outline": "#99907c",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "primary": "#f2ca50",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-container": "#ff9a8a",
+                        "surface-container-highest": "#353534",
+                        "surface-bright": "#3a3939",
+                        "surface": "#131313",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "on-primary-container": "#554300",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d0c5af",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "on-secondary-fixed-variant": "#920703",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed-dim": "#e9c349",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary": "#9adeaa",
+                        "on-tertiary-container": "#055029",
+                        "secondary": "#ffb4a8",
+                        "on-background": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "secondary-container": "#920703",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-container": "#7fc290",
+                        "on-secondary": "#690000",
+                        "on-tertiary": "#00391a",
+                        "background": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#3c2f00"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .poker-table-gradient {
+            background: radial-gradient(circle at center, #920703 0%, #410000 70%, #131313 100%);
+        }
+        .gold-shimmer {
+            background: linear-gradient(45deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%);
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1c1b1b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #4d4635; border-radius: 10px; }
+        body { min-height: max(884px, 100dvh); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body select-none overflow-hidden h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#131313] shadow-[0_32px_64px_-15px_rgba(212,175,55,0.06)] flex justify-between items-center px-6 h-16 w-full z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30 active:scale-95 transition-transform cursor-pointer">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ1nyNWJAsWNp6LxwPiOEAW-LQcVqaWJO0AlM_LtD0KYkoGiMao5KQKiDQeQKHakScrP7krr1W8svTy8T163n1u0fblD-Qgqfc0N_m79YTovqSpdlfxzDKTai4yoFJ4uMSwHtIR0EF90j3PA-OHXiuBicxPUOEwABRRDA-ADkbo-knpFhJ9kuSwLDVd2WJyLmxczmQ6Ir47vNaTd90xRdy77pX60XIGc3k1kuMs4W4wJUe7AQYFxR95TXuNFDgPLEYlHqMniQfvtgB"/>
+</div>
+<div class="hidden sm:block">
+<p class="text-on-surface-variant text-[10px] uppercase tracking-widest font-label" id="label-vip">High Roller</p>
+<p class="text-primary font-headline font-bold text-sm leading-tight" id="user-balance">$1,240,500.00</p>
+</div>
+</div>
+<h1 class="text-xl font-headline italic font-bold text-primary tracking-[0.2em]">MIDNIGHT ROYALE</h1>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">language</span>
+<span class="text-[10px] uppercase font-label hidden sm:inline" id="current-lang">ES</span>
+</button>
+<div class="absolute right-0 top-full mt-2 w-24 bg-surface-container-high rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] border border-outline-variant/20">
+<button class="w-full text-left px-3 py-2 text-[10px] uppercase font-label hover:text-primary" onclick="setLanguage('ES')">Español</button>
+<button class="w-full text-left px-3 py-2 text-[10px] uppercase font-label hover:text-primary" onclick="setLanguage('EN')">English</button>
+<button class="w-full text-left px-3 py-2 text-[10px] uppercase font-label hover:text-primary" onclick="setLanguage('PT')">Português</button>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Poker Game Arena -->
+<main class="flex-grow relative flex flex-col overflow-hidden">
+<div class="noise-overlay absolute inset-0 z-10"></div>
+<!-- The Poker Table (Royal Velvet) -->
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<div class="relative w-full max-w-4xl aspect-[2/1] poker-table-gradient rounded-[200px] border-[12px] border-[#1c1b1b] shadow-[0_0_100px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-4 rounded-[180px] border border-primary/10 pointer-events-none"></div>
+<!-- Community Cards -->
+<div class="z-20 flex gap-2 md:gap-3 items-center">
+<div class="w-12 h-18 md:w-16 md:h-24 bg-white rounded-lg shadow-xl flex flex-col items-center justify-between p-1 md:p-2 border border-outline-variant/20">
+<span class="text-red-600 font-bold self-start text-xs md:text-sm">A♥</span>
+<span class="material-symbols-outlined text-red-600 text-lg md:text-2xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-red-600 font-bold self-end rotate-180 text-xs md:text-sm">A♥</span>
+</div>
+<div class="w-12 h-18 md:w-16 md:h-24 bg-white rounded-lg shadow-xl flex flex-col items-center justify-between p-1 md:p-2 border border-outline-variant/20">
+<span class="text-zinc-900 font-bold self-start text-xs md:text-sm">K♠</span>
+<span class="material-symbols-outlined text-zinc-900 text-lg md:text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-zinc-900 font-bold self-end rotate-180 text-xs md:text-sm">K♠</span>
+</div>
+<div class="w-12 h-18 md:w-16 md:h-24 bg-white rounded-lg shadow-xl flex flex-col items-center justify-between p-1 md:p-2 border border-outline-variant/20">
+<span class="text-zinc-900 font-bold self-start text-xs md:text-sm">10♠</span>
+<span class="material-symbols-outlined text-zinc-900 text-lg md:text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-zinc-900 font-bold self-end rotate-180 text-xs md:text-sm">10♠</span>
+</div>
+<div class="w-12 h-18 md:w-16 md:h-24 bg-surface-container-highest rounded-lg border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/40 text-3xl">style</span>
+</div>
+<div class="w-12 h-18 md:w-16 md:h-24 bg-surface-container-highest rounded-lg border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/40 text-3xl">style</span>
+</div>
+</div>
+<!-- Pot Display -->
+<div class="mt-4 z-20 flex flex-col items-center">
+<p class="text-on-surface-variant font-label text-[10px] uppercase tracking-widest mb-1" id="label-pot">Pot Total</p>
+<div class="bg-black/40 backdrop-blur-md px-6 py-2 rounded-full border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+<span class="text-primary font-headline font-bold text-lg tracking-tight" id="pot-value">$45,200</span>
+</div>
+</div>
+<!-- Opponents -->
+<div class="absolute top-8 left-1/4 -translate-x-1/2 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-surface-container-highest shadow-lg overflow-hidden grayscale opacity-80">
+<img alt="Player" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE1VCdgK3sLe6zR4V2S-WfEtwzZ5eA64GJla9slVMXvLsKwl1gMafxoufmXZTAaDAqpr3QxWK23od9mLmg1pCQNyBES_bLg2sIHEgmgBQGwvN8P-1od7UKJofHuqor-77YD61485owfgOAhBSlZIeLoF40SD-1gnnt10ZXCZQxUYuAgmfg4b-h_a9YK-Kj5VUTwrbTO5jOXXTd3V-5jdVX2gFZlYdCtBBcsV1Mqv7pzTK3Br4SoLr6RmNj0kXU1FgrxWxUAz123mS1"/>
+</div>
+<div class="mt-2 bg-black/60 px-2 py-0.5 rounded text-[10px] text-on-surface-variant">Player 4</div>
+</div>
+<div class="absolute top-8 right-1/4 translate-x-1/2 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-surface-container-highest shadow-lg overflow-hidden grayscale opacity-80">
+<img alt="Player" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeQ6gslVv9rAJHRT3I-y9AGrHLrp94UVYp04XjO1KW6z2w47CO4z_l2TJiPNw06jY2pOiP61iVrjpgtaLG4cve1cNWfKgZnNn9_XGCMSllMXyToXK5r87aHwebe7bIDfck1Dy4cUmpZY09w2dgCMEPToqDMhOHxsbB2BBUt4KRRwnwDs5nxBG00xre8n68RB-XHJG3AaLHtQM3IGY74YtYqqiKpsBsv1hGrO6R57f-tcL8afSfUSi8TNfiovW5cPzLYSmnABiRDFny"/>
+</div>
+<div class="mt-2 bg-black/60 px-2 py-0.5 rounded text-[10px] text-on-surface-variant">Player 2</div>
+</div>
+<div class="absolute top-1/2 -left-4 -translate-y-1/2 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-surface-container flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div class="mt-1 bg-black/60 px-2 py-0.5 rounded text-[8px] text-on-surface-variant" id="label-empty">Empty</div>
+</div>
+<div class="absolute top-1/2 -right-4 -translate-y-1/2 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-secondary shadow-lg overflow-hidden">
+<img alt="Player" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOD4ChsCKmte0v9df8vvdxxsv_cxDGMJDWwbbIXinOv0wqTR18GEiiEIPcU46yrvhiVrthVRXHOhyUSMb2A3JPO70UBBS2wh05jONNNHecdHgJq4zeL8EYzGbtXnEZl_JD8rsQTDld9rkr3__QVlMaIpE_koQJxmSyVgfJ9dZANFL7Ds0Tdsaee1YKTyOJjFBSr9YVAxrHxH-qg39AGQeGAlawzs6H67xlq0TUFmdzTo7Plsk3XW4T9MSk7Af3cZmuxT-NGTaRi564"/>
+</div>
+<div class="mt-2 bg-secondary-container px-2 py-0.5 rounded text-[10px] text-white" id="label-dealer">Dealer</div>
+</div>
+</div>
+</div>
+<!-- Player Hands -->
+<div class="absolute bottom-32 left-1/2 -translate-x-1/2 flex gap-4 z-40">
+<div class="relative group">
+<div class="w-20 h-28 md:w-24 md:h-36 bg-white rounded-lg shadow-2xl flex flex-col items-center justify-between p-2 md:p-3 border border-outline-variant/30 -rotate-6 transition-transform hover:-translate-y-4">
+<span class="text-zinc-900 font-headline font-bold self-start text-lg md:text-xl">Q♠</span>
+<span class="material-symbols-outlined text-zinc-900 text-3xl md:text-4xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-zinc-900 font-headline font-bold self-end rotate-180 text-lg md:text-xl">Q♠</span>
+</div>
+<div class="absolute top-0 left-8 w-20 h-28 md:w-24 md:h-36 bg-white rounded-lg shadow-2xl flex flex-col items-center justify-between p-2 md:p-3 border border-outline-variant/30 rotate-6 transition-transform hover:-translate-y-4">
+<span class="text-zinc-900 font-headline font-bold self-start text-lg md:text-xl">J♠</span>
+<span class="material-symbols-outlined text-zinc-900 text-3xl md:text-4xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-zinc-900 font-headline font-bold self-end rotate-180 text-lg md:text-xl">J♠</span>
+</div>
+</div>
+</div>
+<!-- Action HUD -->
+<div class="mt-auto pb-24 md:pb-28 px-4 z-50">
+<div class="max-w-xl mx-auto flex flex-col gap-4">
+<!-- Chip Selector -->
+<div class="flex justify-center items-center gap-3 overflow-x-auto pb-2 no-scrollbar" id="chip-container">
+<button class="w-12 h-12 rounded-full bg-surface-bright border-2 border-primary/40 flex items-center justify-center text-[10px] font-bold text-primary active:scale-90 transition-transform shadow-lg shadow-primary/5" onclick="selectChip(50)">50</button>
+<button class="w-14 h-14 rounded-full bg-surface-bright border-2 border-primary flex items-center justify-center text-xs font-bold text-primary active:scale-90 transition-transform shadow-xl shadow-primary/10 ring-2 ring-primary/20" id="selected-chip-btn" onclick="selectChip(100)">100</button>
+<button class="w-12 h-12 rounded-full bg-surface-bright border-2 border-secondary/40 flex items-center justify-center text-[10px] font-bold text-secondary active:scale-90 transition-transform shadow-lg" onclick="selectChip(500)">500</button>
+<button class="w-12 h-12 rounded-full bg-surface-bright border-2 border-tertiary/40 flex items-center justify-center text-[10px] font-bold text-tertiary active:scale-90 transition-transform shadow-lg" onclick="selectChip(1000)">1K</button>
+<button class="w-12 h-12 rounded-full bg-surface-bright border-2 border-outline-variant/40 flex items-center justify-center text-[10px] font-bold text-on-surface-variant active:scale-90 transition-transform shadow-lg">MAX</button>
+</div>
+<!-- Main Betting Controls -->
+<div class="grid grid-cols-3 gap-3">
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface-variant py-4 rounded-lg font-headline font-bold uppercase tracking-widest text-sm border border-outline-variant/20 active:scale-95 transition-all" id="btn-fold" onclick="placeBet('fold')">FOLD</button>
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface py-4 rounded-lg font-headline font-bold uppercase tracking-widest text-sm border border-outline-variant/20 active:scale-95 transition-all" id="btn-check" onclick="placeBet('check')">CHECK</button>
+<button class="gold-shimmer text-on-primary py-4 rounded-lg font-headline font-bold uppercase tracking-widest text-sm shadow-[0_10px_30px_rgba(242,202,80,0.3)] active:scale-95 transition-all" id="btn-call" onclick="placeBet('call')">CALL $100</button>
+</div>
+<!-- Raise Slider Area -->
+<div class="bg-surface-container-low/80 backdrop-blur-md p-4 rounded-xl border border-outline-variant/10 flex items-center gap-4">
+<button onclick="adjustRaise(-100)"><span class="material-symbols-outlined text-on-surface-variant">remove_circle</span></button>
+<div class="flex-grow h-1 bg-surface-variant rounded-full relative">
+<div class="absolute inset-y-0 left-0 w-1/3 gold-shimmer rounded-full" id="raise-slider-fill"></div>
+<div class="absolute top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full gold-shimmer border-2 border-on-primary shadow-lg" id="raise-slider-thumb"></div>
+</div>
+<button onclick="adjustRaise(100)"><span class="material-symbols-outlined text-primary">add_circle</span></button>
+<div class="min-w-[80px] text-right">
+<span class="text-primary font-headline font-bold text-lg" id="raise-value">$2,500</span>
+</div>
+<button class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded font-bold text-xs uppercase active:scale-95 transition-transform" id="btn-raise" onclick="placeBet('raise')">RAISE</button>
+</div>
+</div>
+</div>
+</main>
+<!-- NavigationDrawer -->
+<aside class="hidden md:flex h-full w-80 right-0 fixed z-[60] bg-[#131313] border-l border-[#4d4635]/10 shadow-2xl flex flex-col py-8 px-4">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-primary">history</span>
+<h2 class="text-primary font-headline text-lg font-medium" id="label-history">Historial de Mano</h2>
+</div>
+<div class="flex-grow space-y-4 overflow-y-auto pr-2 custom-scrollbar" id="game-history">
+<div class="p-3 bg-surface-container-low rounded border-l-4 border-primary/30">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Mano #8821</p>
+<p class="text-xs text-on-surface mt-1">Player 2 hizo Call por <span class="text-primary">$100</span></p>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between text-on-surface-variant text-xs mb-2 uppercase font-label">
+<span id="label-vip-bottom">Nivel VIP</span>
+<span class="text-primary">Diamante IX</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-4/5 gold-shimmer"></div>
+</div>
+</div>
+</aside>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-[#1c1b1b]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] z-50 md:hidden">
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1" id="nav-lobby">Lobby</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">style</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1" id="nav-poker">Poker</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1" id="nav-slots">Slots</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1" id="nav-profile">Profile</span>
+</div>
+</nav>
+<script>
+    // Supabase Initialization (Replace placeholders with actual project values)
+    const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
+    const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let currentBalance = 1240500.00;
+    let raiseAmount = 2500;
+    let currentLanguage = 'ES';
+
+    const translations = {
+        ES: {
+            vip: 'High Roller',
+            pot: 'Bote Total',
+            empty: 'Vacío',
+            dealer: 'Repartidor',
+            fold: 'RETIRARSE',
+            check: 'PASAR',
+            call: 'IGUALAR',
+            raise: 'SUBIR',
+            history: 'Historial de Mano',
+            vip_lvl: 'Nivel VIP',
+            lobby: 'LOBBY',
+            poker: 'POKER',
+            slots: 'TRAGAMONEDAS',
+            profile: 'PERFIL'
+        },
+        EN: {
+            vip: 'High Roller',
+            pot: 'Total Pot',
+            empty: 'Empty',
+            dealer: 'Dealer',
+            fold: 'FOLD',
+            check: 'CHECK',
+            call: 'CALL',
+            raise: 'RAISE',
+            history: 'Hand History',
+            vip_lvl: 'VIP Level',
+            lobby: 'LOBBY',
+            poker: 'POKER',
+            slots: 'SLOTS',
+            profile: 'PROFILE'
+        },
+        PT: {
+            vip: 'Grande Apostador',
+            pot: 'Pote Total',
+            empty: 'Vazio',
+            dealer: 'Distribuidor',
+            fold: 'DESISTIR',
+            check: 'PASSAR',
+            call: 'IGUALAR',
+            raise: 'AUMENTAR',
+            history: 'Histórico da Mão',
+            vip_lvl: 'Nível VIP',
+            lobby: 'LOBBY',
+            poker: 'POKER',
+            slots: 'SLOTS',
+            profile: 'PERFIL'
+        }
+    };
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        const t = translations[lang];
+        document.getElementById('current-lang').innerText = lang;
+        document.getElementById('label-vip').innerText = t.vip;
+        document.getElementById('label-pot').innerText = t.pot;
+        document.getElementById('label-empty').innerText = t.empty;
+        document.getElementById('label-dealer').innerText = t.dealer;
+        document.getElementById('btn-fold').innerText = t.fold;
+        document.getElementById('btn-check').innerText = t.check;
+        document.getElementById('btn-call').innerText = `${t.call} $100`;
+        document.getElementById('btn-raise').innerText = t.raise;
+        document.getElementById('label-history').innerText = t.history;
+        document.getElementById('label-vip-bottom').innerText = t.vip_lvl;
+        document.getElementById('nav-lobby').innerText = t.lobby;
+        document.getElementById('nav-poker').innerText = t.poker;
+        document.getElementById('nav-slots').innerText = t.slots;
+        document.getElementById('nav-profile').innerText = t.profile;
+    }
+
+    async function initializeRealtime() {
+        // Assume user is logged in
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        // 1. Subscribe to balance changes
+        supabase.channel('public:profiles')
+            .on('postgres_changes', { 
+                event: 'UPDATE', 
+                schema: 'public', 
+                table: 'profiles', 
+                filter: `id=eq.${user.id}` 
+            }, payload => {
+                // 2. Update balance instantly
+                updateBalanceUI(payload.new.balance);
+            })
+            .subscribe();
+    }
+
+    function updateBalanceUI(balance) {
+        currentBalance = balance;
+        document.getElementById('user-balance').innerText = `$${balance.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+
+    // 3. Integrate process_bet_secure RPC call
+    async function placeBet(action) {
+        const amount = action === 'raise' ? raiseAmount : (action === 'call' ? 100 : 0);
+        
+        try {
+            const { data, error } = await supabase.rpc('process_bet_secure', {
+                p_action: action,
+                p_amount: amount,
+                p_table_id: 'table_001' // Example table ID
+            });
+
+            if (error) {
+                console.error('Bet error:', error.message);
+                // Visual feedback for error
+                return;
+            }
+            
+            // Log success in history locally for immediate feedback
+            addHistoryItem(action, amount);
+        } catch (err) {
+            console.error('System error:', err);
+        }
+    }
+
+    function addHistoryItem(action, amount) {
+        const history = document.getElementById('game-history');
+        const item = document.createElement('div');
+        item.className = 'p-3 bg-surface-container-low rounded border-l-4 border-primary/30 animate-pulse';
+        item.innerHTML = `
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Mano #Realtime</p>
+            <p class="text-xs text-on-surface mt-1">Has realizado <span class="font-bold text-primary">${action.toUpperCase()}</span> ${amount > 0 ? `por <span class="text-primary">$${amount}</span>` : ''}</p>
+        `;
+        history.prepend(item);
+        setTimeout(() => item.classList.remove('animate-pulse'), 1000);
+    }
+
+    function adjustRaise(delta) {
+        raiseAmount = Math.max(0, raiseAmount + delta);
+        document.getElementById('raise-value').innerText = `$${raiseAmount.toLocaleString()}`;
+        // Adjust slider visuals
+        const percentage = Math.min(100, (raiseAmount / 10000) * 100);
+        document.getElementById('raise-slider-fill').style.width = `${percentage}%`;
+        document.getElementById('raise-slider-thumb').style.left = `${percentage}%`;
+    }
+
+    function selectChip(val) {
+        // Just visual for prototype
+        console.log(`Chip selected: ${val}`);
+    }
+
+    // Initialize
+    initializeRealtime();
+    setLanguage('ES');
+</script>
+</body></html>

@@ -1,0 +1,66 @@
+# SCRIPT MAESTRO DE DESPLIEGUE FINAL: FORTUNE CASINO VIP
+# Este script actualiza los 22 archivos con las llaves definitivas y los sube a GitHub.
+
+# 1. Credenciales Definitivas de Supabase
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+# 2. Función de Creación de Archivos
+function Update-CasinoFile($name, $content) {
+    $content = $content -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $content = $content -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    $content | Out-File -FilePath $name -Encoding utf8
+    Write-Host "✓ Archivo '$name' actualizado." -ForegroundColor Green
+}
+
+Write-Host "Generando archivos funcionales para fortune.core.com.uy..." -ForegroundColor Cyan
+
+# 3. Generación de los 22 Módulos
+Update-CasinoFile "index.html" @"
+{{DATA:SCREEN:SCREEN_159}}
+"@
+
+Update-CasinoFile "registro.html" @"
+{{DATA:SCREEN:SCREEN_116}}
+"@
+
+Update-CasinoFile "billetera.html" @"
+{{DATA:SCREEN:SCREEN_51}}
+"@
+
+Update-CasinoFile "perfil.html" @"
+{{DATA:SCREEN:SCREEN_41}}
+"@
+
+# Ruletas
+Update-CasinoFile "ruleta_noir.html" @"{{DATA:SCREEN:SCREEN_122}}"@
+Update-CasinoFile "ruleta_clasica.html" @"{{DATA:SCREEN:SCREEN_164}}"@
+Update-CasinoFile "ruleta_vegas.html" @"{{DATA:SCREEN:SCREEN_127}}"@
+Update-CasinoFile "ruleta_carbono.html" @"{{DATA:SCREEN:SCREEN_60}}"@
+Update-CasinoFile "ruleta_monaco.html" @"{{DATA:SCREEN:SCREEN_172}}"@
+Update-CasinoFile "ruleta_esmeralda.html" @"{{DATA:SCREEN:SCREEN_80}}"@
+
+# Slots
+Update-CasinoFile "slot_sphinx.html" @"{{DATA:SCREEN:SCREEN_167}}"@
+Update-CasinoFile "slot_cyber.html" @"{{DATA:SCREEN:SCREEN_45}}"@
+Update-CasinoFile "slot_777.html" @"{{DATA:SCREEN:SCREEN_62}}"@
+Update-CasinoFile "slot_deep_sea.html" @"{{DATA:SCREEN:SCREEN_79}}"@
+Update-CasinoFile "slot_jungle.html" @"{{DATA:SCREEN:SCREEN_15}}"@
+Update-CasinoFile "slot_galactic.html" @"{{DATA:SCREEN:SCREEN_5}}"@
+
+# Blackjack & Poker
+Update-CasinoFile "blackjack_vip_1.html" @"{{DATA:SCREEN:SCREEN_143}}"@
+Update-CasinoFile "blackjack_vip_2.html" @"{{DATA:SCREEN:SCREEN_135}}"@
+Update-CasinoFile "blackjack_vip_3.html" @"{{DATA:SCREEN:SCREEN_108}}"@
+Update-CasinoFile "poker_holdem_1.html" @"{{DATA:SCREEN:SCREEN_56}}"@
+Update-CasinoFile "poker_holdem_2.html" @"{{DATA:SCREEN:SCREEN_131}}"@
+Update-CasinoFile "poker_holdem_3.html" @"{{DATA:SCREEN:SCREEN_29}}"@
+
+# 4. Sincronización con GitHub
+Write-Host "Sincronizando con CharlieUY711/fortune-casino-vip..." -ForegroundColor Yellow
+git add .
+git commit -m "Despliegue Final: 22 módulos conectados y operativos"
+git push origin main
+
+Write-Host "¡PROCESO COMPLETADO!" -ForegroundColor Gold
+Write-Host "Ahora configurá las variables en el panel de Vercel siguiendo la guía en el lienzo." -ForegroundColor White

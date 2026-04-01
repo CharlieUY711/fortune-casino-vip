@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino | VIP Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f1f",
+                        "secondary": "#ffb4a8",
+                        "error": "#ffb4ab",
+                        "on-primary": "#3c2f00",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-tertiary-fixed": "#00210d",
+                        "outline": "#99907c",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-variant": "#353534",
+                        "on-secondary": "#690000",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#4d4635",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#735c00",
+                        "tertiary-container": "#7fc290",
+                        "on-tertiary": "#00391a",
+                        "tertiary": "#9adeaa",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#f2ca50",
+                        "on-secondary-container": "#ff9a8a",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "secondary-container": "#920703",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-container": "#055029",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-fixed": "#adf2bc",
+                        "surface": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#554300",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#410000",
+                        "on-background": "#e5e2e1"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+            vertical-align: middle
+        }
+        .grain-overlay {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuC7c9Vv_FE0puq3sYH0xi3CDGyaJiuHRd9uoIyUMiQAfsv1eZ9BafqGYx6frwjn6CEca1gbgpV6CwaVdIL7YJXCheWjEbbIuHY3NJKZZT9KC5W4VuOPF2DWFHI0x9SB_gxhhVc-ccGscYGkc4xBQIco80xBGZfacteAVZlvCPzT-h0RHy82FigpeqKBSfPXThG_B7aKSPEANLzMQlQn2BUPoo58u8rLOUe3SkOqJDcj3QoL_3QgEnVgR7kCQ5k-C-0nmFHuebup8i2M);
+            opacity: 0.03;
+            pointer-events: none
+        }
+        .gold-gradient {
+            background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%)
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="grain-overlay fixed inset-0 z-[100]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_10px_30px_-15px_rgba(212,175,55,0.1)] h-16 flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-200" data-icon="menu">menu</span>
+<h1 class="text-[#f2ca50] font-serif text-xl tracking-[0.2em] uppercase" id="nav-brand">FORTUNE CASINO</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 px-4">
+<span class="text-[#d0c5af] font-serif tracking-widest uppercase text-xs cursor-pointer hover:text-[#f2ca50] transition-colors duration-300" id="nav-lounge">Lounge</span>
+<span class="text-[#f2ca50] font-serif tracking-widest uppercase text-xs cursor-pointer border-b border-[#f2ca50] pb-1" id="nav-wallet">Wallet</span>
+<span class="text-[#d0c5af] font-serif tracking-widest uppercase text-xs cursor-pointer hover:text-[#f2ca50] transition-colors duration-300" id="nav-invitations">Invitations</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img alt="VIP Member" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5qS-e5iMro45dAeHYs_qTPz-PHdDjIJKBlh6j5VUfaxeDF0TPwBuGJmDHK9Yj6LDYckB4WqiDU59dh5_vaW2GVhxCm7d13c24kyn84Z71jedEFQt9BzKaMATdEcR9_S7aO3jZ8r9Om4awpztNj2PQzp7Xjq9dXS2QTj7M8PUPpiBufSEOSIzqo_3Q50vOWl5Ynn0GwhpZWiIdmgp-qUPrwRSlpTJUXO9DtgHxJSzmeKvnRD0vOvP6xYHyeG4wCLrcWYlfcX_SgYM"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen">
+<!-- Header Section: Balance & Language -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="space-y-2">
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-widest" id="label-credits">Available Credits</span>
+<h2 class="font-headline text-5xl md:text-7xl text-primary font-bold tracking-tight">
+                $ <span id="balance-integer">0</span>.<span class="text-3xl opacity-60" id="balance-decimal">00</span>
+</h2>
+<div class="flex items-center gap-2 text-tertiary text-sm font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span id="label-trend">+2.4% from last session</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-container-low px-4 py-3 rounded-lg flex items-center gap-3 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+<select class="bg-transparent border-none text-on-surface text-sm focus:ring-0 cursor-pointer font-label uppercase tracking-wider" id="language-selector">
+<option value="en">English (US)</option>
+<option value="es">Español (ES)</option>
+<option value="pt">Português (BR)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Payment Methods Bento -->
+<div class="lg:col-span-7 space-y-6">
+<div class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-headline text-2xl mb-8" id="title-deposit">Deposit Funds</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- PayPal Card -->
+<button class="flex flex-col items-start p-6 bg-surface-container-high rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group/card" onclick="handleTransaction('deposit', 'PayPal')">
+<div class="w-12 h-12 bg-surface-container-highest rounded flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<span class="font-bold text-lg mb-1">PayPal</span>
+<span class="text-xs text-on-surface-variant mb-6" id="desc-paypal">Instant transfer • 0% fee</span>
+<div class="w-full py-3 bg-surface-container-highest group-hover/card:bg-primary group-hover/card:text-on-primary text-primary transition-colors text-xs font-bold uppercase tracking-widest text-center" id="btn-select-paypal">
+                                Select Method
+                            </div>
+</button>
+<!-- Binance Card -->
+<button class="flex flex-col items-start p-6 bg-surface-container-high rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group/card" onclick="handleTransaction('deposit', 'Binance')">
+<div class="w-12 h-12 bg-surface-container-highest rounded flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="currency_bitcoin" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+</div>
+<span class="font-bold text-lg mb-1">Binance Pay</span>
+<span class="text-xs text-on-surface-variant mb-6" id="desc-binance">Crypto gateway • Secure</span>
+<div class="w-full py-3 bg-surface-container-highest group-hover/card:bg-primary group-hover/card:text-on-primary text-primary transition-colors text-xs font-bold uppercase tracking-widest text-center" id="btn-select-binance">
+                                Select Method
+                            </div>
+</button>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Withdrawal Section -->
+<div class="bg-surface-container-high/80 backdrop-blur-md p-8 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl" id="title-withdraw">Withdraw Assets</h3>
+<span class="text-xs text-on-surface-variant uppercase tracking-tighter font-bold" id="label-limit">Limit: $50,000 / Day</span>
+</div>
+<div class="space-y-4">
+<div class="relative">
+<label class="absolute -top-2 left-4 px-2 bg-surface-container-high text-[10px] text-primary uppercase font-bold" id="label-withdraw-amount">Amount to Withdraw</label>
+<input class="w-full bg-transparent border border-outline-variant/40 rounded p-4 pt-6 font-headline text-2xl focus:border-primary focus:ring-0 text-on-surface" id="withdraw-input" step="0.01" type="number" value="2500.00"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-primary-fixed font-bold">USD</span>
+</div>
+<button class="w-full gold-gradient text-on-primary font-headline text-xl py-5 rounded-lg active:scale-[0.98] transition-transform shadow-lg shadow-primary/10" id="btn-withdraw" onclick="handleTransaction('withdrawal', 'Bank Transfer')">
+                        INITIATE WITHDRAWAL
+                    </button>
+</div>
+</div>
+</div>
+<!-- Transaction History Sidebar -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-xl flex flex-col h-full overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline text-xl" id="title-ledger">Recent Ledger</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="filter_list">filter_list</span>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[600px] scrollbar-hide" id="transactions-list">
+<!-- Transactions will be injected here -->
+<div class="p-8 text-center text-on-surface-variant italic text-sm">Loading ledger...</div>
+</div>
+<button class="p-4 text-xs font-bold text-primary uppercase tracking-[0.2em] text-center hover:bg-surface-container-low transition-colors" id="btn-full-statement">
+                    View Full Financial Statement
+                </button>
+</div>
+</div>
+</div>
+<!-- Supabase Status Logic -->
+<div class="mt-12 flex items-center gap-4 bg-surface-container-low/40 p-4 rounded border border-outline-variant/10 max-w-fit">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" id="supabase-indicator"></div>
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest" id="status-text">Supabase Database: Connected (Region: Global)</span>
+<div class="w-px h-4 bg-outline-variant/40 mx-2"></div>
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest" id="latency-text">Lat: --ms</span>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-[#131313]/90 backdrop-blur-md z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_25px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="home_pin">home_pin</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter mt-1" id="tab-lobby">Lobby</span>
+</a>
+<a class="flex flex-col items-center text-[#f2ca50] scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter mt-1" id="tab-wallet">Wallet</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter mt-1" id="tab-admin">Admin</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter mt-1" id="tab-invites">Invites</span>
+</a>
+</nav>
+<script>
+    // Supabase Configuration
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // Placeholder
+    const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY'; // Placeholder
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Translations
+    const translations = {
+        en: {
+            brand: "FORTUNE CASINO",
+            lounge: "Lounge",
+            wallet: "Wallet",
+            invitations: "Invitations",
+            credits: "Available Credits",
+            trend: "+2.4% from last session",
+            deposit: "Deposit Funds",
+            withdraw: "Withdraw Assets",
+            withdrawAmount: "Amount to Withdraw",
+            limit: "Limit: $50,000 / Day",
+            initiate: "INITIATE WITHDRAWAL",
+            ledger: "Recent Ledger",
+            statement: "View Full Financial Statement",
+            select: "Select Method",
+            status: "Supabase Database: Connected",
+            lobby: "Lobby",
+            admin: "Admin",
+            invites: "Invites",
+            paypalDesc: "Instant transfer • 0% fee",
+            binanceDesc: "Crypto gateway • Secure"
+        },
+        es: {
+            brand: "FORTUNE CASINO",
+            lounge: "Sala",
+            wallet: "Billetera",
+            invitations: "Invitaciones",
+            credits: "Créditos Disponibles",
+            trend: "+2.4% desde la última sesión",
+            deposit: "Depositar Fondos",
+            withdraw: "Retirar Activos",
+            withdrawAmount: "Monto a Retirar",
+            limit: "Límite: $50,000 / Día",
+            initiate: "INICIAR RETIRO",
+            ledger: "Libro Reciente",
+            statement: "Ver Estado Financiero Completo",
+            select: "Seleccionar Método",
+            status: "Supabase: Conectado",
+            lobby: "Lobby",
+            admin: "Admin",
+            invites: "Invites",
+            paypalDesc: "Transferencia instantánea • 0% comisión",
+            binanceDesc: "Pasarela Cripto • Seguro"
+        },
+        pt: {
+            brand: "FORTUNE CASINO",
+            lounge: "Salão",
+            wallet: "Carteira",
+            invitations: "Convites",
+            credits: "Créditos Disponíveis",
+            trend: "+2.4% desde a última sessão",
+            deposit: "Depositar Fundos",
+            withdraw: "Retirar Ativos",
+            withdrawAmount: "Valor para Retirada",
+            limit: "Limite: $50,000 / Dia",
+            initiate: "INICIAR RETIRADA",
+            ledger: "Registro Recente",
+            statement: "Ver Extrato Financeiro Completo",
+            select: "Selecionar Método",
+            status: "Supabase: Conectado",
+            lobby: "Lobby",
+            admin: "Admin",
+            invites: "Convites",
+            paypalDesc: "Transferência instantânea • 0% taxa",
+            binanceDesc: "Gateway Cripto • Seguro"
+        }
+    };
+
+    function updateLanguage(lang) {
+        const t = translations[lang];
+        document.getElementById('nav-brand').textContent = t.brand;
+        document.getElementById('nav-lounge').textContent = t.lounge;
+        document.getElementById('nav-wallet').textContent = t.wallet;
+        document.getElementById('nav-invitations').textContent = t.invitations;
+        document.getElementById('label-credits').textContent = t.credits;
+        document.getElementById('label-trend').textContent = t.trend;
+        document.getElementById('title-deposit').textContent = t.deposit;
+        document.getElementById('title-withdraw').textContent = t.withdraw;
+        document.getElementById('label-withdraw-amount').textContent = t.withdrawAmount;
+        document.getElementById('label-limit').textContent = t.limit;
+        document.getElementById('btn-withdraw').textContent = t.initiate;
+        document.getElementById('title-ledger').textContent = t.ledger;
+        document.getElementById('btn-full-statement').textContent = t.statement;
+        document.getElementById('btn-select-paypal').textContent = t.select;
+        document.getElementById('btn-select-binance').textContent = t.select;
+        document.getElementById('status-text').textContent = t.status;
+        document.getElementById('tab-lobby').textContent = t.lobby;
+        document.getElementById('tab-wallet').textContent = t.wallet;
+        document.getElementById('tab-admin').textContent = t.admin;
+        document.getElementById('tab-invites').textContent = t.invites;
+        document.getElementById('desc-paypal').textContent = t.paypalDesc;
+        document.getElementById('desc-binance').textContent = t.binanceDesc;
+    }
+
+    document.getElementById('language-selector').addEventListener('change', (e) => {
+        updateLanguage(e.target.value);
+    });
+
+    // Real-time Balance from 'profiles'
+    async function subscribeToBalance() {
+        const userId = 'CURRENT_USER_ID'; // Placeholder
+        
+        // Initial Fetch
+        const { data, error } = await supabase
+            .from('profiles')
+            .select('balance')
+            .eq('id', userId)
+            .single();
+
+        if (data) updateBalanceDisplay(data.balance);
+
+        // Realtime Subscription
+        supabase
+            .channel('balance_updates')
+            .on('postgres_changes', { 
+                event: 'UPDATE', 
+                schema: 'public', 
+                table: 'profiles',
+                filter: `id=eq.${userId}`
+            }, (payload) => {
+                updateBalanceDisplay(payload.new.balance);
+            })
+            .subscribe();
+    }
+
+    function updateBalanceDisplay(balance) {
+        const formatted = balance.toFixed(2);
+        const [int, dec] = formatted.split('.');
+        document.getElementById('balance-integer').textContent = Number(int).toLocaleString();
+        document.getElementById('balance-decimal').textContent = dec;
+    }
+
+    // Transaction History from 'transactions'
+    async function loadTransactions() {
+        const userId = 'CURRENT_USER_ID'; // Placeholder
+        const { data, error } = await supabase
+            .from('transactions')
+            .select('*')
+            .eq('user_id', userId)
+            .order('created_at', { ascending: false })
+            .limit(10);
+
+        if (data) {
+            const list = document.getElementById('transactions-list');
+            list.innerHTML = data.map(tx => renderTransactionRow(tx)).join('');
+        }
+    }
+
+    function renderTransactionRow(tx) {
+        const isPositive = tx.type === 'deposit' || tx.type === 'winning';
+        const icon = isPositive ? 'north_east' : 'south_west';
+        const colorClass = isPositive ? 'text-tertiary' : 'text-on-surface-variant';
+        const sign = isPositive ? '+' : '-';
+        const statusColors = {
+            approved: 'bg-tertiary-container text-on-tertiary-container',
+            pending: 'bg-primary-container text-on-primary-container',
+            rejected: 'bg-error-container text-on-error-container'
+        };
+
+        return `
+            <div class="p-6 border-b border-outline-variant/5 hover:bg-surface-container-low transition-colors group">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded ${isPositive ? 'bg-tertiary-container/20' : 'bg-surface-variant'} flex items-center justify-center">
+                            <span class="material-symbols-outlined ${colorClass}" data-icon="${icon}">${icon}</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm">${tx.description || tx.method}</p>
+                            <p class="text-xs text-on-surface-variant">${new Date(tx.created_at).toLocaleString()}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-headline ${colorClass}">${sign}$${Math.abs(tx.amount).toFixed(2)}</p>
+                        <span class="text-[10px] px-2 py-0.5 rounded ${statusColors[tx.status] || 'bg-surface-variant'} font-bold uppercase">${tx.status}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Insert Transaction
+    async function handleTransaction(type, method) {
+        const amount = type === 'withdrawal' 
+            ? parseFloat(document.getElementById('withdraw-input').value)
+            : 5000.00; // Example fixed deposit for demo
+
+        if (isNaN(amount) || amount <= 0) {
+            alert('Please enter a valid amount');
+            return;
+        }
+
+        const userId = 'CURRENT_USER_ID'; // Placeholder
+        const { error } = await supabase
+            .from('transactions')
+            .insert([{
+                user_id: userId,
+                type: type,
+                method: method,
+                amount: amount,
+                status: 'pending',
+                description: type === 'deposit' ? `${method} Deposit Request` : `Withdrawal to ${method}`
+            }]);
+
+        if (error) {
+            alert('Error processing transaction');
+        } else {
+            alert('Request submitted successfully. Status: PENDING');
+            loadTransactions();
+        }
+    }
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+        // subscribeToBalance(); // Requires valid config
+        // loadTransactions();  // Requires valid config
+        
+        // Performance mock
+        setInterval(() => {
+            document.getElementById('latency-text').textContent = `Lat: ${Math.floor(Math.random() * 30 + 15)}ms`;
+        }, 3000);
+    });
+</script>
+</body></html>

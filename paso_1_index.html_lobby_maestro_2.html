@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Casino VIP - Lobby</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #131313; color: #d0c5af; }
+        h1, h2, h3 { font-family: 'Noto+Serif', serif; }
+        .gold-text { color: #f2ca50; }
+        .gold-border { border-color: #4d4635; }
+        .gold-bg { background-color: #f2ca50; color: #131313; }
+        .noir-card { background-color: #1c1b1b; border: 1px solid rgba(77, 70, 53, 0.2); }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#131313] border-b border-[#4d4635]/20 px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="gold-text font-serif italic font-bold text-xl tracking-widest">MIDNIGHT ROYALE</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="text-right">
+                <p class="text-[10px] uppercase tracking-tighter opacity-60">Balance</p>
+                <p id="user-balance" class="gold-text font-bold">$0.00</p>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-[#2a2a2a] border border-[#f2ca50]/30 flex items-center justify-center overflow-hidden">
+                <span class="text-[10px] gold-text">VIP</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="mt-16 px-6 py-8 text-center bg-gradient-to-b from-[#1c1b1b] to-[#131313]">
+        <h1 class="text-3xl gold-text mb-2">Bienvenido, <span id="username-display">Invitado</span></h1>
+        <p class="text-sm opacity-70 italic">Tu acceso exclusivo al mundo del High Stakes</p>
+    </header>
+
+    <!-- Game Categories -->
+    <main class="px-6 space-y-8 mt-4">
+        
+        <!-- Roulette Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="text-xl gold-text">Ruletas Noir</h2>
+                <a href="#" class="text-xs gold-text uppercase tracking-widest">Ver todas</a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="ruleta_noir.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">🎡</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Noir Classic</span>
+                </a>
+                <a href="ruleta_vegas.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">✨</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Vegas Neon</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="text-xl gold-text">Mesas de Cartas</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="blackjack_vip_1.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">🃏</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Blackjack VIP</span>
+                </a>
+                <a href="poker_holdem_1.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">♠️</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Poker Hold'em</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Slots Section -->
+        <section>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="text-xl gold-text">Máquinas Slots</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="slot_sphinx.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">🎰</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Ancient Sphinx</span>
+                </a>
+                <a href="slot_cyber.html" class="noir-card rounded-xl p-4 flex flex-col items-center gap-3 active:scale-95 transition-transform">
+                    <div class="w-full aspect-square bg-[#2a2a2a] rounded-lg flex items-center justify-center">
+                        <span class="text-4xl">🚀</span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider">Neon Cyber</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="fixed bottom-0 w-full z-50 bg-[#1c1b1b]/95 backdrop-blur-md border-t border-[#4d4635]/20 h-20 flex justify-around items-center px-4 pb-safe">
+        <a href="index.html" class="flex flex-col items-center gold-text">
+            <span class="text-xl">🏠</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter mt-1">Lobby</span>
+        </a>
+        <a href="billetera.html" class="flex flex-col items-center opacity-60">
+            <span class="text-xl">💰</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter mt-1">Wallet</span>
+        </a>
+        <a href="perfil.html" class="flex flex-col items-center opacity-60">
+            <span class="text-xl">👤</span>
+            <span class="text-[10px] uppercase font-bold tracking-tighter mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        // CONFIGURACIÓN SUPABASE
+        const SUPABASE_URL = "https://gfxxhquajzcdslayhmhs.supabase.co";
+        const SUPABASE_KEY = "{{DATA:TEXT:TEXT_133}}"; // Usando la Anon Key proporcionada
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadUserData() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
+
+                if (profile) {
+                    document.getElementById('user-balance').innerText = `$${profile.balance.toLocaleString()}`;
+                    document.getElementById('username-display').innerText = profile.username || 'VIP Member';
+                }
+            }
+        }
+
+        // Suscripción Realtime para el balance
+        const balanceSubscription = supabase
+            .channel('public:profiles')
+            .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles' }, payload => {
+                loadUserData();
+            })
+            .subscribe();
+
+        loadUserData();
+    </script>
+</body>
+</html>

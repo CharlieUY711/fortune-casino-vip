@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#201f1f",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-container": "#055029",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "surface-tint": "#e9c349",
+                        "surface": "#131313",
+                        "surface-dim": "#131313",
+                        "surface-container-highest": "#353534",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#4d4635",
+                        "tertiary-fixed": "#adf2bc",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#3a3939",
+                        "outline": "#99907c",
+                        "on-primary-fixed": "#241a00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary": "#f2ca50",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary-fixed": "#00210d",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#7fc290",
+                        "on-secondary-fixed-variant": "#920703",
+                        "tertiary": "#9adeaa",
+                        "secondary-fixed": "#ffdad4",
+                        "background": "#131313",
+                        "secondary": "#ffb4a8",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary": "#690000",
+                        "inverse-on-surface": "#313030",
+                        "primary-container": "#d4af37",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#410000",
+                        "on-secondary-container": "#ff9a8a",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-variant": "#353534",
+                        "on-tertiary": "#00391a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-primary-container": "#554300",
+                        "on-primary": "#3c2f00"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+body {
+    background-color: #131313;
+    color: #e5e2e1;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased
+    }
+.noir-gradient-gold {
+    background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%)
+    }
+.noir-glass {
+    background: rgba(42, 42, 42, 0.8);
+    backdrop-filter: blur(12px)
+    }
+.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDwCOpkXzim5cHdoWy1yPK22gtJZEGvLBz3KSwx09AyBuwTDzcXHhYnOlHvCU8iCIwqjJPVAj3_y_peCEnC2y842biGs_FEkOZRq067RecyuWTTlxmSL2m8rerRj0G8SjRE5vz0qtvD9JV3GZIYPKXbL_yKKgJWsLxMlKDG5ewdcBVnTmvWMsQEtMIOEgZBL_2vWVnTWfp3Ml6o_dFvwr7PACuDlFBCPLc9bNQfacDpJpqSWJD1UGb75bQK7pF96BRyUo3_MOX1HE2K);
+    opacity: 0.03;
+    pointer-events: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen pb-24">
+<div class="fixed inset-0 noise-overlay z-0"></div>
+<!-- TopAppBar -->
+<header class="bg-[#131313] shadow-[0_32px_64px_-15px_rgba(212,175,55,0.06)] flex justify-between items-center px-6 h-16 w-full docked full-width top-0 z-50 sticky">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a sophisticated man with a beard in a dark suit against a moody background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxJKbhHLTdeKSzz4dTUxdS6NKnhO9a0onqzKwly9M98khdamK5OVbW21YA4TSYxkK9lxvvY0hWR7S49Fggcz8JpGwq8bKwzFg80aJvatZyAg0zte5GBIUNsKHQrfuann5fXbe4CEWYDwpAlXCeBHLkff2xT1wOA-sd_fd_c4_tWegyFRJZwPTwaS9_xzKoru9u4TXRgPfD4Ryb9KSDyOBXaB5caqa1UPfxZ5vav9eSuPPDwglMiPCv1UWpzrzcM8pp2-LdxeVStTke"/>
+</div>
+<h1 class="font-['Noto_Serif'] font-bold tracking-tight text-xl font-serif italic text-[#f2ca50] tracking-widest">MIDNIGHT ROYALE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 transition-transform">language</span>
+</div>
+</header>
+<main class="relative z-10 max-w-4xl mx-auto px-6 py-8">
+<!-- Profile Hero Section -->
+<section class="flex flex-col items-center text-center mb-12">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-full p-1 noir-gradient-gold shadow-[0_10px_30px_rgba(242,202,80,0.2)]">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-container border-4 border-surface">
+<img class="w-full h-full object-cover" data-alt="High quality headshot of a male player with sophisticated features in dark editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9uKliuJlaJ96xbLOVYkk9XOvUEKQQcrIlVL1lSim_Q_SOBWM02Dd_sTdOq8NXI72-BDbN3Fs7FBaEocFlylHp-KAYXap7ogkIhwoswDDXNNEtz1yKxTIDAeIKa7H8seUhnqR2440xrLWT38y7-6jeTh4POGoraF9_Tb9KCKUfFJYuER_BnEn8T5eeo_pJeLcOJDleK1mFDFYTpuOH0Q43X0pB7we1b6dS1w6Tw0X7AdOjWmeGjsslriYED6dwpFRlZbaSQ20UR1T8"/>
+</div>
+</div>
+<div class="absolute -bottom-2 right-0 bg-surface-container-high px-3 py-1 rounded-full border border-primary/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter text-primary">Diamond Noir</span>
+</div>
+</div>
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-1">Julian Vane</h2>
+<p class="text-on-surface-variant font-label tracking-widest uppercase text-xs">VIP Level 9 • High Roller</p>
+<div class="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Total Balance</p>
+<p class="font-headline text-xl text-primary">$1,240,500.00</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Loyalty Points</p>
+<p class="font-headline text-xl text-tertiary">42,850</p>
+</div>
+</div>
+</section>
+<!-- Bento Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Account Info (Span 2) -->
+<div class="md:col-span-2 space-y-6">
+<!-- Navigation List -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/5">
+<div class="p-6 border-b border-outline-variant/10">
+<h3 class="font-headline text-lg text-on-surface">Account &amp; Security</h3>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<a class="flex items-center justify-between p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">history</span>
+<span class="font-medium">Game History</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">support_agent</span>
+<span class="font-medium">Support Center</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between p-6 hover:bg-white/5 transition-colors group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">payments</span>
+<span class="font-medium">Payment Methods</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">arrow_forward_ios</span>
+</a>
+</div>
+</div>
+<!-- Privacy & Marketing -->
+<div class="noir-glass p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline text-lg text-on-surface mb-4">Preferences</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium">Marketing Communications</p>
+<p class="text-sm text-on-surface-variant">Receive exclusive VIP offers</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-medium">Two-Factor Authentication</p>
+<p class="text-sm text-on-surface-variant">Secure your vault with 2FA</p>
+</div>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full relative border border-outline-variant">
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Actions -->
+<div class="space-y-6">
+<!-- Language Selector -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/5">
+<h3 class="font-headline text-lg text-on-surface mb-4">Language</h3>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-3 rounded bg-primary/10 border border-primary/30 text-primary">
+<span class="flex items-center gap-3"><span class="material-symbols-outlined text-sm">check_circle</span> Español</span>
+<span class="text-[10px] font-bold">ES</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded hover:bg-white/5 text-on-surface-variant border border-transparent">
+<span class="flex items-center gap-3"><span class="w-4"></span> English</span>
+<span class="text-[10px] font-bold">EN</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded hover:bg-white/5 text-on-surface-variant border border-transparent">
+<span class="flex items-center gap-3"><span class="w-4"></span> Português</span>
+<span class="text-[10px] font-bold">PT</span>
+</button>
+</div>
+</div>
+<!-- VIP Status Card -->
+<div class="relative overflow-hidden p-6 rounded-xl border border-outline-variant/10 bg-surface-container-low">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-primary mb-2">Membership Status</p>
+<p class="font-headline text-xl mb-4">Diamond Tier</p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full mb-2">
+<div class="w-3/4 noir-gradient-gold h-full rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant">7,150 pts to Obsidian Rank</p>
+</div>
+<!-- Log Out -->
+<button class="w-full p-4 rounded-xl border border-secondary-container/30 text-secondary hover:bg-secondary-container/10 transition-colors flex items-center justify-center gap-3 font-bold uppercase tracking-widest text-sm">
+<span class="material-symbols-outlined">logout</span>
+                    Cerrar Sesión
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-[#1c1b1b]/90 backdrop-blur-md dark:bg-[#1c1b1b]/90 border-t border-[#4d4635]/20 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] z-50 rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Poker</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

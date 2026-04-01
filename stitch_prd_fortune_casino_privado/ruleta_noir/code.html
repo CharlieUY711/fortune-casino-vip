@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Fortune Roulette - Noir Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "surface-dim": "#131313",
+              "on-tertiary": "#00391a",
+              "outline-variant": "#4d4635",
+              "inverse-surface": "#e5e2e1",
+              "on-secondary-fixed-variant": "#920703",
+              "on-secondary-fixed": "#410000",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed": "#adf2bc",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "on-surface-variant": "#d0c5af",
+              "on-primary-fixed-variant": "#574500",
+              "primary-fixed": "#ffe088",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-primary": "#3c2f00",
+              "on-background": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "inverse-primary": "#735c00",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-low": "#1c1b1b",
+              "primary": "#f2ca50",
+              "secondary-fixed": "#ffdad4",
+              "tertiary": "#9adeaa",
+              "on-error": "#690005",
+              "on-primary-fixed": "#241a00",
+              "surface-variant": "#353534",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#d4af37",
+              "outline": "#99907c",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-container-highest": "#353534",
+              "secondary": "#ffb4a8",
+              "on-tertiary-container": "#055029",
+              "secondary-container": "#920703",
+              "surface-bright": "#3a3939",
+              "on-primary-container": "#554300",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#00210d",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "secondary-fixed-dim": "#ffb4a8"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }
+.gold-gradient {
+    background: linear-gradient(45deg, #f2ca50, #d4af37)
+    }
+.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA0lcbshIddqR7S1IALsfJVpdqlBqrlZC3lJ90PtTB0xMeN7-EiUkCul8hY4IvRZcvZtEWvpQm7snZqmM1-rHAU3ABbK7gNn3cNjufLtxnhZoDAH7z5t61zN8Li9UomzTsiEo37CkKtDN67U8qsvzyA6LqV2zHxAXwSWCv3CsSHTjWA47umbK6mCcTEY2pIUegZKemQn4e3DNU6-GEgP5vn52NZ_3tEy0-iptLHsAXGih9sBCspzRdKisco9CJZbB-rf0Pk1i5mKtdZ);
+    opacity: 0.03;
+    pointer-events: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body select-none overflow-hidden">
+<div class="fixed inset-0 noise-overlay z-50"></div>
+<!-- Top App Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#131313] shadow-[0_32px_32px_rgba(212,175,55,0.06)]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#f2ca50]">account_balance_wallet</span>
+<span class="font-serif text-2xl font-bold tracking-tighter text-[#f2ca50]">Fortune</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-medium">Saldo</span>
+<span class="font-headline text-primary text-lg">€ 14,250.00</span>
+</div>
+<span class="material-symbols-outlined text-[#d0c5af] hover:bg-[#1c1b1b] transition-colors duration-300 p-2 rounded-lg">notifications</span>
+</div>
+</nav>
+<main class="pt-16 pb-24 h-screen flex flex-col overflow-hidden">
+<!-- Game Stage: Roulette Wheel & Stats -->
+<section class="flex-none px-4 py-2 flex gap-4 items-center bg-surface-container-low">
+<!-- Asymmetric Roulette Visual -->
+<div class="relative w-32 h-32 flex-none group">
+<div class="absolute inset-0 rounded-full border-4 border-outline-variant/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]"></div>
+<img class="w-full h-full object-contain animate-spin-slow" data-alt="luxurious top-down view of a golden roulette wheel with high-end polished wood and metallic gold accents in a dark noir setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbwU6Amf8LDKuI4RrJgLHEqKAXgl7pVaLYgBZaDGHPQyIOq_EStJPm2OMlqoOVPf5L94hkfanWxB2zANaicpgRinrGZKSIx2DZQ8j_imN3PFhKzAZXJbNOv993SXcsSzOMeCBmK_dXg2dJM-qqMXGvGlhMcxednVICPBsSlm1PkI_1OdBfSNbnX_4TckaYN2dRc_xQ-2aDQWk0X1uzgh0AfVkIQ1ZzyvuJ8Zhwetd_wQmE6-o-4JJNDwy-84U-Vf6TgEicuYyYpZGm"/>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-primary drop-shadow-md">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">arrow_drop_down</span>
+</div>
+</div>
+<!-- Stats & History -->
+<div class="flex-1 space-y-2 overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold">Historial</span>
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<div class="flex-none w-10 h-12 flex flex-col items-center justify-center bg-secondary-container rounded-lg border border-white/5">
+<span class="font-headline text-white text-lg leading-none">32</span>
+<span class="text-[8px] opacity-60">RED</span>
+</div>
+<div class="flex-none w-10 h-12 flex flex-col items-center justify-center bg-surface-container-highest rounded-lg border border-outline-variant/20">
+<span class="font-headline text-on-surface text-lg leading-none">15</span>
+<span class="text-[8px] opacity-60">BLK</span>
+</div>
+<div class="flex-none w-10 h-12 flex flex-col items-center justify-center bg-tertiary-container rounded-lg border border-white/5">
+<span class="font-headline text-on-tertiary text-lg leading-none">0</span>
+<span class="text-[8px] opacity-60">GRN</span>
+</div>
+<div class="flex-none w-10 h-12 flex flex-col items-center justify-center bg-secondary-container rounded-lg border border-white/5">
+<span class="font-headline text-white text-lg leading-none">19</span>
+<span class="text-[8px] opacity-60">RED</span>
+</div>
+<div class="flex-none w-10 h-12 flex flex-col items-center justify-center bg-surface-container-highest rounded-lg border border-outline-variant/20">
+<span class="font-headline text-on-surface text-lg leading-none">4</span>
+<span class="text-[8px] opacity-60">BLK</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Betting Canvas: The Grid -->
+<section class="flex-1 bg-surface-container-lowest p-2 overflow-y-auto no-scrollbar relative">
+<div class="grid grid-cols-13 gap-[2px] h-full min-h-[400px]">
+<!-- Zero -->
+<div class="col-span-1 row-span-3 bg-tertiary-container/20 border border-tertiary-container/30 flex items-center justify-center rounded-l-xl active:scale-95 transition-transform">
+<span class="font-headline text-tertiary text-2xl -rotate-90">0</span>
+</div>
+<!-- Numbers 1-36 Grid -->
+<div class="col-span-12 grid grid-cols-12 grid-rows-3 gap-[2px]">
+<!-- Row 3 (top) -->
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">3</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">6</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">9</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">12</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">15</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">18</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">21</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">24</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">27</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">30</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">33</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">36</div>
+<!-- Row 2 (middle) -->
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">2</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">5</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">8</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">11</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">14</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">17</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">20</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">23</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">26</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">29</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">32</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">35</div>
+<!-- Row 1 (bottom) -->
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">1</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">4</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">7</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">10</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">13</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">16</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">19</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">22</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">25</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">28</div>
+<div class="bg-surface-container-high flex items-center justify-center aspect-square text-on-surface font-headline border border-outline-variant/20">31</div>
+<div class="bg-secondary-container/40 flex items-center justify-center aspect-square text-on-surface font-headline border border-white/5">34</div>
+</div>
+<!-- Outside Bets -->
+<div class="col-start-2 col-span-4 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold tracking-widest text-on-surface-variant rounded-sm border border-outline-variant/20">1st 12</div>
+<div class="col-span-4 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold tracking-widest text-on-surface-variant rounded-sm border border-outline-variant/20">2nd 12</div>
+<div class="col-span-4 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold tracking-widest text-on-surface-variant rounded-sm border border-outline-variant/20">3rd 12</div>
+<div class="col-start-2 col-span-2 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold text-on-surface-variant rounded-sm border border-outline-variant/20">1-18</div>
+<div class="col-span-2 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold text-on-surface-variant rounded-sm border border-outline-variant/20">Even</div>
+<div class="col-span-2 h-10 mt-1 bg-secondary-container/30 flex items-center justify-center rounded-sm border border-secondary-container/40">
+<div class="w-4 h-4 bg-secondary-container rotate-45 border border-white/20"></div>
+</div>
+<div class="col-span-2 h-10 mt-1 bg-surface-container-highest flex items-center justify-center rounded-sm border border-outline-variant/30">
+<div class="w-4 h-4 bg-black rotate-45 border border-white/10"></div>
+</div>
+<div class="col-span-2 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold text-on-surface-variant rounded-sm border border-outline-variant/20">Odd</div>
+<div class="col-span-2 h-10 mt-1 bg-surface-container flex items-center justify-center text-[10px] uppercase font-bold text-on-surface-variant rounded-sm border border-outline-variant/20">19-36</div>
+</div>
+</section>
+<!-- Controls Section -->
+<section class="flex-none bg-surface p-4 pb-24 space-y-4">
+<!-- Chips Selector -->
+<div class="flex justify-between items-center gap-2 overflow-x-auto no-scrollbar py-2 px-1">
+<div class="flex-none w-14 h-14 rounded-full border-2 border-dashed border-outline-variant/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">history</span>
+</div>
+<!-- Active Chip -->
+<div class="flex-none w-16 h-16 rounded-full gold-gradient shadow-[0_0_15px_rgba(242,202,80,0.4)] flex items-center justify-center ring-4 ring-white/10 relative transform -translate-y-1">
+<div class="absolute inset-1 rounded-full border border-black/10 border-dashed"></div>
+<span class="font-headline text-on-primary text-lg font-bold">100</span>
+</div>
+<div class="flex-none w-14 h-14 rounded-full bg-surface-container-high border-2 border-outline-variant/20 flex items-center justify-center">
+<span class="font-headline text-on-surface-variant font-bold">500</span>
+</div>
+<div class="flex-none w-14 h-14 rounded-full bg-surface-container-high border-2 border-outline-variant/20 flex items-center justify-center">
+<span class="font-headline text-on-surface-variant font-bold">1K</span>
+</div>
+<div class="flex-none w-14 h-14 rounded-full bg-surface-container-high border-2 border-outline-variant/20 flex items-center justify-center">
+<span class="font-headline text-on-surface-variant font-bold">5K</span>
+</div>
+<div class="flex-none w-14 h-14 rounded-full bg-surface-container-low border-2 border-outline-variant/10 flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">delete</span>
+</div>
+</div>
+<!-- Main CTA Area -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 bg-surface-container-high border border-outline-variant/30 h-16 rounded-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary">undo</span>
+<span class="text-[10px] uppercase font-bold tracking-[0.2em]">Deshacer</span>
+</button>
+<button class="gold-gradient flex items-center justify-center h-16 rounded-lg active:scale-95 transition-all shadow-[0_8px_24px_rgba(0,0,0,0.4)] relative overflow-hidden group">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-headline text-on-primary text-xl font-extrabold tracking-widest uppercase">GIRAR</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-xl px-4 py-1 active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="text-[11px] font-medium uppercase tracking-widest mt-1">Lobby</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="text-[11px] font-medium uppercase tracking-widest mt-1">Balance</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium uppercase tracking-widest mt-1">Perfil</span>
+</div>
+</nav>
+<!-- Overlay Betting Summary (Sticky Bottom Toast) -->
+<div class="fixed bottom-24 left-4 right-4 bg-surface-container-high/90 backdrop-blur-xl border border-primary/20 p-3 rounded-xl flex items-center justify-between shadow-2xl z-40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">confirmation_number</span>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Apuesta Total</p>
+<p class="font-headline text-primary">€ 1,200.00</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-surface-variant rounded text-[10px] font-bold uppercase tracking-widest border border-outline-variant/20">Límites</button>
+</div>
+<style>
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        .grid-cols-13 {
+            grid-template-columns: 40px repeat(12, 1fr);
+        }
+    </style>
+</body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#ffdad4",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary": "#3c2f00",
+              "tertiary-container": "#7fc290",
+              "on-secondary": "#690000",
+              "on-tertiary": "#00391a",
+              "background": "#131313",
+              "tertiary": "#9adeaa",
+              "on-tertiary-container": "#055029",
+              "secondary-container": "#920703",
+              "primary-fixed": "#ffe088",
+              "secondary": "#ffb4a8",
+              "on-background": "#e5e2e1",
+              "surface-dim": "#131313",
+              "surface-container-low": "#1c1b1b",
+              "on-secondary-fixed-variant": "#920703",
+              "primary-fixed-dim": "#e9c349",
+              "surface-container-high": "#2a2a2a",
+              "error-container": "#93000a",
+              "tertiary-fixed-dim": "#92d6a2",
+              "on-primary-container": "#554300",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-surface-variant": "#d0c5af",
+              "primary": "#f2ca50",
+              "on-tertiary-fixed-variant": "#08522a",
+              "on-surface": "#e5e2e1",
+              "surface-container-highest": "#353534",
+              "surface-bright": "#3a3939",
+              "surface": "#131313",
+              "inverse-on-surface": "#313030",
+              "on-secondary-container": "#ff9a8a",
+              "surface-container": "#201f1f",
+              "on-error": "#690005",
+              "inverse-primary": "#735c00",
+              "error": "#ffb4ab",
+              "surface-tint": "#e9c349",
+              "on-primary-fixed-variant": "#574500",
+              "primary-container": "#d4af37",
+              "outline": "#99907c",
+              "on-error-container": "#ffdad6",
+              "inverse-surface": "#e5e2e1",
+              "outline-variant": "#4d4635",
+              "tertiary-fixed": "#adf2bc",
+              "on-secondary-fixed": "#410000",
+              "on-primary-fixed": "#241a00",
+              "surface-variant": "#353534",
+              "on-tertiary-fixed": "#00210d"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+      }
+      .step-gradient {
+        background: linear-gradient(180deg, rgba(242, 202, 80, 0.1) 0%, rgba(19, 19, 19, 0) 100%)
+      }
+      .glass-panel {
+        background: rgba(28, 27, 27, 0.7);
+        backdrop-filter: blur(12px)
+      }
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBe_As7HxkX4S90xtNC_QD07NYJKyV29LKGbf2sM92ox7NCOZvBs9BghYwUya2xNBtAbKAGQn9pvs8--v4F3yRtbDRCs43IUHx-y5vwJ-vAlDd9Liu3Wkmgxfa27dGqkz0KCCRIqKBpX56J0HgY_WVzCv9DAGSfT1z8XAuFCvj_AO9EBsl-JLAeXCORgUJI545k7ucVb6mtIwvqZ2K7h_Bssu-uurliPQrrJ4I9g6LNPEs5b-tvlBEB8zrqIWcq8UrTNu5aXX9nPnTC);
+        z-index: 9999
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary">
+<div class="noise-overlay"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)] border-none">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-150">menu</span>
+<h1 class="font-['Noto_Serif'] headline-md uppercase tracking-widest text-[#f2ca50] text-xl font-bold tracking-tighter">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-[#d0c5af] font-['Inter'] text-[10px] font-medium uppercase tracking-widest">
+<span class="hover:text-[#ffe088] cursor-pointer transition-colors">Language: EN</span>
+<span class="hover:text-[#ffe088] cursor-pointer transition-colors">Support</span>
+</div>
+<div class="text-[#f2ca50] font-['Noto_Serif'] font-bold text-sm bg-surface-container-high px-4 py-2 rounded-lg border border-outline-variant/20">
+                    $24,500.00
+                </div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Hero Section -->
+<div class="mb-16 text-center md:text-left">
+<h2 class="font-headline text-4xl md:text-6xl text-primary font-bold mb-4 tracking-tight">VIP Environment <span class="text-on-surface-variant font-light block md:inline">Setup Protocol</span></h2>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">Establish your secure workstation foundations. This exclusive directory will serve as the master vault for all Midnight Royale casino assets.</p>
+</div>
+<!-- Deployment Stepper/Checklist -->
+<div class="relative space-y-8">
+<!-- Connector Line -->
+<div class="absolute left-[27px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-primary/40 via-primary/10 to-transparent hidden md:block"></div>
+<!-- Step 1: Open Terminal -->
+<div class="relative flex flex-col md:flex-row gap-8 items-start group">
+<div class="z-10 w-14 h-14 rounded-full bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_15px_rgba(242,202,80,0.1)] group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+</div>
+<div class="flex-1 glass-panel p-8 rounded-xl border border-outline-variant/20 hover:border-primary/20 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl text-on-surface font-bold">1. Initialize Command Center</h3>
+<p class="text-on-surface-variant mt-1">Open <span class="text-primary-fixed-dim">PowerShell</span> (Windows) or <span class="text-primary-fixed-dim">Terminal</span> (Mac) to begin execution.</p>
+</div>
+<span class="text-xs font-mono text-primary/60 bg-primary/5 px-2 py-1 rounded">PREREQUISITE</span>
+</div>
+</div>
+</div>
+<!-- Step 2: Navigate to Desktop -->
+<div class="relative flex flex-col md:flex-row gap-8 items-start group">
+<div class="z-10 w-14 h-14 rounded-full bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">desktop_windows</span>
+</div>
+<div class="flex-1 glass-panel p-8 rounded-xl border border-outline-variant/20 hover:border-primary/20 transition-all duration-300">
+<h3 class="font-headline text-2xl text-on-surface font-bold">2. Target Desktop Directory</h3>
+<p class="text-on-surface-variant mt-1 mb-6">Enter the following command to move your focal point to the Desktop.</p>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/10 font-mono text-sm text-tertiary-container/80">
+<div class="flex items-center gap-2">
+<span class="text-primary-fixed-dim">$</span>
+<span>cd Desktop <span class="text-on-surface-variant/40 ml-2"># Press Enter</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Create Folder -->
+<div class="relative flex flex-col md:flex-row gap-8 items-start group">
+<div class="z-10 w-14 h-14 rounded-full bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">create_new_folder</span>
+</div>
+<div class="flex-1 glass-panel p-8 rounded-xl border border-outline-variant/20 hover:border-primary/20 transition-all duration-300">
+<h3 class="font-headline text-2xl text-on-surface font-bold">3. Construct VIP Vault</h3>
+<p class="text-on-surface-variant mt-1 mb-6">Create the dedicated home for your high-stakes casino infrastructure.</p>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/10 font-mono text-sm text-tertiary-container/80">
+<div class="flex items-center gap-2">
+<span class="text-primary-fixed-dim">$</span>
+<span>mkdir fortune-casino-vip <span class="text-on-surface-variant/40 ml-2"># Press Enter</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 4: Enter Folder -->
+<div class="relative flex flex-col md:flex-row gap-8 items-start group">
+<div class="z-10 w-14 h-14 rounded-full bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">folder_open</span>
+</div>
+<div class="flex-1 glass-panel p-8 rounded-xl border border-outline-variant/20 hover:border-primary/20 transition-all duration-300">
+<h3 class="font-headline text-2xl text-on-surface font-bold">4. Access Environment</h3>
+<p class="text-on-surface-variant mt-1 mb-6">Step into your new workspace. This directory is now the designated home for all your casino files.</p>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/10 font-mono text-sm text-tertiary-container/80">
+<div class="flex items-center gap-2">
+<span class="text-primary-fixed-dim">$</span>
+<span>cd fortune-casino-vip <span class="text-on-surface-variant/40 ml-2"># Press Enter</span></span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-3 p-4 bg-primary/5 rounded-lg border border-primary/20 border-dashed">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest leading-relaxed">System note: Your <span class="text-primary font-bold">fortune-casino-vip</span> folder on the Desktop is now prepared for deployment.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Start Button Section -->
+<div class="mt-20 flex flex-col items-center gap-8">
+<button class="w-full md:w-auto min-w-[320px] bg-gradient-to-r from-primary to-primary-container text-on-primary h-20 px-12 rounded-lg font-headline text-2xl font-bold uppercase tracking-widest shadow-[0_10px_40px_rgba(212,175,55,0.2)] hover:scale-[1.02] active:scale-95 transition-all">
+                INITIALIZE DEPLOYMENT
+            </button>
+<!-- Language Selector -->
+<div class="flex gap-4 p-2 bg-surface-container-low rounded-full border border-outline-variant/20">
+<button class="px-4 py-1 rounded-full text-xs font-bold bg-primary text-on-primary">EN</button>
+<button class="px-4 py-1 rounded-full text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">ES</button>
+<button class="px-4 py-1 rounded-full text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">PT</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 rounded-t-lg shadow-[0_-8px_32px_rgba(0,0,0,0.5)] md:hidden">
+<div class="flex justify-around items-center h-20 px-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-[#d0c5af] hover:bg-[#1c1b1b] active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Lobby</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] hover:bg-[#1c1b1b] active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Roulette</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] hover:bg-[#1c1b1b] active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Slots</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] hover:bg-[#1c1b1b] active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Promos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#d4af37]/10 rounded-xl px-3 py-1 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase mt-1">Account</span>
+</div>
+</div>
+</nav>
+</body></html>

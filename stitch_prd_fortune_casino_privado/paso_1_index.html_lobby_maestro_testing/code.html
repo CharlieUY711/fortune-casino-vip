@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Casino VIP | Lobby</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #d0c5af; }
+        .font-serif { font-family: 'Noto+Serif', serif; }
+        .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f2ca50 50%, #d4af37 100%); }
+        .glass-panel { background: rgba(28, 27, 27, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(77, 70, 53, 0.2); }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 glass-panel h-16 flex items-center justify-between px-6">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#d4af37]/20 flex items-center justify-center border border-[#d4af37]/30">
+                <span class="material-icons text-[#f2ca50] text-sm">person</span>
+            </div>
+            <h1 class="font-serif italic font-bold text-[#f2ca50] tracking-tighter">Fortune</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <div id="balance-display" class="bg-[#1c1b1b] border border-[#d4af37]/20 px-3 py-1 rounded-full flex items-center gap-2">
+                <span class="material-icons text-[#f2ca50] text-xs">account_balance_wallet</span>
+                <span class="text-[#f2ca50] font-bold text-sm">$ --.--</span>
+            </div>
+            <button id="lang-selector" class="text-xs font-bold text-[#d0c5af] opacity-60">ES</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mt-20 px-6">
+        
+        <!-- Hero Banner -->
+        <section class="relative h-48 rounded-2xl overflow-hidden mb-8 border border-[#d4af37]/20">
+            <img src="https://images.unsplash.com/photo-1596838132731-dd36a1840c43?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover brightness-50" alt="Casino Royale">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+            <div class="absolute bottom-4 left-4">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-[#f2ca50] font-bold mb-1">Bienvenido al Vault</p>
+                <h2 class="font-serif text-2xl font-bold text-white">Diamante Noir VIP</h2>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <a href="juegos/ruleta.html" class="glass-panel p-4 rounded-xl flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <span class="material-icons text-[#f2ca50] text-3xl">casino</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Ruleta</span>
+            </a>
+            <a href="juegos/blackjack.html" class="glass-panel p-4 rounded-xl flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <span class="material-icons text-[#f2ca50] text-3xl">style</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Blackjack</span>
+            </a>
+            <a href="juegos/poker.html" class="glass-panel p-4 rounded-xl flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <span class="material-icons text-[#f2ca50] text-3xl">groups</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Poker</span>
+            </a>
+            <a href="juegos/slots.html" class="glass-panel p-4 rounded-xl flex flex-col items-center gap-2 active:scale-95 transition-transform">
+                <span class="material-icons text-[#f2ca50] text-3xl">slot_machine</span>
+                <span class="text-xs font-bold uppercase tracking-widest">Slots</span>
+            </a>
+        </div>
+
+        <!-- Featured Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="font-serif text-lg font-bold">Salón Popular</h3>
+                <span class="text-[10px] text-[#f2ca50] font-bold uppercase tracking-widest">Ver Todos</span>
+            </div>
+            <div class="glass-panel rounded-2xl overflow-hidden border-l-4 border-[#d4af37]">
+                <div class="p-4 flex gap-4 items-center">
+                    <div class="w-16 h-16 rounded-lg bg-black/40 flex items-center justify-center border border-white/5">
+                        <span class="material-icons text-[#f2ca50]">star</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">Ruleta Noir</h4>
+                        <p class="text-[10px] opacity-60 uppercase">Mesa Privada • Alta Fidelidad</p>
+                    </div>
+                    <button class="ml-auto w-10 h-10 rounded-full gold-gradient flex items-center justify-center shadow-lg shadow-[#d4af37]/20">
+                        <span class="material-icons text-black text-sm">play_arrow</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Nav Bar -->
+    <nav class="fixed bottom-0 w-full glass-panel h-20 rounded-t-3xl flex justify-around items-center px-6 z-50">
+        <button class="flex flex-col items-center gap-1 text-[#f2ca50]">
+            <span class="material-icons">dashboard</span>
+            <span class="text-[10px] font-bold uppercase">Lobby</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-[#d0c5af] opacity-60">
+            <span class="material-icons">account_balance_wallet</span>
+            <span class="text-[10px] font-bold uppercase text-center">Billetera</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-[#d0c5af] opacity-60">
+            <span class="material-icons">person</span>
+            <span class="text-[10px] font-bold uppercase">Perfil</span>
+        </button>
+    </nav>
+
+    <script>
+        // CONFIGURACIÓN DE SUPABASE
+        const SUPABASE_URL = 'TU_SUPABASE_URL';
+        const SUPABASE_KEY = 'TU_SUPABASE_ANON_KEY';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function updateBalance() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('balance')
+                    .eq('id', user.id)
+                    .single();
+                
+                if (data) {
+                    document.getElementById('balance-display').innerHTML = `
+                        <span class="material-icons text-[#f2ca50] text-xs">account_balance_wallet</span>
+                        <span class="text-[#f2ca50] font-bold text-sm">$ ${data.balance.toLocaleString()}</span>
+                    `;
+                }
+            }
+        }
+
+        // Suscripción Realtime para el balance
+        supabase
+            .channel('public:profiles')
+            .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'profiles' }, payload => {
+                updateBalance();
+            })
+            .subscribe();
+
+        window.onload = updateBalance;
+    </script>
+</body>
+</html>

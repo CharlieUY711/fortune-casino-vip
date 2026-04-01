@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#99907c",
+            "on-secondary-fixed-variant": "#920703",
+            "surface-dim": "#131313",
+            "secondary-container": "#920703",
+            "surface-bright": "#3a3939",
+            "on-primary-fixed-variant": "#574500",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e5e2e1",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary-container": "#554300",
+            "tertiary-container": "#7fc290",
+            "primary-fixed": "#ffe088",
+            "on-tertiary-fixed-variant": "#08522a",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#3c2f00",
+            "surface-tint": "#e9c349",
+            "secondary": "#ffb4a8",
+            "on-tertiary-fixed": "#00210d",
+            "background": "#131313",
+            "on-background": "#e5e2e1",
+            "surface-variant": "#353534",
+            "surface-container": "#201f1f",
+            "surface-container-low": "#1c1b1b",
+            "on-secondary-container": "#ff9a8a",
+            "on-secondary": "#690000",
+            "tertiary-fixed-dim": "#92d6a2",
+            "on-error": "#690005",
+            "surface-container-high": "#2a2a2a",
+            "on-tertiary": "#00391a",
+            "on-surface-variant": "#d0c5af",
+            "error-container": "#93000a",
+            "on-primary-fixed": "#241a00",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary": "#9adeaa",
+            "primary-fixed-dim": "#e9c349",
+            "primary": "#f2ca50",
+            "inverse-surface": "#e5e2e1",
+            "surface-container-highest": "#353534",
+            "primary-container": "#d4af37",
+            "outline-variant": "#4d4635",
+            "on-tertiary-container": "#055029",
+            "error": "#ffb4ab",
+            "surface": "#131313",
+            "secondary-fixed": "#ffdad4",
+            "inverse-primary": "#735c00",
+            "tertiary-fixed": "#adf2bc",
+            "inverse-on-surface": "#313030"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.sand-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBlDJPMQTbbohO911WTbApReMN2XX1xmpxFX0Dnb4YNPpFty_cR44LrCLoF19THaPdCHR6sJa-RDaKzSqreLG39CLSAORmoHbQ4NzWcb79U4k6eBny_Wn6sOKjv1udi7x_YVx9lLooRmDo48R1Qgju0vETtNPe6dcvqfqxBsLH49dwu046br8N9AJU7fhiyfkDArfaseHDeenDLfU84boogqR1m9QLfDMysO8CaIoMOv0phi56ZUZGGAf8Ji4eF2D01mUApyNGrgqFN);
+    opacity: 0.05
+    }
+.gold-gradient {
+    background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%)
+    }
+.slot-reel-mask {
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="text-[#f2ca50] font-headline font-bold tracking-tighter text-lg uppercase">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6 font-headline uppercase tracking-widest text-sm">
+<a class="text-[#f2ca50] transition-colors hover:text-[#ffe088]" href="#">Games</a>
+<a class="text-[#d0c5af] transition-colors hover:text-[#ffe088]" href="#">Promotions</a>
+<a class="text-[#d0c5af] transition-colors hover:text-[#ffe088]" href="#">VIP</a>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 border border-outline-variant/20 rounded-lg">
+<span class="text-[#f2ca50] font-bold text-xs">EN</span>
+<span class="material-symbols-outlined text-[16px] text-[#d0c5af]">language</span>
+</div>
+</div>
+</div>
+</header>
+<main class="relative pt-24 pb-32 min-h-screen overflow-hidden flex flex-col items-center">
+<!-- Ambient Background Texture -->
+<div class="absolute inset-0 sand-texture pointer-events-none"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl bg-[radial-gradient(circle_at_50%_30%,_rgba(242,202,80,0.08)_0%,_transparent_60%)] pointer-events-none"></div>
+<!-- Game Header / Jackpot -->
+<div class="w-full max-w-4xl px-6 text-center mb-8 relative z-10">
+<div class="inline-block mb-2">
+<span class="font-headline text-primary tracking-[0.3em] uppercase text-xs font-bold">Egyptian Sands Collection</span>
+</div>
+<h2 class="font-headline text-5xl md:text-7xl text-on-surface font-bold tracking-tighter mb-6 drop-shadow-2xl">
+        Ancient <span class="text-primary italic">Sphinx</span>
+</h2>
+<!-- Jackpot Display -->
+<div class="relative inline-flex items-center justify-center px-12 py-4 bg-surface-container-high/80 backdrop-blur-xl border border-outline-variant/20 rounded-xl shadow-2xl overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary-container/10 via-transparent to-secondary-container/10"></div>
+<div class="relative flex flex-col items-center">
+<span class="font-label text-secondary-container font-bold text-[10px] tracking-[0.4em] uppercase mb-1">Mega Jackpot</span>
+<div class="font-headline text-4xl md:text-5xl text-primary font-bold tracking-tight">
+            $1,248,592.<span class="text-2xl">45</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Slot Machine Reel Area -->
+<div class="relative w-full max-w-5xl px-4 z-10">
+<div class="bg-surface-container-low p-2 md:p-6 rounded-xl border border-outline-variant/10 shadow-[0_32px_64px_rgba(0,0,0,0.6)] relative overflow-hidden">
+<!-- Decorative Pillars (Asymmetric Element) -->
+<div class="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-primary/20 via-primary/5 to-primary/20 hidden md:block"></div>
+<div class="absolute right-0 top-0 bottom-0 w-2 bg-gradient-to-b from-primary/20 via-primary/5 to-primary/20 hidden md:block"></div>
+<!-- Reel Container -->
+<div class="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 slot-reel-mask">
+<!-- Reel 1 -->
+<div class="space-y-4 py-8">
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Egyptian Pharaoh" class="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(242,202,80,0.3)]" data-alt="Golden pharaoh mask icon with intricate blue lapis lazuli details on dark background high luxury style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8TMRwCFg7cNiEHPQ6Aw4GfJ_ItP-t5OECzXnFJo_OmhAMCTzUMzrxOyy0YVNdytdcn-nM4w1kTBt51srtk46QIqyRJFvAYb8Rag-m7EKDYapLQVRTnE-uROuNuFMRPSKo7sPcXuf1SU2KLMlsFX8wqDVndJrGscZJbLirYRrmj736Cf3BqjIDnC74hAQWnn0JvApaMKILDC6EuTrCfq3ktWX2aMGKAzrEHpLGprkx9nUt4y9dJ2VESRtLrxaEdS00pqvIeNkthlCt"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<span class="text-primary font-headline text-5xl">A</span>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Scarab" class="w-full h-full object-contain" data-alt="Jeweled emerald and gold scarab beetle symbol cinematic lighting dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABwuz3A0uHZCTzO_gYp5GsT-RysULjSSKMIivRcfQu0t5OnDbeYsTQqqnKTYEC0cf537JGo6rpPwD_f7gS5WB8L8Utj7oRGOpXvIlH6o6PpnLPRkCg3dhZVhaIg22XWP1E8ftES5zj6zy4JWGDVxEe9lmg-XfZIYYTgMd1kIAIMJNQsJQvXKM7aVEulKo_3nEj2XQlKfDDWQnh6laqI343jvJiOdQWBFum54nmKB6baIl4ZKKGZ5hfzPiCk6Gd-0oeOsdf9toTZwXO"/>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="space-y-4 py-8">
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Hieroglyph" class="w-full h-full object-contain" data-alt="Ancient egyptian hieroglyph of an eye etched in weathered sandstone with gold inlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwYTmfJooJHOlsp-ULzOKbMVN5p66lrKJSrVTepaDDmhUOarH6kDf7N2DzObwXcrEHIx_5ceG8uUNtNLOpFHh0Q2QtWzOgK81e6cim8P_vAwnuCfG0GRdn1HH1qZKSf2MibkApWRGytnwn9CgzaAQsYzxOpEViC1_wYQpWheQkZs5fUVqNUfByOAkymE3rSErUSq9DjdCnor4wq1vb-s1Yy-Wd6lHLeYoOtJCSrRyVFRpeS-db-zff_li2Gere1y6y6zu7ihaqI0VF"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Egyptian Pharaoh" class="w-full h-full object-contain" data-alt="Golden pharaoh mask icon with intricate blue lapis lazuli details on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA47YHfMf9hAbZyHP1-SsGSM-yzywdVjQLY1lcFczD5jrfSY1Qxi2H8RpRtBp5i-Me98U88BSiv8WczbclRPDsWlYoN1jlcEN5axyq5kKqCi0cCLJaWKLxYPFrrSOmFvAZOVqohDgD0QlrhHiPeObQ9Kso_N3EsIRvGmP1YQtgWlFfAJ-CXdLcFoy114Ny53VELDKF5AmNCPRGh5pnPKeITAM6KbLVtiTDLIhKFQV2ww4BZBxNeucLnQuEFPIcYyiwzFAjcK4TB6ne"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<span class="text-primary font-headline text-5xl">K</span>
+</div>
+</div>
+<!-- Reel 3 (Center) -->
+<div class="space-y-4 py-8">
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<img alt="Sphinx Wild" class="w-full h-full object-contain scale-110" data-alt="Majestic golden sphinx statue head with glowing eyes central game symbol high detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN1tLW-Tl0tBCkhE4JpR6F1RHFMeU6wjATKeCZcoal3KP8WYGJSCGCI__p4V579D843Hol5aN0NSYOt7nU8Si4kdBLuQXsJcHnzVUMOmh5CvoIdSRpRFxhEKlSrcj6xUC6KsOO_3iz-paaiP33d6VS7mfTMxs_GV8xetJLb96nDqWaj9enasmNJsVXGPax9tkEbri94RwzXILYJ_Lq4YNtN3_okMgstuq9C29TGJNLFIuNec2_FHcs6Ayz1DDylOUqFSYG3LvT2FYI"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Ankh" class="w-full h-full object-contain" data-alt="Golden ankh symbol glowing softly on dark textured stone background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS9lEvvF99nyQ07PdhuO9SHIn2TS5JR_hwolvcw6cd3EzNvcN_5LxaDGtJiG6JkF_G-1nEeENV7hdepnizyt9VUOsFHu5Jvb1uA5-lK9ui9PA-c3pALePBXEwe4R-lpZqn4-YjQu3tiBM9ps4SO74ADJZrCD8AEw2li83IivAxMjgPuxLGzJ_Tpj9zMj4CKLiZQiQtAfZd3yRaNnMbpGXPHkoQ6MhEg4n4bNBUcbqmls0S7SLajKcGJI_iU0Ml1NFSi9usJP-26mu5"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Scarab" class="w-full h-full object-contain" data-alt="Jeweled emerald and gold scarab beetle symbol cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmT1bwOwF5NSmTkKbii8izA0jCPB7-hgFBFOCSvtPLFx8yR2e113SMVz64qXoL0pxaSypJTFTRHuP2RYwnV7cBT1zGjzhkWX2FvgCF3jrdqasOoSKg97ZYb5d3pEHukYghiXe-ch041GC3OajUDEalsLCNNFypfIzFdC4mbEudwOIZEESrcfBBA1k-kn1yQYMYFn0nkZhD56071fh5DB01pF_SZRuJR1UTQPOSYvYjVOB6xG6b9IAnbfEoLfTml6D36Q7eRbaziggd"/>
+</div>
+</div>
+<!-- Reel 4 (Visible on Desktop) -->
+<div class="hidden md:block space-y-4 py-8">
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<span class="text-primary font-headline text-5xl">Q</span>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Eye" class="w-full h-full object-contain" data-alt="Ancient egyptian hieroglyph of an eye etched in weathered sandstone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcMk6JlktoXKsQ4wvq_Ghu47ScGpoeoShHSQZ_BZvzBUGwCLTj0Z50KEBgu7VtgJewKo5GHzUjnV7XAzMCxH4uasXiAYs6cuJKG-uMevIsGz15l20WqTZE4_SD1L8pGzlRPdSdnBpFd1lc9YKf6AUb_uct6guxmQlN9wSTQfFgRcArXmahp-aJuVHq2sKhtd1SEcQaM-bXIc83MIFoPFpQIo5UDO2ORbTXdKMfEHRSK6dQyU0p7FxpkeH1EY_cd5fO_yoQqtdrTzJs"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Pharaoh" class="w-full h-full object-contain" data-alt="Golden pharaoh mask icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIDrLR65912UOxBtuBs2xRetvpfm5yit5_kdOcA-Vda4ghbw4DV5b6G5X_isLUgIL-mvCgVdCtkU4zg3rE-mA1JkCgEsRlOH8m_KqwHEe0wJjyqB70An5DJQVpvwU5PAdiiKmcYCFhHgioyzHvarucoFSQyS8sbrk8iedSVBpfijEfuWpJpXT6XD_IT8GYwcNofvUwwBsTFvvFxGOHkfGH9PRAxtgQN58yIbhrbzyTPiVLjLT1Yo8IaQl2dQ-NGd6Nw_fueKY2k63M"/>
+</div>
+</div>
+<!-- Reel 5 (Visible on Desktop) -->
+<div class="hidden md:block space-y-4 py-8">
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Scarab" class="w-full h-full object-contain" data-alt="Jeweled emerald and gold scarab beetle symbol" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxsVHhNNsWtr28-_Nz_exChP4ZtxRGSlCPcQyeRQX99gEimlYTeBsvUUsUMtSNoTJYZH_3Ht5GtFhcvNbl1OojlXqj2qMlQu993mBKa3DlSEwH4PWLNHWraPDNgkHApUbyeByAXrILUY_4llOqDTm2PXoxxleCMjSVg_BXb64usLzHpcaE7b4uXAiNyiEfCf9riF1kiyvwblp4jKWWgjqXwZKVZ96ZUaIishokWQUw0X7u3GR46u6js0HwcNahqf6fKnMb8wycdu1f"/>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<span class="text-primary font-headline text-5xl">J</span>
+</div>
+<div class="aspect-square bg-surface-container-highest rounded-lg flex items-center justify-center p-4 border border-outline-variant/5">
+<img alt="Ankh" class="w-full h-full object-contain" data-alt="Golden ankh symbol glowing softly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_IZUyy9U_xc6cq3rNUQyxsuo7Udx6YG_o7XjIw44nxTZh4I81QZLBlNkZzqzKwzf5XHPIc9MKDHXbNVQxqqywaf0MNbTlF9crCmXn9aVfcbyMc0jtLiaSlG9z7C2vY-gX4oF9kmssGKYC7FYDSoHTn4Sdm41cfeRcSw0DbxHj9-c4B9Y5_-Xjc2U_qa213NDRYcJ89oXlx_cyfXZY3NeFyYypfPBp1UF5yuNOSLh2DBdwZUV7B5qNBEMAvRt4JWPbGn7hvVQmZpA7"/>
+</div>
+</div>
+</div>
+<!-- Win Line Indicator -->
+<div class="absolute top-1/2 left-0 right-0 h-0.5 bg-primary/30 shadow-[0_0_10px_#f2ca50] z-20 pointer-events-none"></div>
+</div>
+</div>
+<!-- Game Controls Area -->
+<div class="w-full max-w-5xl px-4 mt-8 z-10">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 bg-surface-container-high/40 p-8 rounded-2xl backdrop-blur-md border border-outline-variant/10">
+<!-- Info & Balance -->
+<div class="flex items-center gap-10">
+<div class="flex flex-col">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Total Balance</span>
+<span class="font-headline text-2xl text-on-surface font-bold">$12,450.00</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Last Win</span>
+<span class="font-headline text-2xl text-tertiary font-bold">+$250.00</span>
+</div>
+</div>
+<!-- Spin Button (Primary CTA) -->
+<div class="order-first md:order-none scale-110 md:scale-125">
+<button class="gold-gradient w-24 h-24 rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(212,175,55,0.4)] active:scale-90 duration-150 group">
+<div class="w-20 h-20 rounded-full border-2 border-on-primary/20 flex flex-col items-center justify-center">
+<span class="font-headline font-extrabold text-on-primary text-xl tracking-tighter leading-none">GIRAR</span>
+<span class="material-symbols-outlined text-on-primary text-2xl mt-1 group-hover:rotate-180 transition-transform duration-500">refresh</span>
+</div>
+</button>
+</div>
+<!-- Bet Controls -->
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Bet Amount</span>
+<div class="flex items-center gap-3 bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/20">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-surface-variant hover:bg-primary/20 text-on-surface transition-colors active:scale-90">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="font-headline text-lg font-bold min-w-[60px] text-center">$10.00</span>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-surface-variant hover:bg-primary/20 text-on-surface transition-colors active:scale-90">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<button class="mt-6 px-4 py-3 bg-secondary-container/20 border border-secondary-container/40 rounded-lg text-secondary text-[10px] font-bold tracking-widest uppercase hover:bg-secondary-container/30 transition-all">
+            MAX BET
+          </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<footer class="fixed bottom-0 left-0 w-full h-20 bg-[#1c1b1b]/95 backdrop-blur-md flex justify-around items-center px-4 pb-safe z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<!-- Lobby - Inactive -->
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Lobby</span>
+</a>
+<!-- Wallet - Inactive -->
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 hover:text-[#f2ca50] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Wallet</span>
+</a>
+<!-- Profile - Active (Assumed active for current session context) -->
+<a class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider mt-1">Profile</span>
+</a>
+</footer>
+</body></html>

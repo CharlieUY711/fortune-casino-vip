@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Midnight Royale - Ruleta Noir</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .gold-gradient {
+            background: linear-gradient(45deg, #f2ca50, #d4af37);
+        }
+        
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .roulette-wheel-container {
+            perspective: 1000px;
+        }
+
+        /* Betting Grid Specifics */
+        .grid-bet-item {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0.5px solid rgba(77, 70, 53, 0.2);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .grid-bet-item:active {
+            background-color: rgba(242, 202, 80, 0.3);
+        }
+
+        .grid-bet-item.selected {
+            outline: 2px solid #f2ca50;
+            z-index: 10;
+        }
+
+        @keyframes pulse-connection {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(0.9); }
+        }
+        .connection-dot {
+            animation: pulse-connection 2s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#4d4635",
+                        "on-primary": "#3c2f00",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#131313",
+                        "secondary": "#ffb4a8",
+                        "on-surface": "#e5e2e1",
+                        "surface-tint": "#e9c349",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353534",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-container": "#7fc290",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-container": "#d4af37",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary": "#f2ca50",
+                        "tertiary": "#9adeaa",
+                        "surface-variant": "#353534"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] border-b border-[#4d4635]/20 shadow-[0_4px_30px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] active:scale-95 duration-200 cursor-pointer">menu</span>
+<h1 class="text-xl font-black text-[#f2ca50] uppercase tracking-widest font-['Noto_Serif']" data-i18n="brand">MIDNIGHT ROYALE</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container-low border border-outline-variant/20 mr-2" id="connection-status">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#7fc290] connection-dot"></span>
+<span class="text-[8px] uppercase font-bold tracking-widest text-on-surface-variant">Live</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider" data-i18n="balance_label">Balance</span>
+<span class="text-[#f2ca50] font-['Noto_Serif'] font-bold tracking-tight text-lg" id="user-balance">$10,000.00</span>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 px-4 min-h-screen max-w-md mx-auto">
+<!-- Roulette Visualizer Area -->
+<section class="mt-4 mb-6 relative overflow-hidden rounded-xl border border-outline-variant/20 bg-surface-container-low p-4 shadow-2xl">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#7fc290]"></span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant" data-i18n="table_id">Live Table 01</span>
+</div>
+<div class="flex gap-1">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-lowest border border-outline-variant/10">
+<span class="text-[10px] text-on-surface-variant uppercase" data-i18n="last_history">LAST:</span>
+<div class="flex gap-1" id="history-row">
+<span class="w-5 h-5 flex items-center justify-center rounded-full bg-secondary-container text-xs font-bold text-white">32</span>
+<span class="w-5 h-5 flex items-center justify-center rounded-full bg-surface-container-highest text-xs font-bold text-white">15</span>
+<span class="w-5 h-5 flex items-center justify-center rounded-full bg-secondary-container text-xs font-bold text-white">19</span>
+<span class="w-5 h-5 flex items-center justify-center rounded-full bg-tertiary-container text-xs font-bold text-on-tertiary-container">0</span>
+</div>
+</div>
+</div>
+</div>
+<div class="roulette-wheel-container flex justify-center py-6 relative">
+<div class="relative w-48 h-48 rounded-full border-4 border-outline-variant/30 flex items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="Top view of a luxury wooden roulette wheel with gold details and a white ball spinning in a dark casino setting" id="wheel-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLxBifeUQ-_LPj3I-F-LOPlYHppTbsDumkj-zpdYkvigo54XhIaqpvyFjnUScKBu16UxIqFGdlvuJvoN29pnJbNzt6gqHz6FfRyi-t3D_Aami5H9M7toB7w_mDERQ9bbQl9ygEGoneNac7sB5G_Etcwvh7A-mpnTNjM4JpUYCmQjU1XCahgi7rilGd7eM6Kc_wUMoEFL9EOfIS7gCjQV0u699u6PoebuWNF0ev5k1KKA73VcTJMAvqdUS0GRUCRd1_6TvYMhW0K0zL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="z-10 text-center transition-all duration-500 scale-100" id="result-display">
+<span class="text-4xl font-black font-headline text-primary block" id="win-number">32</span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary/70" data-i18n="result_meta" id="win-meta">Red / Even</span>
+</div>
+</div>
+<div class="absolute -bottom-4 w-64 h-32 bg-primary/5 blur-3xl rounded-full"></div>
+</div>
+</section>
+<!-- Betting Table (Mat) -->
+<section class="mb-8 select-none">
+<div class="grid grid-cols-13 border-collapse bg-surface-container-low rounded-lg overflow-hidden border border-outline-variant/20 shadow-xl">
+<!-- Zero Row -->
+<div class="grid grid-cols-1 h-full">
+<button class="grid-bet-item bg-tertiary-container text-on-tertiary-container h-full w-10 !border-r-2 !border-outline-variant/40 hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="0">0</button>
+</div>
+<!-- Main Numbers Grid -->
+<div class="col-span-12 grid grid-rows-3 grid-flow-col overflow-x-auto no-scrollbar">
+<!-- Numbers will be handled by delegated click listener -->
+<!-- Row 1 (3,6,9...) -->
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="3">3</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="6">6</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="9">9</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="12">12</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="15">15</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="18">18</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="21">21</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="24">24</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="27">27</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="30">30</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="33">33</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="36">36</button>
+<!-- Row 2 (2,5,8...) -->
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="2">2</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="5">5</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="8">8</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="11">11</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="14">14</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="17">17</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="20">20</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="23">23</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="26">26</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="29">29</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="32">32</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="35">35</button>
+<!-- Row 3 (1,4,7...) -->
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="1">1</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="4">4</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="7">7</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="10">10</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="13">13</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="16">16</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="19">19</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="22">22</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="25">25</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="28">28</button>
+<button class="grid-bet-item bg-surface-container-highest text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="31">31</button>
+<button class="grid-bet-item bg-secondary-container text-white hover:brightness-110 active:scale-95" data-bet-type="number" data-bet-value="34">34</button>
+</div>
+</div>
+<!-- Outside Bets Grid -->
+<div class="mt-2 grid grid-cols-3 gap-1">
+<button class="grid-bet-item bg-surface-container-high text-[10px] uppercase text-on-surface-variant hover:brightness-110 active:scale-95" data-bet-type="dozen" data-bet-value="1" data-i18n="1st_12">1st 12</button>
+<button class="grid-bet-item bg-surface-container-high text-[10px] uppercase text-on-surface-variant hover:brightness-110 active:scale-95" data-bet-type="dozen" data-bet-value="2" data-i18n="2nd_12">2nd 12</button>
+<button class="grid-bet-item bg-surface-container-high text-[10px] uppercase text-on-surface-variant hover:brightness-110 active:scale-95" data-bet-type="dozen" data-bet-value="3" data-i18n="3rd_12">3rd 12</button>
+</div>
+<div class="mt-1 grid grid-cols-6 gap-1">
+<button class="grid-bet-item bg-surface-container-high text-[10px] font-bold text-on-surface-variant hover:brightness-110 active:scale-95" data-bet-type="half" data-bet-value="1">1-18</button>
+<button class="grid-bet-item bg-surface-container-high text-[10px] font-bold text-on-surface-variant uppercase hover:brightness-110 active:scale-95" data-bet-type="even_odd" data-bet-value="even" data-i18n="even">Even</button>
+<button class="grid-bet-item bg-secondary-container !h-11 hover:brightness-110 active:scale-95" data-bet-type="color" data-bet-value="red">
+<div class="w-6 h-6 rounded-sm bg-red-600 rotate-45 border border-white/20"></div>
+</button>
+<button class="grid-bet-item bg-surface-container-highest !h-11 hover:brightness-110 active:scale-95" data-bet-type="color" data-bet-value="black">
+<div class="w-6 h-6 rounded-sm bg-black rotate-45 border border-white/10"></div>
+</button>
+<button class="grid-bet-item bg-surface-container-high text-[10px] font-bold text-on-surface-variant uppercase hover:brightness-110 active:scale-95" data-bet-type="even_odd" data-bet-value="odd" data-i18n="odd">Odd</button>
+<button class="grid-bet-item bg-surface-container-high text-[10px] font-bold text-on-surface-variant hover:brightness-110 active:scale-95" data-bet-type="half" data-bet-value="2">19-36</button>
+</div>
+</section>
+<!-- Chip Selector -->
+<section class="flex justify-between items-center px-2 mb-8 overflow-x-auto no-scrollbar gap-4 py-2" id="chip-selector">
+<button class="chip flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border-2 border-primary-container/40 flex items-center justify-center text-[10px] font-bold text-primary shadow-lg ring-1 ring-primary/20 active:scale-90 transition-transform" data-chip-value="10">$10</button>
+<button class="chip flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border-2 border-secondary-container/40 flex items-center justify-center text-[10px] font-bold text-secondary shadow-lg active:scale-90 transition-transform" data-chip-value="50">$50</button>
+<button class="chip selected flex-shrink-0 w-14 h-14 rounded-full bg-surface-container-high border-[3px] border-primary flex items-center justify-center text-xs font-black text-primary shadow-[0_0_15px_rgba(242,202,80,0.3)] ring-2 ring-primary/30 active:scale-90 transition-transform" data-chip-value="100">$100</button>
+<button class="chip flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border-2 border-tertiary-container/40 flex items-center justify-center text-[10px] font-bold text-tertiary shadow-lg active:scale-90 transition-transform" data-chip-value="500">$500</button>
+<button class="chip flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-high border-2 border-primary-fixed/40 flex items-center justify-center text-[10px] font-bold text-primary-fixed shadow-lg active:scale-90 transition-transform" data-chip-value="1000">$1K</button>
+</section>
+<!-- Spin Action Area -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between px-2 text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60">
+<span id="total-bet-display">Total Bet: $0.00</span>
+<span id="max-win-display">Max Win: $0.00</span>
+</div>
+<button class="w-full py-5 gold-gradient rounded-lg text-on-primary font-black text-xl tracking-[0.2em] shadow-[0_10px_20px_-10px_rgba(242,202,80,0.5)] active:translate-y-1 active:shadow-inner transition-all uppercase disabled:opacity-50 disabled:grayscale" data-i18n="spin_btn" id="spin-button">
+                GIRAR
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#1c1b1b]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 pt-1 hover:text-[#f2ca50] transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase font-semibold" data-i18n="nav_lobby">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] border-t-2 border-[#f2ca50] pt-1 hover:text-[#f2ca50] transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">track_changes</span>
+<span class="font-['Inter'] text-[10px] uppercase font-semibold" data-i18n="nav_roulette">Ruleta</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 pt-1 hover:text-[#f2ca50] transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-['Inter'] text-[10px] uppercase font-semibold" data-i18n="nav_tables">Mesas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 pt-1 hover:text-[#f2ca50] transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] uppercase font-semibold" data-i18n="nav_cashier">Cajero</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af]/60 pt-1 hover:text-[#f2ca50] transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined mb-1">account_circle</span>
+<span class="font-['Inter'] text-[10px] uppercase font-semibold" data-i18n="nav_profile">Perfil</span>
+</a>
+</nav>
+<script>
+        // --- Configurations & Supabase Init ---
+        const SUPABASE_URL = "https://your-project.supabase.co"; // To be replaced by actual credentials
+        const SUPABASE_ANON_KEY = "your-anon-key"; // To be replaced by actual credentials
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // --- Localization ---
+        const i18n = {
+            es: {
+                brand: "MIDNIGHT ROYALE",
+                balance_label: "Balance",
+                table_id: "Mesa Live 01",
+                last_history: "ÚLTIMOS:",
+                spin_btn: "GIRAR",
+                nav_lobby: "Lobby",
+                nav_roulette: "Ruleta",
+                nav_tables: "Mesas",
+                nav_cashier: "Cajero",
+                nav_profile: "Perfil",
+                red: "Rojo",
+                black: "Negro",
+                even: "Par",
+                odd: "Impar",
+                win: "¡GANASTE!",
+                loss: "SIN SUERTE",
+                result_meta: "Rojo / Par",
+                "1st_12": "1RA 12",
+                "2nd_12": "2DA 12",
+                "3rd_12": "3RA 12"
+            },
+            en: {
+                brand: "MIDNIGHT ROYALE",
+                balance_label: "Balance",
+                table_id: "Live Table 01",
+                last_history: "LAST:",
+                spin_btn: "SPIN",
+                nav_lobby: "Lobby",
+                nav_roulette: "Roulette",
+                nav_tables: "Tables",
+                nav_cashier: "Cashier",
+                nav_profile: "Profile",
+                red: "Red",
+                black: "Black",
+                even: "Even",
+                odd: "Odd",
+                win: "YOU WIN!",
+                loss: "NO LUCK",
+                result_meta: "Red / Even",
+                "1st_12": "1st 12",
+                "2nd_12": "2nd 12",
+                "3rd_12": "3rd 12"
+            },
+            pt: {
+                brand: "MIDNIGHT ROYALE",
+                balance_label: "Saldo",
+                table_id: "Mesa Live 01",
+                last_history: "ÚLTIMOS:",
+                spin_btn: "GIRAR",
+                nav_lobby: "Lobby",
+                nav_roulette: "Roleta",
+                nav_tables: "Mesas",
+                nav_cashier: "Caixa",
+                nav_profile: "Perfil",
+                red: "Vermelho",
+                black: "Preto",
+                even: "Par",
+                odd: "Ímpar",
+                win: "VOCÊ GANHOU!",
+                loss: "SEM SORTE",
+                result_meta: "Vermelho / Par",
+                "1st_12": "1ª 12",
+                "2nd_12": "2ª 12",
+                "3rd_12": "3ª 12"
+            }
+        };
+
+        let currentLang = 'es';
+
+        // --- State ---
+        let userBalance = 10000.00;
+        let selectedChip = 100;
+        let activeBets = []; // { type, value, amount }
+        let isSpinning = false;
+
+        // --- UI Updates ---
+        function updateBalanceUI() {
+            document.getElementById('user-balance').textContent = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(userBalance);
+        }
+
+        function updateTotalsUI() {
+            const totalBet = activeBets.reduce((acc, bet) => acc + bet.amount, 0);
+            document.getElementById('total-bet-display').textContent = `Total Bet: $${totalBet.toFixed(2)}`;
+            
+            // Simplified Max Win estimate (Number bet 35:1)
+            const maxBet = activeBets.length > 0 ? Math.max(...activeBets.map(b => b.amount)) : 0;
+            const maxWin = maxBet * 36;
+            document.getElementById('max-win-display').textContent = `Max Win: $${maxWin.toFixed(2)}`;
+            
+            document.getElementById('spin-button').disabled = totalBet === 0 || isSpinning;
+        }
+
+        // --- Supabase Integration ---
+        async function fetchUserBalance() {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (user) {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('balance')
+                        .eq('id', user.id)
+                        .single();
+                    
+                    if (data && !error) {
+                        userBalance = data.balance;
+                        updateBalanceUI();
+                    }
+                }
+            } catch (err) {
+                console.error("Error fetching balance:", err);
+            }
+        }
+
+        async function handleSpin() {
+            if (isSpinning || activeBets.length === 0) return;
+
+            isSpinning = true;
+            updateTotalsUI();
+            
+            // Animation start
+            const wheel = document.getElementById('wheel-img');
+            const resultDisplay = document.getElementById('result-display');
+            wheel.classList.add('animate-[spin_2s_linear_infinite]');
+            resultDisplay.classList.add('opacity-0', 'scale-50');
+
+            try {
+                // Call Supabase RPC
+                const { data, error } = await supabase.rpc('process_bet_secure', {
+                    bets: activeBets,
+                    game_type: 'roulette_noir'
+                });
+
+                if (error) throw error;
+
+                // Simulate delay for excitement
+                setTimeout(() => {
+                    wheel.classList.remove('animate-[spin_2s_linear_infinite]');
+                    resultDisplay.classList.remove('opacity-0', 'scale-50');
+                    resultDisplay.classList.add('opacity-100', 'scale-110');
+                    
+                    const winResult = data.result_number; // Assume backend returns number
+                    document.getElementById('win-number').textContent = winResult;
+                    
+                    // Update Balance
+                    userBalance = data.new_balance;
+                    updateBalanceUI();
+                    
+                    // Reset bets
+                    activeBets = [];
+                    document.querySelectorAll('.grid-bet-item.selected').forEach(el => el.classList.remove('selected'));
+                    
+                    isSpinning = false;
+                    updateTotalsUI();
+                }, 2000);
+
+            } catch (err) {
+                console.error("Spin failed:", err);
+                alert("Error processing bet. Please try again.");
+                wheel.classList.remove('animate-[spin_2s_linear_infinite]');
+                isSpinning = false;
+                updateTotalsUI();
+            }
+        }
+
+        // --- Interaction Handlers ---
+        document.getElementById('chip-selector').addEventListener('click', (e) => {
+            const chip = e.target.closest('.chip');
+            if (!chip) return;
+            
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected', 'w-14', 'h-14', 'border-[3px]', 'shadow-[0_0_15px_rgba(242,202,80,0.3)]'));
+            chip.classList.add('selected', 'w-14', 'h-14', 'border-[3px]', 'shadow-[0_0_15px_rgba(242,202,80,0.3)]');
+            selectedChip = parseInt(chip.dataset.chipValue);
+        });
+
+        document.querySelectorAll('.grid-bet-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (isSpinning) return;
+                
+                const betType = item.dataset.betType;
+                const betValue = item.dataset.betValue;
+                
+                // Toggle selection (simplified for one bet at a time in this UI)
+                const existingIdx = activeBets.findIndex(b => b.type === betType && b.value === betValue);
+                
+                if (existingIdx > -1) {
+                    activeBets[existingIdx].amount += selectedChip;
+                } else {
+                    activeBets.push({ type: betType, value: betValue, amount: selectedChip });
+                    item.classList.add('selected');
+                }
+                
+                updateTotalsUI();
+            });
+        });
+
+        document.getElementById('spin-button').addEventListener('click', handleSpin);
+
+        // --- Initialization ---
+        window.addEventListener('DOMContentLoaded', () => {
+            updateBalanceUI();
+            updateTotalsUI();
+            fetchUserBalance();
+            
+            // Set initial language based on browser or default
+            const browserLang = navigator.language.split('-')[0];
+            if (i18n[browserLang]) currentLang = browserLang;
+            
+            // Apply initial localization
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (i18n[currentLang][key]) {
+                    el.textContent = i18n[currentLang][key];
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,25 @@
+-- 2. TABLAS DE JUEGO Y TRANSACCIONES
+-- Copia desde aquí hasta el final
+
+CREATE TABLE IF NOT EXISTS public.bets (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    user_id UUID REFERENCES public.profiles(id) NOT NULL,
+    game_type TEXT NOT NULL,
+    game_id TEXT NOT NULL,
+    bet_amount NUMERIC(15,2) NOT NULL,
+    payout_amount NUMERIC(15,2) DEFAULT 0.00,
+    status TEXT DEFAULT 'pending',
+    bet_selection JSONB,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS public.transactions (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    user_id UUID REFERENCES public.profiles(id) NOT NULL,
+    amount NUMERIC(15,2) NOT NULL,
+    type TEXT NOT NULL,
+    method TEXT NOT NULL,
+    status TEXT DEFAULT 'pending',
+    description TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);

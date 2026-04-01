@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Midnight Royale - Deep Sea Riches</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#131313",
+              "surface-variant": "#353534",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed-variant": "#08522a",
+              "inverse-on-surface": "#313030",
+              "on-surface": "#e5e2e1",
+              "outline-variant": "#4d4635",
+              "surface-dim": "#131313",
+              "secondary-container": "#920703",
+              "on-secondary-fixed-variant": "#920703",
+              "on-primary-fixed-variant": "#574500",
+              "on-primary-fixed": "#241a00",
+              "inverse-primary": "#735c00",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed-dim": "#92d6a2",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-secondary-fixed": "#410000",
+              "on-primary": "#3c2f00",
+              "surface-bright": "#3a3939",
+              "primary-container": "#d4af37",
+              "primary-fixed": "#ffe088",
+              "tertiary": "#9adeaa",
+              "primary": "#f2ca50",
+              "on-secondary-container": "#ff9a8a",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-container": "#7fc290",
+              "on-primary-container": "#554300",
+              "on-background": "#e5e2e1",
+              "on-tertiary": "#00391a",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "outline": "#99907c",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#adf2bc",
+              "secondary-fixed": "#ffdad4",
+              "surface-container": "#201f1f",
+              "surface-tint": "#e9c349",
+              "on-surface-variant": "#d0c5af",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary": "#690000",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .slot-mask {
+        mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      }
+      .underwater-glow {
+        background: radial-gradient(circle at 50% 50%, rgba(127, 194, 144, 0.05) 0%, transparent 70%);
+      }
+      .custom-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+        pointer-events: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen overflow-x-hidden">
+<div class="fixed inset-0 custom-noise z-0"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] dark:bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-serif italic font-bold text-[#f2ca50] tracking-widest text-xl">Midnight Royale</h1>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary scale-90" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-serif font-bold text-[#f2ca50] text-sm tracking-tight">$25,000.00</span>
+</div>
+</header>
+<main class="pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+<!-- Game Title & Atmosphere -->
+<section class="text-center mb-8 relative">
+<div class="absolute inset-0 -top-10 underwater-glow pointer-events-none"></div>
+<p class="font-sans font-bold uppercase tracking-[0.3em] text-primary/60 text-[10px] mb-2">Exclusive High-Stakes Slot</p>
+<h2 class="font-headline text-4xl md:text-6xl text-on-surface tracking-tighter mb-1">Deep Sea Riches</h2>
+<div class="flex justify-center items-center gap-2 text-tertiary text-xs font-bold tracking-widest uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="water_drop">water_drop</span>
+                Oceanic Multipliers Active
+                <span class="material-symbols-outlined text-[14px]" data-icon="water_drop">water_drop</span>
+</div>
+</section>
+<!-- Slot Machine Core -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Sidebar: Paytable/Info -->
+<aside class="hidden lg:flex flex-col gap-4 lg:col-span-3">
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/10 shadow-lg">
+<h3 class="font-headline text-sm text-primary uppercase tracking-widest mb-4">Top Symbols</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-2 bg-surface-container-lowest rounded">
+<span class="material-symbols-outlined text-primary" data-icon="featured_seasonal" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+<span class="text-xs font-bold text-on-surface-variant">GOLDEN SHELL</span>
+<span class="font-headline text-tertiary">x500</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface-container-lowest rounded">
+<span class="material-symbols-outlined text-primary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="text-xs font-bold text-on-surface-variant">TRITON GEM</span>
+<span class="font-headline text-tertiary">x250</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-surface-container-lowest rounded">
+<span class="material-symbols-outlined text-primary" data-icon="savings" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="text-xs font-bold text-on-surface-variant">CHEST</span>
+<span class="font-headline text-tertiary">x100</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded border border-outline-variant/10">
+<h3 class="font-headline text-sm text-on-surface-variant uppercase tracking-widest mb-2">Live Activity</h3>
+<div class="space-y-2 opacity-80">
+<div class="flex justify-between text-[10px] font-mono py-1 border-b border-outline-variant/10">
+<span>User_291</span>
+<span class="text-tertiary">+$1,240.00</span>
+</div>
+<div class="flex justify-between text-[10px] font-mono py-1 border-b border-outline-variant/10">
+<span>HighRoller</span>
+<span class="text-tertiary">+$450.00</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Slot Area -->
+<section class="lg:col-span-9 flex flex-col gap-6">
+<!-- Reels Container -->
+<div class="relative bg-surface-container-lowest rounded-xl p-4 md:p-8 shadow-[0_0_60px_rgba(0,0,0,0.5)] border border-outline-variant/20">
+<!-- Underwater Decorative Elements -->
+<div class="absolute -top-4 -left-4 w-24 h-24 opacity-20 pointer-events-none">
+<img alt="antique treasure chest resting on a sandy ocean floor with golden light filtering through water" class="w-full h-full object-contain" data-alt="antique treasure chest resting on a sandy ocean floor with golden light filtering through water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxhqct7OClGFhAgZyzd9E5nE5YztblG5nHg796fdvhMfe6fIsffA5w8PY7XMORzr9XH_lQALrfd3FeS1U-fq9x6_Xv8XHW70nBvBoy8H_oJEYl_BIeEtnzRql2KqX329pVGcp4omVD01V727Bx5DsRC7W_voTLOo-aA78SKFbOaeSz97373N7varympGBNuBb43pqkpGPELW2p8iXSoVkCjsBdH0nc5re3e6qocmm0B6oY4hDaJ4ccoGAf5lEe-twVTB4K_4Cy9B1V"/>
+</div>
+<div class="absolute -bottom-6 -right-6 w-32 h-32 opacity-30 pointer-events-none">
+<img alt="vibrant coral reef with soft blue bubbles rising and golden shimmering light" class="w-full h-full object-contain" data-alt="vibrant coral reef with soft blue bubbles rising and golden shimmering light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrUKK4M_PEPGwmbRaX73RIcoKPerMQ6jxzklt9cWICGhBj7D31_aKeuaKETbrreIBTLFtbOwLKXEYiSfbtgXv7MNG3YF_OSyYdMLIbnw6jYuJWC8GMkA19ruHGzjlies24Lp1r26k04G6tbWChsoiZgsV2BsUAV2WQdqW9ZFo9miCONVnwVnEv9GBCY3GWngrb44-vBTvIBqDEHCsntbRrB-XcY-mVK3ssR2iNW6g2vWgRvH7Fjbf7xutbPA1X2zUqcQ9iUoIn9ZDQ"/>
+</div>
+<!-- Slot Reels Grid -->
+<div class="grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 slot-mask h-[300px] md:h-[400px] overflow-hidden relative z-10">
+<!-- Reel 1 -->
+<div class="flex flex-col gap-4 items-center justify-center bg-surface-container-low/40 rounded-lg py-10 border border-outline-variant/5">
+<span class="material-symbols-outlined text-5xl md:text-6xl text-primary opacity-90" data-icon="savings">savings</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-on-surface-variant/40" data-icon="waves">waves</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-tertiary" data-icon="featured_seasonal" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+</div>
+<!-- Reel 2 -->
+<div class="flex flex-col gap-4 items-center justify-center bg-surface-container-low/40 rounded-lg py-10 border border-outline-variant/5">
+<span class="material-symbols-outlined text-5xl md:text-6xl text-on-surface-variant/40" data-icon="anchor">anchor</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-primary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-on-surface-variant/40" data-icon="sailing">sailing</span>
+</div>
+<!-- Reel 3 -->
+<div class="flex flex-col gap-4 items-center justify-center bg-surface-container-low/40 rounded-lg py-10 border border-outline-variant/5">
+<span class="material-symbols-outlined text-5xl md:text-6xl text-tertiary" data-icon="featured_seasonal" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-primary" data-icon="savings">savings</span>
+<span class="material-symbols-outlined text-5xl md:text-6xl text-on-surface-variant/40" data-icon="phishing">phishing</span>
+</div>
+<!-- Reel 4 (Hidden on Mobile) -->
+<div class="hidden md:flex flex-col gap-4 items-center justify-center bg-surface-container-low/40 rounded-lg py-10 border border-outline-variant/5">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant/40" data-icon="sailing">sailing</span>
+<span class="material-symbols-outlined text-6xl text-tertiary" data-icon="featured_seasonal" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="diamond">diamond</span>
+</div>
+<!-- Reel 5 (Hidden on Mobile) -->
+<div class="hidden md:flex flex-col gap-4 items-center justify-center bg-surface-container-low/40 rounded-lg py-10 border border-outline-variant/5">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-6xl text-on-surface-variant/40" data-icon="anchor">anchor</span>
+<span class="material-symbols-outlined text-6xl text-tertiary" data-icon="featured_seasonal">featured_seasonal_and_gifts</span>
+</div>
+</div>
+<!-- Winning Overlay (Pulse State) -->
+<div class="absolute top-1/2 left-0 w-full h-[120px] -translate-y-1/2 border-y-2 border-primary/30 bg-primary/5 pointer-events-none flex items-center justify-center z-20">
+<div class="bg-primary px-4 py-1 text-on-primary font-bold text-[10px] tracking-widest uppercase absolute -top-3 left-1/2 -translate-x-1/2">Win Line</div>
+</div>
+</div>
+<!-- Game Controls -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+<!-- Bet Control -->
+<div class="flex flex-col items-center md:items-start gap-2 min-w-[200px]">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bet Amount</label>
+<div class="flex items-center gap-4 bg-surface-container-lowest px-4 py-2 rounded border border-outline-variant/30 w-full justify-between">
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined" data-icon="remove">remove</span></button>
+<span class="font-headline text-2xl text-on-surface">$100.00</span>
+<button class="text-primary hover:opacity-70 transition-opacity"><span class="material-symbols-outlined" data-icon="add">add</span></button>
+</div>
+</div>
+<!-- Spin Button Cluster -->
+<div class="flex flex-col items-center gap-4">
+<button class="group relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center active:scale-95 transition-transform">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary-container to-primary rounded-full shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-shadow group-hover:shadow-[0_0_50px_rgba(212,175,55,0.6)]"></div>
+<span class="relative z-10 font-headline text-on-primary text-xl md:text-2xl tracking-tighter uppercase">Spin</span>
+<div class="absolute inset-0 rounded-full border-4 border-on-primary/10 group-hover:scale-105 transition-transform duration-500"></div>
+</button>
+<div class="flex gap-4">
+<button class="px-4 py-2 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Max Bet</button>
+<button class="px-4 py-2 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant hover:text-tertiary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="autorenew">autorenew</span> Auto
+                            </button>
+</div>
+</div>
+<!-- Language & Settings -->
+<div class="flex flex-col items-center md:items-end gap-3 min-w-[200px]">
+<div class="flex gap-2 mb-2">
+<span class="text-primary font-bold text-xs px-2 py-0.5 border border-primary/30 rounded cursor-pointer">EN</span>
+<span class="text-on-surface-variant/40 font-bold text-xs px-2 py-0.5 border border-transparent rounded cursor-pointer hover:text-on-surface-variant">ES</span>
+<span class="text-on-surface-variant/40 font-bold text-xs px-2 py-0.5 border border-transparent rounded cursor-pointer hover:text-on-surface-variant">PT</span>
+</div>
+<div class="text-right">
+<div class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Multipliers</div>
+<div class="font-headline text-tertiary text-xl">x2.45 Active</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.8)] flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#d4af37]/10 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="slot_machine" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="military_tech">military_tech</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider">Promos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider">Account</span>
+</a>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-1/4 -right-20 w-96 h-96 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-1/4 -left-20 w-96 h-96 bg-tertiary/5 blur-[120px] rounded-full pointer-events-none"></div>
+</body></html>

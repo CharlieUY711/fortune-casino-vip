@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino | Management Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f1f",
+                        "secondary": "#ffb4a8",
+                        "error": "#ffb4ab",
+                        "on-primary": "#3c2f00",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-tertiary-fixed": "#00210d",
+                        "outline": "#99907c",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-variant": "#353534",
+                        "on-secondary": "#690000",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#4d4635",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#735c00",
+                        "tertiary-container": "#7fc290",
+                        "on-tertiary": "#00391a",
+                        "tertiary": "#9adeaa",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#f2ca50",
+                        "on-secondary-container": "#ff9a8a",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "secondary-container": "#920703",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-container": "#055029",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-fixed": "#adf2bc",
+                        "surface": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#554300",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#410000",
+                        "on-background": "#e5e2e1"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .grain-overlay {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDIQR4A55LmslP4ib2MQi3QHSRYHvDuC7a7sLVf1cfzcoO6jAVBcYqFHekYZCp9Ad5iUX4UOm34bGd8pmpEtNw0yaTPjDwi9GJr2BAfoX-5e1jBovD8DAQ86pQbAVFu4MCo4D_ahjNXi1JkyZ--J9sL0bAwIbMuMQUnf0baVSVK0vLyxDpeiZjxSOSQE28eytcTtZbSWG0xIG0yNP25r-TShm2oCI5CBfRs6kMdWPKy2SBA5IVtPR8yCQCUHzkZGQ3A9uG4sV97qVQp);
+            opacity: 0.03;
+            pointer-events: none
+        }
+        .gold-gradient-cta {
+            background: linear-gradient(45deg, #f2ca50, #d4af37)
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131313
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4d4635
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
+<div class="fixed inset-0 grain-overlay z-[9999]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_10px_30px_-15px_rgba(212,175,55,0.1)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-none bg-[#1c1b1b]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="text-[#f2ca50] font-serif text-xl tracking-[0.2em] uppercase">FORTUNE CASINO</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 font-serif tracking-widest uppercase text-sm">
+<a class="text-[#d0c5af] hover:text-[#f2ca50] transition-colors duration-300" data-i18n="nav_lounge" href="#">Lounge</a>
+<a class="text-[#d0c5af] hover:text-[#f2ca50] transition-colors duration-300" data-i18n="nav_wallet" href="#">Wallet</a>
+<a class="text-[#f2ca50] transition-colors duration-300" data-i18n="nav_mgmt" href="#">Management</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right hidden sm:block">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant" data-i18n="admin_level">Admin Level</p>
+<p class="text-xs font-headline text-primary">SUPERUSER</p>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiDSOx9DfelXmOswcv71OP3pJfDluquchtGTyNU_VL-Cvd_lnSWH0_aaQAEUNmPy2CCDM7pCc9mJOfHjve3smaze__-3Cj67H0UBHm7y93NYpsfOZF6P4Hf3ViKKLeBUn6EccDaPR9_R5c79sktnhukoTuzYJ-42b5lNyWZD60ZwyWV4MT1oZPL3tjddcaNX9M58WuEv319YRnoxmKXynu2zxIXdg0U-w1pE3unDFuF6UkOIuLhbOxQVE7kbYUfg_Tu-e0WeEKDrjr"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Visible on Large Screens) -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex flex-col h-full w-80 bg-[#131313] border-r border-[#4d4635]/20 shadow-2xl mt-16">
+<div class="p-6 flex flex-col gap-1 border-b border-[#4d4635]/10">
+<h2 class="text-[#f2ca50] font-serif text-lg">Midnight Royale</h2>
+<p class="text-[#d0c5af] opacity-80 text-sm italic" data-i18n="exclusive_access">Exclusive Access</p>
+<div class="mt-4 flex items-center justify-between bg-surface-container-low p-3 rounded-lg border border-outline-variant/10">
+<span class="text-xs uppercase tracking-widest text-on-surface-variant" data-i18n="active_slots">Active Slots</span>
+<span class="text-primary font-headline">12 slots</span>
+</div>
+</div>
+<nav class="flex-1 py-6">
+<ul class="flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-serif" data-i18n="nav_lounge">Lounge</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-serif" data-i18n="nav_wallet">Wallet</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#1c1b1b] text-[#f2ca50] border-l-4 border-[#f2ca50] font-serif" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span data-i18n="nav_mgmt">Management</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-serif" data-i18n="nav_invites">Invitations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="font-serif" data-i18n="nav_lang">Language</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-6 border-t border-[#4d4635]/10">
+<div class="bg-secondary-container/10 p-4 rounded-lg border border-secondary-container/20">
+<p class="text-secondary text-xs font-bold uppercase tracking-widest mb-1" data-i18n="sys_health">System Health</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></div>
+<span class="text-[10px] text-tertiary uppercase" data-i18n="sys_nominal">All Systems Nominal</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-80 pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Dashboard Header & Stats -->
+<header class="mb-12">
+<h2 class="font-headline text-display-lg text-on-surface mb-2 leading-tight" data-i18n="header_title">System Oversight</h2>
+<p class="text-on-surface-variant font-body" data-i18n="header_subtitle">SuperAdmin Dashboard &amp; User Control Matrix</p>
+</header>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+<div class="col-span-1 md:col-span-2 bg-surface-container-low p-8 rounded-lg border-l-4 border-primary relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2" data-i18n="total_credits">Total System Credits</p>
+<h3 class="font-headline text-4xl text-primary mb-4">₿ 1,482,905.00</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-1 text-tertiary text-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span data-i18n="trend_up">+4.2% today</span>
+</div>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 opacity-5">
+<span class="material-symbols-outlined text-[120px]">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-8 rounded-lg border border-outline-variant/10">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2" data-i18n="active_users">Active Users</p>
+<h3 class="font-headline text-4xl text-on-surface mb-1">842</h3>
+<p class="text-[10px] text-on-surface-variant italic" data-i18n="peak_stat">Peak: 1,024 today</p>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-8 rounded-lg border border-outline-variant/10 border-b-4 border-secondary-container">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2" data-i18n="pending_approvals">Pending Approvals</p>
+<h3 class="font-headline text-4xl text-secondary mb-1">12</h3>
+<p class="text-[10px] text-on-surface-variant italic" data-i18n="priority_review">Priority review required</p>
+</div>
+</div>
+<!-- Management Sections -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-12">
+<!-- User Management Table -->
+<section class="xl:col-span-2">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">group</span>
+<h4 class="font-headline text-2xl" data-i18n="user_registry">User Registry</h4>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input class="bg-surface-container-lowest border-none border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-sm py-2 pl-2 pr-8 w-48 transition-all duration-300" placeholder="Search UUID..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-2 text-on-surface-variant text-sm">search</span>
+</div>
+<button class="p-2 bg-surface-container-high rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">
+<th class="px-6 py-4" data-i18n="th_identity">User Identity</th>
+<th class="px-6 py-4" data-i18n="th_balance">Balance</th>
+<th class="px-6 py-4" data-i18n="th_status">Status</th>
+<th class="px-6 py-4 text-right" data-i18n="th_actions">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Existing users are shown here -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-primary">MR</div>
+<div>
+<p class="text-sm font-semibold">Midnight_Royale</p>
+<p class="text-[10px] text-on-surface-variant">ID: 8829-XJ2</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-headline text-primary text-sm">₿ 12,450.00</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/10 text-tertiary uppercase tracking-tighter" data-i18n="status_verified">Verified</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" title="Adjust Balance">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- More users... -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-primary">VL</div>
+<div>
+<p class="text-sm font-semibold">Valencia Luxury</p>
+<p class="text-[10px] text-on-surface-variant">ID: VIP-FORTUNE-001</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-headline text-primary text-sm">₿ 10,000.00</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/10 text-tertiary uppercase tracking-tighter" data-i18n="status_verified">Verified</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" title="Adjust Balance">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</td>
+</tr></tbody>
+</table>
+<div class="bg-surface-container-low px-6 py-4 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant">Showing 3 of 842 records</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest text-xs text-on-surface-variant border border-outline-variant/20">Prev</button>
+<button class="px-3 py-1 bg-primary text-on-primary text-xs font-bold">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Real-time Pending Approvals (Supabase Integration) -->
+<section class="flex flex-col gap-8">
+<div class="bg-surface-container p-6 rounded-lg border border-secondary-container/20">
+<div class="flex items-center justify-between mb-6">
+<h5 class="font-headline text-lg text-secondary" data-i18n="pending_invites">Pending Invites</h5>
+<span class="bg-secondary-container text-on-error-container text-[10px] px-2 py-1 rounded font-bold" id="pending-count">12 ACTIONABLE</span>
+</div>
+<div class="space-y-4 max-h-[320px] overflow-y-auto custom-scrollbar pr-2" id="pending-users-list">
+<!-- Dynamic list of registered users with is_approved=false -->
+<div class="flex flex-col gap-3 p-4 bg-surface-container-low rounded border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-semibold">valencia_04@luxury.it</p>
+<p class="text-[10px] text-on-surface-variant">Requested 2h ago</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</div>
+<div class="flex gap-2"><div class="flex-1 flex justify-center py-2 text-tertiary"><span class="material-symbols-outlined">check_circle</span></div></div>
+</div>
+<div class="flex flex-col gap-3 p-4 bg-surface-container-low rounded border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-semibold">marcos.casino@pt.mail</p>
+<p class="text-[10px] text-on-surface-variant">Requested 5h ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-tertiary-container/20 text-tertiary text-[10px] uppercase font-bold tracking-widest hover:bg-tertiary-container/30 transition-colors" data-i18n="btn_approve" onclick="approveUser('uuid-2')">Approve</button>
+<button class="flex-1 py-2 bg-secondary-container/20 text-secondary text-[10px] uppercase font-bold tracking-widest hover:bg-secondary-container/30 transition-colors" data-i18n="btn_deny">Deny</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Maintenance Controls & Multi-Language -->
+<div class="bg-surface-container-high p-6 rounded-lg border border-outline-variant/20">
+<h5 class="font-headline text-lg text-on-surface mb-6" data-i18n="maint_matrix">Maintenance Matrix</h5>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-semibold" data-i18n="bet_lock">Global Bet Lock</p>
+<p class="text-[10px] text-on-surface-variant" data-i18n="bet_lock_desc">Freezes all active tables</p>
+</div>
+<div class="w-12 h-6 bg-surface-container-lowest rounded-full relative cursor-pointer border border-outline-variant/20" onclick="toggleBetLock()">
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full transition-all" id="lock-toggle"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-semibold" data-i18n="purge_guest">Purge Guest Accounts</p>
+<p class="text-[10px] text-on-surface-variant" data-i18n="purge_guest_desc">Automated daily at 04:00 UTC</p>
+</div>
+<button class="text-primary text-[10px] font-bold uppercase border-b border-primary/40 pb-0.5 tracking-widest" data-i18n="btn_execute">Execute Now</button>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-3" data-i18n="lang_override">System Language Override</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-[10px] font-bold transition-colors bg-primary text-on-primary" onclick="setLanguage('en')">EN</button>
+<button class="py-2 text-[10px] font-bold transition-colors bg-surface-container-lowest text-on-surface-variant hover:text-on-surface" onclick="setLanguage('es')">ES</button>
+<button class="py-2 text-[10px] font-bold transition-colors bg-surface-container-lowest text-on-surface-variant hover:text-on-surface" onclick="setLanguage('pt')">PT</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-[#0e0e0e] border-l-2 border-primary/30 flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#f2ca50]"></div>
+<span class="text-[10px] font-mono text-primary/80">SUPABASE_REALTIME_ACTIVE::v2.4.0</span>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-[#131313]/90 backdrop-blur-md z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_25px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined">home_pin</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter" data-i18n="mob_lobby">Lobby</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter" data-i18n="mob_wallet">Wallet</span>
+</a>
+<a class="flex flex-col items-center text-[#f2ca50] scale-110" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter" data-i18n="mob_admin">Admin</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60" href="#">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter" data-i18n="mob_invites">Invites</span>
+</a>
+</nav>
+<script>
+        // Multi-language implementation
+        const translations = {
+            en: {
+                nav_lounge: "Lounge",
+                nav_wallet: "Wallet",
+                nav_mgmt: "Management",
+                nav_invites: "Invitations",
+                nav_lang: "Language",
+                admin_level: "Admin Level",
+                exclusive_access: "Exclusive Access",
+                active_slots: "Active Slots",
+                sys_health: "System Health",
+                sys_nominal: "All Systems Nominal",
+                header_title: "System Oversight",
+                header_subtitle: "SuperAdmin Dashboard & User Control Matrix",
+                total_credits: "Total System Credits",
+                trend_up: "+4.2% today",
+                active_users: "Active Users",
+                peak_stat: "Peak: 1,024 today",
+                pending_approvals: "Pending Approvals",
+                priority_review: "Priority review required",
+                user_registry: "User Registry",
+                th_identity: "User Identity",
+                th_balance: "Balance",
+                th_status: "Status",
+                th_actions: "Actions",
+                status_verified: "Verified",
+                pending_invites: "Pending Invites",
+                btn_approve: "Approve",
+                btn_deny: "Deny",
+                maint_matrix: "Maintenance Matrix",
+                bet_lock: "Global Bet Lock",
+                bet_lock_desc: "Freezes all active tables",
+                purge_guest: "Purge Guest Accounts",
+                purge_guest_desc: "Automated daily at 04:00 UTC",
+                btn_execute: "Execute Now",
+                lang_override: "System Language Override",
+                mob_lobby: "Lobby",
+                mob_wallet: "Wallet",
+                mob_admin: "Admin",
+                mob_invites: "Invites"
+            },
+            es: {
+                nav_lounge: "Salón",
+                nav_wallet: "Billetera",
+                nav_mgmt: "Gestión",
+                nav_invites: "Invitaciones",
+                nav_lang: "Idioma",
+                admin_level: "Nivel Admin",
+                exclusive_access: "Acceso Exclusivo",
+                active_slots: "Slots Activos",
+                sys_health: "Salud del Sistema",
+                sys_nominal: "Sistemas Nominales",
+                header_title: "Supervisión del Sistema",
+                header_subtitle: "Panel de SuperAdmin y Matriz de Control",
+                total_credits: "Créditos Totales",
+                trend_up: "+4.2% hoy",
+                active_users: "Usuarios Activos",
+                peak_stat: "Pico: 1,024 hoy",
+                pending_approvals: "Pendientes",
+                priority_review: "Requiere revisión prioritaria",
+                user_registry: "Registro de Usuarios",
+                th_identity: "Identidad",
+                th_balance: "Balance",
+                th_status: "Estado",
+                th_actions: "Acciones",
+                status_verified: "Verificado",
+                pending_invites: "Invitaciones Pendientes",
+                btn_approve: "Aprobar",
+                btn_deny: "Denegar",
+                maint_matrix: "Matriz de Mantenimiento",
+                bet_lock: "Bloqueo Global",
+                bet_lock_desc: "Congela todas las mesas",
+                purge_guest: "Purgar Invitados",
+                purge_guest_desc: "Diario a las 04:00 UTC",
+                btn_execute: "Ejecutar Ya",
+                lang_override: "Cambiar Idioma",
+                mob_lobby: "Inicio",
+                mob_wallet: "Billetera",
+                mob_admin: "Admin",
+                mob_invites: "Invites"
+            },
+            pt: {
+                nav_lounge: "Salão",
+                nav_wallet: "Carteira",
+                nav_mgmt: "Gerenciamento",
+                nav_invites: "Convites",
+                nav_lang: "Idioma",
+                admin_level: "Nível Admin",
+                exclusive_access: "Acesso Exclusivo",
+                active_slots: "Slots Ativos",
+                sys_health: "Saúde do Sistema",
+                sys_nominal: "Sistemas Nominais",
+                header_title: "Supervisão do Sistema",
+                header_subtitle: "Painel SuperAdmin e Controle",
+                total_credits: "Créditos Totais",
+                trend_up: "+4.2% hoje",
+                active_users: "Usuários Ativos",
+                peak_stat: "Pico: 1,024 hoje",
+                pending_approvals: "Pendentes",
+                priority_review: "Revisão prioritária",
+                user_registry: "Registro de Usuários",
+                th_identity: "Identidade",
+                th_balance: "Saldo",
+                th_status: "Status",
+                th_actions: "Ações",
+                status_verified: "Verificado",
+                pending_invites: "Convites Pendentes",
+                btn_approve: "Aprovar",
+                btn_deny: "Negar",
+                maint_matrix: "Matriz de Manutenção",
+                bet_lock: "Bloqueio Global",
+                bet_lock_desc: "Congela todas as mesas",
+                purge_guest: "Limpar Convidados",
+                purge_guest_desc: "Diário às 04:00 UTC",
+                btn_execute: "Executar Agora",
+                lang_override: "Idioma do Sistema",
+                mob_lobby: "Início",
+                mob_wallet: "Carteira",
+                mob_admin: "Admin",
+                mob_invites: "Convites"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            // Update button styles
+            const buttons = document.querySelectorAll('.grid-cols-3 button');
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase() === lang) {
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                    btn.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                    btn.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+                }
+            });
+        }
+
+        function toggleBetLock() {
+            const toggle = document.getElementById('lock-toggle');
+            toggle.classList.toggle('translate-x-6');
+            toggle.classList.toggle('bg-primary');
+            toggle.classList.toggle('bg-outline');
+        }
+
+        // Mock Supabase Approval Action
+        async function approveUser(userId) {
+            console.log(`Approving user ${userId} in Supabase profiles table...`);
+            // supabase.from('profiles').update({ is_approved: true, balance: 5000 }).eq('id', userId);
+            
+            // Visual feedback
+            const btn = event.currentTarget;
+            btn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">refresh</span>';
+            setTimeout(() => {
+                const container = btn.closest('.flex-col');
+                container.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    container.remove();
+                    const count = document.getElementById('pending-count');
+                    const current = parseInt(count.innerText);
+                    count.innerText = `${current - 1} ACTIONABLE`;
+                }, 300);
+            }, 800);
+        }
+    </script>
+</body></html>

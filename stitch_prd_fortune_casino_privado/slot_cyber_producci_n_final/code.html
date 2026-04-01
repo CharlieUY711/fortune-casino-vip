@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Serif:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary-fixed": "#ffdad4",
+                "primary": "#f2ca50",
+                "primary-fixed-dim": "#e9c349",
+                "on-tertiary-fixed-variant": "#08522a",
+                "surface-container-low": "#1c1b1b",
+                "tertiary-fixed-dim": "#92d6a2",
+                "outline": "#99907c",
+                "surface-container-highest": "#353534",
+                "primary-container": "#d4af37",
+                "on-error-container": "#ffdad6",
+                "tertiary": "#9adeaa",
+                "surface-variant": "#353534",
+                "on-primary-fixed": "#241a00",
+                "on-error": "#690005",
+                "surface-bright": "#3a3939",
+                "secondary-container": "#920703",
+                "secondary": "#ffb4a8",
+                "on-tertiary-container": "#055029",
+                "secondary-fixed-dim": "#ffb4a8",
+                "on-surface": "#e5e2e1",
+                "background": "#131313",
+                "on-primary-container": "#554300",
+                "error": "#ffb4ab",
+                "on-tertiary-fixed": "#00210d",
+                "inverse-surface": "#e5e2e1",
+                "surface-dim": "#131313",
+                "outline-variant": "#4d4635",
+                "on-tertiary": "#00391a",
+                "surface-tint": "#e9c349",
+                "on-secondary-container": "#ff9a8a",
+                "error-container": "#93000a",
+                "surface-container-high": "#2a2a2a",
+                "on-secondary-fixed-variant": "#920703",
+                "on-secondary-fixed": "#410000",
+                "on-primary-fixed-variant": "#574500",
+                "on-surface-variant": "#d0c5af",
+                "inverse-on-surface": "#313030",
+                "on-secondary": "#690000",
+                "tertiary-fixed": "#adf2bc",
+                "surface-container": "#201f1f",
+                "on-background": "#e5e2e1",
+                "inverse-primary": "#735c00",
+                "primary-fixed": "#ffe088",
+                "tertiary-container": "#7fc290",
+                "surface-container-lowest": "#0e0e0e",
+                "surface": "#131313",
+                "on-primary": "#3c2f00"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neo-glass {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen overflow-x-hidden">
+<div class="fixed inset-0 noise-bg z-[100]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] dark:bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/30 overflow-hidden bg-surface-container-high">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a high roller man in a sharp black suit with gold watch, cinematic lighting, luxury casino background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwENRHjZTudeHheUNJ-MnCRfjAWBj3xkMulSuB2m_bN_BjaMyd5Tblzb6EXXfj78SHdKcX1zUjbn74hAH-64yoJJTXeeHweSpNv_65Y_gculuOvr4U8sRyDkIoRxMT1DHp_9hst445ShjvpZGq0eAu6uGaWiLtPMxM4OIs6IM-RbXQiqqMZcTRVPxi-1v_hFlPnwtXdi32--fgnnBI7-bJg8okGDJ7DskkeByV3GNW9wfTSZW0KhfXRUzrGu1HtNdn_H1iq5DQUDA9"/>
+</div>
+<div class="flex flex-col">
+<span class="font-sans text-xs uppercase tracking-widest Inter text-[#d0c5af] opacity-70">Balance</span>
+<span class="font-serif text-2xl font-bold tracking-tight Noto Serif text-[#f2ca50]">$1,250,500</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<span class="font-sans text-xs uppercase tracking-widest Inter text-[#f2ca50] font-bold cursor-pointer">Lobby</span>
+<span class="font-sans text-xs uppercase tracking-widest Inter text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-2 cursor-pointer">Slots</span>
+<span class="font-sans text-xs uppercase tracking-widest Inter text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-2 cursor-pointer">VIP</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#2a2a2a] transition-colors duration-300 active:scale-95 text-[#f2ca50]">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+<div class="bg-[#1c1b1b] h-px w-full opacity-20"></div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Slot Display -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Slot Machine Interface -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="relative group aspect-[16/10] md:aspect-[21/9] rounded-xl overflow-hidden bg-surface-container-lowest border border-outline-variant/20 shadow-2xl">
+<!-- Slot Reel Container -->
+<div class="absolute inset-0 flex items-center justify-around px-8 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-10">
+<div class="h-full w-px bg-outline-variant/10"></div>
+<div class="h-full w-px bg-outline-variant/10"></div>
+<div class="h-full w-px bg-outline-variant/10"></div>
+<div class="h-full w-px bg-outline-variant/10"></div>
+</div>
+<div class="w-full h-full flex items-center justify-center relative">
+<!-- Reel Items (Static Representation of Action) -->
+<div class="flex justify-around w-full px-4 md:px-12 items-center text-6xl md:text-8xl">
+<div class="flex flex-col gap-8 opacity-40 blur-[2px]">
+<span class="material-symbols-outlined scale-150 text-secondary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div class="flex flex-col gap-8">
+<span class="material-symbols-outlined scale-[2.5] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex flex-col gap-8 opacity-40 blur-[2px]">
+<span class="material-symbols-outlined scale-150 text-tertiary" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+</div>
+</div>
+<!-- Center Line -->
+<div class="absolute w-full h-1 bg-primary/20 top-1/2 -translate-y-1/2 z-20 before:content-[''] before:absolute before:left-0 before:top-0 before:w-4 before:h-4 before:bg-primary before:-translate-y-1/2 before:rounded-full after:content-[''] after:absolute after:right-0 after:top-0 after:w-4 after:h-4 after:bg-primary after:-translate-y-1/2 after:rounded-full shadow-[0_0_15px_rgba(242,202,80,0.3)]"></div>
+</div>
+<img alt="Background texture" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="Abstract dark carbon fiber texture with subtle golden and cyan neon light leaks, cinematic technology aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRFGSW7yMDOc7ALgdeIR2-tf5pcz5oMtdMcemdWINlQ3hvhnhHeUuACGtplF5-I1vS8mIM6Pd40WntVq7GHmXS28xZXS5P7FHI-OvY_iTOvQ3z1ZIKf2ai7inLmyaG47WGBRL0Oo6FA8-w5dH1bS7NHIMfPHc0D_Rqde9ajwesOUELXvHHuO_Sy5pO1XiOFgy2MRn2MSPTk6J9LBzeM_fKRERqfqe8h0i703lHmnZ69YYgUcnm91UJppF7O4TtjgbIrR6eIWqlURe8"/>
+</div>
+<!-- Betting Controls -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-high p-4 rounded-lg flex flex-col gap-1 border border-outline-variant/10">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">Total Bet</span>
+<span class="font-serif text-xl text-primary">$500.00</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-lg flex flex-col gap-1 border border-outline-variant/10">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">Last Win</span>
+<span class="font-serif text-xl text-tertiary">+$1,200.00</span>
+</div>
+<div class="col-span-2 bg-gradient-to-r from-primary to-primary-container p-1 rounded-lg shadow-lg active:scale-95 transition-transform">
+<button class="w-full h-full py-4 bg-background/10 rounded-[0.125rem] flex items-center justify-center gap-3">
+<span class="font-body text-xl font-bold text-on-primary tracking-tighter uppercase">GIRAR</span>
+<span class="material-symbols-outlined text-on-primary">autorenew</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right: Stats & History Bento -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Jackpot Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-primary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant block mb-2">Grand Jackpot</span>
+<h2 class="font-serif text-4xl text-primary font-bold tracking-tighter">$4,820,150</h2>
+<div class="mt-4 flex items-center gap-2 text-xs text-tertiary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>Growing by $12.50/sec</span>
+</div>
+</div>
+<!-- Recent Wins List -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden flex flex-col border border-outline-variant/10">
+<div class="p-4 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="text-xs uppercase tracking-widest font-bold text-on-surface-variant">Live Activity</h3>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-tertiary-container/20 text-tertiary text-[9px] font-bold rounded uppercase">EN</span>
+<span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant text-[9px] font-bold rounded uppercase">ES</span>
+</div>
+</div>
+<div class="divide-y divide-outline-variant/5">
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">User_842</span>
+<span class="text-[10px] text-on-surface-variant">Fruit Frenzy</span>
+</div>
+</div>
+<span class="font-serif text-tertiary text-sm">+$450.00</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Vegas_Knight</span>
+<span class="text-[10px] text-on-surface-variant">Cyber Slot</span>
+</div>
+</div>
+<span class="font-serif text-tertiary text-sm">+$12,400.00</span>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-bright transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-primary">person</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Diamond_Ace</span>
+<span class="text-[10px] text-on-surface-variant">Royal Reels</span>
+</div>
+</div>
+<span class="font-serif text-tertiary text-sm">+$820.50</span>
+</div>
+</div>
+</div>
+</aside>
+</section>
+<!-- Game Info / Settings Toggle -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-xl bg-surface-container-high/40 border border-outline-variant/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-primary/10 rounded-lg">info</span>
+<div>
+<h4 class="text-sm font-bold mb-1">RTP 98.5%</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">High volatility cyberpunk-themed slot with 243 ways to win and expanding wild multipliers.</p>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-high/40 border border-outline-variant/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-primary/10 rounded-lg">history</span>
+<div>
+<h4 class="text-sm font-bold mb-1">Session Time</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Active for 0h 42m. Play responsibly and take frequent breaks from the terminal.</p>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-high/40 border border-outline-variant/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary p-3 bg-primary/10 rounded-lg">language</span>
+<div>
+<h4 class="text-sm font-bold mb-1">System Language</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Interface set to Español. Multi-region support active for EN and PT servers.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-safe h-20 bg-[#131313]/95 backdrop-blur-xl border-t border-[#4d4635]/20 z-50 rounded-t-xl shadow-[0_-8px_32px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-t-lg pt-2 pb-1 transition-all" href="#">
+<span class="material-symbols-outlined mb-1 scale-105" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">diamond</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">VIP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">local_offer</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">Promos</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jungle Quest - Midnight Royale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#4d4635",
+              "on-tertiary": "#00391a",
+              "surface-dim": "#131313",
+              "inverse-surface": "#e5e2e1",
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "surface-container-high": "#2a2a2a",
+              "error-container": "#93000a",
+              "on-secondary-fixed-variant": "#920703",
+              "on-secondary-fixed": "#410000",
+              "on-surface-variant": "#d0c5af",
+              "inverse-on-surface": "#313030",
+              "on-primary-fixed-variant": "#574500",
+              "tertiary-fixed": "#adf2bc",
+              "on-secondary": "#690000",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-primary": "#3c2f00",
+              "primary-fixed": "#ffe088",
+              "surface-container": "#201f1f",
+              "on-background": "#e5e2e1",
+              "inverse-primary": "#735c00",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "surface-container-low": "#1c1b1b",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a",
+              "primary-container": "#d4af37",
+              "surface-container-highest": "#353534",
+              "tertiary-fixed-dim": "#92d6a2",
+              "outline": "#99907c",
+              "tertiary": "#9adeaa",
+              "surface-variant": "#353534",
+              "on-primary-fixed": "#241a00",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#3a3939",
+              "secondary": "#ffb4a8",
+              "on-tertiary-container": "#055029",
+              "secondary-container": "#920703",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-primary-container": "#554300",
+              "error": "#ffb4ab"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .jungle-gradient {
+        background: linear-gradient(180deg, rgba(19,19,19,0.9) 0%, rgba(19,19,19,0.7) 50%, rgba(19,19,19,0.9) 100%);
+      }
+      .reel-overlay {
+        background: linear-gradient(0deg, #131313 0%, rgba(19,19,19,0) 25%, rgba(19,19,19,0) 75%, #131313 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)] h-20 flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a sophisticated person in a tuxedo with cinematic dramatic lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOU0boUTKi4p6ntIi8YkuTYRc3KJ23ydLiheYH5DMWNbdyddolaDpAB8QHltrmxfyeOZfdFgG22qpNcmQaMD-cJwPoKk85E6sCr7J03KnjLpp3c91m-27sAWSFWHuvTKEfpBYK-_xsm2A-mG_JEgzo0u7RgjNXUtP4I7baRqXNm4l60OJQ3gD8n3mN0POGcGx95ge4Pygxmi7AC4ZJqqWy72fv6pdKa9pVUO0-LSGHaOkBrnv1T0-SLygyhmDEFgZHS7dGHXc1J2Su"/>
+</div>
+<h1 class="text-2xl font-['Noto_Serif'] italic text-[#f2ca50] tracking-widest font-bold">MIDNIGHT ROYALE</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-low border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">language</span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">English</span>
+</div>
+<div class="text-[#f2ca50] font-['Noto_Serif'] font-bold tracking-tight text-lg">
+                $25,430.00
+            </div>
+</div>
+</header>
+<main class="min-h-screen pt-20 pb-24 relative overflow-hidden">
+<!-- Background Atmosphere -->
+<div class="absolute inset-0 z-0">
+<img alt="Background" class="w-full h-full object-cover opacity-20" data-alt="Dense dark tropical rainforest at night with misty atmosphere, large monstera leaves, and subtle moonbeams filtering through the canopy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Yuf8HgqU_F9L_vR_DyrNLU4eFD10rTrTJqrxi7jo2pMaNa0tqm0fjyrF7cqXHwXX_SusLMfHifOksS1RK7ZaqYYvSG92IAdmtix3XoKAHXKwt84p5vqh-5Z_C5S280h28GktEtnL4CgL1C1nwx7oX1bLQ9c-q-WHOWmqX0GjWBWErE6xCtBshJygMROSKWZ_bDOCmAeFxFj9RP3JuEM1AkaVKiKtzZ-CSupK-6BDtVePuaaBBFgJOyuV0dFi1BF01xp3IigVWK75"/>
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+</div>
+<div class="relative z-10 max-w-6xl mx-auto px-6 pt-8">
+<!-- Game Header -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="space-y-2">
+<span class="text-primary font-bold tracking-[0.3em] uppercase text-xs">Premium Slot Experience</span>
+<h2 class="text-5xl md:text-7xl font-headline font-bold text-on-surface tracking-tighter">Jungle Quest</h2>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high/80 backdrop-blur-md p-4 min-w-[140px] border-l-2 border-primary">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Total Jackpot</p>
+<p class="text-2xl font-headline font-bold text-tertiary">$1,240,500</p>
+</div>
+</div>
+</div>
+<!-- Main Game Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Slot Machine Reel Section -->
+<div class="lg:col-span-8 bg-surface-container-low/40 backdrop-blur-xl border border-outline-variant/10 p-4 md:p-8 rounded shadow-2xl relative">
+<!-- Machine Top Decor -->
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-primary shadow-[0_0_15px_rgba(242,202,80,0.5)]"></div>
+<div class="relative aspect-[16/9] bg-surface-container-lowest rounded overflow-hidden flex gap-2 p-2">
+<!-- Reel 1 -->
+<div class="flex-1 bg-surface-container-high/20 relative group">
+<div class="absolute inset-0 flex flex-col items-center justify-around py-4">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-on-surface-variant">eco</span>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="flex-1 bg-surface-container-high/20 relative">
+<div class="absolute inset-0 flex flex-col items-center justify-around py-4">
+<span class="material-symbols-outlined text-5xl text-tertiary">potted_plant</span>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-on-surface-variant">pest_control_rodent</span>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="flex-1 bg-surface-container-high/20 relative">
+<div class="absolute inset-0 flex flex-col items-center justify-around py-4">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+</div>
+<!-- Reel 4 -->
+<div class="flex-1 bg-surface-container-high/20 relative">
+<div class="absolute inset-0 flex flex-col items-center justify-around py-4">
+<span class="material-symbols-outlined text-5xl text-on-surface-variant">bug_report</span>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-tertiary">yard</span>
+</div>
+</div>
+<!-- Reel 5 -->
+<div class="flex-1 bg-surface-container-high/20 relative">
+<div class="absolute inset-0 flex flex-col items-center justify-around py-4">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-on-surface-variant">flutter_dash</span>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Overlay Gradients for Depth -->
+<div class="reel-overlay absolute inset-0 pointer-events-none"></div>
+<!-- Winning Line Indicator -->
+<div class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-px bg-primary/30 z-20"></div>
+<div class="absolute top-1/2 -translate-y-1/2 left-0 w-2 h-8 bg-primary z-30"></div>
+<div class="absolute top-1/2 -translate-y-1/2 right-0 w-2 h-8 bg-primary z-30"></div>
+</div>
+<!-- Game Controls -->
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
+<div class="space-y-1">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Bet Amount</label>
+<div class="flex items-center bg-surface-container-highest/50 px-3 py-2 rounded border border-outline-variant/20">
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="flex-1 text-center font-headline font-bold text-lg">$10.00</span>
+<button class="text-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant ml-1">Lines</label>
+<div class="flex items-center justify-center bg-surface-container-highest/50 px-3 py-2 rounded border border-outline-variant/20 font-headline font-bold text-lg">
+                                25
+                            </div>
+</div>
+<div class="col-span-2">
+<button class="w-full bg-gradient-to-tr from-primary-container to-primary h-14 rounded-lg flex items-center justify-center gap-3 active:scale-[0.98] transition-all group overflow-hidden relative">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="text-on-primary font-headline font-bold text-xl tracking-wider">GIRAR</span>
+<span class="material-symbols-outlined text-on-primary animate-spin-slow">autorenew</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Side Stats & History -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Last Wins -->
+<div class="bg-surface-container-high/60 backdrop-blur-md p-6 rounded border border-outline-variant/10 flex-1">
+<h3 class="text-[10px] uppercase tracking-widest text-primary font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+                            Recent Explorers
+                        </h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">User_4822</span>
+</div>
+<span class="text-tertiary font-headline font-bold">+$450.00</span>
+</div>
+<div class="flex items-center justify-between group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-primary">👑</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">HighRoller99</span>
+</div>
+<span class="text-tertiary font-headline font-bold">+$2,100.00</span>
+</div>
+<div class="flex items-center justify-between group cursor-default">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold">SK</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Skull_Kr</span>
+</div>
+<span class="text-tertiary font-headline font-bold">+$85.00</span>
+</div>
+</div>
+</div>
+<!-- Multiplier Card -->
+<div class="bg-secondary-container/20 border border-secondary-container/40 p-6 rounded relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-9xl">bolt</span>
+</div>
+<div class="relative z-10">
+<p class="text-[10px] uppercase tracking-widest text-secondary font-bold mb-1">Bonus Multiplier</p>
+<h4 class="text-4xl font-headline font-bold text-on-background tracking-tighter">15.5x</h4>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">Active during "Storm" events</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Game Features/Symbols Info -->
+<div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 text-center space-y-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Wild Ruby</p>
+<p class="text-[10px] text-outline italic">Replaces any symbol</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 text-center space-y-2">
+<span class="material-symbols-outlined text-tertiary text-3xl">local_florist</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Lotus Scatter</p>
+<p class="text-[10px] text-outline italic">3 triggers Free Spins</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 text-center space-y-2">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Golden Idol</p>
+<p class="text-[10px] text-outline italic">Triggers Bonus Game</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 text-center space-y-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">tsunami</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Tidal Wave</p>
+<p class="text-[10px] text-outline italic">Shuffles non-wins</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 h-16 bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 z-50">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] border-t-2 border-[#f2ca50] pt-2 pb-1 transition-colors hover:text-[#ffe088]" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] pt-2 pb-1 transition-colors hover:text-[#ffe088]" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] pt-2 pb-1 transition-colors hover:text-[#ffe088]" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

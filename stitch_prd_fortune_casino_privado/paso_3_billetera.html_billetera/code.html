@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#201f1f",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-tint": "#e9c349",
+              "surface": "#131313",
+              "surface-dim": "#131313",
+              "surface-container-highest": "#353534",
+              "on-background": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "outline-variant": "#4d4635",
+              "tertiary-fixed": "#adf2bc",
+              "on-surface-variant": "#d0c5af",
+              "surface-bright": "#3a3939",
+              "outline": "#99907c",
+              "on-primary-fixed": "#241a00",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#f2ca50",
+              "on-primary-fixed-variant": "#574500",
+              "on-tertiary-fixed": "#00210d",
+              "error-container": "#93000a",
+              "tertiary-container": "#7fc290",
+              "on-secondary-fixed-variant": "#920703",
+              "tertiary": "#9adeaa",
+              "secondary-fixed": "#ffdad4",
+              "background": "#131313",
+              "secondary": "#ffb4a8",
+              "primary-fixed": "#ffe088",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "primary-container": "#d4af37",
+              "error": "#ffb4ab",
+              "on-surface": "#e5e2e1",
+              "on-error": "#690005",
+              "on-secondary-fixed": "#410000",
+              "on-secondary-container": "#ff9a8a",
+              "inverse-surface": "#e5e2e1",
+              "secondary-container": "#920703",
+              "on-error-container": "#ffdad6",
+              "inverse-primary": "#735c00",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-variant": "#353534",
+              "on-tertiary": "#00391a",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary-fixed-variant": "#08522a",
+              "on-primary-container": "#554300",
+              "on-primary": "#3c2f00"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.noise-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzphLwAGBMiOLhVSu5OYyzPnq5cVSl9-4Trvpvyh3AjQ9v3wiK7woNEid0_VYNiLNA6yR7-tZc35hROkHt7KCaglxVNwYuMlbWNlk5e_L24s_ChUr-B3MRTr4fYy8h80oj2ku2mCqB8-Wgi7kVojfP7h_VOCATpYQlVVSDeZYGAcpa8mL_h4IjMrSNvL9Kr7odRr_sxiLvsiUzCVYSWrl7S_n0gz6Fr1YU7juV2yR0e3DI-lka36XlbNcy3brCALyG022yAcgDQM-P);
+    opacity: 0.03
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<div class="fixed inset-0 noise-bg pointer-events-none"></div>
+<!-- TopAppBar -->
+<header class="bg-[#131313] shadow-[0_32px_64px_-15px_rgba(212,175,55,0.06)] fixed top-0 z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-outline-variant bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a sophisticated man in a tuxedo, stylized 3D avatar with clean lighting and premium dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXkQmO6jaQ9-MhWSttnmQz3Xxk29d_AImWojMc91hil-lclruCPydgqcySWBhiPuQm1DiXiHn_pfgPCNeabpJcKopBdTPnBadqef4LlTbtO_6Rkv9Nj0ZkX6ZTB9PIN44W6P7AxLgjuAOWJfds2U4IkoYzwW8mTGLOHXSBlAjiS5QDNpsAf5oSgTYaSBPbD3X8piw2UGNyjTJjxk81nOyEDnuyIaQLk9Ct0ezUW2JU3Gt5ng3JVVtZWBVdhx4PtB-Ao9PxaR4pXt9I"/>
+</div>
+<span class="font-['Noto_Serif'] font-bold tracking-tight text-[#f2ca50] italic text-xl tracking-widest">MIDNIGHT ROYALE</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="text-[#d0c5af] hover:text-[#ffe088] transition-colors duration-300 font-label uppercase text-[10px] tracking-widest" href="#">Lobby</a>
+<a class="text-[#d0c5af] hover:text-[#ffe088] transition-colors duration-300 font-label uppercase text-[10px] tracking-widest" href="#">Games</a>
+<a class="text-[#f2ca50] font-label uppercase text-[10px] tracking-widest" href="#">Wallet</a>
+</div>
+<button class="text-[#f2ca50] active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">language</span>
+<span class="text-[12px] font-medium">ES</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Balance Section: Asymmetric Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-7 bg-surface-container-low p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl">account_balance_wallet</span>
+</div>
+<p class="text-on-surface-variant font-label text-sm uppercase tracking-widest mb-2">Saldo Total</p>
+<h1 class="font-headline text-display-lg text-primary text-5xl md:text-6xl mb-4">$1,240,500.00</h1>
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs font-medium tracking-tight">VIP Level 9 Status Active</span>
+</div>
+</div>
+<div class="lg:col-span-5 grid grid-cols-2 gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container p-6 flex flex-col items-center justify-center gap-3 text-on-primary group active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+<span class="font-headline text-lg italic">Depositar</span>
+</button>
+<button class="bg-surface-container-high p-6 flex flex-col items-center justify-center gap-3 text-on-surface border border-outline-variant/20 hover:border-primary/40 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl">payments</span>
+<span class="font-headline text-lg italic">Retirar</span>
+</button>
+</div>
+</div>
+<!-- Payment Methods Bento -->
+<section class="mb-12">
+<h2 class="font-headline text-headline-md text-on-surface mb-6 italic">Métodos de Gestión</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- PayPal Card -->
+<div class="bg-surface-container-high/80 backdrop-blur-md p-6 border border-outline-variant/10 flex items-center justify-between group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-6">
+<div class="w-16 h-10 bg-white/5 flex items-center justify-center p-2">
+<img alt="PayPal Logo" class="max-h-full opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Official PayPal logo on a clean white-ish background for payment method identification" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRmaHC8xu8ahcBecM1CG6voKO87Z-vRie2vFPZAPSc8oqOZxFx8qa9aTHZKDS2KMIQCtFH9SIB9gL8Fu6g7E25je1fdgOXxVrh1I6RmnytgG_b05lt65BzgT90Ikb84kpsUtmONKEaLB_q-x1b8GjD8rQfhmtp7qu-Ml7neQT-xPZLOKT2LMeXIAVlGkrL33urEo1bHxJKO8LB0zpTOUOOcH1P4WXujqgRfJbg_lm42X-Il-U3exy6jIPT_49hRlIxJuYJHkIbxHpS"/>
+</div>
+<div>
+<p class="text-on-surface font-medium">PayPal Wallet</p>
+<p class="text-on-surface-variant text-xs">Instantáneo • Fee 0%</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Binance Card -->
+<div class="bg-surface-container-high/80 backdrop-blur-md p-6 border border-outline-variant/10 flex items-center justify-between group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-6">
+<div class="w-16 h-10 bg-white/5 flex items-center justify-center p-2">
+<img alt="Binance Logo" class="max-h-full opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Official Binance crypto exchange logo with its signature yellow diamond shape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdYjSDO9IE3FTl5q_BPypUHcMluyMTqFMN9FI_m4sEaqH2kliQAV1HOeckQ5vIs43lTBVj9qZTp6daMUPVUuj6Pa0woicmxJrCuStoBS2qGIFDtm1uJ3f1ucPoBNGsLK1TRUug--k0Pcn5jvLPLLF4MRkAGcdhpY0OohT0xUZ-VmoxpetyYNCiPaAz59jyY5x4gdMgPoqx1BYgnDVPYY9IV97Ygxtq871-_mU8YU30n2dSzVFLLwjYZCHF2RrzKJ3CNw5_lw9oej3O"/>
+</div>
+<div>
+<p class="text-on-surface font-medium">Binance Pay (Crypto)</p>
+<p class="text-on-surface-variant text-xs">Seguro • USDT/BTC</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Transaction History -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-headline-md text-on-surface italic">Historial Maestro</h2>
+<button class="text-primary-fixed-dim text-xs uppercase tracking-widest font-label hover:underline transition-all">Ver Todo</button>
+</div>
+<div class="bg-surface-container-low overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10 text-on-surface-variant text-[10px] uppercase tracking-[0.2em]">
+<th class="px-6 py-4 font-normal">Operación</th>
+<th class="px-6 py-4 font-normal">Fecha</th>
+<th class="px-6 py-4 font-normal">Monto</th>
+<th class="px-6 py-4 font-normal text-right">Estado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Pending Row -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim text-xl">upload</span>
+<span class="text-sm font-medium">Depósito PayPal</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">24 Oct, 2023</td>
+<td class="px-6 py-5 text-sm font-headline text-on-surface">+$5,000.00</td>
+<td class="px-6 py-5 text-right">
+<span class="bg-primary/10 text-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">Pendiente</span>
+</td>
+</tr>
+<!-- Approved Row -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-xl">download</span>
+<span class="text-sm font-medium">Retiro Binance</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">22 Oct, 2023</td>
+<td class="px-6 py-5 text-sm font-headline text-on-surface">-$12,400.00</td>
+<td class="px-6 py-5 text-right">
+<span class="bg-tertiary-container/20 text-tertiary px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">Aprobado</span>
+</td>
+</tr>
+<!-- Rejected Row -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">error</span>
+<span class="text-sm font-medium">Depósito Crypto</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">19 Oct, 2023</td>
+<td class="px-6 py-5 text-sm font-headline text-on-surface">+$250.00</td>
+<td class="px-6 py-5 text-right">
+<span class="bg-secondary-container/20 text-secondary px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">Rechazado</span>
+</td>
+</tr>
+<!-- Approved Row -->
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim text-xl">upload</span>
+<span class="text-sm font-medium">Premio Slot #777</span>
+</div>
+</td>
+<td class="px-6 py-5 text-sm text-on-surface-variant">15 Oct, 2023</td>
+<td class="px-6 py-5 text-sm font-headline text-on-surface">+$840,000.00</td>
+<td class="px-6 py-5 text-right">
+<span class="bg-tertiary-container/20 text-tertiary px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full">Aprobado</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Active: Profile/Wallet context) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-[#1c1b1b]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] z-50">
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Lobby</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">style</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Poker</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Slots</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+<!-- Decorative Gradient Glows -->
+<div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary-container/5 rounded-full blur-[120px] pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#9adeaa",
+              "on-error-container": "#ffdad6",
+              "secondary-container": "#920703",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-highest": "#353534",
+              "on-tertiary": "#00391a",
+              "on-primary-container": "#554300",
+              "inverse-surface": "#e5e2e1",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "error": "#ffb4ab",
+              "surface-container-high": "#2a2a2a",
+              "surface-container": "#201f1f",
+              "outline": "#99907c",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary-container": "#ff9a8a",
+              "tertiary-fixed": "#adf2bc",
+              "surface-dim": "#131313",
+              "on-error": "#690005",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-secondary": "#690000",
+              "surface-container-low": "#1c1b1b",
+              "primary-container": "#d4af37",
+              "inverse-primary": "#735c00",
+              "surface-bright": "#3a3939",
+              "on-primary-fixed": "#241a00",
+              "primary-fixed": "#ffe088",
+              "tertiary-fixed-dim": "#92d6a2",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "on-secondary-fixed": "#410000",
+              "background": "#131313",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#d0c5af",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-tint": "#e9c349",
+              "on-primary-fixed-variant": "#574500",
+              "inverse-on-surface": "#313030",
+              "on-primary": "#3c2f00",
+              "surface": "#131313",
+              "outline-variant": "#4d4635",
+              "surface-variant": "#353534",
+              "tertiary-container": "#7fc290"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.roulette-cell {
+    aspect-ratio: 1/1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease
+    }
+.roulette-cell:active {
+    transform: scale(0.95)
+    }
+.wood-texture {
+    background-image: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuC3PIQeoYOo52KpXJ0cQuH3M1Hd8Xy-ceBDhWGDbt1l4GixpBlau7fGmUBRyDxLmeSF50dg5m-VR7GVhrAHfOnwqKOP7oli1BRCUlCQULNlOL0sHte6pxJ5_bpYWr1uOEysbsf8HKGZ7eXnjjexUXX1PJhrJk-F2EzFmUG1oHTeD637XHicKXQAsOtfpZg85zT2qmVoWDKU3O3AKFjqVenzpz2sWsoNUzVKKm1bhr6Ie4UIrwFpGeub_EfcVgBgrgMy3b2hWVvvtoQD);
+    background-size: cover
+    }
+.gold-shimmer {
+    background: linear-gradient(45deg, #f2ca50, #d4af37, #ffe088, #d4af37, #f2ca50);
+    background-size: 200% 200%
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#131313] dark:bg-neutral-950 shadow-[0_4px_20px_rgba(212,175,55,0.05)] bg-[#1c1b1b] border-none z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-none">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-serif italic text-2xl text-[#f2ca50]">Noir Casino</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-[#f2ca50] font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#d4af37] transition-colors duration-300" href="#">Lobby</a>
+<a class="text-neutral-500 font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300" href="#">Wallet</a>
+<a class="text-neutral-500 font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full border border-outline-variant/20">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">ES</span>
+<span class="material-symbols-outlined text-sm text-primary" data-icon="language">language</span>
+</div>
+<div class="text-[#f2ca50] font-serif text-2xl tracking-tight">$25,400</div>
+</div>
+</div>
+</header>
+<main class="min-h-screen pb-24 overflow-x-hidden">
+<!-- Hero / Roulette Result Section -->
+<section class="wood-texture py-12 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
+<div class="relative z-10 space-y-6">
+<h2 class="font-headline text-5xl md:text-7xl text-primary drop-shadow-2xl tracking-tight">Ruleta Clásica</h2>
+<p class="font-body text-on-surface-variant max-w-md mx-auto opacity-80 italic">A high-stakes experience for the distinguished player.</p>
+<!-- Recent Outcomes -->
+<div class="flex justify-center gap-3 mt-8">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-headline text-lg border border-white/10">32</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center font-headline text-lg border border-white/10">15</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-headline text-lg border border-white/10">19</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center font-headline text-lg border border-white/10">4</div>
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center font-headline text-lg border border-primary/20 text-on-tertiary">0</div>
+</div>
+</div>
+</section>
+<!-- Betting Table -->
+<section class="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
+<div class="bg-surface-container-low p-1 md:p-4 shadow-2xl border-t border-outline-variant/20 backdrop-blur-xl">
+<div class="flex">
+<!-- Zero Section -->
+<div class="w-16 md:w-24 bg-tertiary-container text-on-tertiary font-headline text-2xl flex items-center justify-center border border-outline-variant/20 hover:brightness-110 transition-all cursor-pointer">
+                        0
+                    </div>
+<!-- Main Grid -->
+<div class="flex-grow grid grid-rows-3 grid-cols-12 border-l-0 border-outline-variant/20">
+<!-- Numbers generated with standard roulette pattern -->
+<!-- Row 3 (3, 6, 9...) -->
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">3</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">6</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">9</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">12</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">15</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">18</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">21</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">24</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">27</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">30</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">33</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">36</div>
+<!-- Row 2 (2, 5, 8...) -->
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">2</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">5</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">8</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">11</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">14</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">17</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">20</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">23</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">26</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">29</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">32</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">35</div>
+<!-- Row 1 (1, 4, 7...) -->
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">1</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">4</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">7</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">10</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">13</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">16</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">19</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">22</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">25</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">28</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface">31</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface">34</div>
+</div>
+<!-- 2to1 Section -->
+<div class="flex flex-col border-l border-outline-variant/20">
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant">2 TO 1</div>
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant">2 TO 1</div>
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant">2 TO 1</div>
+</div>
+</div>
+<!-- Outside Bets -->
+<div class="grid grid-cols-3 mt-1 ml-16 md:ml-24 border-t border-outline-variant/10">
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant">1st 12</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant">2nd 12</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant">3rd 12</div>
+</div>
+<div class="grid grid-cols-6 mt-1 ml-16 md:ml-24">
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant">1-18</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant">Even</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 flex items-center justify-center">
+<div class="w-6 h-6 rotate-45 border border-white/20"></div>
+</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 flex items-center justify-center">
+<div class="w-6 h-6 rotate-45 border border-white/20"></div>
+</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant">Odd</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant">19-36</div>
+</div>
+</div>
+</section>
+<!-- Interaction Area -->
+<section class="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 px-6">
+<!-- Chip Selector -->
+<div class="md:col-span-8 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline text-xl text-primary">Select Chip</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container-high p-2 rounded text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="undo">undo</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center justify-center md:justify-start bg-surface-container-low p-8 rounded-xl shadow-inner border border-outline-variant/10">
+<button class="w-16 h-16 rounded-full border-4 border-primary bg-surface-bright shadow-lg flex items-center justify-center font-bold text-primary active:scale-90 transition-transform">1</button>
+<button class="w-16 h-16 rounded-full border-4 border-tertiary bg-surface-bright shadow-lg flex items-center justify-center font-bold text-tertiary active:scale-90 transition-transform">5</button>
+<button class="w-20 h-20 rounded-full border-4 border-secondary-container bg-surface-bright shadow-2xl flex items-center justify-center font-bold text-white scale-110 ring-4 ring-primary/20 active:scale-90 transition-transform">25</button>
+<button class="w-16 h-16 rounded-full border-4 border-blue-500 bg-surface-bright shadow-lg flex items-center justify-center font-bold text-blue-500 active:scale-90 transition-transform">100</button>
+<button class="w-16 h-16 rounded-full border-4 border-purple-500 bg-surface-bright shadow-lg flex items-center justify-center font-bold text-purple-500 active:scale-90 transition-transform">500</button>
+<button class="w-16 h-16 rounded-full border-4 border-on-surface-variant bg-surface-bright shadow-lg flex items-center justify-center font-bold text-on-surface active:scale-90 transition-transform">1k</button>
+</div>
+</div>
+<!-- Action Button -->
+<div class="md:col-span-4 flex flex-col justify-end">
+<button class="group relative w-full aspect-square md:aspect-auto md:h-full gold-shimmer rounded-lg p-1 overflow-hidden shadow-2xl active:scale-95 duration-200">
+<div class="w-full h-full bg-primary flex flex-col items-center justify-center group-hover:bg-transparent transition-colors">
+<span class="font-serif text-3xl font-bold text-on-primary tracking-widest">GIRAR</span>
+<span class="text-[10px] text-on-primary/60 font-bold tracking-[0.2em] mt-2">PLACE YOUR BETS</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Info Panels (Asymmetric Layout) -->
+<section class="max-w-6xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
+<div class="bg-surface-container-high/40 p-8 rounded-lg border-l-4 border-primary">
+<h4 class="font-headline text-lg text-primary mb-4">Current Bet</h4>
+<div class="flex justify-between items-end">
+<span class="font-serif text-4xl text-on-surface">$1,250</span>
+<span class="text-on-surface-variant text-sm uppercase tracking-widest font-bold">Total Risk</span>
+</div>
+<div class="mt-6 space-y-2 opacity-60 text-sm">
+<div class="flex justify-between"><span>Straight (32)</span><span>$500</span></div>
+<div class="flex justify-between"><span>Even</span><span>$500</span></div>
+<div class="flex justify-between"><span>1st 12</span><span>$250</span></div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline text-lg text-primary">Game Stats</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10">
+<div class="text-[10px] uppercase text-on-surface-variant mb-1">Hot Numbers</div>
+<div class="flex gap-2 font-headline text-secondary">
+<span>14</span><span>2</span><span>35</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10">
+<div class="text-[10px] uppercase text-on-surface-variant mb-1">Cold Numbers</div>
+<div class="flex gap-2 font-headline text-blue-400">
+<span>0</span><span>17</span><span>22</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 col-span-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase text-on-surface-variant">R/B Frequency</span>
+<div class="flex w-32 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-secondary-container w-[48%]"></div>
+<div class="bg-black w-[52%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 md:hidden">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 hover:text-[#d4af37] active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 hover:text-[#d4af37] active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Ambient Shadow Overlay for realism -->
+<div class="fixed inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent"></div>
+</body></html>

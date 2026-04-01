@@ -1,0 +1,22 @@
+# Plan de Implementación Técnica: Fortune Casino VIP
+
+## 1. Infraestructura (Supabase)
+*   **Autenticación:** Configuraremos Supabase Auth para permitir registros solo mediante un `invite_token`.
+*   **Base de Datos (PostgreSQL):** 
+    *   `profiles`: Almacenará el balance de dinero ficticio, nivel y estado de aprobación.
+    *   `invitations`: Tabla para que el SuperAdmin genere enlaces únicos para los 12 usuarios.
+    *   `game_sessions`: Registro en tiempo real de las apuestas para asegurar sincronización.
+
+## 2. Flujo de Invitación (Los 12 Elegidos)
+1.  **Generación:** El SuperAdmin (tú) genera un código desde el Panel de Control.
+2.  **Validación:** El usuario ingresa a `fortune.core.com.uy/register?code=XYZ`. El sistema verifica que el código sea válido y no haya sido usado.
+3.  **Aprobación Final:** Una vez registrado, el perfil queda en "Pendiente" hasta que tú hagas el clic final en el Panel de Admin.
+
+## 3. Lógica de Dinero Ficticio
+*   Implementaremos un sistema de "Créditos de Cortesía". Al ser aprobado, el usuario recibe un balance inicial (ej. $10,000).
+*   Las transacciones se procesarán mediante `RPC` (Remote Procedure Calls) en Supabase para garantizar la integridad de los datos (evitar duplicaciones de saldo).
+
+## 4. Próximos Pasos de Diseño
+*   Diseñar la pantalla de **Canje de Invitación**.
+*   Diseñar el **Perfil de Usuario** con historial de transacciones.
+*   Expandir las variantes de las 6 ruletas solicitadas.

@@ -1,0 +1,58 @@
+# SCRIPT DE RECONSTRUCCIÓN CONTROLADA: FORTUNE CASINO VIP
+# Este script genera los 22 archivos limpios en tu carpeta local.
+
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Write-CleanFile($name, $data) {
+    # Limpieza profunda de metadatos y cabeceras técnicas
+    if ($data -match "(?s)<!DOCTYPE.*") {
+        $data = $data -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    
+    # Reemplazo de placeholders por credenciales reales
+    $data = $data -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $data = $data -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    
+    # Guardado con codificación UTF8 estándar (Crítico para compatibilidad)
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $data, (New-Object System.Text.UTF8Encoding $false))
+    Write-Host "✓ Archivo generado: $name" -ForegroundColor Green
+}
+
+Write-Host "--- INICIANDO GENERACIÓN DE ARCHIVOS (MODO LENTO) ---" -ForegroundColor Cyan
+
+# 1. Módulos Base
+Write-CleanFile "index.html" '{{DATA:SCREEN:SCREEN_97}}'
+Write-CleanFile "registro.html" '{{DATA:SCREEN:SCREEN_84}}'
+Write-CleanFile "billetera.html" '{{DATA:SCREEN:SCREEN_57}}'
+Write-CleanFile "perfil.html" '{{DATA:SCREEN:SCREEN_153}}'
+
+# 2. Ruletas (6 Variantes)
+Write-CleanFile "ruleta_noir.html" '{{DATA:SCREEN:SCREEN_135}}'
+Write-CleanFile "ruleta_clasica.html" '{{DATA:SCREEN:SCREEN_179}}'
+Write-CleanFile "ruleta_vegas.html" '{{DATA:SCREEN:SCREEN_140}}'
+Write-CleanFile "ruleta_carbono.html" '{{DATA:SCREEN:SCREEN_155}}'
+Write-CleanFile "ruleta_monaco.html" '{{DATA:SCREEN:SCREEN_152}}'
+Write-CleanFile "ruleta_esmeralda.html" '{{DATA:SCREEN:SCREEN_193}}'
+
+# 3. Slots (6 Variantes)
+Write-CleanFile "slot_sphinx.html" '{{DATA:SCREEN:SCREEN_182}}'
+Write-CleanFile "slot_cyber.html" '{{DATA:SCREEN:SCREEN_51}}'
+Write-CleanFile "slot_777.html" '{{DATA:SCREEN:SCREEN_69}}'
+Write-CleanFile "slot_deep_sea.html" '{{DATA:SCREEN:SCREEN_87}}'
+Write-CleanFile "slot_jungle.html" '{{DATA:SCREEN:SCREEN_15}}'
+Write-CleanFile "slot_galactic.html" '{{DATA:SCREEN:SCREEN_5}}'
+
+# 4. Cartas (Blackjack & Poker)
+Write-CleanFile "blackjack_vip_1.html" '{{DATA:SCREEN:SCREEN_157}}'
+Write-CleanFile "blackjack_vip_2.html" '{{DATA:SCREEN:SCREEN_149}}'
+Write-CleanFile "blackjack_vip_3.html" '{{DATA:SCREEN:SCREEN_118}}'
+Write-CleanFile "poker_holdem_1.html" '{{DATA:SCREEN:SCREEN_62}}'
+Write-CleanFile "poker_holdem_2.html" '{{DATA:SCREEN:SCREEN_145}}'
+Write-CleanFile "poker_holdem_3.html" '{{DATA:SCREEN:SCREEN_31}}'
+
+# 5. Admin
+Write-CleanFile "admin.html" '{{DATA:SCREEN:SCREEN_71}}'
+
+Write-Host "--- GENERACIÓN COMPLETADA ---" -ForegroundColor Cyan
+Write-Host "Ahora verificá los archivos en tu carpeta antes de hacer el commit." -ForegroundColor White

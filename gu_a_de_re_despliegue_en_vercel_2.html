@@ -1,0 +1,28 @@
+# Pasos para Forzar el Despliegue en Vercel
+
+Si el sitio en `fortune.core.com.uy` no se actualiza a pesar de que los archivos están en GitHub, seguí estos pasos:
+
+### 1. Re-desplegar manualmente
+1. Entrá a tu panel de **Vercel**.
+2. Seleccioná el proyecto `fortune-casino-vip`.
+3. Ve a la pestaña **"Deployments"**.
+4. Buscá el último despliegue (el que dice "FIX: Despliegue robusto...").
+5. Hacé clic en los tres puntos **`...`** a la derecha de ese despliegue.
+6. Seleccioná **"Redeploy"**. Esto obligará a Vercel a reconstruir el sitio con el código limpio que subimos.
+
+### 2. Verificar las Variables de Entorno
+Es vital que estas variables estén configuradas, de lo contrario el Lobby se verá vacío o dará error:
+1. En el mismo proyecto de Vercel, ve a **Settings** > **Environment Variables**.
+2. Asegurate de que existan:
+   - `NEXT_PUBLIC_SUPABASE_URL`: `https://gfxxhquajzcdslayhmhs.supabase.co`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (la clave larga)
+
+### 3. El "Truco" de Git (Si nada de lo anterior funciona)
+Si Vercel sigue sin ver cambios, ejecutá este comando en tu PowerShell para forzar una nueva versión:
+
+```powershell
+git commit --allow-empty -m "FORCE: Forzando despliegue de los 22 módulos"
+git push origin main
+```
+
+Esto enviará una señal de actividad a Vercel para que inicie un nuevo despliegue automáticamente.

@@ -1,0 +1,272 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#99907c",
+            "on-secondary-fixed-variant": "#920703",
+            "surface-dim": "#131313",
+            "secondary-container": "#920703",
+            "surface-bright": "#3a3939",
+            "on-primary-fixed-variant": "#574500",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e5e2e1",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary-container": "#554300",
+            "tertiary-container": "#7fc290",
+            "primary-fixed": "#ffe088",
+            "on-tertiary-fixed-variant": "#08522a",
+            "on-secondary-fixed": "#410000",
+            "on-primary": "#3c2f00",
+            "surface-tint": "#e9c349",
+            "secondary": "#ffb4a8",
+            "on-tertiary-fixed": "#00210d",
+            "background": "#131313",
+            "on-background": "#e5e2e1",
+            "surface-variant": "#353534",
+            "surface-container": "#201f1f",
+            "surface-container-low": "#1c1b1b",
+            "on-secondary-container": "#ff9a8a",
+            "on-secondary": "#690000",
+            "tertiary-fixed-dim": "#92d6a2",
+            "on-error": "#690005",
+            "surface-container-high": "#2a2a2a",
+            "on-tertiary": "#00391a",
+            "on-surface-variant": "#d0c5af",
+            "error-container": "#93000a",
+            "on-primary-fixed": "#241a00",
+            "secondary-fixed-dim": "#ffb4a8",
+            "tertiary": "#9adeaa",
+            "primary-fixed-dim": "#e9c349",
+            "primary": "#f2ca50",
+            "inverse-surface": "#e5e2e1",
+            "surface-container-highest": "#353534",
+            "primary-container": "#d4af37",
+            "outline-variant": "#4d4635",
+            "on-tertiary-container": "#055029",
+            "error": "#ffb4ab",
+            "surface": "#131313",
+            "secondary-fixed": "#ffdad4",
+            "inverse-primary": "#735c00",
+            "tertiary-fixed": "#adf2bc",
+            "inverse-on-surface": "#313030"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .neon-pulse {
+      box-shadow: 0 0 15px rgba(242, 202, 80, 0.2);
+    }
+    .glass-panel {
+      background: rgba(42, 42, 42, 0.8);
+      backdrop-filter: blur(12px);
+    }
+    .slot-gradient {
+      background: linear-gradient(180deg, rgba(32,31,31,1) 0%, rgba(20,20,20,1) 50%, rgba(32,31,31,1) 100%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-[#f2ca50] font-headline font-bold tracking-tighter text-lg uppercase">NOIR CASINO</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-8">
+<span class="text-[#f2ca50] font-headline uppercase tracking-widest text-sm cursor-pointer hover:text-[#ffe088] transition-colors">Games</span>
+<span class="text-[#d0c5af] font-headline uppercase tracking-widest text-sm cursor-pointer hover:text-[#ffe088] transition-colors">VIP Lounge</span>
+<span class="text-[#d0c5af] font-headline uppercase tracking-widest text-sm cursor-pointer hover:text-[#ffe088] transition-colors">Promotions</span>
+</div>
+<div class="flex items-center bg-surface-container rounded-full px-3 py-1 gap-2 outline outline-1 outline-outline-variant/30">
+<span class="text-[10px] font-bold text-on-surface-variant">ES</span>
+<span class="text-[10px] font-bold text-[#f2ca50]">EN</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PT</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 min-h-screen flex flex-col items-center px-4 max-w-7xl mx-auto">
+<!-- Hero / Title Section -->
+<div class="w-full mb-10 text-center relative">
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-primary tracking-tighter mb-2 drop-shadow-2xl">Neon Cyber</h1>
+<p class="font-body text-xs uppercase tracking-[0.4em] text-on-surface-variant opacity-60">High Stakes Digital Frontier</p>
+<!-- Global Jackpot Counter -->
+<div class="mt-8 inline-block">
+<div class="bg-surface-container-low border-b-2 border-primary/30 px-8 py-4 rounded-xl glass-panel relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Global Jackpot</span>
+<span class="font-headline text-3xl md:text-5xl text-primary flex items-center justify-center gap-2">
+<span class="text-xl text-primary-container">$</span>
+<span class="tabular-nums">2,485,901.24</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Slot Machine Container -->
+<div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Reels Section -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-1 rounded-xl shadow-2xl border border-outline-variant/20 relative">
+<!-- Visual Accents -->
+<div class="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary/40"></div>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary/40"></div>
+<div class="grid grid-cols-3 md:grid-cols-5 gap-1 rounded-lg overflow-hidden slot-gradient">
+<!-- Reel 1 -->
+<div class="h-64 md:h-96 flex flex-col items-center justify-around border-r border-outline-variant/10">
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="memory">memory</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-surface-container-high rounded-lg shadow-inner border border-primary/20"><span class="material-symbols-outlined text-5xl text-primary" data-icon="visibility" data-weight="fill" style="font-variation-settings: 'FILL' 1;">visibility</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="currency_bitcoin">currency_bitcoin</span></div>
+</div>
+<!-- Reel 2 -->
+<div class="h-64 md:h-96 flex flex-col items-center justify-around border-r border-outline-variant/10">
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="token">token</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-surface-container-high rounded-lg shadow-inner border border-tertiary-container/20"><span class="material-symbols-outlined text-5xl text-tertiary" data-icon="currency_bitcoin" data-weight="fill" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="visibility">visibility</span></div>
+</div>
+<!-- Reel 3 -->
+<div class="h-64 md:h-96 flex flex-col items-center justify-around border-r border-outline-variant/10">
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="memory">memory</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-surface-container-high rounded-lg shadow-inner border border-primary/20"><span class="material-symbols-outlined text-5xl text-primary" data-icon="token" data-weight="fill" style="font-variation-settings: 'FILL' 1;">token</span></div>
+<div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="currency_bitcoin">currency_bitcoin</span></div>
+</div>
+<!-- Reel 4 (Hidden on Mobile) -->
+<div class="hidden md:flex h-96 flex-col items-center justify-around border-r border-outline-variant/10">
+<div class="w-20 h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="visibility">visibility</span></div>
+<div class="w-20 h-20 flex items-center justify-center bg-surface-container-high rounded-lg shadow-inner border border-secondary-container/20"><span class="material-symbols-outlined text-5xl text-secondary" data-icon="memory" data-weight="fill" style="font-variation-settings: 'FILL' 1;">memory</span></div>
+<div class="w-20 h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="token">token</span></div>
+</div>
+<!-- Reel 5 (Hidden on Mobile) -->
+<div class="hidden md:flex h-96 flex-col items-center justify-around">
+<div class="w-20 h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="currency_bitcoin">currency_bitcoin</span></div>
+<div class="w-20 h-20 flex items-center justify-center bg-surface-container-high rounded-lg shadow-inner border border-primary/20"><span class="material-symbols-outlined text-5xl text-primary" data-icon="visibility" data-weight="fill" style="font-variation-settings: 'FILL' 1;">visibility</span></div>
+<div class="w-20 h-20 flex items-center justify-center opacity-30 grayscale"><span class="material-symbols-outlined text-4xl" data-icon="token">token</span></div>
+</div>
+</div>
+<!-- Payline Indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-primary/20 pointer-events-none"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rotate-45 -ml-2 shadow-[0_0_10px_rgba(242,202,80,0.8)]"></div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rotate-45 -mr-2 shadow-[0_0_10px_rgba(242,202,80,0.8)]"></div>
+</div>
+<!-- Controls Side Panel -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<!-- Win Amount Display -->
+<div class="bg-surface-container-high p-4 rounded-lg border border-tertiary-container/30">
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Last Win</span>
+<div class="flex justify-between items-end">
+<span class="font-headline text-3xl text-tertiary">$ 1,250.00</span>
+<span class="text-[10px] font-bold text-tertiary/60 mb-1">25X MULTI</span>
+</div>
+</div>
+<!-- Bet Controls -->
+<div class="bg-surface-container-low p-6 rounded-lg border border-outline-variant/20">
+<div class="flex justify-between items-center mb-6">
+<span class="text-xs uppercase tracking-widest text-on-surface-variant">Bet Amount</span>
+<span class="font-headline text-xl text-primary">$ 10.00</span>
+</div>
+<div class="grid grid-cols-4 gap-2 mb-8">
+<button class="bg-surface-container-highest hover:bg-surface-bright text-[10px] py-2 rounded transition-colors border border-outline-variant/10 active:scale-95 duration-150">MIN</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-[10px] py-2 rounded transition-colors border border-outline-variant/10 active:scale-95 duration-150">1/2</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-[10px] py-2 rounded transition-colors border border-outline-variant/10 active:scale-95 duration-150">2X</button>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-[10px] py-2 rounded transition-colors border border-outline-variant/10 active:scale-95 duration-150">MAX</button>
+</div>
+<!-- SPIN BUTTON -->
+<button class="w-full py-6 rounded bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline text-2xl font-bold uppercase tracking-widest shadow-[0_8px_32px_rgba(242,202,80,0.15)] hover:shadow-[0_8px_40px_rgba(242,202,80,0.3)] transition-all active:scale-[0.98] duration-150 relative overflow-hidden group">
+<span class="relative z-10">GIRAR</span>
+<div class="absolute inset-0 bg-white/10 translate-y-full group-active:translate-y-0 transition-transform"></div>
+</button>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 py-3 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-widest rounded border border-outline-variant/20 hover:text-on-surface transition-colors">Auto Spin</button>
+<button class="flex-1 py-3 bg-surface-container-highest text-on-surface-variant text-[10px] uppercase font-bold tracking-widest rounded border border-outline-variant/20 hover:text-on-surface transition-colors">Turbo</button>
+</div>
+</div>
+<!-- Info Cards Bento -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low/50 p-4 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="history">history</span>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Last Rounds</p>
+<div class="flex gap-1 mt-1">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-4 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="help_outline">help_outline</span>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Paytable</p>
+<p class="text-[10px] font-bold mt-1">View Odds</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Gallery -->
+<section class="w-full mt-20">
+<h2 class="font-headline text-2xl uppercase tracking-widest text-primary mb-8 border-l-4 border-primary pl-4">Digital Collectibles</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group relative aspect-video overflow-hidden rounded-lg bg-surface-container-high border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500" data-alt="Cyberpunk robotic eye with glowing blue neon circuits and high-tech digital lens detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2vzgZ0d53Wz8tHrMeZFWPvOC15bCWQVAnsozADR7Ty4BZoP_u6ExTcb-rdUMCXMDPrbBABQyUqkO6Y1-1C5c9GxZ-9khDOcW__dRBcfvEekpXm63Hzq1_suEgMSg8zsV1puGwmn_8ziKe0KCHZdRa8EUF_HLOFNUxxeM3heVMYGY8dECtw5570eAnxwong9matreCdzrZkCk7zuPRIbn0a8vo3Ljxvv-LCxeYXPTMT-e_WjvDZ0LZJ2VKSmhWtHwkK09O7C9Z9y3d"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent p-6 flex flex-col justify-end">
+<span class="text-primary font-bold text-lg">Cyber Optic</span>
+<p class="text-xs text-on-surface-variant">Rare Multiplier Trigger</p>
+</div>
+</div>
+<div class="group relative aspect-video overflow-hidden rounded-lg bg-surface-container-high border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500" data-alt="High-tech computer chip with purple and magenta glowing energy pulses on a dark metallic surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3FgnN89WAos51K-kRQgBqfLGrC0xauxHgG0wmhukxa0bZeLOSCg-THFvFNu3rk1NOMdIPnKhpaktGYwm3CgnijGUAdq9xY2TKrydvXerjb75j-nWyH-ML0HEoVktpO3a1xpIYhMMvPf7amkKUW3fEi2yGIrwYQUgJXh5F_8PDQMMDPcVnFPvj2nVdW5tHppBcwqFJlmBlQrXHSTY52roggkdeYvxKWB5Gg7YcRmK17aP8uII5kFtGCki7Kow0uxXGt8oOVpf5S0YL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent p-6 flex flex-col justify-end">
+<span class="text-primary font-bold text-lg">Neural Link</span>
+<p class="text-xs text-on-surface-variant">Unlocks Bonus Reels</p>
+</div>
+</div>
+<div class="group relative aspect-video overflow-hidden rounded-lg bg-surface-container-high border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity duration-500" data-alt="Abstract digital currency symbols floating in a dark space with teal and violet light streaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArEsL-c-SJeFhQxuA5yzsHXE2SS7PkVj9Kvn4X8P1ikJDaU6TSwuOJNhkwU4YNQzW3Nuy3wDpclvZQdAPAtaGXx_0K-iyFWZVukVj4qp4bhXD1Ensx7Rc1mYlSUJHoENfUDZgYrPzdwD6nx_FZQ75gTOwlvi8Sy4y9loeX4eARrQiKFgOAEHsIYCb4GFfC1Ru343BcIhD_ZkR0kXAqQQbIiEQBBWpVpSCfA9KY6xJ3wyqKUGpDZ4A81yYahsHqCm4Fd1Ekyip7DdTB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent p-6 flex flex-col justify-end">
+<span class="text-primary font-bold text-lg">Crypto Core</span>
+<p class="text-xs text-on-surface-variant">Instant Payout Symbol</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#1c1b1b]/95 backdrop-blur-md flex justify-around items-center px-4 pb-safe z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#f2ca50] drop-shadow-[0_0_8px_rgba(242,202,80,0.4)] cursor-pointer active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="casino">casino</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Lobby</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af]/60 cursor-pointer hover:text-[#f2ca50] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af]/60 cursor-pointer hover:text-[#f2ca50] transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] font-medium text-[10px] uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

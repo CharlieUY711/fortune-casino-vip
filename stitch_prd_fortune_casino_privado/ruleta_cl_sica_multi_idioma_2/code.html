@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#9adeaa",
+              "on-error-container": "#ffdad6",
+              "secondary-container": "#920703",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-highest": "#353534",
+              "on-tertiary": "#00391a",
+              "on-primary-container": "#554300",
+              "inverse-surface": "#e5e2e1",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "error": "#ffb4ab",
+              "surface-container-high": "#2a2a2a",
+              "surface-container": "#201f1f",
+              "outline": "#99907c",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary-container": "#ff9a8a",
+              "tertiary-fixed": "#adf2bc",
+              "surface-dim": "#131313",
+              "on-error": "#690005",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-secondary": "#690000",
+              "surface-container-low": "#1c1b1b",
+              "primary-container": "#d4af37",
+              "inverse-primary": "#735c00",
+              "surface-bright": "#3a3939",
+              "on-primary-fixed": "#241a00",
+              "primary-fixed": "#ffe088",
+              "tertiary-fixed-dim": "#92d6a2",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "on-secondary-fixed": "#410000",
+              "background": "#131313",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#d0c5af",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-tint": "#e9c349",
+              "on-primary-fixed-variant": "#574500",
+              "inverse-on-surface": "#313030",
+              "on-primary": "#3c2f00",
+              "surface": "#131313",
+              "outline-variant": "#4d4635",
+              "surface-variant": "#353534",
+              "tertiary-container": "#7fc290"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 }
+        .roulette-cell { aspect-ratio: 1/1.5; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 700; cursor: pointer; transition: all 0.2s ease; position: relative; }
+        .roulette-cell:active { transform: scale(0.95); }
+        .wood-texture { background-image: linear-gradient(rgba(19, 19, 19, 0.8), rgba(19, 19, 19, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuC3PIQeoYOo52KpXJ0cQuH3M1Hd8Xy-ceBDhWGDbt1l4GixpBlau7fGmUBRyDxLmeSF50dg5m-VR7GVhrAHfOnwqKOP7oli1BRCUlCQULNlOL0sHte6pxJ5_bpYWr1uOEysbsf8HKGZ7eXnjjexUXX1PJhrJk-F2EzFmUG1oHTeD637XHicKXQAsOtfpZg85zT2qmVoWDKU3O3AKFjqVenzpz2sWsoNUzVKKm1bhr6Ie4UIrwFpGeub_EfcVgBgrgMy3b2hWVvvtoQD); background-size: cover; }
+        .gold-shimmer { background: linear-gradient(45deg, #f2ca50, #d4af37, #ffe088, #d4af37, #f2ca50); background-size: 200% 200%; }
+        .chip-on-cell { position: absolute; width: 20px; height: 20px; border-radius: 50%; border: 2px dashed white; background: rgba(0,0,0,0.5); font-size: 8px; display: flex; items-center; justify-center; z-index: 10; pointer-events: none; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .spinning { animation: spin 1s linear infinite; }
+        body { min-height: max(884px, 100dvh); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#131313] dark:bg-neutral-950 shadow-[0_4px_20px_rgba(212,175,55,0.05)] border-none z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-none">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-serif italic text-2xl text-[#f2ca50]">Noir Casino</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-[#f2ca50] font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#d4af37] transition-colors duration-300" href="#">Lobby</a>
+<a class="text-neutral-500 font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300" href="#">Wallet</a>
+<a class="text-neutral-500 font-sans text-[10px] uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full border border-outline-variant/20" id="lang-selector">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter" id="lang-text">ES</span>
+<span class="material-symbols-outlined text-sm text-primary" data-icon="language">language</span>
+</button>
+<div class="absolute right-0 mt-2 w-20 bg-surface-container shadow-xl rounded hidden group-hover:block border border-outline-variant/20 overflow-hidden">
+<button class="w-full px-4 py-2 text-xs hover:bg-surface-container-high text-left" onclick="setLanguage('ES')">ES</button>
+<button class="w-full px-4 py-2 text-xs hover:bg-surface-container-high text-left" onclick="setLanguage('EN')">EN</button>
+<button class="w-full px-4 py-2 text-xs hover:bg-surface-container-high text-left" onclick="setLanguage('PT')">PT</button>
+</div>
+</div>
+<div class="text-[#f2ca50] font-serif text-2xl tracking-tight" id="user-balance">$25,400</div>
+</div>
+</div>
+</header>
+<main class="min-h-screen pb-24 overflow-x-hidden">
+<!-- Hero / Roulette Result Section -->
+<section class="wood-texture py-12 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
+<div class="relative z-10 space-y-6">
+<h2 class="font-headline text-5xl md:text-7xl text-primary drop-shadow-2xl tracking-tight" id="game-title">Ruleta Clásica</h2>
+<p class="font-body text-on-surface-variant max-w-md mx-auto opacity-80 italic" id="game-subtitle">A high-stakes experience for the distinguished player.</p>
+<!-- Recent Outcomes -->
+<div class="flex justify-center gap-3 mt-8" id="history-container">
+<!-- JS populated -->
+</div>
+</div>
+</section>
+<!-- Betting Table -->
+<section class="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
+<div class="bg-surface-container-low p-1 md:p-4 shadow-2xl border-t border-outline-variant/20 backdrop-blur-xl">
+<div class="flex">
+<!-- Zero Section -->
+<div class="roulette-cell w-16 md:w-24 bg-tertiary-container text-on-tertiary font-headline text-2xl flex items-center justify-center border border-outline-variant/20 hover:brightness-110 transition-all cursor-pointer" data-bet-type="straight" data-bet-value="0">
+                    0
+                </div>
+<!-- Main Grid -->
+<div class="flex-grow grid grid-rows-3 grid-cols-12 border-l-0 border-outline-variant/20">
+<!-- Numbers row by row to match visual layout -->
+<!-- Row 3: 3, 6, 9... -->
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="3">3</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="6">6</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="9">9</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="12">12</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="15">15</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="18">18</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="21">21</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="24">24</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="27">27</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="30">30</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="33">33</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="36">36</div>
+<!-- Row 2: 2, 5, 8... -->
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="2">2</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="5">5</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="8">8</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="11">11</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="14">14</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="17">17</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="20">20</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="23">23</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="26">26</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="29">29</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="32">32</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="35">35</div>
+<!-- Row 1: 1, 4, 7... -->
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="1">1</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="4">4</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="7">7</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="10">10</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="13">13</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="16">16</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="19">19</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="22">22</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="25">25</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="28">28</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="31">31</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 text-on-surface" data-bet-type="straight" data-bet-value="34">34</div>
+</div>
+<!-- 2to1 Section -->
+<div class="flex flex-col border-l border-outline-variant/20">
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant" data-bet-type="column" data-bet-value="3">2 TO 1</div>
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant" data-bet-type="column" data-bet-value="2">2 TO 1</div>
+<div class="roulette-cell bg-surface-container-high border border-outline-variant/10 text-xs font-bold px-2 uppercase text-on-surface-variant" data-bet-type="column" data-bet-value="1">2 TO 1</div>
+</div>
+</div>
+<!-- Outside Bets -->
+<div class="grid grid-cols-3 mt-1 ml-16 md:ml-24 border-t border-outline-variant/10">
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant" data-bet-type="dozen" data-bet-value="1">1st 12</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant" data-bet-type="dozen" data-bet-value="2">2nd 12</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-sm font-bold uppercase text-on-surface-variant" data-bet-type="dozen" data-bet-value="3">3rd 12</div>
+</div>
+<div class="grid grid-cols-6 mt-1 ml-16 md:ml-24">
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant" data-bet-type="half" data-bet-value="low">1-18</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant" data-bet-type="parity" data-bet-value="even">Even</div>
+<div class="roulette-cell bg-secondary-container border border-outline-variant/10 flex items-center justify-center" data-bet-type="color" data-bet-value="red">
+<div class="w-6 h-6 rotate-45 border border-white/20"></div>
+</div>
+<div class="roulette-cell bg-surface-container-lowest border border-outline-variant/10 flex items-center justify-center" data-bet-type="color" data-bet-value="black">
+<div class="w-6 h-6 rotate-45 border border-white/20"></div>
+</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant" data-bet-type="parity" data-bet-value="odd">Odd</div>
+<div class="roulette-cell bg-surface-container border border-outline-variant/10 text-xs font-bold uppercase text-on-surface-variant" data-bet-type="half" data-bet-value="high">19-36</div>
+</div>
+</div>
+</section>
+<!-- Interaction Area -->
+<section class="max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 px-6">
+<!-- Chip Selector -->
+<div class="md:col-span-8 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline text-xl text-primary">Select Chip</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container-high p-2 rounded text-on-surface-variant hover:text-primary transition-colors" onclick="undoBet()">
+<span class="material-symbols-outlined" data-icon="undo">undo</span>
+</button>
+<button class="bg-surface-container-high p-2 rounded text-on-surface-variant hover:text-secondary transition-colors" onclick="clearBets()">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center justify-center md:justify-start bg-surface-container-low p-8 rounded-xl shadow-inner border border-outline-variant/10" id="chip-container">
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-primary bg-surface-bright shadow-lg flex items-center justify-center font-bold text-primary transition-all" data-chip="1">1</button>
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-tertiary bg-surface-bright shadow-lg flex items-center justify-center font-bold text-tertiary transition-all" data-chip="5">5</button>
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-secondary-container bg-surface-bright shadow-2xl flex items-center justify-center font-bold text-white scale-110 ring-4 ring-primary/20 transition-all" data-chip="25">25</button>
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-blue-500 bg-surface-bright shadow-lg flex items-center justify-center font-bold text-blue-500 transition-all" data-chip="100">100</button>
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-purple-500 bg-surface-bright shadow-lg flex items-center justify-center font-bold text-purple-500 transition-all" data-chip="500">500</button>
+<button class="chip-btn w-16 h-16 rounded-full border-4 border-on-surface-variant bg-surface-bright shadow-lg flex items-center justify-center font-bold text-on-surface transition-all" data-chip="1000">1k</button>
+</div>
+</div>
+<!-- Action Button -->
+<div class="md:col-span-4 flex flex-col justify-end">
+<button class="group relative w-full aspect-square md:aspect-auto md:h-full gold-shimmer rounded-lg p-1 overflow-hidden shadow-2xl active:scale-95 duration-200" id="spin-button" onclick="handleSpin()">
+<div class="w-full h-full bg-primary flex flex-col items-center justify-center group-hover:bg-transparent transition-colors">
+<span class="font-serif text-3xl font-bold text-on-primary tracking-widest" id="spin-text">GIRAR</span>
+<span class="text-[10px] text-on-primary/60 font-bold tracking-[0.2em] mt-2" id="spin-hint">PLACE YOUR BETS</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Info Panels -->
+<section class="max-w-6xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
+<div class="bg-surface-container-high/40 p-8 rounded-lg border-l-4 border-primary">
+<h4 class="font-headline text-lg text-primary mb-4" id="panel-bet-title">Current Bet</h4>
+<div class="flex justify-between items-end">
+<span class="font-serif text-4xl text-on-surface" id="total-bet-display">$0</span>
+<span class="text-on-surface-variant text-sm uppercase tracking-widest font-bold" id="panel-risk-label">Total Risk</span>
+</div>
+<div class="mt-6 space-y-2 opacity-60 text-sm" id="bet-details">
+<!-- Bet lines -->
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline text-lg text-primary" id="panel-stats-title">Game Stats</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10">
+<div class="text-[10px] uppercase text-on-surface-variant mb-1" id="hot-label">Hot Numbers</div>
+<div class="flex gap-2 font-headline text-secondary" id="hot-numbers">
+<span>14</span><span>2</span><span>35</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10">
+<div class="text-[10px] uppercase text-on-surface-variant mb-1" id="cold-label">Cold Numbers</div>
+<div class="flex gap-2 font-headline text-blue-400" id="cold-numbers">
+<span>0</span><span>17</span><span>22</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/10 col-span-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase text-on-surface-variant" id="freq-label">R/B Frequency</span>
+<div class="flex w-32 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-secondary-container w-[50%]" id="red-freq-bar"></div>
+<div class="bg-black w-[50%]" id="black-freq-bar"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 md:hidden">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 hover:text-[#d4af37] active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 hover:text-[#d4af37] active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</div>
+</nav>
+<div class="fixed inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent"></div>
+<script>
+    // Constants & State
+    const RED_NUMBERS = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
+    let balance = 25400;
+    let selectedChip = 25;
+    let currentBets = []; // { type, value, amount, element }
+    let betHistory = [32, 15, 19, 4, 0];
+    let currentLanguage = 'ES';
+
+    const translations = {
+        ES: { title: "Ruleta Clásica", subtitle: "Una experiencia de alto nivel para el jugador distinguido.", spin: "GIRAR", hint: "HAGAN SUS APUESTAS", lobby: "LOBBY", wallet: "BILLETERA", profile: "PERFIL", curBet: "Apuesta Actual", risk: "Riesgo Total", hot: "Números Calientes", cold: "Números Fríos", freq: "Frecuencia R/N" },
+        EN: { title: "Classic Roulette", subtitle: "A high-stakes experience for the distinguished player.", spin: "SPIN", hint: "PLACE YOUR BETS", lobby: "LOBBY", wallet: "WALLET", profile: "PROFILE", curBet: "Current Bet", risk: "Total Risk", hot: "Hot Numbers", cold: "Cold Numbers", freq: "R/B Frequency" },
+        PT: { title: "Roleta Clássica", subtitle: "Uma experiência de alto nível para o jogador distinto.", spin: "GIRAR", hint: "FAÇAM SUAS APOSTAS", lobby: "LOBBY", wallet: "CARTEIRA", profile: "PERFIL", curBet: "Aposta Atual", risk: "Risco Total", hot: "Números Quentes", cold: "Números Frios", freq: "Frequência V/P" }
+    };
+
+    // Initialization
+    window.onload = () => {
+        updateUI();
+        setupBetListeners();
+        setupChipSelection();
+    };
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        document.getElementById('lang-text').innerText = lang;
+        const t = translations[lang];
+        document.getElementById('game-title').innerText = t.title;
+        document.getElementById('game-subtitle').innerText = t.subtitle;
+        document.getElementById('spin-text').innerText = t.spin;
+        document.getElementById('spin-hint').innerText = t.hint;
+        document.getElementById('panel-bet-title').innerText = t.curBet;
+        document.getElementById('panel-risk-label').innerText = t.risk;
+        document.getElementById('panel-stats-title').innerText = t.stats;
+        document.getElementById('hot-label').innerText = t.hot;
+        document.getElementById('cold-label').innerText = t.cold;
+        document.getElementById('freq-label').innerText = t.freq;
+    }
+
+    function setupBetListeners() {
+        document.querySelectorAll('.roulette-cell').forEach(cell => {
+            cell.addEventListener('click', (e) => {
+                const type = cell.getAttribute('data-bet-type');
+                const value = cell.getAttribute('data-bet-value');
+                if (type && value) {
+                    placeBet(type, value, cell);
+                }
+            });
+        });
+    }
+
+    function setupChipSelection() {
+        document.querySelectorAll('.chip-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('scale-110', 'ring-4', 'ring-primary/20'));
+                btn.classList.add('scale-110', 'ring-4', 'ring-primary/20');
+                selectedChip = parseInt(btn.getAttribute('data-chip'));
+            });
+        });
+    }
+
+    function placeBet(type, value, element) {
+        const totalCurrent = currentBets.reduce((sum, b) => sum + b.amount, 0);
+        if (totalCurrent + selectedChip > balance) {
+            alert("Balance insuficiente");
+            return;
+        }
+
+        const existing = currentBets.find(b => b.type === type && b.value === value);
+        if (existing) {
+            existing.amount += selectedChip;
+        } else {
+            currentBets.push({ type, value, amount: selectedChip, element });
+        }
+        
+        updateUI();
+        renderChips();
+    }
+
+    function undoBet() {
+        currentBets.pop();
+        updateUI();
+        renderChips();
+    }
+
+    function clearBets() {
+        currentBets = [];
+        updateUI();
+        renderChips();
+    }
+
+    function renderChips() {
+        // Remove existing visual chips
+        document.querySelectorAll('.chip-on-cell').forEach(c => c.remove());
+        
+        currentBets.forEach(bet => {
+            const chip = document.createElement('div');
+            chip.className = 'chip-on-cell';
+            chip.innerText = bet.amount >= 1000 ? (bet.amount/1000).toFixed(1) + 'k' : bet.amount;
+            bet.element.appendChild(chip);
+        });
+    }
+
+    function updateUI() {
+        // Balance
+        document.getElementById('user-balance').innerText = `$${balance.toLocaleString()}`;
+        
+        // Total Bet
+        const total = currentBets.reduce((sum, b) => sum + b.amount, 0);
+        document.getElementById('total-bet-display').innerText = `$${total.toLocaleString()}`;
+
+        // Bet Details List
+        const details = document.getElementById('bet-details');
+        details.innerHTML = '';
+        currentBets.forEach(bet => {
+            const div = document.createElement('div');
+            div.className = 'flex justify-between';
+            const label = bet.type === 'straight' ? `Number ${bet.value}` : `${bet.type} (${bet.value})`;
+            div.innerHTML = `<span>${label}</span><span>$${bet.amount}</span>`;
+            details.appendChild(div);
+        });
+
+        // History
+        const histContainer = document.getElementById('history-container');
+        histContainer.innerHTML = '';
+        betHistory.slice(0, 5).forEach(num => {
+            const dot = document.createElement('div');
+            let colorClass = num === 0 ? 'bg-tertiary-container text-on-tertiary' : 
+                            RED_NUMBERS.includes(num) ? 'bg-secondary-container' : 'bg-surface-container-lowest';
+            dot.className = `w-10 h-10 rounded-full ${colorClass} flex items-center justify-center font-headline text-lg border border-white/10`;
+            dot.innerText = num;
+            histContainer.appendChild(dot);
+        });
+    }
+
+    async function handleSpin() {
+        const total = currentBets.reduce((sum, b) => sum + b.amount, 0);
+        if (total === 0) {
+            alert("Por favor, realiza una apuesta.");
+            return;
+        }
+
+        const spinBtn = document.getElementById('spin-button');
+        const spinText = document.getElementById('spin-text');
+        spinBtn.disabled = true;
+        spinText.innerText = "...";
+        spinText.classList.add('spinning');
+
+        try {
+            // Mocking the RPC call to Supabase
+            // In a real app: const { data, error } = await supabase.rpc('process_bet_secure', { bets: currentBets });
+            const result = await mockProcessBetSecure(currentBets);
+            
+            // Artificial delay for tension
+            setTimeout(() => {
+                const winningNumber = result.winningNumber;
+                const winAmount = result.winAmount;
+                
+                balance = result.newBalance;
+                betHistory.unshift(winningNumber);
+                
+                // Finalize Spin
+                spinText.classList.remove('spinning');
+                spinText.innerText = winningNumber;
+                
+                if (winAmount > 0) {
+                    alert(`¡GANASTE! El número es ${winningNumber}. Premio: $${winAmount}`);
+                } else {
+                    // No win
+                }
+
+                currentBets = [];
+                updateUI();
+                renderChips();
+                spinBtn.disabled = false;
+                spinText.innerText = translations[currentLanguage].spin;
+            }, 2000);
+
+        } catch (err) {
+            alert("Error en el servidor. Inténtelo de nuevo.");
+            spinBtn.disabled = false;
+            spinText.classList.remove('spinning');
+            spinText.innerText = translations[currentLanguage].spin;
+        }
+    }
+
+    // Mock secure processing
+    function mockProcessBetSecure(bets) {
+        return new Promise((resolve) => {
+            const winNum = Math.floor(Math.random() * 37);
+            let winTotal = 0;
+            const totalBet = bets.reduce((s, b) => s + b.amount, 0);
+
+            bets.forEach(bet => {
+                if (checkWin(bet, winNum)) {
+                    winTotal += bet.amount * getMultiplier(bet.type);
+                }
+            });
+
+            balance = balance - totalBet + winTotal;
+
+            resolve({
+                winningNumber: winNum,
+                winAmount: winTotal,
+                newBalance: balance
+            });
+        });
+    }
+
+    function checkWin(bet, winNum) {
+        if (bet.type === 'straight') return parseInt(bet.value) === winNum;
+        if (winNum === 0) return false; // Outside bets lose on zero
+        
+        if (bet.type === 'color') {
+            const isRed = RED_NUMBERS.includes(winNum);
+            return (bet.value === 'red' && isRed) || (bet.value === 'black' && !isRed);
+        }
+        if (bet.type === 'parity') {
+            const isEven = winNum % 2 === 0;
+            return (bet.value === 'even' && isEven) || (bet.value === 'odd' && !isEven);
+        }
+        if (bet.type === 'dozen') {
+            if (bet.value == '1') return winNum >= 1 && winNum <= 12;
+            if (bet.value == '2') return winNum >= 13 && winNum <= 24;
+            if (bet.value == '3') return winNum >= 25 && winNum <= 36;
+        }
+        if (bet.type === 'column') {
+            return (winNum % 3) === (parseInt(bet.value) % 3);
+        }
+        if (bet.type === 'half') {
+            return (bet.value === 'low' && winNum <= 18) || (bet.value === 'high' && winNum >= 19);
+        }
+        return false;
+    }
+
+    function getMultiplier(type) {
+        switch(type) {
+            case 'straight': return 36;
+            case 'dozen':
+            case 'column': return 3;
+            default: return 2;
+        }
+    }
+</script>
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Royale - Classic 777</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#131313",
+                        "surface-variant": "#353534",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "inverse-on-surface": "#313030",
+                        "on-surface": "#e5e2e1",
+                        "outline-variant": "#4d4635",
+                        "surface-dim": "#131313",
+                        "secondary-container": "#920703",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#735c00",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "on-secondary-fixed": "#410000",
+                        "on-primary": "#3c2f00",
+                        "surface-bright": "#3a3939",
+                        "primary-container": "#d4af37",
+                        "primary-fixed": "#ffe088",
+                        "tertiary": "#9adeaa",
+                        "primary": "#f2ca50",
+                        "on-secondary-container": "#ff9a8a",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#7fc290",
+                        "on-primary-container": "#554300",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary": "#00391a",
+                        "surface-container-highest": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "outline": "#99907c",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#adf2bc",
+                        "secondary-fixed": "#ffdad4",
+                        "surface-container": "#201f1f",
+                        "surface-tint": "#e9c349",
+                        "on-surface-variant": "#d0c5af",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-secondary": "#690000",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-container": "#055029"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .gold-gradient {
+            background: linear-gradient(45deg, #f2ca50, #d4af37);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(42, 42, 42, 0.8);
+        }
+        .reel-container {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col">
+<div class="noise-overlay fixed inset-0 z-[100]"></div>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] hover:opacity-80 transition-opacity active:duration-150 scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-serif italic font-bold text-[#f2ca50] tracking-widest uppercase">Midnight Royale</h1>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-serif text-[#f2ca50] font-bold tracking-tight">$25,000.00</span>
+</div>
+</header>
+<!-- Main Game Canvas -->
+<main class="flex-1 pt-16 pb-24 px-4 md:px-8 max-w-7xl mx-auto w-full flex flex-col items-center justify-center">
+<!-- Game Title & Status -->
+<div class="text-center mb-8 space-y-2">
+<h2 class="font-headline text-display-lg text-primary uppercase tracking-tighter leading-none" style="font-size: 3.5rem;">Classic 777</h2>
+<p class="font-body text-on-surface-variant text-xs uppercase tracking-[0.2em]">The Velvet Vault Collection</p>
+</div>
+<!-- Slot Machine Core -->
+<div class="w-full max-w-4xl relative">
+<!-- Decorative Frame -->
+<div class="absolute -inset-1 border border-outline-variant/30 rounded-xl pointer-events-none"></div>
+<div class="bg-surface-container-low p-1 rounded-lg shadow-2xl overflow-hidden">
+<div class="grid grid-cols-3 gap-1 bg-surface-container-lowest reel-container">
+<!-- Reel 1 -->
+<div class="h-80 flex flex-col gap-4 py-8 items-center overflow-hidden">
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="p-4 bg-surface-container-high rounded-lg w-full flex items-center justify-center border-y border-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-8xl text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+</div>
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant">nutrition</span>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="h-80 flex flex-col gap-4 py-8 items-center overflow-hidden">
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant">diamond</span>
+</div>
+<div class="p-4 bg-surface-container-high rounded-lg w-full flex items-center justify-center border-y border-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-8xl text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+</div>
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-secondary-container">favorite</span>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="h-80 flex flex-col gap-4 py-8 items-center overflow-hidden">
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant">emergency</span>
+</div>
+<div class="p-4 bg-surface-container-high rounded-lg w-full flex items-center justify-center border-y border-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-8xl text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+</div>
+<div class="p-4 bg-surface-container-high/40 rounded-lg w-full flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-tertiary">potted_plant</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Win Display -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center pointer-events-none">
+<div class="bg-surface-container-highest/90 border border-primary/40 px-12 py-4 rounded shadow-[0_0_40px_rgba(0,0,0,0.8)] glass-panel opacity-0 translate-y-4">
+<span class="font-headline text-3xl text-primary uppercase italic tracking-widest">Jackpot!</span>
+</div>
+</div>
+</div>
+<!-- Controls Section -->
+<div class="mt-12 w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+<!-- Bet Adjustment -->
+<div class="space-y-4">
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Select Stakes</span>
+<div class="flex items-center gap-2">
+<button class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary border border-outline-variant/20 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="flex-1 bg-surface-container-lowest h-12 flex flex-col items-center justify-center border-b border-outline-variant">
+<span class="font-headline text-xl text-on-surface">$100.00</span>
+</div>
+<button class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary border border-outline-variant/20 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Spin Button -->
+<div class="flex flex-col items-center">
+<button class="gold-gradient w-48 h-48 rounded-full shadow-[0_0_50px_rgba(212,175,55,0.2)] flex flex-col items-center justify-center group active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-6xl text-on-primary group-hover:rotate-180 transition-transform duration-700">refresh</span>
+<span class="font-headline text-2xl font-bold text-on-primary tracking-widest mt-2 uppercase">Girar</span>
+</button>
+</div>
+<!-- Stats & Auto -->
+<div class="space-y-4">
+<span class="text-on-surface-variant text-[10px] uppercase font-bold tracking-widest">Game Options</span>
+<div class="flex gap-2">
+<button class="flex-1 py-3 px-4 bg-surface-container-high rounded border border-outline-variant/20 flex flex-col items-center gap-1">
+<span class="text-[10px] text-on-surface-variant uppercase">Last Win</span>
+<span class="font-serif text-tertiary font-bold">$1,250</span>
+</button>
+<button class="flex-1 py-3 px-4 bg-surface-container-high rounded border border-outline-variant/20 flex flex-col items-center gap-1 group">
+<span class="text-[10px] text-on-surface-variant uppercase">Auto-Play</span>
+<span class="material-symbols-outlined text-primary group-active:animate-spin">settings_backup_restore</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Information / Paytable Teaser -->
+<div class="mt-16 w-full max-w-2xl bg-surface-container-low/50 rounded-xl p-6 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline text-lg text-primary">Winning Combinations</h3>
+<span class="text-[10px] text-on-surface-variant uppercase">RTP 96.5%</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">looks_6</span>
+<span class="ml-auto font-serif text-primary text-sm">x5000</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">diamond</span>
+<span class="material-symbols-outlined text-on-surface-variant">diamond</span>
+<span class="material-symbols-outlined text-on-surface-variant">diamond</span>
+<span class="ml-auto font-serif text-on-surface text-sm">x500</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container">favorite</span>
+<span class="material-symbols-outlined text-secondary-container">favorite</span>
+<span class="material-symbols-outlined text-secondary-container">favorite</span>
+<span class="ml-auto font-serif text-on-surface text-sm">x100</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">nutrition</span>
+<span class="material-symbols-outlined text-on-surface-variant">nutrition</span>
+<span class="material-symbols-outlined text-on-surface-variant">nutrition</span>
+<span class="ml-auto font-serif text-on-surface text-sm">x25</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#131313]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.8)] flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#d4af37]/10 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Promos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Account</span>
+</a>
+</nav>
+<!-- Background Elements -->
+<div class="fixed top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 w-64 h-64 bg-secondary-container/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+</body></html>

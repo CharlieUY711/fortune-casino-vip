@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Royale - Neon Cyber Slots</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#131313",
+              "surface-variant": "#353534",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed-variant": "#08522a",
+              "inverse-on-surface": "#313030",
+              "on-surface": "#e5e2e1",
+              "outline-variant": "#4d4635",
+              "surface-dim": "#131313",
+              "secondary-container": "#920703",
+              "on-secondary-fixed-variant": "#920703",
+              "on-primary-fixed-variant": "#574500",
+              "on-primary-fixed": "#241a00",
+              "inverse-primary": "#735c00",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed-dim": "#92d6a2",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-secondary-fixed": "#410000",
+              "on-primary": "#3c2f00",
+              "surface-bright": "#3a3939",
+              "primary-container": "#d4af37",
+              "primary-fixed": "#ffe088",
+              "tertiary": "#9adeaa",
+              "primary": "#f2ca50",
+              "on-secondary-container": "#ff9a8a",
+              "inverse-surface": "#e5e2e1",
+              "tertiary-container": "#7fc290",
+              "on-primary-container": "#554300",
+              "on-background": "#e5e2e1",
+              "on-tertiary": "#00391a",
+              "surface-container-highest": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "outline": "#99907c",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#adf2bc",
+              "secondary-fixed": "#ffdad4",
+              "surface-container": "#201f1f",
+              "surface-tint": "#e9c349",
+              "on-surface-variant": "#d0c5af",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary": "#690000",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.neon-glow-primary {
+    box-shadow: 0 0 15px rgba(242, 202, 80, 0.3)
+    }
+.slot-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(242, 202, 80, 0.05), transparent);
+    background-size: 200% 100%
+    }
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuC2p40w1YOuFFO3YDz_OMeDREbgoYDUYCS3slf6sjdYucAODePLugBBBHtvVrtHb5iy3MG_QjxtZr8VTX_N9d_xrYZ3nqVGyhKKFnqs-P_2vLKNIHuTdcrrCGXdibGH5dgLs1YmmVfQRTeDb_mjOd6JpEjD38g948NFTsxnigUJKyGYsiNk8U5X-SjNhN37SGAa4oZtylcx8E4fyaAz9AQ9OiecEPCqP0b6UaEskCwIAxA5AISBD2TmGM3LISQOvKwyaaWVtlAog8G6)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="noise-overlay"></div>
+<!-- TopAppBar -->
+<header class="bg-[#131313] dark:bg-[#131313] fixed top-0 w-full z-50 shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] hover:opacity-80 transition-opacity active:scale-95 active:duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-serif italic font-bold text-[#f2ca50] tracking-widest uppercase text-sm md:text-base">Midnight Royale</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-low px-4 py-1.5 rounded-lg border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline font-bold text-[#f2ca50] tracking-tight">$25,000.00</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 min-h-screen px-4 max-w-5xl mx-auto flex flex-col gap-8">
+<!-- Game Canvas -->
+<section class="relative aspect-video md:aspect-[21/9] w-full bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 shadow-2xl">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+<!-- Reels Container -->
+<div class="absolute inset-0 flex items-center justify-center gap-2 md:gap-4 p-4 md:p-8">
+<!-- Reel 1 -->
+<div class="flex-1 h-full bg-surface-container-high/80 backdrop-blur-sm rounded-lg border border-outline-variant/20 flex flex-col items-center justify-around relative overflow-hidden group">
+<div class="absolute inset-0 slot-shimmer opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<div class="h-px w-full bg-outline-variant/20"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary opacity-40" data-icon="stars">stars</span>
+</div>
+<!-- Reel 2 -->
+<div class="flex-1 h-full bg-surface-container-high/80 backdrop-blur-sm rounded-lg border border-outline-variant/20 flex flex-col items-center justify-around relative overflow-hidden group">
+<div class="absolute inset-0 slot-shimmer opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary" data-icon="currency_bitcoin" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+<div class="h-px w-full bg-outline-variant/20"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary opacity-40" data-icon="monetization_on">monetization_on</span>
+</div>
+<!-- Reel 3 -->
+<div class="flex-1 h-full bg-surface-container-high/80 backdrop-blur-sm rounded-lg border border-outline-variant/20 flex flex-col items-center justify-around relative overflow-hidden group">
+<div class="absolute inset-0 slot-shimmer opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary" data-icon="hotel_class" style="font-variation-settings: 'FILL' 1;">hotel_class</span>
+<div class="h-px w-full bg-outline-variant/20"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary opacity-40" data-icon="electric_bolt">electric_bolt</span>
+</div>
+<!-- Reel 4 -->
+<div class="flex-1 h-full bg-surface-container-high/80 backdrop-blur-sm rounded-lg border border-outline-variant/20 flex flex-col items-center justify-around relative overflow-hidden group">
+<div class="absolute inset-0 slot-shimmer opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+<div class="h-px w-full bg-outline-variant/20"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary opacity-40" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<!-- Reel 5 -->
+<div class="flex-1 h-full bg-surface-container-high/80 backdrop-blur-sm rounded-lg border border-outline-variant/20 flex flex-col items-center justify-around relative overflow-hidden group">
+<div class="absolute inset-0 slot-shimmer opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary" data-icon="vital_signs" style="font-variation-settings: 'FILL' 1;">vital_signs</span>
+<div class="h-px w-full bg-outline-variant/20"></div>
+<span class="material-symbols-outlined text-4xl md:text-6xl text-primary opacity-40" data-icon="brightness_high">brightness_high</span>
+</div>
+</div>
+<!-- Payline Indicator -->
+<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none"></div>
+</section>
+<!-- Control Panel -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+<!-- Bet Selection -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Aposta Atual</p>
+<div class="flex items-center justify-between">
+<button class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center hover:bg-surface-bright transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="remove">remove</span>
+</button>
+<div class="text-center">
+<span class="font-headline text-3xl font-bold text-on-surface tracking-tight">$100.00</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center hover:bg-surface-bright transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="add">add</span>
+</button>
+</div>
+<div class="mt-6 flex gap-2">
+<button class="flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded border border-outline-variant/20 hover:bg-surface-variant transition-colors">Min</button>
+<button class="flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded border border-outline-variant/20 hover:bg-surface-variant transition-colors">Max</button>
+</div>
+</div>
+<!-- Spin Button -->
+<div class="flex flex-col items-center">
+<button class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary to-primary-container p-1 shadow-[0_0_30px_rgba(212,175,55,0.2)] active:scale-95 transition-transform group">
+<div class="w-full h-full rounded-full bg-[#3c2f00] flex items-center justify-center border-4 border-background group-hover:bg-primary transition-colors">
+<span class="font-headline italic font-black text-primary text-xl tracking-widest group-hover:text-on-primary">GIRAR</span>
+</div>
+</button>
+<div class="mt-4 flex gap-4 text-[10px] font-bold tracking-widest text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> SUPABASE LIVE</span>
+<span class="flex items-center gap-1 opacity-50">AUTO-SPIN OFF</span>
+</div>
+</div>
+<!-- Stats & History -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Última Vitória</p>
+<div class="flex items-center gap-4">
+<div class="p-3 bg-tertiary/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold text-tertiary">$1,250.00</h3>
+<p class="text-[10px] font-medium text-on-surface-variant uppercase tracking-tighter">Big Win 12.5x</p>
+</div>
+</div>
+<div class="mt-6">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+<span>Histórico</span>
+<span class="text-primary hover:underline cursor-pointer">Ver Tudo</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-xs py-1 border-b border-outline-variant/10">
+<span class="text-on-surface-variant">22:45:01</span>
+<span class="text-tertiary">+$150.00</span>
+</div>
+<div class="flex justify-between items-center text-xs py-1 border-b border-outline-variant/10">
+<span class="text-on-surface-variant">22:44:45</span>
+<span class="text-secondary">-$100.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo Section (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-8 relative overflow-hidden rounded-xl h-48 group">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Cyberpunk city skyline at night with gold and purple neon lights glowing through foggy atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8t6n2pPTkaOSQJwPMnY0e-v4NHxpUF6X5m5HjUUEad8ef0YOxUR_0Ho-8uQ3b7GqAJE25G1qeNgclT8f5aq4q7SRunzRMIzO99G6S5r3DhxAcmFfU9FWP7gg3zcLIWaCl-LkfQoU98rIRvim4cgi6Om511dUawnhCDPmNamvRviBCDLjRvP7q7j1OyCLzYVVsBgUOXxweDw4MoBP0ZbmBB7huox_faaqTxy2XbAwdsoNdG2OniTcpsNEl55KNzVUnF5qFGi9vwwQO"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent flex flex-col justify-center p-8">
+<span class="text-primary font-bold uppercase tracking-[0.2em] text-[10px] mb-2">Weekend Special</span>
+<h2 class="font-headline text-3xl font-bold text-on-surface max-w-md">Ganhe 200% de Bônus no próximo depósito</h2>
+<button class="mt-4 w-fit px-6 py-2 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity">Resgatar Agora</button>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-high p-8 rounded-xl border border-outline-variant/20 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="military_tech">military_tech</span>
+<h3 class="font-headline text-xl font-bold text-on-surface">Club Noir VIP</h3>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">Sua jornada para o status Diamante está 85% completa. Desbloqueie saques instantâneos.</p>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full mt-4 overflow-hidden">
+<div class="bg-primary h-full w-[85%] shadow-[0_0_8px_#f2ca50]"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.8)]">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#d4af37]/10 rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="slot_machine" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="military_tech">military_tech</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Promos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-sans text-[10px] font-bold uppercase tracking-wider mt-1">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

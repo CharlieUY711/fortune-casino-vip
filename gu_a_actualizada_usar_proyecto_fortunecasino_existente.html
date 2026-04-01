@@ -1,0 +1,48 @@
+# Guía de Configuración Actualizada: Supabase (FortuneCasino) + Vercel
+
+Dado que ya tienes el proyecto **FortuneCasino** creado en Supabase, seguiremos estos pasos para conectarlo con tu dominio `fortune.core.com.uy`.
+
+## 1. Validación en tu Proyecto Existente (Supabase)
+
+### Verificar la Base de Datos
+1. Entra en tu proyecto **FortuneCasino** en [Supabase](https://supabase.com/).
+2. Ve a la pestaña **"SQL Editor"**.
+3. Asegúrate de haber ejecutado el **SCRIPT_SQL_MAESTRO_COMPLETO_V2** que preparamos. Si no lo has hecho, cópialo y ejecútalo para que las tablas de perfiles, invitaciones y apuestas estén listas.
+
+### Obtener las Credenciales (Las necesitaremos en Vercel)
+1. Ve a **"Project Settings"** (icono de engranaje) -> **"API"**.
+2. Copia estos dos valores:
+   - `Project URL` (ej: `https://fortune-casino-xyz.supabase.co`)
+   - `Anon Key` (la clave pública larga).
+
+---
+
+## 2. Configuración en Vercel (Conexión al Dominio)
+
+### Vincular el Repositorio
+1. En [Vercel](https://vercel.com/), selecciona tu proyecto vinculado al repositorio `fortune-casino-vip` de `CharlieUY711`.
+
+### Configurar Variables de Entorno
+Es CRUCIAL que Vercel sepa a qué proyecto de Supabase conectarse. Ve a **Settings** -> **Environment Variables** y añade:
+
+1. **Variable:** `NEXT_PUBLIC_SUPABASE_URL`
+   **Valor:** (La URL de tu proyecto FortuneCasino)
+
+2. **Variable:** `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   **Valor:** (La Anon Key de tu proyecto FortuneCasino)
+
+### Dominio Final
+1. En **Settings** -> **Domains**, asegúrate de que `fortune.core.com.uy` esté asignado y con los DNS correctos.
+
+---
+
+## 3. Prueba de Acceso VIP
+Para probar tu proyecto existente ahora mismo:
+1. En el **SQL Editor** de Supabase, ejecuta:
+   ```sql
+   INSERT INTO public.invitations (code) VALUES ('VIP-FORTUNE-001');
+   ```
+2. Entra a `fortune.core.com.uy/registro` y usa ese código. Si todo está bien conectado, verás tu solicitud en el Panel de Admin.
+
+---
+*Nota: Al usar tu proyecto existente, mantienes toda la configuración que ya habías avanzado.*

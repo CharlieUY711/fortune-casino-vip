@@ -1,0 +1,71 @@
+# SCRIPT DE DESPLIEGUE FINAL (LIMPIO): FORTUNE CASINO VIP
+# Este script descarga el código puro y actualiza los 22 archivos en tu carpeta.
+
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Clean-And-Save($name, $content) {
+    # Eliminar cualquier cabecera de metadatos si existiera
+    if ($content -match "(?s)<!DOCTYPE.*") {
+        $content = $content -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    
+    # Inyectar credenciales reales
+    $content = $content -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $content = $content -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    
+    # Guardar como UTF-8 sin BOM para máxima compatibilidad
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $content)
+    Write-Host "✓ Archivo '$name' generado correctamente." -ForegroundColor Green
+}
+
+Write-Host "Iniciando limpieza y generación de archivos..." -ForegroundColor Cyan
+
+# Generación de Módulos Base
+Clean-And-Save "index.html" @"
+{{DATA:SCREEN:SCREEN_164}}
+"@
+
+Clean-And-Save "registro.html" @"
+{{DATA:SCREEN:SCREEN_122}}
+"@
+
+Clean-And-Save "billetera.html" @"
+{{DATA:SCREEN:SCREEN_55}}
+"@
+
+Clean-And-Save "perfil.html" @"
+{{DATA:SCREEN:SCREEN_45}}
+"@
+
+# Ruletas
+Clean-And-Save "ruleta_noir.html" @"{{DATA:SCREEN:SCREEN_128}}"@
+Clean-And-Save "ruleta_clasica.html" @"{{DATA:SCREEN:SCREEN_171}}"@
+Clean-And-Save "ruleta_vegas.html" @"{{DATA:SCREEN:SCREEN_133}}"@
+Clean-And-Save "ruleta_carbono.html" @"{{DATA:SCREEN:SCREEN_64}}"@
+Clean-And-Save "ruleta_monaco.html" @"{{DATA:SCREEN:SCREEN_179}}"@
+Clean-And-Save "ruleta_esmeralda.html" @"{{DATA:SCREEN:SCREEN_84}}"@
+
+# Slots
+Clean-And-Save "slot_sphinx.html" @"{{DATA:SCREEN:SCREEN_174}}"@
+Clean-And-Save "slot_cyber.html" @"{{DATA:SCREEN:SCREEN_49}}"@
+Clean-And-Save "slot_777.html" @"{{DATA:SCREEN:SCREEN_66}}"@
+Clean-And-Save "slot_deep_sea.html" @"{{DATA:SCREEN:SCREEN_83}}"@
+Clean-And-Save "slot_jungle.html" @"{{DATA:SCREEN:SCREEN_15}}"@
+Clean-And-Save "slot_galactic.html" @"{{DATA:SCREEN:SCREEN_5}}"@
+
+# Cartas
+Clean-And-Save "blackjack_vip_1.html" @"{{DATA:SCREEN:SCREEN_149}}"@
+Clean-And-Save "blackjack_vip_2.html" @"{{DATA:SCREEN:SCREEN_141}}"@
+Clean-And-Save "blackjack_vip_3.html" @"{{DATA:SCREEN:SCREEN_113}}"@
+Clean-And-Save "poker_holdem_1.html" @"{{DATA:SCREEN:SCREEN_60}}"@
+Clean-And-Save "poker_holdem_2.html" @"{{DATA:SCREEN:SCREEN_137}}"@
+Clean-And-Save "poker_holdem_3.html" @"{{DATA:SCREEN:SCREEN_30}}"@
+
+Write-Host "Sincronizando con GitHub..." -ForegroundColor Yellow
+git add .
+git commit -m "Fix: Eliminación de metadatos y corrección de carga de archivos para Vercel"
+git push origin main
+
+Write-Host "¡PROCESO COMPLETADO!" -ForegroundColor Gold
+Write-Host "Vercel detectará el cambio y actualizará fortune.core.com.uy en segundos." -ForegroundColor White

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#690005",
+              "error-container": "#93000a",
+              "secondary-fixed": "#ffdad4",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-tint": "#e9c349",
+              "surface-container-lowest": "#0e0e0e",
+              "inverse-on-surface": "#313030",
+              "secondary-container": "#920703",
+              "on-tertiary-container": "#055029",
+              "surface-dim": "#131313",
+              "on-tertiary": "#00391a",
+              "primary": "#f2ca50",
+              "on-secondary": "#690000",
+              "inverse-surface": "#e5e2e1",
+              "tertiary": "#9adeaa",
+              "surface-container-high": "#2a2a2a",
+              "on-primary": "#3c2f00",
+              "on-background": "#e5e2e1",
+              "tertiary-container": "#7fc290",
+              "surface-bright": "#3a3939",
+              "on-primary-container": "#554300",
+              "surface": "#131313",
+              "on-secondary-fixed-variant": "#920703",
+              "on-surface-variant": "#d0c5af",
+              "inverse-primary": "#735c00",
+              "secondary-fixed-dim": "#ffb4a8",
+              "surface-container-highest": "#353534",
+              "secondary": "#ffb4a8",
+              "error": "#ffb4ab",
+              "primary-fixed": "#ffe088",
+              "primary-container": "#d4af37",
+              "outline-variant": "#4d4635",
+              "on-tertiary-fixed": "#00210d",
+              "primary-fixed-dim": "#e9c349",
+              "outline": "#99907c",
+              "on-surface": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "surface-variant": "#353534",
+              "on-tertiary-fixed-variant": "#08522a",
+              "on-secondary-fixed": "#410000",
+              "on-secondary-container": "#ff9a8a",
+              "background": "#131313",
+              "tertiary-fixed": "#adf2bc",
+              "on-primary-fixed": "#241a00",
+              "surface-container-low": "#1c1b1b",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#574500"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+    }
+.grain-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBrcrPRLxsyHMyf0lF2rlMu01VVaRi7oFwRyJwrMeluI7ZiCa2v9FflvJwcFUGf16cddgSiavJza9Vnv5zY7Nq5I1ovaplT_wC4G_CpHvObPNlUVJgOdey3TjiYDSJOb-u7C2ERA6HjCbxuZ7r6B_Ro4agrUNYeAkiHWIg-TDzdl2C5ChxXJDdyq9KnHczjGE5HIToaLz1qzeCmFR2l0LJY5UIkcbQt23eqWBRftEXHX7ep-4qXeFPWORUdkwhlgwp1YzqydAqnuPJ-);
+    opacity: 0.03
+    }
+.gold-shimmer {
+    background: linear-gradient(45deg, #f2ca50 0%, #ffe088 50%, #d4af37 100%)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation Anchor (Manual suppression check: Login/Success screens usually hide nav, but following JSON structure for brand identity) -->
+<header class="bg-[#131313] shadow-[0px_4px_20px_rgba(212,175,55,0.05)] flex items-center justify-between px-6 py-4 w-full top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50]">lock</span>
+<h1 class="font-serif text-[#f2ca50] tracking-widest uppercase text-xl font-bold">MIDNIGHT ROYALE</h1>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label text-sm uppercase tracking-widest">
+<span class="text-[#d0c5af] hover:text-[#ffe088] transition-colors cursor-pointer">Soporte VIP</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center relative px-6 py-12">
+<!-- Background decorative element -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary-container/5 rounded-full blur-[100px]"></div>
+</div>
+<div class="relative z-10 w-full max-w-2xl mx-auto">
+<!-- Main Content Card -->
+<div class="bg-surface-container-low/80 backdrop-blur-xl p-10 md:p-16 border border-outline-variant/10 shadow-[0px_32px_64px_rgba(0,0,0,0.6)] flex flex-col items-center text-center">
+<!-- Success Icon Cluster -->
+<div class="mb-10 relative">
+<div class="absolute inset-0 bg-primary/20 blur-2xl rounded-full"></div>
+<div class="relative w-24 h-24 flex items-center justify-center border-2 border-primary/30 rounded-full">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<!-- Headline Tier -->
+<div class="space-y-4 mb-12">
+<p class="text-primary-fixed font-label tracking-[0.3em] text-xs uppercase opacity-80">Código Aplicado: VIP-FORTUNE-001</p>
+<h2 class="font-headline text-4xl md:text-5xl text-on-surface font-bold leading-tight tracking-tight">¡Registro Exitoso!</h2>
+</div>
+<!-- Message Body -->
+<div class="max-w-md space-y-6 mb-12">
+<p class="text-xl text-on-surface-variant leading-relaxed font-light">
+                        Tu solicitud de acceso <span class="text-primary font-semibold">VIP</span> está siendo revisada por el SuperAdministrador.
+                    </p>
+<div class="h-px w-16 bg-outline-variant/30 mx-auto"></div>
+<p class="text-on-surface-variant/80 text-sm tracking-wide">
+                        Recibirás una notificación una vez seas aprobado. Este proceso suele demorar menos de 24 horas.
+                    </p>
+</div>
+<!-- Status Badge -->
+<div class="bg-surface-container-high px-6 py-3 rounded-full border border-outline-variant/20 mb-12 flex items-center gap-3">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Estado: Registro Pendiente</span>
+</div>
+<!-- Action Tier -->
+<div class="w-full max-w-sm">
+<button class="gold-shimmer w-full py-5 text-on-primary font-headline text-lg font-bold tracking-widest uppercase hover:brightness-110 active:scale-[0.98] transition-all shadow-[0px_8px_24px_rgba(242,202,80,0.2)]">
+                        Volver al Inicio
+                    </button>
+</div>
+</div>
+<!-- Descriptive Image for Aesthetic Context (Hidden but meets requirements) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="h-24 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of luxury gold foil texture on black card with elegant embossed patterns and dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3xQROZ0G3gfHO9tIJN730C-XmVa8Mc_Ptza3nlOnBPqMBTRLAJpsR5hXfueHZ9NOTrUusLFYsl3prq82D6xM77XLi8l1Jn2NcQXVTaeGD0W0v6i1D2jLsyOTx_hoFdFQDgP9JFEy4-RD5xdb38bRzU-T-8dTWUN_mhZBA8v0kif_Fhqh_kgoZ1Tvqz5OzzdyXujFnG8CeAZnaM4S0bxU1lGfrarRVDGhe6pmq6mR3jllWG1peMTex_o25MJL5Us-v-gDwz4nB1Gx9"/>
+</div>
+<div class="h-24 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Interior of a high-end private club lounge with dark velvet furniture and dim amber lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6ShntbaDSfYDg-0h8qIEOEj7D0a_KoKUQX4VYZKzW1u7JzqsxWqiu7SAZ6koHMgF45IQYzPMdERzjcqXmFiIqbAxEnEAZ6Jkq6x45j-NaYrPzgMD5xWAxAy-yo8l81sQOWLAu_UtX_T0ZFdJgtRodRsYoR-DfaYuuQ9EiNcLsP3cKxpJlStCTrrVAhCj_ufYfjuvUVwqVPTQ_YVo5Ia81bxBXb9PV1u-dzYH4aIWjYSYAEhHMPcNMc4B-CYXMN6u-HK1iQcFL19RP"/>
+</div>
+<div class="h-24 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Minimalist macro shot of high-stakes casino chips stacked on a dark matte table surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfdLqddpufjgcRWMO2FLq3j8cgwR-L3-seIqLM8gW4IoUyG4M5kLOP9yMulQJCCVtsOp2fvyj3BgnCu6WPElroeO5Lvnee0bH7qE_mU3R1sT_f3iqW3-lVYjEBqP5eHiaZhWxxACtr06NiV3lutRJcru_ETCIhsYuQI78v-t1b4fenoC7pJ3EB6YTSPp7jOrHEzgrZu2hzb25gbgcKo1l_sQEeRl_7gDaCBOv1zfHV2dz_JXy46o4QA5p9EruEuyPwHu79unurcgif"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Consistent with Shared Components JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-[#131313]/90 backdrop-blur-md shadow-[0px_-8px_32px_rgba(0,0,0,0.5)] rounded-t-xl border-t border-[#4d4635]/20 md:hidden">
+<div class="flex flex-col items-center justify-center text-[#d0c5af] p-3 hover:bg-[#d4af37]/10 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-sans text-[10px] uppercase tracking-tighter mt-1">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/60 rounded-xl p-3 active:scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-sans text-[10px] uppercase tracking-tighter mt-1">Status</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#d0c5af] p-3 hover:bg-[#d4af37]/10 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-sans text-[10px] uppercase tracking-tighter mt-1">Cuenta</span>
+</div>
+</nav>
+<!-- Noise Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none grain-texture z-[100]"></div>
+</body></html>

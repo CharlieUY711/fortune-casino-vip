@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "surface-dim": "#131313",
+              "on-tertiary": "#00391a",
+              "outline-variant": "#4d4635",
+              "inverse-surface": "#e5e2e1",
+              "on-secondary-fixed-variant": "#920703",
+              "on-secondary-fixed": "#410000",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed": "#adf2bc",
+              "on-secondary": "#690000",
+              "inverse-on-surface": "#313030",
+              "on-surface-variant": "#d0c5af",
+              "on-primary-fixed-variant": "#574500",
+              "primary-fixed": "#ffe088",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-primary": "#3c2f00",
+              "on-background": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "inverse-primary": "#735c00",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-low": "#1c1b1b",
+              "primary": "#f2ca50",
+              "secondary-fixed": "#ffdad4",
+              "tertiary": "#9adeaa",
+              "on-error": "#690005",
+              "on-primary-fixed": "#241a00",
+              "surface-variant": "#353534",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#d4af37",
+              "outline": "#99907c",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-container-highest": "#353534",
+              "secondary": "#ffb4a8",
+              "on-tertiary-container": "#055029",
+              "secondary-container": "#920703",
+              "surface-bright": "#3a3939",
+              "on-primary-container": "#554300",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#00210d",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "secondary-fixed-dim": "#ffb4a8"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.grainy-bg {
+    position: relative
+    }
+.grainy-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBXuOd4tR3ez2BHeQYr56QCWRcDQj9bkHRu8Br7zTrypBWQADCOBynej86KlncwajReufJcsTSUPpa67wZOMzgHIJw7zxgP9V5vEnuAF9N5bcw5kc6KHLzepAVtD1j7XLmWXembxcO9PVzg7YYFJ6xKPKM91hKHqllbbJ9X09rXP7E6ElV66Mk_jTQDB3F5PZLepGctatts_crU9X6bIf96NbZX12-j-YnJ0_ihMPvC3gjqPdfGWngq29zoNgNCPNmzbVEFGT898g5a)
+    }
+.gold-gradient {
+    background: linear-gradient(45deg, #f2ca50, #d4af37)
+    }
+#balance-display.updating {
+    animation: pulse-gold 0.5s ease-in-out;
+}
+@keyframes pulse-gold {
+    0% { color: #f2ca50; }
+    50% { color: #ffffff; transform: scale(1.05); }
+    100% { color: #f2ca50; }
+}</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 grainy-bg">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#131313] shadow-[0_32px_32px_rgba(212,175,55,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#f2ca50]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<div class="flex flex-col leading-none">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Balance Actual</span>
+<span class="font-headline text-lg text-primary font-bold transition-all duration-300" id="balance-display">€ --.--</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline text-2xl font-bold tracking-tighter text-[#f2ca50]">Fortune</h1>
+</div>
+<div class="relative group mr-2">
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">language</span>
+<span class="text-xs font-bold uppercase tracking-widest">ES</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<div class="absolute right-0 top-full mt-2 w-32 bg-surface-container-high border border-outline-variant/20 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60] overflow-hidden">
+<div class="flex flex-col py-1">
+<button class="px-4 py-2 text-left text-xs font-bold text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors flex items-center justify-between">
+                English <span>EN</span>
+</button>
+<button class="px-4 py-2 text-left text-xs font-bold text-primary bg-primary/10 flex items-center justify-between">
+                Español <span>ES</span>
+</button>
+<button class="px-4 py-2 text-left text-xs font-bold text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors flex items-center justify-between">
+                Português <span>PT</span>
+</button>
+</div>
+</div>
+</div><div class="flex items-center gap-4">
+<button class="hover:bg-[#1c1b1b] transition-colors duration-300 p-2 rounded-full relative">
+<span class="material-symbols-outlined text-[#d0c5af]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full hidden" id="notif-dot"></span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-28 px-4 md:px-8 max-w-7xl mx-auto space-y-10">
+<!-- Hero Section: Banner Rotativo -->
+<section class="relative h-[240px] md:h-[400px] w-full rounded-xl overflow-hidden group shadow-2xl">
+<img alt="Casino Lobby" class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700" data-alt="Luxurious high-stakes poker table with golden chips and red velvet accents in a dimly lit exclusive European noir casino lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6W7zuIptPBBELSGARkOiUk4np_KFqUog-FyibZWJYmcoQHW-n1oH025fFt7GfAkIK4Pd6iJ_tXYA5XtkvKsLoDsoEWc-einSf7vrd0OxZfV-PZUHp1ZRK-XTQl6CvLuBM_TXz2XnahxOnntZwpLylGpSB8LUUyXkFrIhuS5SismlNrTEwux3eQmUP16cVpZV0VsJgctGdhw5J8zFnEneY7LW-2tMqU2euqGmQIqHAE3DAtTb1tSuvsl0u-QFhMbQldRAGHOnVNzYh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 md:p-12 w-full md:w-2/3">
+<div class="inline-block px-3 py-1 mb-4 bg-secondary-container text-white text-[10px] uppercase tracking-[0.2em] font-bold rounded-sm">
+                    Premium Welcome
+                </div>
+<h2 class="font-headline text-3xl md:text-5xl font-bold text-white mb-2 leading-tight">
+                    El Tesoro de <span class="text-primary">Fortune</span>
+</h2>
+<p class="text-on-surface-variant text-sm md:text-base max-w-md mb-6 leading-relaxed">
+                    Accede al salón exclusivo. Bonos de bienvenida de hasta 5.000€ para nuevos miembros de élite.
+                </p>
+<button class="gold-gradient text-on-primary font-bold px-8 py-3 rounded-sm text-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all">
+                    Reclamar Bono
+                </button>
+</div>
+<!-- Pagination Indicators -->
+<div class="absolute bottom-6 right-6 flex gap-2">
+<div class="w-8 h-1 bg-primary"></div>
+<div class="w-8 h-1 bg-white/20"></div>
+<div class="w-8 h-1 bg-white/20"></div>
+</div>
+</section>
+<!-- Category Selector -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="casino">casino</span>
+<span class="text-xs uppercase tracking-widest font-semibold text-on-surface-variant group-hover:text-primary">Ruleta</span>
+</button>
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="style">style</span>
+<span class="text-xs uppercase tracking-widest font-semibold text-on-surface-variant group-hover:text-primary">Blackjack</span>
+</button>
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="playing_cards">playing_cards</span>
+<span class="text-xs uppercase tracking-widest font-semibold text-on-surface-variant group-hover:text-primary">Poker</span>
+</button>
+<button class="flex items-center justify-center gap-3 p-4 bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="slot_machine">casino</span>
+<span class="text-xs uppercase tracking-widest font-semibold text-on-surface-variant group-hover:text-primary">Slots</span>
+</button>
+</section>
+<!-- Populares (Bento Grid) -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline text-2xl font-bold text-white">Salón de Populares</h3>
+<div class="h-1 w-12 bg-primary mt-2"></div>
+</div>
+<a class="text-[10px] uppercase tracking-widest text-primary font-bold hover:underline" href="#">Ver Todos</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-4 h-[600px] md:h-[500px]">
+<!-- Featured Game -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl bg-surface-container-low">
+<img alt="European Roulette" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of a high-end mahogany European roulette wheel with gold numbers and a silver ball in motion, dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYNEDhSqjMLsHG__Zj2wVy8cbnisv8QQX9LIfDSM5QImPVJfF1KTQ1wfzWIT9JuvipGSAT1CgoVLepRvQIVxi5UwA3iwuSeno2u6xZdu0oe2fnv4zugIZME2XlKytcOtuYvIiRhkkX_av7EQ-CTEBo3346ad5aMbbHeyjpD0u2z7V08isgCLI0n7BgWzxRo1H-7F1cWU-cQY5UisJ6vCZ2feFfChIaXa8AKr3AORtZL7tA9TKyOcah0UQADgHnXj4e07OLIkf5nZs2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-widest bg-tertiary-container/20 px-2 py-1 mb-2 inline-block">Vivo</span>
+<h4 class="font-headline text-2xl text-white font-bold">Fortune Roulette Platinum</h4>
+<p class="text-on-surface-variant text-xs mt-1">Apuesta mínima: 10€</p>
+<button class="mt-4 flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-tighter">
+                            Jugar ahora <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Secondary Game 1 -->
+<div class="relative group overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/10">
+<img alt="Texas Holdem" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="Sleek black poker chips with gold accents stacked on a dark matte surface, cinematic atmospheric smoke and moody light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHE5LUbYUYoRB7tIuNladzqn2Ei4BO6TYcrl3g82xX6z8iYSWMVzJW74wnVGByo0EgJt-uDjjx-w5ik-js7Il3ALgBGr7YFhmNyQ8GCfrzS6OHv7JbGjcx-VGQWiApFQpEL-g_WFbo2XFW0KDxBBdp_nj9BG2I9QhWAKRQi7KWOZBajxpuv5ekgcQWEIqubiPstEefsm4dYX_ahEbTNciK8-30j2c1gWe3t1FqetrSE-pbDoW4A4PZh7d03JMU5ndGCIGIOAfYT3uE"/>
+<div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-surface-dim to-transparent">
+<h4 class="font-headline text-lg text-white font-bold">Midnight Poker</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Torneo VIP</p>
+</div>
+</div>
+<!-- Secondary Game 2 -->
+<div class="relative group overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/10">
+<img alt="Blackjack" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A pair of aces on a dark green felt table with a single golden coin next to them, minimalist and high-end aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb561YT5BBofU1Zii2cksdhf11XNIJ1nbIbbusCGTVxUgUAyBLe30CX-VVTEa-SWOFPg8TRTgTnVVkxMDSxdRtWpi766ouhT8RddX7z3JOmkNCgdNqq76mlucuBzhcfOT_4yVadI9PYKiBlfyrN1Ltf0KJkp6X4D1XcDX8jqHNVX87Sb2Nx2OfGILClDblHYO8av0c4F4OoCy3UMYLqKOmGRUxtx4mNhFqAepNgXx_e3Azd_3w0s5EphFTuN5OqTIYd5JQbmdVCrrw"/>
+<div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-surface-dim to-transparent">
+<h4 class="font-headline text-lg text-white font-bold">Blackjack 21 Pro</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Mesa Privada</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-surface-container-low border-l-4 border-primary">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Jackpot Acumulado</span>
+<div class="font-headline text-3xl font-bold text-white mt-1">€ 1.458.000</div>
+<div class="text-[10px] text-tertiary-container font-bold mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> Subiendo ahora
+                </div>
+</div>
+<div class="p-6 bg-surface-container-low border-l-4 border-secondary-container">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Último Gran Ganador</span>
+<div class="font-headline text-3xl font-bold text-white mt-1">€ 42.500</div>
+<div class="text-[10px] text-on-surface-variant mt-2">Usuario: @v_royal_77</div>
+</div>
+<div class="p-6 bg-surface-container-low border-l-4 border-outline">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Nivel de Lealtad</span>
+<div class="font-headline text-3xl font-bold text-primary mt-1" id="user-tier">Diamante Noir</div>
+<div class="w-full bg-surface-container h-1 mt-3">
+<div class="bg-primary h-full w-[85%]" id="tier-progress"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<!-- Lobby: Active -->
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-xl px-4 py-1 active:scale-90 duration-150 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Lobby</span>
+</a>
+<!-- Balance -->
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Balance</span>
+</a>
+<!-- Perfil -->
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-4 py-1 hover:text-[#ffe088] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium Inter uppercase tracking-widest mt-1">Perfil</span>
+</a>
+</nav>
+<script>
+    // Initialize Supabase Client (Replace with environment variables in production)
+    const SUPABASE_URL = 'https://your-project.supabase.co';
+    const SUPABASE_ANON_KEY = 'your-anon-key';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const balanceEl = document.getElementById('balance-display');
+    const userTierEl = document.getElementById('user-tier');
+    const tierProgressEl = document.getElementById('tier-progress');
+
+    async function initRealtimeBalance() {
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+            console.warn('User not authenticated. Balance will remain static.');
+            balanceEl.innerText = '€ 0.00';
+            return;
+        }
+
+        // 1. Initial Fetch
+        const fetchBalance = async () => {
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('balance, tier')
+                .eq('id', user.id)
+                .single();
+
+            if (data) {
+                updateUI(data.balance, data.tier);
+            }
+        };
+
+        fetchBalance();
+
+        // 2. Real-time Subscription
+        supabase
+            .channel('profile_changes')
+            .on('postgres_changes', { 
+                event: 'UPDATE', 
+                schema: 'public', 
+                table: 'profiles', 
+                filter: `id=eq.${user.id}` 
+            }, (payload) => {
+                if (payload.new && payload.new.balance !== undefined) {
+                    updateUI(payload.new.balance, payload.new.tier);
+                    animateUpdate();
+                }
+            })
+            .subscribe();
+    }
+
+    function updateUI(balance, tier) {
+        const formatter = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR',
+            minimumFractionDigits: 2
+        });
+        
+        balanceEl.innerText = formatter.format(balance);
+        
+        if (tier) {
+            userTierEl.innerText = tier;
+            // Update progress bar based on tier (logic example)
+            const tierMap = { 'Bronce': 20, 'Plata': 45, 'Oro': 65, 'Platino': 80, 'Diamante Noir': 100 };
+            const progress = tierMap[tier] || 0;
+            tierProgressEl.style.width = `${progress}%`;
+        }
+    }
+
+    function animateUpdate() {
+        balanceEl.classList.add('updating');
+        setTimeout(() => {
+            balanceEl.classList.remove('updating');
+        }, 500);
+    }
+
+    // Call init on load
+    document.addEventListener('DOMContentLoaded', initRealtimeBalance);
+</script>
+</body></html>

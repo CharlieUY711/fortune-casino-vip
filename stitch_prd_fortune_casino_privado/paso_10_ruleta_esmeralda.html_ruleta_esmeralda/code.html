@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Ruleta Esmeralda | Midnight Royale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#055029",
+              "inverse-surface": "#e5e2e1",
+              "surface-variant": "#353534",
+              "primary-fixed": "#ffe088",
+              "tertiary": "#9adeaa",
+              "primary-fixed-dim": "#e9c349",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "on-secondary-container": "#ff9a8a",
+              "surface-container-low": "#1c1b1b",
+              "secondary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#ffdad4",
+              "on-surface-variant": "#d0c5af",
+              "on-secondary": "#690000",
+              "secondary": "#ffb4a8",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "on-primary-container": "#554300",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-tint": "#e9c349",
+              "on-tertiary": "#00391a",
+              "on-primary": "#3c2f00",
+              "primary-container": "#d4af37",
+              "outline-variant": "#4d4635",
+              "on-primary-fixed": "#241a00",
+              "tertiary-fixed": "#adf2bc",
+              "inverse-on-surface": "#313030",
+              "on-secondary-fixed-variant": "#920703",
+              "primary": "#f2ca50",
+              "surface": "#131313",
+              "error-container": "#93000a",
+              "error": "#ffb4ab",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-highest": "#353534",
+              "on-primary-fixed-variant": "#574500",
+              "surface-container": "#201f1f",
+              "outline": "#99907c",
+              "inverse-primary": "#735c00",
+              "on-tertiary-fixed": "#00210d",
+              "surface-bright": "#3a3939",
+              "secondary-container": "#920703",
+              "on-background": "#e5e2e1",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-dim": "#131313",
+              "on-secondary-fixed": "#410000"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #131313;
+    background-image: radial-gradient(circle at 50% -20%, #08522a 0%, transparent 40%), url(https://lh3.googleusercontent.com/aida-public/AB6AXuDytPloXwfmbQoiYUkF2MDd0oScadNJaVAHRQmEjTAqI2jWtju_wDGaQK-Xehnuv2Msav7Cl31286k4cuEnAe0jFpuWx5pVw1WkN8OACWQftuZ90FHGwWzbWxNlcSKSYeswdbt7tSKu55yQLFigKA136bAf4V9dipf3FkkAfbcHZp8T2DvZzv3Z6mdUcyr3g8gKpO2SonQorCteahXgZXb3-slF_hEyldUauPN5wc4B_gAPBqFJEOh08UGja4yQoEh1laj-tYK7iE4y);
+    background-attachment: fixed
+    }
+.emerald-glow {
+    box-shadow: 0 0 20px rgba(127, 194, 144, 0.15)
+    }
+.roulette-wheel-container {
+    perspective: 1000px
+    }
+.roulette-wheel {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(127, 194, 144, 0.2)
+    }
+.glass-panel {
+    backdrop-filter: blur(12px);
+    background: rgba(42, 42, 42, 0.7)
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface select-none">
+<!-- TopAppBar Component -->
+<header class="w-full top-0 sticky z-50 flex items-center justify-between px-6 h-20 bg-[#131313] border-b border-[#4d4635]/20 shadow-[0_4px_32px_rgba(212,175,55,0.06)]">
+<div class="flex items-center gap-4">
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[#f2ca50] text-2xl">menu</span>
+</button>
+<h1 class="font-noto-serif text-2xl uppercase tracking-widest text-[#f2ca50] font-bold">MIDNIGHT ROYALE</h1>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-[#f2ca50]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline font-bold text-[#f2ca50] tracking-tight">$12,450.00</span>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 pt-6 pb-24 md:pb-12">
+<!-- Game Stage Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Roulette Visual (Asymmetric Layout) -->
+<div class="lg:col-span-5 flex flex-col items-center justify-center space-y-8 py-8">
+<div class="relative w-full max-w-[400px] aspect-square roulette-wheel-container">
+<!-- The Emerald Roulette Wheel -->
+<div class="absolute inset-0 rounded-full border-8 border-outline-variant bg-surface-container-highest roulette-wheel flex items-center justify-center overflow-hidden">
+<img alt="Luxury casino roulette wheel" class="w-full h-full object-cover opacity-60 scale-110 rotate-12" data-alt="Top down view of a professional high-end wooden roulette wheel with polished brass details and emerald green felt background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBJOF6N-2dcu6ZMdPpa8rOnKpUuCLZdAAky_0Pq6-k7fm5BAIuHoz00ko5FOROxhlwopxy4m5Mm956UU3CdbRFVOHVRX1VJLsIRXJcdNchNLhqb6qty8ZPdoip9QSSiFZqxgBQ6lrLqY_qOLbNAf9N4_g6K3WSWQZEEHz_oWeKCstOoAqoFORuc9Fw2tBWc5PsREkEcRUwC9FsOmCwaSu6dm75MnP1q-zfXz3zJadnfoFxR_6L_lpEKLcENCKsPQqLoE2ySZuDGvLb"/>
+<!-- Winning Number Display Over Wheel -->
+<div class="absolute inset-0 flex items-center justify-center bg-black/40">
+<div class="w-24 h-24 rounded-full bg-tertiary-container/20 backdrop-blur-md border-2 border-tertiary flex items-center justify-center">
+<span class="font-headline text-5xl font-bold text-tertiary">17</span>
+</div>
+</div>
+</div>
+<!-- Outer Decorative Ring -->
+<div class="absolute -inset-4 border border-tertiary/20 rounded-full animate-[pulse_4s_infinite]"></div>
+</div>
+<!-- Game Status / Results History -->
+<div class="w-full flex justify-center gap-2 overflow-x-auto py-2 no-scrollbar">
+<div class="flex-none w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center font-headline text-lg font-bold text-on-surface">32</div>
+<div class="flex-none w-10 h-10 rounded-lg bg-secondary-container border border-secondary/30 flex items-center justify-center font-headline text-lg font-bold text-on-background">15</div>
+<div class="flex-none w-10 h-10 rounded-lg bg-tertiary-container border border-tertiary/30 flex items-center justify-center font-headline text-lg font-bold text-on-tertiary-container">17</div>
+<div class="flex-none w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center font-headline text-lg font-bold text-on-surface">0</div>
+<div class="flex-none w-10 h-10 rounded-lg bg-secondary-container border border-secondary/30 flex items-center justify-center font-headline text-lg font-bold text-on-background">21</div>
+<div class="flex-none w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center font-headline text-lg font-bold text-on-surface">4</div>
+</div>
+</div>
+<!-- Betting Grid Area (Bento Style) -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Main Betting Table -->
+<div class="glass-panel p-1 rounded-xl border border-outline-variant/20 shadow-2xl overflow-hidden">
+<div class="grid grid-cols-12 gap-px bg-outline-variant/20 rounded-lg">
+<!-- Mockup of a complex betting grid using thematic cells -->
+<!-- Row 0: Zero -->
+<div class="col-span-12 h-14 flex items-center justify-center bg-tertiary-container/10 hover:bg-tertiary-container/30 transition-colors cursor-pointer group">
+<span class="font-headline text-2xl font-bold text-tertiary group-hover:scale-110 transition-transform">0</span>
+</div>
+<!-- Main Number Grid Blocks (Repeated patterns for visual weight) -->
+<div class="col-span-4 h-24 bg-surface-container-highest/80 flex flex-col items-center justify-center border-r border-b border-outline-variant/10 hover:bg-primary-container/20 transition-all cursor-pointer">
+<span class="text-xs text-on-surface-variant font-label uppercase">1st 12</span>
+<span class="font-headline text-xl font-bold">P-12</span>
+</div>
+<div class="col-span-4 h-24 bg-surface-container-highest/80 flex flex-col items-center justify-center border-r border-b border-outline-variant/10 hover:bg-primary-container/20 transition-all cursor-pointer">
+<span class="text-xs text-on-surface-variant font-label uppercase">2nd 12</span>
+<span class="font-headline text-xl font-bold">M-12</span>
+</div>
+<div class="col-span-4 h-24 bg-surface-container-highest/80 flex flex-col items-center justify-center border-b border-outline-variant/10 hover:bg-primary-container/20 transition-all cursor-pointer">
+<span class="text-xs text-on-surface-variant font-label uppercase">3rd 12</span>
+<span class="font-headline text-xl font-bold">D-12</span>
+</div>
+<!-- Special Bets (Colors & Evens) -->
+<div class="col-span-3 h-20 bg-surface-container-low flex items-center justify-center border-r border-outline-variant/10 hover:bg-primary/10 cursor-pointer">
+<span class="text-xs font-bold uppercase tracking-wider">1-18</span>
+</div>
+<div class="col-span-3 h-20 bg-surface-container-low flex items-center justify-center border-r border-outline-variant/10 hover:bg-primary/10 cursor-pointer">
+<span class="text-xs font-bold uppercase tracking-wider">Even</span>
+</div>
+<div class="col-span-3 h-20 bg-secondary-container/80 flex items-center justify-center border-r border-outline-variant/10 hover:opacity-80 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-secondary shadow-lg"></div>
+</div>
+<div class="col-span-3 h-20 bg-surface-container-low flex items-center justify-center hover:bg-primary/10 cursor-pointer">
+<span class="text-xs font-bold uppercase tracking-wider">19-36</span>
+</div>
+</div>
+</div>
+<!-- Betting Controls -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Chip Selector -->
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-xl border border-outline-variant/20">
+<div class="flex gap-3">
+<button class="w-12 h-12 rounded-full border-2 border-primary-fixed-dim bg-surface-bright flex items-center justify-center font-bold text-primary active:scale-90 transition-transform shadow-lg">1</button>
+<button class="w-12 h-12 rounded-full border-2 border-tertiary bg-surface-bright flex items-center justify-center font-bold text-tertiary active:scale-90 transition-transform shadow-lg emerald-glow">5</button>
+<button class="w-12 h-12 rounded-full border-2 border-secondary bg-surface-bright flex items-center justify-center font-bold text-secondary active:scale-90 transition-transform shadow-lg">25</button>
+<button class="w-12 h-12 rounded-full border-2 border-on-surface-variant bg-surface-bright flex items-center justify-center font-bold text-on-surface active:scale-90 transition-transform shadow-lg">100</button>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">restart_alt</span>
+</button>
+</div>
+<!-- Spin Button -->
+<button class="h-16 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-xl font-bold rounded-lg uppercase tracking-widest shadow-[0_8px_24px_rgba(212,175,55,0.2)] active:scale-95 active:shadow-none transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">playing_cards</span>
+                        GIRAR
+                    </button>
+</div>
+<!-- Stats/Language Quick Access -->
+<div class="flex flex-wrap gap-4 items-center justify-between pt-4 border-t border-outline-variant/20">
+<div class="flex gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label">Ronda</span>
+<span class="font-headline font-bold text-primary">#99284</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label">Apuesta Total</span>
+<span class="font-headline font-bold text-tertiary">$50.00</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs rounded border border-outline-variant/30 hover:border-primary transition-all">ES</button>
+<button class="px-3 py-1 text-xs rounded border border-outline-variant/30 hover:border-primary transition-all opacity-40">EN</button>
+<button class="px-3 py-1 text-xs rounded border border-outline-variant/30 hover:border-primary transition-all opacity-40">PT</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-4 pb-safe bg-[#1c1b1b]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-tighter mt-1">Clásica</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-tighter mt-1">Vegas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">dark_mode</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-tighter mt-1">Carbono</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-tighter mt-1">Mónaco</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-lg py-1 px-3 border border-[#f2ca50]/30 shadow-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gem_spark</span>
+<span class="font-inter text-[10px] font-medium uppercase tracking-tighter mt-1">Esmeralda</span>
+</a>
+</nav>
+<!-- NavigationDrawer (Hidden by default, used for settings/profile) -->
+<div class="hidden fixed inset-y-0 left-0 z-[60] flex flex-col p-6 w-80 bg-[#131313] border-r border-[#4d4635]/20 shadow-2xl shadow-black" id="drawer">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/40">
+<span class="material-symbols-outlined text-[#f2ca50]">account_circle</span>
+</div>
+<div>
+<h3 class="font-noto-serif text-[#f2ca50] font-bold">Alexander V.</h3>
+<p class="text-xs text-on-surface-variant">Nivel Diamante</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 p-3 rounded-lg text-[#f2ca50] font-bold bg-[#1c1b1b] transition-all" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-noto-serif text-lg">Perfil VIP</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-[#d0c5af] hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="font-noto-serif text-lg">Idioma</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-[#d0c5af] hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-noto-serif text-lg">Historial</span>
+</a>
+<a class="flex items-center gap-4 p-3 rounded-lg text-[#d0c5af] hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-noto-serif text-lg">Soporte</span>
+</a>
+</nav>
+</div>
+<!-- Background Noise Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+</body></html>

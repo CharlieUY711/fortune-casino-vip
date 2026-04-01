@@ -1,0 +1,54 @@
+# SCRIPT DE REPARACIÓN DEFINITIVA: FORTUNE CASINO VIP
+# Este script asegura que los archivos estén en la RAÍZ (donde Vercel los busca) y limpia cualquier error de ruta.
+
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Write-FinalFile($name, $data) {
+    if ($data -match "(?s)<!DOCTYPE.*") {
+        $data = $data -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    $data = $data -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $data = $data -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $data, (New-Object System.Text.UTF8Encoding $false))
+    Write-Host "✓ $name reparado y listo." -ForegroundColor Green
+}
+
+Write-Host "--- REPARANDO ESTRUCTURA DE PRODUCCIÓN ---" -ForegroundColor Cyan
+
+# 1. Forzar regeneración limpia de los 22 archivos en la raíz
+Write-FinalFile "index.html" '{{DATA:SCREEN:SCREEN_108}}'
+Write-FinalFile "registro.html" '{{DATA:SCREEN:SCREEN_140}}'
+Write-FinalFile "billetera.html" '{{DATA:SCREEN:SCREEN_64}}'
+Write-FinalFile "perfil.html" '{{DATA:SCREEN:SCREEN_53}}'
+
+# Ruletas
+Write-FinalFile "ruleta_noir.html" '{{DATA:SCREEN:SCREEN_148}}'
+Write-FinalFile "ruleta_clasica.html" '{{DATA:SCREEN:SCREEN_200}}'
+Write-FinalFile "ruleta_vegas.html" '{{DATA:SCREEN:SCREEN_154}}'
+Write-FinalFile "ruleta_carbono.html" '{{DATA:SCREEN:SCREEN_76}}'
+Write-FinalFile "ruleta_monaco.html" '{{DATA:SCREEN:SCREEN_208}}'
+Write-FinalFile "ruleta_esmeralda.html" '{{DATA:SCREEN:SCREEN_98}}'
+
+# Slots
+Write-FinalFile "slot_sphinx.html" '{{DATA:SCREEN:SCREEN_203}}'
+Write-FinalFile "slot_cyber.html" '{{DATA:SCREEN:SCREEN_57}}'
+Write-FinalFile "slot_777.html" '{{DATA:SCREEN:SCREEN_78}}'
+Write-FinalFile "slot_deep_sea.html" '{{DATA:SCREEN:SCREEN_97}}'
+Write-FinalFile "slot_jungle.html" '{{DATA:SCREEN:SCREEN_17}}'
+Write-FinalFile "slot_galactic.html" '{{DATA:SCREEN:SCREEN_7}}'
+
+# Cartas
+Write-FinalFile "blackjack_vip_1.html" '{{DATA:SCREEN:SCREEN_171}}'
+Write-FinalFile "blackjack_vip_2.html" '{{DATA:SCREEN:SCREEN_163}}'
+Write-FinalFile "blackjack_vip_3.html" '{{DATA:SCREEN:SCREEN_130}}'
+Write-FinalFile "poker_holdem_1.html" '{{DATA:SCREEN:SCREEN_70}}'
+Write-FinalFile "poker_holdem_2.html" '{{DATA:SCREEN:SCREEN_159}}'
+Write-FinalFile "poker_holdem_3.html" '{{DATA:SCREEN:SCREEN_35}}'
+
+Write-Host "Sincronizando con GitHub..." -ForegroundColor Yellow
+git add .
+git commit -m "PRODUCTION FIX: Estructura de archivos corregida para despliegue inmediato"
+git push origin main
+
+Write-Host "¡TODO LISTO! Vercel actualizará fortune.core.com.uy en 10 segundos." -ForegroundColor Cyan

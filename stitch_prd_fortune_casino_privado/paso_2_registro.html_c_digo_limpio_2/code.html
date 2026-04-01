@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Casino VIP - Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #131313; color: #d0c5af; }
+        h1, h2 { font-family: 'Noto Serif', serif; }
+        .gold-text { color: #f2ca50; }
+        .gold-border { border-color: #4d4635; }
+        .gold-bg { background-color: #f2ca50; color: #131313; }
+        .noir-input { background-color: #1c1b1b; border: 1px solid rgba(77, 70, 53, 0.3); color: white; }
+        .noir-input:focus { border-color: #f2ca50; outline: none; box-shadow: 0 0 10px rgba(242, 202, 80, 0.2); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
+
+    <div class="w-full max-w-md space-y-8 text-center">
+        <!-- Logo -->
+        <div class="space-y-2">
+            <h1 class="gold-text text-4xl font-bold italic tracking-tighter">MIDNIGHT ROYALE</h1>
+            <p class="text-xs uppercase tracking-[0.3em] opacity-60">Acceso VIP Restringido</p>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-[#1c1b1b] border border-[#4d4635]/30 rounded-2xl p-8 shadow-2xl">
+            <h2 class="text-2xl gold-text mb-6">Solicitar Membresía</h2>
+            
+            <form id="register-form" class="space-y-4 text-left">
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-60 ml-1">Código de Invitación</label>
+                    <input type="text" id="invite-code" required placeholder="VIP-XXXX-XXXX" 
+                        class="w-full noir-input rounded-xl px-4 py-3 mt-1 text-center font-mono tracking-widest">
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-60 ml-1">Nombre de Usuario</label>
+                    <input type="text" id="username" required placeholder="ej: HighRoller777" 
+                        class="w-full noir-input rounded-xl px-4 py-3 mt-1">
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-60 ml-1">Email</label>
+                    <input type="email" id="email" required placeholder="tu@email.com" 
+                        class="w-full noir-input rounded-xl px-4 py-3 mt-1">
+                </div>
+
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-60 ml-1">Contraseña</label>
+                    <input type="password" id="password" required placeholder="••••••••" 
+                        class="w-full noir-input rounded-xl px-4 py-3 mt-1">
+                </div>
+
+                <button type="submit" class="w-full gold-bg font-bold py-4 rounded-xl mt-4 active:scale-95 transition-transform uppercase tracking-widest text-sm shadow-[0_4px_20px_rgba(242,202,80,0.3)]">
+                    Solicitar Acceso
+                </button>
+            </form>
+            
+            <p id="status-msg" class="mt-6 text-xs italic opacity-80 hidden"></p>
+        </div>
+
+        <p class="text-[10px] opacity-40 uppercase tracking-widest">
+            Al registrarte, tu solicitud será enviada al administrador para su aprobación manual.
+        </p>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN SUPABASE
+        const SUPABASE_URL = "https://gfxxhquajzcdslayhmhs.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const form = document.getElementById('register-form');
+        const statusMsg = document.getElementById('status-msg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            statusMsg.innerText = "Verificando código...";
+            statusMsg.classList.remove('hidden', 'text-red-400');
+            statusMsg.classList.add('gold-text');
+
+            const code = document.getElementById('invite-code').value;
+            const user = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+
+            try {
+                // 1. Validar código
+                const { data: invite, error: inviteErr } = await _supabase
+                    .from('invitations')
+                    .select('*')
+                    .eq('code', code)
+                    .eq('is_used', false)
+                    .single();
+
+                if (inviteErr || !invite) {
+                    throw new Error("Código de invitación inválido o ya utilizado.");
+                }
+
+                // 2. Crear usuario en Auth
+                const { data: authData, error: authErr } = await _supabase.auth.signUp({
+                    email: email,
+                    password: pass,
+                    options: {
+                        data: { username: user }
+                    }
+                });
+
+                if (authErr) throw authErr;
+
+                // 3. Crear perfil pendiente
+                const { error: profileErr } = await _supabase
+                    .from('profiles')
+                    .insert([{
+                        id: authData.user.id,
+                        username: user,
+                        invite_code: code,
+                        is_approved: false,
+                        balance: 0
+                    }]);
+
+                if (profileErr) throw profileErr;
+
+                statusMsg.innerText = "¡Solicitud enviada! El administrador revisará tu acceso pronto.";
+                form.reset();
+
+            } catch (err) {
+                statusMsg.innerText = "Error: " + err.message;
+                statusMsg.classList.remove('gold-text');
+                statusMsg.classList.add('text-red-400');
+            }
+        });
+    </script>
+</body>
+</html>

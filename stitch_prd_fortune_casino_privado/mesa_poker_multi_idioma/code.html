@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "tertiary": "#9adeaa",
+                "on-error-container": "#ffdad6",
+                "secondary-container": "#920703",
+                "on-tertiary-fixed-variant": "#08522a",
+                "surface-container-highest": "#353534",
+                "on-tertiary": "#00391a",
+                "on-primary-container": "#554300",
+                "inverse-surface": "#e5e2e1",
+                "error-container": "#93000a",
+                "surface-container-lowest": "#0e0e0e",
+                "error": "#ffb4ab",
+                "surface-container-high": "#2a2a2a",
+                "surface-container": "#201f1f",
+                "outline": "#99907c",
+                "secondary": "#ffb4a8",
+                "on-tertiary-fixed": "#00210d",
+                "on-secondary-container": "#ff9a8a",
+                "tertiary-fixed": "#adf2bc",
+                "surface-dim": "#131313",
+                "on-error": "#690005",
+                "on-background": "#e5e2e1",
+                "secondary-fixed-dim": "#ffb4a8",
+                "on-secondary": "#690000",
+                "surface-container-low": "#1c1b1b",
+                "primary-container": "#d4af37",
+                "inverse-primary": "#735c00",
+                "surface-bright": "#3a3939",
+                "on-primary-fixed": "#241a00",
+                "primary-fixed": "#ffe088",
+                "tertiary-fixed-dim": "#92d6a2",
+                "secondary-fixed": "#ffdad4",
+                "primary": "#f2ca50",
+                "on-secondary-fixed": "#410000",
+                "background": "#131313",
+                "on-surface": "#e5e2e1",
+                "on-surface-variant": "#d0c5af",
+                "primary-fixed-dim": "#e9c349",
+                "on-tertiary-container": "#055029",
+                "on-secondary-fixed-variant": "#920703",
+                "surface-tint": "#e9c349",
+                "on-primary-fixed-variant": "#574500",
+                "inverse-on-surface": "#313030",
+                "on-primary": "#3c2f00",
+                "surface": "#131313",
+                "outline-variant": "#4d4635",
+                "surface-variant": "#353534",
+                "tertiary-container": "#7fc290"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>.poker-table-gradient {
+    background: radial-gradient(circle at center, #1c1b1b 0%, #0e0e0e 100%)
+    }
+.felt-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCDK9RPDyiTeUIs8JnCwqhHkaFle6IG5HFiLNNw8BFLwKWyT8Nc91unOsIR2f16WL1bm85p3NL8Zvn1UWMObsHllPgl1IiI0bFd-nV7uUt1cL15ZNiBPaToMJhUQq1ucdtMa5jTyqtVuozNULB_YcZY86r983jlGD4HoMMek9K6pey5uZ7FSbOn-qHlQ08uVPSmH9FvyETzRnYryVUoyACZjx3Tob651AqrtKY5sWSOcxC2TeOBV18uYv3urU4GkAFB3y20z70WLrNf);
+    opacity: 0.03
+    }
+.gold-shimmer {
+    background: linear-gradient(45deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%)
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#1c1b1b] border-none shadow-[0_4px_20px_rgba(212,175,55,0.05)] z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-none">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] active:scale-95 duration-150">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-serif italic text-2xl text-[#f2ca50]">Noir Casino</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<button class="text-[#f2ca50] font-sans text-xs uppercase tracking-widest font-bold transition-colors duration-300">Mesa de Poker</button>
+<button class="text-neutral-500 font-sans text-xs uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300">Torneios</button>
+<button class="text-neutral-500 font-sans text-xs uppercase tracking-widest font-bold hover:text-[#f2ca50] transition-colors duration-300">Clubes</button>
+</div>
+<div class="bg-surface-container-high px-4 py-1.5 rounded-full border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline font-bold text-[#f2ca50]">$25,400</span>
+</div>
+</div>
+</div>
+</header>
+<main class="min-h-[calc(100vh-144px)] flex flex-col relative overflow-hidden pb-20 md:pb-0">
+<!-- Language Selector -->
+<div class="absolute top-4 right-6 z-10 flex gap-2">
+<button class="px-2 py-1 text-[10px] font-bold border border-outline-variant/30 text-on-surface-variant hover:text-primary transition-colors">EN</button>
+<button class="px-2 py-1 text-[10px] font-bold border border-primary text-primary">PT</button>
+<button class="px-2 py-1 text-[10px] font-bold border border-outline-variant/30 text-on-surface-variant hover:text-primary transition-colors">ES</button>
+</div>
+<!-- Table Arena -->
+<div class="flex-grow flex items-center justify-center p-4 md:p-8">
+<div class="relative w-full max-w-5xl aspect-[21/9] md:aspect-[16/7] poker-table-gradient rounded-[150px] md:rounded-[240px] border-[12px] border-surface-container-highest shadow-[0_0_100px_rgba(0,0,0,0.8),inset_0_0_60px_rgba(212,175,55,0.05)] overflow-hidden group">
+<div class="absolute inset-0 felt-texture"></div>
+<!-- Central Pot -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[120%] flex flex-col items-center">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Total Pot</span>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full border-2 border-primary-container bg-surface-bright shadow-sm"></div>
+<span class="font-headline text-2xl text-primary">$12,850</span>
+</div>
+</div>
+<!-- Community Cards (Flop/Turn/River) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-2 md:gap-3">
+<!-- Card 1 -->
+<div class="w-12 h-16 md:w-16 md:h-24 bg-white rounded-lg flex flex-col p-1.5 md:p-2 justify-between shadow-lg">
+<div class="flex flex-col leading-none">
+<span class="text-secondary-container font-bold text-lg">A</span>
+<span class="material-symbols-outlined text-secondary-container text-xs" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container self-center text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<!-- Card 2 -->
+<div class="w-12 h-16 md:w-16 md:h-24 bg-white rounded-lg flex flex-col p-1.5 md:p-2 justify-between shadow-lg">
+<div class="flex flex-col leading-none">
+<span class="text-surface-container-lowest font-bold text-lg">K</span>
+<span class="material-symbols-outlined text-surface-container-lowest text-xs" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+<span class="material-symbols-outlined text-surface-container-lowest self-center text-3xl" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+<!-- Card 3 -->
+<div class="w-12 h-16 md:w-16 md:h-24 bg-white rounded-lg flex flex-col p-1.5 md:p-2 justify-between shadow-lg">
+<div class="flex flex-col leading-none">
+<span class="text-secondary-container font-bold text-lg">Q</span>
+<span class="material-symbols-outlined text-secondary-container text-xs" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="material-symbols-outlined text-secondary-container self-center text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<!-- Card 4 (Turn) -->
+<div class="w-12 h-16 md:w-16 md:h-24 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant/30 shadow-inner">
+<span class="material-symbols-outlined text-outline-variant/50 text-2xl">style</span>
+</div>
+<!-- Card 5 (River) -->
+<div class="w-12 h-16 md:w-16 md:h-24 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant/30 shadow-inner">
+<span class="material-symbols-outlined text-outline-variant/50 text-2xl">style</span>
+</div>
+</div>
+<!-- Players Around Table -->
+<!-- P1 (Top Left) -->
+<div class="absolute top-[10%] left-[20%] flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant p-0.5 mb-2 overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Portrait of a sophisticated man in a tuxedo, digital avatar style with clean lines and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZnxc4yOBrb6OjPaeIjWtgTogBCk7g3_sRakT8Luf5VolJhKTpnw4iEe1d407ZceAgYJtteRssWNrMo7QXxsZFF6KwtN4-aZCodMzg1UujBgO52t1sfBreFFTEi-_3hEp3lX04TA3ySNRfDu0MbubxLkvmH7f7l4XKwaWOd_1iDcNGHF1Wg13b251gbO4WNdtnXhNQoE255-1uO6b3C5RrSrx8DmyijgyORu7CT3JYrMoWZzxfnSpBy6t8lLzBlzbeJLKh97tCQE4h"/>
+</div>
+<div class="bg-black/60 backdrop-blur-sm px-3 py-1 rounded text-center">
+<p class="text-[10px] font-bold">@LordVader</p>
+<p class="text-[10px] text-primary">$4,200</p>
+</div>
+</div>
+<!-- P2 (Top Right) -->
+<div class="absolute top-[10%] right-[20%] flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant p-0.5 mb-2 overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Stylized female avatar with dark elegant hair and gold jewelry, clean minimalist vector art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOncaLtVKBCr1TUDezV4X4-O8nVHQFUljLC-EWDkAkQLMYWRMAbh6STa4hEqGGi1ywIjgCHpl6uAGDO32PyUV32Tdnoueh5yPhtGAgpY3wFbsuuwC3-gI6ZilbBl_-S8LuTT54fKlg5rUE05h5LIURCECA6ciccRHW_v08lQ8xBvk_zZxlrYV5Sx4RLUcVtJh_zh26LEaFvS1uNqTc4k_LaWFi23B-1d_VFEXXfhKKzDYB9StRgZoF9M4jBSpxN8GkLineWreltEXN"/>
+</div>
+<div class="bg-black/60 backdrop-blur-sm px-3 py-1 rounded text-center">
+<p class="text-[10px] font-bold">@QueenOfHearts</p>
+<p class="text-[10px] text-primary">$18,900</p>
+</div>
+</div>
+<!-- P3 (Far Left) -->
+<div class="absolute top-1/2 left-[5%] -translate-y-1/2 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant p-0.5 mb-2 overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Male avatar with a mysterious look, wearing a black fedora, digital illustration on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJHRKDKTMneY8rOTd9Ii4fPOxtX-wVXi2_DjY7SXJE3LaevRPXNyL31PpdBN9rJacnJysP0FHlp7B_aNEqkmevOEcuUgo2Hu7OtBScNmCUI-xKGn3Nn5jbNpvVFU8sKrhCfIyUVs5vsC8WOdNMbmzG7LM2x6kkjnOzPVdZlcNfwCJytixGwbkGcAfbUSM62wYZV8kTMjyujvste30T_3knsuMaqziacJIST0vC74xkA2kmZgvTP2RzEZXuSYtx0tQ6gkY4F23lfAbc"/>
+</div>
+<div class="bg-black/60 backdrop-blur-sm px-3 py-1 rounded text-center">
+<p class="text-[10px] font-bold">@MidnightRider</p>
+<p class="text-[10px] text-primary">$2,100</p>
+</div>
+<div class="mt-2 flex gap-1">
+<div class="w-4 h-6 bg-surface-container-highest rounded border border-outline-variant/30"></div>
+<div class="w-4 h-6 bg-surface-container-highest rounded border border-outline-variant/30"></div>
+</div>
+</div>
+<!-- P4 (Far Right) -->
+<div class="absolute top-1/2 right-[5%] -translate-y-1/2 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full border-2 border-outline-variant p-0.5 mb-2 overflow-hidden bg-surface-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Portrait avatar of a character with silver hair and a sharp suit, high-end casino regular aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKREF9DaaFTtMWH4_eVGUVMpA27CviQEhbtuUIUFz93j5Av2Oab9TRPVTfhDuzG42LnzBeuyfT9lsIzdX7SF8ivS7LiJQutvjSO5I1pGfa4x-NsxzyOOdyz-PHgZ1bqFHmLam1Gf-AvMOrKAFiAb5JoCV5d78BC_Z4W6cOH4Fan3fx5eHdxVLC-wgCFBRKYphvXL_ugNE-1GjljE07TZP9XF-AZ3G9NvR40-ef-QkMsN05qtzOW9M_iBhTOnBPg4nmQlr38UeT1FU6"/>
+</div>
+<div class="bg-black/60 backdrop-blur-sm px-3 py-1 rounded text-center">
+<p class="text-[10px] font-bold">@HighStakes</p>
+<p class="text-[10px] text-primary">$9,550</p>
+</div>
+</div>
+<!-- Current User (Bottom Center) -->
+<div class="absolute bottom-[5%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+<!-- Cards in Hand -->
+<div class="flex gap-1 mb-4">
+<div class="w-14 h-20 bg-white rounded-lg flex flex-col p-2 justify-between shadow-2xl rotate-[-5deg] translate-x-2">
+<div class="flex flex-col leading-none">
+<span class="text-surface-container-lowest font-bold text-xl">A</span>
+<span class="material-symbols-outlined text-surface-container-lowest text-sm" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+<span class="material-symbols-outlined text-surface-container-lowest self-center text-4xl" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+<div class="w-14 h-20 bg-white rounded-lg flex flex-col p-2 justify-between shadow-2xl rotate-[5deg] -translate-x-2">
+<div class="flex flex-col leading-none">
+<span class="text-surface-container-lowest font-bold text-xl">J</span>
+<span class="material-symbols-outlined text-surface-container-lowest text-sm" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+<span class="material-symbols-outlined text-surface-container-lowest self-center text-4xl" style="font-variation-settings: 'FILL' 1;">stat_0</span>
+</div>
+</div>
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-4 border-primary p-0.5 overflow-hidden bg-surface-container shadow-[0_0_20px_rgba(242,202,80,0.3)]">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Sophisticated digital portrait of the user, smiling confidently in formal attire, clean editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn4NCTQ4ZQlVzWKIslyBmvsJYDACrfo4ySoj2bOL5sGZU4Pa7EG0djJPQifz8a7YxyNy1xzo9yfZMmHmFDWYx0S80e-5f7wT0olH1QaMcRpL4Qufdhx8iTsRF04K8cwdbYfNpDjYrV4554bgDDym18hX6-Np0oYpeKiG_EiUDAPYvl52ubiX6eIYcJBMeV6iB5rdD9AgojTzYs0rrx4A2qFLE59CEkd4V34FJnwNX56qWgF5vl1l32JaFh8Vmf3NmanW7kBEUugV-m"/>
+</div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-0.5 rounded-full whitespace-nowrap">
+<span class="text-xs font-bold uppercase tracking-widest">Sua Vez</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="p-6 md:px-12 md:pb-12 mt-auto">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+<!-- Chip Selectors -->
+<div class="flex items-center gap-4 bg-surface-container-low p-2 rounded-full border border-outline-variant/10">
+<button class="w-10 h-10 rounded-full border-2 border-primary/40 bg-surface-bright flex items-center justify-center text-[10px] font-bold text-primary active:scale-90 transition-transform">100</button>
+<button class="w-12 h-12 rounded-full border-2 border-primary/60 bg-surface-bright flex items-center justify-center text-xs font-bold text-primary active:scale-90 transition-transform ring-2 ring-primary ring-offset-2 ring-offset-surface">500</button>
+<button class="w-10 h-10 rounded-full border-2 border-primary/40 bg-surface-bright flex items-center justify-center text-[10px] font-bold text-primary active:scale-90 transition-transform">1k</button>
+<button class="w-10 h-10 rounded-full border-2 border-primary/40 bg-surface-bright flex items-center justify-center text-[10px] font-bold text-primary active:scale-90 transition-transform">5k</button>
+</div>
+<!-- Primary Action Buttons -->
+<div class="flex-grow grid grid-cols-3 gap-3 w-full">
+<button class="py-4 rounded bg-surface-container-high border border-outline-variant/30 text-on-surface font-headline font-bold uppercase tracking-wider hover:bg-surface-bright transition-colors active:scale-95 duration-150">
+                        Desistir
+                    </button>
+<button class="py-4 rounded bg-surface-container-high border border-outline-variant/30 text-on-surface font-headline font-bold uppercase tracking-wider hover:bg-surface-bright transition-colors active:scale-95 duration-150">
+                        Passar
+                    </button>
+<button class="py-4 rounded gold-shimmer text-on-primary font-headline font-bold uppercase tracking-widest shadow-lg shadow-primary/10 active:scale-95 duration-150">
+                        Aumentar
+                    </button>
+</div>
+<!-- Raise Slider (Desktop-ish) -->
+<div class="hidden lg:flex flex-col w-48 gap-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase">Raise Amount</span>
+<span class="text-sm font-headline font-bold text-primary">$1,500</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-8px_30px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110 active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 active:opacity-80 transition-all duration-200 hover:text-[#d4af37]" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 active:opacity-80 transition-all duration-200 hover:text-[#d4af37]" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Background Noise/Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] mix-blend-overlay bg-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDynx2ybIO15WU4uX_L9LIM0ypqxtWuIv2KtlvvsgE7a3EFx86Cud2o1p6BVXxBb_sO6rGbQzWEamjlNOgaqEs-M3IadQliag4i38XtapaeZEqWue8TSgNiu1zYPvW6lEj5u5VmKJIDvJh1y7cLskboLwnbyY0Qqvy9zEHWPhAK6tQhOYr-C_WkC1tttnxPDfbp3MmvNbmoq7nX7THICVGLinVHyOk5ffwyUkr0kHKBtYJEZj5J0rTgK5WomQcm8rW7x5Ac4lqRRMNd');"></div>
+</body></html>

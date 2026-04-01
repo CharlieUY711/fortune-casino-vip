@@ -1,0 +1,73 @@
+# SCRIPT DE DESPLIEGUE FINAL (DEFINITIVO Y LIMPIO): FORTUNE CASINO VIP
+# Este script descarga el código, lo limpia de metadatos y lo sube a GitHub.
+
+$supabaseUrl = "https://gfxxhquajzcdslayhmhs.supabase.co"
+$supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdmeHhocXVhanpjZHNsYXlobmhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5ODQzMDUsImV4cCI6MjA5MDU2MDMwNX0.gXYTjPKzBHmHJclvEWhfvqUoEaCYaj8OSqKaMkd8zHc"
+
+function Save-CleanFile($name, $content) {
+    # Eliminar cualquier cabecera de metadatos 'web application...'
+    if ($content -match "(?s)<!DOCTYPE.*") {
+        $content = $content -replace "(?s).*?(<!DOCTYPE.*)", '$1'
+    }
+    
+    # Inyectar credenciales reales
+    $content = $content -replace "SUPABASE_URL_PLACEHOLDER", $supabaseUrl
+    $content = $content -replace "SUPABASE_KEY_PLACEHOLDER", $supabaseKey
+    
+    # Forzar codificación UTF8 sin BOM para evitar errores de lectura en Vercel
+    $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText((Join-Path (Get-Location) $name), $content, $Utf8NoBomEncoding)
+    Write-Host "✓ Archivo '$name' generado y limpio." -ForegroundColor Green
+}
+
+Write-Host "Iniciando proceso de limpieza y despliegue para Fortune Casino..." -ForegroundColor Cyan
+
+# 1. Generación de Módulos Base
+Save-CleanFile "index.html" @"
+{{DATA:SCREEN:SCREEN_94}}
+"@
+
+Save-CleanFile "registro.html" @"
+{{DATA:SCREEN:SCREEN_81}}
+"@
+
+Save-CleanFile "billetera.html" @"
+{{DATA:SCREEN:SCREEN_56}}
+"@
+
+Save-CleanFile "perfil.html" @"
+{{DATA:SCREEN:SCREEN_46}}
+"@
+
+# 2. Ruletas (6 Variantes)
+Save-CleanFile "ruleta_noir.html" @"{{DATA:SCREEN:SCREEN_129}}"@
+Save-CleanFile "ruleta_clasica.html" @"{{DATA:SCREEN:SCREEN_172}}"@
+Save-CleanFile "ruleta_vegas.html" @"{{DATA:SCREEN:SCREEN_134}}"@
+Save-CleanFile "ruleta_carbono.html" @"{{DATA:SCREEN:SCREEN_65}}"@
+Save-CleanFile "ruleta_monaco.html" @"{{DATA:SCREEN:SCREEN_180}}"@
+Save-CleanFile "ruleta_esmeralda.html" @"{{DATA:SCREEN:SCREEN_85}}"@
+
+# 3. Slots (6 Variantes)
+Save-CleanFile "slot_sphinx.html" @"{{DATA:SCREEN:SCREEN_175}}"@
+Save-CleanFile "slot_cyber.html" @"{{DATA:SCREEN:SCREEN_50}}"@
+Save-CleanFile "slot_777.html" @"{{DATA:SCREEN:SCREEN_67}}"@
+Save-CleanFile "slot_deep_sea.html" @"{{DATA:SCREEN:SCREEN_84}}"@
+Save-CleanFile "slot_jungle.html" @"{{DATA:SCREEN:SCREEN_15}}"@
+Save-CleanFile "slot_galactic.html" @"{{DATA:SCREEN:SCREEN_5}}"@
+
+# 4. Cartas (Blackjack & Poker)
+Save-CleanFile "blackjack_vip_1.html" @"{{DATA:SCREEN:SCREEN_150}}"@
+Save-CleanFile "blackjack_vip_2.html" @"{{DATA:SCREEN:SCREEN_142}}"@
+Save-CleanFile "blackjack_vip_3.html" @"{{DATA:SCREEN:SCREEN_114}}"@
+Save-CleanFile "poker_holdem_1.html" @"{{DATA:SCREEN:SCREEN_61}}"@
+Save-CleanFile "poker_holdem_2.html" @"{{DATA:SCREEN:SCREEN_138}}"@
+Save-CleanFile "poker_holdem_3.html" @"{{DATA:SCREEN:SCREEN_30}}"@
+
+# 5. Sincronización con GitHub
+Write-Host "Sincronizando con CharlieUY711/fortune-casino-vip..." -ForegroundColor Yellow
+git add .
+git commit -m "FIX: Despliegue definitivo con limpieza total de metadatos y archivos en raíz"
+git push origin main
+
+Write-Host "¡PROCESO COMPLETADO!" -ForegroundColor Cyan
+Write-Host "Revisá fortune.core.com.uy en unos segundos." -ForegroundColor White

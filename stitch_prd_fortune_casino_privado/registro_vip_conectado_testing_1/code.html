@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino | Invitation Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#920703",
+              "surface-container-highest": "#353534",
+              "on-tertiary-container": "#055029",
+              "inverse-primary": "#735c00",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-bright": "#3a3939",
+              "tertiary": "#9adeaa",
+              "on-secondary": "#690000",
+              "on-surface": "#e5e2e1",
+              "tertiary-fixed-dim": "#92d6a2",
+              "on-primary-fixed-variant": "#574500",
+              "on-primary-container": "#554300",
+              "surface": "#131313",
+              "primary-container": "#d4af37",
+              "on-tertiary-fixed": "#00210d",
+              "on-background": "#e5e2e1",
+              "error": "#ffb4ab",
+              "surface-container-low": "#1c1b1b",
+              "primary": "#f2ca50",
+              "on-secondary-container": "#ff9a8a",
+              "primary-fixed": "#ffe088",
+              "on-tertiary-fixed-variant": "#08522a",
+              "tertiary-container": "#7fc290",
+              "surface-container": "#201f1f",
+              "on-surface-variant": "#d0c5af",
+              "error-container": "#93000a",
+              "on-secondary-fixed-variant": "#920703",
+              "background": "#131313",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed": "#241a00",
+              "tertiary-fixed": "#adf2bc",
+              "on-primary": "#3c2f00",
+              "on-error-container": "#ffdad6",
+              "secondary-fixed": "#ffdad4",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-tertiary": "#00391a",
+              "surface-tint": "#e9c349",
+              "primary-fixed-dim": "#e9c349",
+              "inverse-surface": "#e5e2e1",
+              "secondary": "#ffb4a8",
+              "outline-variant": "#4d4635",
+              "surface-variant": "#353534",
+              "outline": "#99907c",
+              "inverse-on-surface": "#313030",
+              "on-secondary-fixed": "#410000",
+              "surface-dim": "#131313",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+        background-color: #131313;
+        background-image: radial-gradient(circle at 50% 50%, #1c1b1b 0%, #131313 100%);
+        color: #e5e2e1;
+        min-height: max(884px, 100dvh);
+    }
+    .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBxKeOe2V2a-ShhM00Ci3uBfijWqr8NWlaI9rK2VIRqa4LrTRTUooRnXRR2nQgCAzW0bEs4CYICn6IzP2g-87FXJ1bjZ0Xasjvj82vTGXMqtGdaIrhWz0493YN8wlLychQlpz26qkeQRo0vOul4t_1qn40D3ItKG2Zuuw8JKBf_eKW4xGAV9nZa4rDfAUMi83zhSR_JZvcK172pVjLx6JsU1wiJ5SXvdkIb6Ig78mguTCK50zMESnkn6PuekG8_c4Wp1Rh6VnnyONbI);
+        z-index: 9999
+    }
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+</style>
+</head>
+<body class="font-body selection:bg-primary/30 selection:text-primary min-h-screen flex flex-col">
+<div class="noise-overlay"></div>
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 max-w-screen-xl mx-auto left-1/2 -translate-x-1/2">
+<div class="text-2xl font-headline font-black uppercase text-primary-container tracking-widest">
+        NOIR
+    </div>
+<div class="flex items-center gap-4">
+<select class="bg-transparent border-none text-[10px] uppercase tracking-widest text-on-surface-variant/80 font-bold focus:ring-0 cursor-pointer hover:text-primary transition-colors" id="langSelector">
+<option class="bg-surface" value="es">ES</option>
+<option class="bg-surface" value="en">EN</option>
+<option class="bg-surface" value="pt">PT</option>
+</select>
+<div class="h-4 w-px bg-outline-variant/30 hidden sm:block"></div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-medium hidden sm:block" data-i18n="lounge_status">High Stakes Lounge</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 pt-20 pb-12">
+<div class="w-full max-w-4xl grid md:grid-cols-2 gap-0 overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.8)] border border-outline-variant/10 rounded-lg bg-surface-container-low">
+<!-- Branding/Mood Side -->
+<div class="relative hidden md:flex flex-col justify-end p-12 bg-surface-container-lowest overflow-hidden">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover grayscale brightness-50" data-alt="Close up of high-end luxury casino chips and a deck of cards on a dark velvet table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP0uDYQw-vOG1S7oPBWYc1lFUZcF1IXhealCJjQKFWHQfHqaFhmrfdjcx3tNyQnNAzm3UUVjljpN757vKx75ts1y99XKD0tUXa-KfMtOLGT-bKnK190-TJtws5MTHurPcenXZD3WCxdib4j2yqaQvWtZoNIlI-q-VFoEkREsi1jKgfJD8tWZSyPLinlQVKVlkVOc1isOtbWZx4RA-4EfWxRtfUlNsfGAaFg8WE7qdeAE0v2iTlyGkNwVc0d2IWlNWuIHR6T0WleyjB"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-4 rounded-full" data-i18n="invitation_badge">
+                Exclusive Invitation Access
+            </span>
+<h2 class="font-headline text-4xl font-bold leading-tight mb-4 text-on-surface" data-i18n="hero_title">
+                El prestigio espera <br/>detrás de estas puertas.
+            </h2>
+<p class="text-on-surface-variant text-sm leading-relaxed opacity-80 max-w-xs" data-i18n="hero_desc">
+                Acceda a mesas privadas y torneos internacionales solo por invitación. La élite no juega, invierte.
+            </p>
+</div>
+</div>
+<!-- Form Side -->
+<div class="p-8 md:p-12 flex flex-col justify-center bg-surface-container-low relative">
+<div class="mb-10">
+<h1 class="font-headline text-3xl font-black text-primary tracking-tight mb-2" data-i18n="form_title">
+                Unirme a la Élite
+            </h1>
+<div class="flex items-center gap-2 text-secondary-container font-semibold text-xs tracking-wider uppercase">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span>
+<span data-i18n="seats_remaining">Solo 12 asientos disponibles</span>
+</div>
+</div>
+<form class="space-y-6" id="registrationForm">
+<!-- Invitation Code -->
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant/80 font-bold ml-1" data-i18n="label_code">Invitation Code</label>
+<div class="relative group">
+<input class="w-full bg-transparent border-b border-outline-variant/40 focus:border-primary px-0 py-3 text-on-surface font-headline tracking-[0.3em] placeholder:text-outline-variant/50 placeholder:tracking-normal focus:ring-0 transition-colors uppercase" id="invitation_code" name="invitation_code" placeholder="XXXX-XXXX-XXXX" required="" type="text"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors text-xl">key</span>
+</div>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant/80 font-bold ml-1" data-i18n="label_email">Email</label>
+<div class="relative group">
+<input class="w-full bg-transparent border-b border-outline-variant/40 focus:border-primary px-0 py-3 text-on-surface placeholder:text-outline-variant/50 focus:ring-0 transition-colors" id="email" name="email" placeholder="nombre@noir.vip" required="" type="email"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors text-xl">alternate_email</span>
+</div>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-1.5">
+<label class="text-[10px] uppercase tracking-widest text-on-surface-variant/80 font-bold ml-1" data-i18n="label_password">Password</label>
+<div class="relative group">
+<input class="w-full bg-transparent border-b border-outline-variant/40 focus:border-primary px-0 py-3 text-on-surface placeholder:text-outline-variant/50 focus:ring-0 transition-colors" id="password" minlength="8" name="password" placeholder="••••••••••••" required="" type="password"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors text-xl">lock</span>
+</div>
+</div>
+</div>
+<!-- Error Display -->
+<div class="hidden text-xs text-red-400 bg-red-400/10 border border-red-400/20 p-3 rounded flex items-center gap-2" id="errorMessage">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span id="errorText"></span>
+</div>
+<!-- Submit Button -->
+<button class="w-full mt-4 bg-gradient-to-r from-primary to-primary-container hover:opacity-90 active:scale-[0.98] transition-all py-4 rounded shadow-[0_8px_24px_rgba(212,175,55,0.2)] disabled:opacity-50 disabled:cursor-not-allowed" id="submitBtn" type="submit">
+<span class="text-on-primary font-headline font-bold text-sm tracking-widest uppercase" data-i18n="btn_submit">Solicitar Membresía</span>
+</button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-[11px] text-on-surface-variant/60 uppercase tracking-widest">
+<span data-i18n="footer_login_text">¿Ya posee una llave?</span>
+<a class="text-primary font-bold hover:underline" data-i18n="footer_login_link" href="#">Iniciar Sesión</a>
+</p>
+</div>
+<!-- Success Modal (Overlay) -->
+<div class="hidden absolute inset-0 bg-surface-container-low z-20 flex flex-col items-center justify-center p-12 text-center" id="successOverlay">
+<div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-2" data-i18n="success_title">Solicitud Enviada</h3>
+<p class="text-on-surface-variant text-sm mb-8" data-i18n="success_desc">Su código ha sido validado. Nuestro comité revisará su perfil en las próximas 24 horas.</p>
+<button class="border border-outline-variant/40 px-6 py-2 rounded text-[10px] uppercase tracking-widest font-bold text-on-surface hover:bg-surface-container-high transition-colors" onclick="window.location.reload()">Volver</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-8 text-center">
+<div class="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[10px] text-on-surface-variant/40 uppercase tracking-[0.2em]">
+        © 2024 Fortune Casino Noir. Exclusive Circle.
+    </p>
+<div class="flex gap-6">
+<a class="text-[10px] text-on-surface-variant/40 hover:text-primary transition-colors uppercase tracking-[0.2em]" data-i18n="footer_privacy" href="#">Privacy</a>
+<a class="text-[10px] text-on-surface-variant/40 hover:text-primary transition-colors uppercase tracking-[0.2em]" data-i18n="footer_terms" href="#">Terms</a>
+<a class="text-[10px] text-on-surface-variant/40 hover:text-primary transition-colors uppercase tracking-[0.2em]" data-i18n="footer_rules" href="#">Rules</a>
+</div>
+</div>
+</footer>
+<script>
+    // --- I18N Data ---
+    const i18n = {
+        es: {
+            lounge_status: "Salón de Altas Apuestas",
+            invitation_badge: "Acceso Exclusivo por Invitación",
+            hero_title: "El prestigio espera <br/>detrás de estas puertas.",
+            hero_desc: "Acceda a mesas privadas y torneos internacionales solo por invitación. La élite no juega, invierte.",
+            form_title: "Unirme a la Élite",
+            seats_remaining: "Solo 12 asientos disponibles",
+            label_code: "Código de Invitación",
+            label_email: "Email",
+            label_password: "Contraseña",
+            btn_submit: "Solicitar Membresía",
+            footer_login_text: "¿Ya posee una llave?",
+            footer_login_link: "Iniciar Sesión",
+            footer_privacy: "Privacidad",
+            footer_terms: "Términos",
+            footer_rules: "Reglas",
+            success_title: "Solicitud Recibida",
+            success_desc: "Su código ha sido validado. Nuestro comité revisará su perfil en las próximas 24 horas.",
+            err_invalid_code: "Código de invitación no válido o ya utilizado.",
+            err_email_exists: "Este correo electrónico ya está registrado.",
+            err_generic: "Ocurrió un error. Inténtelo de nuevo más tarde."
+        },
+        en: {
+            lounge_status: "High Stakes Lounge",
+            invitation_badge: "Exclusive Invitation Access",
+            hero_title: "Prestige awaits <br/>behind these doors.",
+            hero_desc: "Access private tables and international tournaments by invitation only. The elite don't play, they invest.",
+            form_title: "Join the Elite",
+            seats_remaining: "Only 12 seats available",
+            label_code: "Invitation Code",
+            label_email: "Email",
+            label_password: "Password",
+            btn_submit: "Request Membership",
+            footer_login_text: "Already have a key?",
+            footer_login_link: "Sign In",
+            footer_privacy: "Privacy",
+            footer_terms: "Terms",
+            footer_rules: "Rules",
+            success_title: "Request Received",
+            success_desc: "Your code has been validated. Our committee will review your profile within the next 24 hours.",
+            err_invalid_code: "Invalid or already used invitation code.",
+            err_email_exists: "This email is already registered.",
+            err_generic: "An error occurred. Please try again later."
+        },
+        pt: {
+            lounge_status: "Salão de Altas Apostas",
+            invitation_badge: "Acesso Exclusivo por Convite",
+            hero_title: "O prestígio espera <br/>atrás destas portas.",
+            hero_desc: "Acesse mesas privadas e torneios internacionais apenas por convite. A elite não joga, investe.",
+            form_title: "Juntar-se à Elite",
+            seats_remaining: "Apenas 12 assentos disponíveis",
+            label_code: "Código de Convite",
+            label_email: "Email",
+            label_password: "Senha",
+            btn_submit: "Solicitar Membresia",
+            footer_login_text: "Já possui uma chave?",
+            footer_login_link: "Entrar",
+            footer_privacy: "Privacidade",
+            footer_terms: "Termos",
+            footer_rules: "Regras",
+            success_title: "Solicitação Recebida",
+            success_desc: "Seu código foi validado. Nosso comitê revisará seu perfil nas próximas 24 horas.",
+            err_invalid_code: "Código de convite inválido ou já utilizado.",
+            err_email_exists: "Este e-mail já está registrado.",
+            err_generic: "Ocorreu um erro. Tente novamente mais tarde."
+        }
+    };
+
+    function updateLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (i18n[lang][key]) {
+                el.innerHTML = i18n[lang][key];
+            }
+        });
+        document.documentElement.lang = lang;
+    }
+
+    document.getElementById('langSelector').addEventListener('change', (e) => {
+        updateLanguage(e.target.value);
+    });
+
+    // --- Supabase Integration ---
+    // Note: Replace placeholders with real credentials in production
+    const supabaseUrl = 'https://your-project.supabase.co';
+    const supabaseKey = 'your-anon-key';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    const form = document.getElementById('registrationForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+    const successOverlay = document.getElementById('successOverlay');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const lang = document.getElementById('langSelector').value;
+        
+        // UI State: Loading
+        submitBtn.disabled = true;
+        errorMessage.classList.add('hidden');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = `<span class="animate-pulse">...</span>`;
+
+        const formData = new FormData(form);
+        const code = formData.get('invitation_code').toUpperCase();
+        const email = formData.get('email');
+        const password = formData.get('password');
+
+        try {
+            // 1. Validate Invitation Code
+            const { data: invitation, error: invError } = await supabase
+                .from('invitations')
+                .select('*')
+                .eq('code', code)
+                .eq('is_used', false)
+                .single();
+
+            if (invError || !invitation) {
+                throw new Error(i18n[lang].err_invalid_code);
+            }
+
+            // 2. Sign Up User (Supabase Auth)
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+                email,
+                password,
+            });
+
+            if (authError) {
+                if (authError.message.includes('already registered')) throw new Error(i18n[lang].err_email_exists);
+                throw new Error(authError.message);
+            }
+
+            const userId = authData.user?.id;
+            if (!userId) throw new Error(i18n[lang].err_generic);
+
+            // 3. Create Profile (is_approved = false)
+            const { error: profileError } = await supabase
+                .from('profiles')
+                .insert([
+                    { 
+                        id: userId, 
+                        email: email, 
+                        invitation_code: code,
+                        is_approved: false,
+                        created_at: new Date()
+                    }
+                ]);
+
+            if (profileError) throw new Error(profileError.message);
+
+            // 4. Mark Invitation as Used
+            await supabase
+                .from('invitations')
+                .update({ is_used: true, used_by: userId })
+                .eq('id', invitation.id);
+
+            // Success!
+            successOverlay.classList.remove('hidden');
+
+        } catch (error) {
+            errorText.textContent = error.message || i18n[lang].err_generic;
+            errorMessage.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
+
+    // Initialize default lang
+    updateLanguage('es');
+</script>
+</body></html>

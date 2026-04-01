@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blackjack VIP - Midnight Royale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary": "#00391a",
+              "on-primary-fixed": "#241a00",
+              "error-container": "#93000a",
+              "on-primary": "#3c2f00",
+              "surface-container-lowest": "#0e0e0e",
+              "primary-container": "#d4af37",
+              "on-surface": "#e5e2e1",
+              "inverse-primary": "#735c00",
+              "surface-dim": "#131313",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#690000",
+              "secondary-container": "#920703",
+              "on-tertiary-container": "#055029",
+              "on-background": "#e5e2e1",
+              "inverse-surface": "#e5e2e1",
+              "on-primary-container": "#554300",
+              "surface-bright": "#3a3939",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-tint": "#e9c349",
+              "tertiary-fixed-dim": "#92d6a2",
+              "surface-container": "#201f1f",
+              "surface": "#131313",
+              "on-tertiary-fixed": "#00210d",
+              "secondary-fixed-dim": "#ffb4a8",
+              "primary-fixed-dim": "#e9c349",
+              "primary-fixed": "#ffe088",
+              "on-surface-variant": "#d0c5af",
+              "background": "#131313",
+              "tertiary-container": "#7fc290",
+              "on-secondary-container": "#ff9a8a",
+              "on-error": "#690005",
+              "outline-variant": "#4d4635",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-container-highest": "#353534",
+              "tertiary-fixed": "#adf2bc",
+              "surface-variant": "#353534",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "on-secondary-fixed": "#410000",
+              "error": "#ffb4ab",
+              "on-primary-fixed-variant": "#574500",
+              "surface-container-low": "#1c1b1b",
+              "outline": "#99907c",
+              "secondary": "#ffb4a8",
+              "tertiary": "#9adeaa"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.platinum-table {
+    background: radial-gradient(circle at center, #2a2a2a 0%, #131313 100%);
+    position: relative;
+    overflow: hidden
+    }
+.platinum-table::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA5PD_USj2AkHRXm4AI8909jVL49A0i4TpZoLK8L3BAgE2092SEjvpQ-6OvYXMs6mldTBQtk3fNbe5YL_kKD3Mju9UhNNaQli8zBKhP3hz2bk8T4fSyOMVQDN9S6wfhoRYpigJf9k1QuFMhR1OtHU26L-P-aS3zVDBZ__-SewD9aBesatbY2f5reGN3Iqww9cbVjO5jTX-ImtH14uEqLbaOJ6koKeJ7cx01VgbaLOjuE33R7fFFWEIEEZteRWT77ce2EJxRRXSnKjLP);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.gold-trim {
+    box-shadow: 0 0 20px rgba(242, 202, 80, 0.1), inset 0 0 10px rgba(242, 202, 80, 0.05);
+    border: 1px solid rgba(242, 202, 80, 0.2)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .chip-active {
+      transform: scale(1.1);
+      border-color: #f2ca50 !important;
+      box-shadow: 0 0 15px rgba(242, 202, 80, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] dark:bg-[#131313] border-b border-[#4d4635]/20 shadow-[0_4px_30px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="text-[#f2ca50] hover:bg-[#1c1b1b] p-2 rounded transition-colors duration-300" id="menuButton">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Noto_Serif'] text-2xl font-black tracking-tighter text-[#f2ca50]">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-sm font-medium">
+<span class="text-[#f2ca50] cursor-pointer hover:opacity-80 transition-all">Lounge</span>
+<span class="text-[#d0c5af] cursor-pointer hover:text-[#f2ca50] transition-all">Tables</span>
+</div>
+<button class="text-[#f2ca50] font-['Inter'] font-medium text-sm border border-[#f2ca50]/30 px-3 py-1 rounded hover:bg-[#f2ca50]/10 transition-all" id="langToggle">EN</button>
+</div>
+</header>
+<main class="pt-16 pb-20 min-h-screen flex flex-col items-center justify-center p-4">
+<!-- Blackjack Table Canvas -->
+<div class="w-full max-w-5xl aspect-[4/3] md:aspect-[16/9] platinum-table gold-trim rounded-[2rem] p-8 flex flex-col justify-between relative shadow-2xl">
+<!-- Dealer Section -->
+<div class="flex flex-col items-center gap-4">
+<div class="bg-surface-container-lowest/60 backdrop-blur-md px-6 py-1 rounded-full border border-outline-variant/20 text-xs font-bold tracking-widest text-on-surface-variant uppercase">
+                    Dealer
+                </div>
+<div class="flex gap-3 h-32 md:h-44" id="dealerCards">
+<!-- Dealer Cards Rendered via JS -->
+<div class="w-24 md:w-32 bg-white rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden transform rotate-[-2deg]">
+<div class="absolute inset-0 border-4 border-primary/20 rounded-lg"></div>
+<span class="text-surface font-bold text-3xl font-headline">A♠</span>
+</div>
+<div class="w-24 md:w-32 bg-surface-container-highest rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden transform rotate-[1deg]">
+<div class="absolute inset-2 border border-primary/10 rounded-md"></div>
+<div class="w-full h-full opacity-20" style="background-image: radial-gradient(#f2ca50 1px, transparent 0); background-size: 10px 10px;"></div>
+<span class="absolute text-primary/40 material-symbols-outlined text-4xl" data-icon="diamond">diamond</span>
+</div>
+</div>
+<div class="font-headline text-2xl text-primary-fixed-dim" id="dealerScore">11</div>
+</div>
+<!-- Table Center Brand -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center opacity-20 pointer-events-none">
+<h2 class="font-headline text-4xl md:text-6xl font-black text-primary-fixed tracking-widest">BLACKJACK VIP</h2>
+<p class="font-body text-xs tracking-[0.5em] text-on-surface-variant">INSURANCE PAYS 2 TO 1 • DEALER STANDS ON 17</p>
+</div>
+<!-- Player Section -->
+<div class="flex flex-col items-center gap-4">
+<div class="font-headline text-3xl text-primary font-bold drop-shadow-lg" id="playerScore">19</div>
+<div class="flex gap-3 h-32 md:h-44" id="playerCards">
+<!-- Player Cards Rendered via JS -->
+<div class="w-24 md:w-32 bg-white rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden transform rotate-[-1deg]">
+<div class="absolute inset-0 border-4 border-primary/20 rounded-lg"></div>
+<span class="text-surface font-bold text-3xl font-headline">9♦</span>
+</div>
+<div class="w-24 md:w-32 bg-white rounded-lg shadow-lg flex items-center justify-center relative overflow-hidden transform rotate-[2deg]">
+<div class="absolute inset-0 border-4 border-primary/20 rounded-lg"></div>
+<span class="text-error font-bold text-3xl font-headline">10♥</span>
+</div>
+</div>
+<div class="bg-primary/10 backdrop-blur-md px-8 py-2 rounded-full border border-primary/40 flex items-center gap-3 mt-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Your Bet:</span>
+<span class="font-headline text-xl text-primary font-bold" id="currentBetDisplay">$100.00</span>
+</div>
+</div>
+</div>
+<!-- Interface Controls -->
+<div class="w-full max-w-5xl mt-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+<!-- Balance & Stats (Asymmetric Left) -->
+<div class="md:col-span-3 space-y-4">
+<div class="bg-surface-container-low p-4 rounded-xl border-l-4 border-primary-container shadow-xl">
+<span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant block mb-1">Available Balance</span>
+<div class="font-headline text-2xl text-on-surface" id="balanceDisplay">$12,500.00</div>
+</div>
+<div class="bg-surface-container-low/50 p-4 rounded-xl border border-outline-variant/10 flex justify-between items-center">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant block">Recent Win</span>
+<span class="text-tertiary font-bold" id="lastWinDisplay">+$250.00</span>
+</div>
+<span class="material-symbols-outlined text-primary/40" data-icon="history">history</span>
+</div>
+</div>
+<!-- Game Actions (Center) -->
+<div class="md:col-span-6 flex flex-col gap-6 items-center">
+<!-- Action Buttons -->
+<div class="flex gap-4 w-full justify-center">
+<button class="group flex-1 max-w-[120px] aspect-square flex flex-col items-center justify-center gap-2 bg-surface-container-high border border-outline-variant/20 rounded-2xl hover:bg-surface-bright transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none" id="hitBtn">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="add_circle">add_circle</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Hit</span>
+</button>
+<button class="group flex-1 max-w-[120px] aspect-square flex flex-col items-center justify-center gap-2 bg-surface-container-high border border-outline-variant/20 rounded-2xl hover:bg-surface-bright transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none" id="standBtn">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="front_hand">front_hand</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Stand</span>
+</button>
+<button class="group flex-1 max-w-[120px] aspect-square flex flex-col items-center justify-center gap-2 bg-surface-container-high border border-outline-variant/20 rounded-2xl hover:bg-surface-bright transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none" id="doubleBtn">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="keyboard_double_arrow_up">keyboard_double_arrow_up</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest text-center">Double Down</span>
+</button>
+</div>
+<!-- Main CTA -->
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-xl font-black py-4 rounded shadow-[0_8px_32px_rgba(242,202,80,0.2)] hover:brightness-110 active:scale-95 transition-all uppercase tracking-widest disabled:opacity-50" id="dealBtn">
+                    Deal Next Hand
+                </button>
+</div>
+<!-- Chips Selector (Asymmetric Right) -->
+<div class="md:col-span-3 flex flex-col gap-4">
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl p-6 rounded-2xl border border-outline-variant/20 grid grid-cols-2 gap-4">
+<button class="chip-btn flex flex-col items-center gap-1 group" data-value="10">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-on-surface-variant flex items-center justify-center bg-surface-container-highest shadow-inner group-hover:border-primary transition-all">
+<span class="font-bold text-xs">10</span>
+</div>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">$10</span>
+</button>
+<button class="chip-btn flex flex-col items-center gap-1 group" data-value="50">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-secondary-container flex items-center justify-center bg-surface-container-highest shadow-inner group-hover:border-primary transition-all">
+<span class="font-bold text-xs">50</span>
+</div>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">$50</span>
+</button>
+<button class="chip-btn flex flex-col items-center gap-1 group chip-active" data-value="100">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-primary flex items-center justify-center bg-surface-container-highest shadow-inner group-hover:scale-110 transition-all ring-2 ring-primary/20 ring-offset-2 ring-offset-surface">
+<span class="font-bold text-xs text-primary">100</span>
+</div>
+<span class="text-[9px] font-bold text-primary uppercase">$100</span>
+</button>
+<button class="chip-btn flex flex-col items-center gap-1 group" data-value="500">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-tertiary-container flex items-center justify-center bg-surface-container-highest shadow-inner group-hover:border-primary transition-all">
+<span class="font-bold text-xs">500</span>
+</div>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">$500</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative Info Cards -->
+<section class="w-full max-w-5xl mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="verified_user">verified_user</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-primary-fixed mb-2">Fair Play Certified</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Our RNG is audited by leading independent bodies to ensure every card dealt is 100% random and transparent.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-primary-fixed mb-2">VIP Cashback</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Midnight Royale members receive 5% immediate cashback on all high-stakes losses at the Platinum tables.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="support_agent">support_agent</span>
+</div>
+<h4 class="font-headline text-lg font-bold text-primary-fixed mb-2">Private Host</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Need assistance? Your personal VIP concierge is available 24/7 for immediate help with limits or withdrawals.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-4 bg-[#131313]/95 backdrop-blur-md border-t border-[#4d4635]/20 z-50">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Inter'] text-[10px] font-semibold tracking-wide uppercase mt-1">Lounge</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="playing_cards" style="font-variation-settings: 'FILL' 1;">playing_cards</span>
+<span class="font-['Inter'] text-[10px] font-semibold tracking-wide uppercase mt-1">Tables</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-semibold tracking-wide uppercase mt-1">Cashier</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-60 hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold tracking-wide uppercase mt-1">Profile</span>
+</a>
+</nav>
+<!-- NavigationDrawer -->
+<aside class="fixed left-0 top-0 h-full z-[60] flex flex-col w-80 rounded-r-2xl bg-[#1c1b1b] border-r border-[#4d4635]/10 shadow-2xl shadow-black transform -translate-x-full transition-transform duration-300" id="navDrawer">
+<div class="p-8 border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="person">person</span>
+</div>
+<div>
+<h3 class="font-['Noto_Serif'] text-lg text-[#f2ca50] font-bold" id="userName">High Roller</h3>
+<p class="text-xs text-[#d0c5af]">VIP Gold Tier</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-6">
+<nav class="space-y-1">
+<a class="flex items-center gap-4 px-8 py-4 text-[#d0c5af] hover:bg-[#2a2a2a]/50 hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="font-['Inter'] text-sm">VIP Lounge</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 bg-[#2a2a2a] text-[#f2ca50] font-bold border-l-4 border-[#f2ca50]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Inter'] text-sm">History</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#d0c5af] hover:bg-[#2a2a2a]/50 hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+<span class="font-['Inter'] text-sm">Multi-Language</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#d0c5af] hover:bg-[#2a2a2a]/50 hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-4 px-8 py-4 text-[#d0c5af] hover:bg-[#2a2a2a]/50 hover:pl-10 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-['Inter'] text-sm">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<div class="fixed inset-0 bg-black/60 z-[55] hidden opacity-0 transition-opacity duration-300" id="drawerOverlay"></div>
+<script>
+    // Initialize Supabase (Replace with actual env vars in a real app)
+    const supabaseUrl = 'https://your-project.supabase.co';
+    const supabaseKey = 'your-anon-key';
+    const supabase = window.supabase ? window.supabase.createClient(supabaseUrl, supabaseKey) : null;
+
+    // Game State
+    let gameState = {
+        balance: 12500,
+        currentBet: 100,
+        lastWin: 0,
+        user: null,
+        isPlaying: false
+    };
+
+    // UI Elements
+    const balanceDisplay = document.getElementById('balanceDisplay');
+    const betDisplay = document.getElementById('currentBetDisplay');
+    const winDisplay = document.getElementById('lastWinDisplay');
+    const chipBtns = document.querySelectorAll('.chip-btn');
+    const dealBtn = document.getElementById('dealBtn');
+    const hitBtn = document.getElementById('hitBtn');
+    const standBtn = document.getElementById('standBtn');
+    const doubleBtn = document.getElementById('doubleBtn');
+    const menuBtn = document.getElementById('menuButton');
+    const navDrawer = document.getElementById('navDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+
+    // Drawer Logic
+    menuBtn.addEventListener('click', () => {
+        navDrawer.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+        setTimeout(() => overlay.classList.add('opacity-100'), 10);
+    });
+
+    overlay.addEventListener('click', () => {
+        navDrawer.classList.add('-translate-x-full');
+        overlay.classList.remove('opacity-100');
+        setTimeout(() => overlay.classList.add('hidden'), 300);
+    });
+
+    // Realtime Sync Functionality
+    async function setupRealtime() {
+        if (!supabase) return;
+        
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+        
+        gameState.user = user;
+
+        // Initial balance fetch
+        const { data: profile } = await supabase
+            .from('profiles')
+            .select('balance, display_name')
+            .eq('id', user.id)
+            .single();
+
+        if (profile) {
+            updateBalanceUI(profile.balance);
+            document.getElementById('userName').textContent = profile.display_name || 'High Roller';
+        }
+
+        // Subscribe to changes in profiles table
+        supabase
+            .channel('public:profiles')
+            .on('postgres_changes', { 
+                event: 'UPDATE', 
+                schema: 'public', 
+                table: 'profiles', 
+                filter: `id=eq.${user.id}` 
+            }, (payload) => {
+                if (payload.new.balance !== undefined) {
+                    updateBalanceUI(payload.new.balance);
+                }
+            })
+            .subscribe();
+    }
+
+    function updateBalanceUI(newBalance) {
+        gameState.balance = newBalance;
+        balanceDisplay.textContent = `$${newBalance.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    }
+
+    // Betting Interaction
+    chipBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (gameState.isPlaying) return;
+            chipBtns.forEach(b => b.classList.remove('chip-active'));
+            btn.classList.add('chip-active');
+            gameState.currentBet = parseInt(btn.dataset.value);
+            betDisplay.textContent = `$${gameState.currentBet.toFixed(2)}`;
+        });
+    });
+
+    // Main Game Logic with process_bet_secure
+    async function processBet(amount) {
+        if (!supabase) {
+            // Mock local version for preview
+            gameState.balance -= amount;
+            updateBalanceUI(gameState.balance);
+            return { success: true };
+        }
+
+        const { data, error } = await supabase.rpc('process_bet_secure', {
+            bet_amount: amount,
+            game_type: 'blackjack_vip'
+        });
+
+        if (error) {
+            console.error('Bet failed:', error.message);
+            alert('Insufficient funds or transaction error');
+            return { success: false };
+        }
+        return { success: true };
+    }
+
+    dealBtn.addEventListener('click', async () => {
+        const result = await processBet(gameState.currentBet);
+        if (result.success) {
+            gameState.isPlaying = true;
+            toggleControls(true);
+            // In a real app, this would trigger the dealer animation and card fetching
+            console.log('Hand started with bet:', gameState.currentBet);
+        }
+    });
+
+    function toggleControls(playing) {
+        dealBtn.disabled = playing;
+        hitBtn.disabled = !playing;
+        standBtn.disabled = !playing;
+        doubleBtn.disabled = !playing;
+        chipBtns.forEach(b => b.disabled = playing);
+    }
+
+    // Language Toggle Mockup
+    document.getElementById('langToggle').addEventListener('click', function() {
+        this.textContent = this.textContent === 'EN' ? 'FR' : 'EN';
+    });
+
+    // Start Realtime
+    setupRealtime();
+    
+    // Initial UI Setup
+    toggleControls(false);
+</script>
+</body></html>

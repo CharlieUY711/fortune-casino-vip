@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#ffdad4",
+                        "primary": "#f2ca50",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "outline": "#99907c",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#d4af37",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#9adeaa",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed": "#241a00",
+                        "on-error": "#690005",
+                        "surface-bright": "#3a3939",
+                        "secondary-container": "#920703",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-container": "#055029",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "on-primary-container": "#554300",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#00210d",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary": "#00391a",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-container": "#ff9a8a",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-secondary-fixed": "#410000",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary": "#690000",
+                        "tertiary-fixed": "#adf2bc",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "inverse-primary": "#735c00",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-container": "#7fc290",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "on-primary": "#3c2f00"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .jungle-mesh {
+            background-color: #131313;
+            background-image: radial-gradient(at 0% 0%, rgba(5, 80, 41, 0.15) 0px, transparent 50%), 
+                              radial-gradient(at 100% 100%, rgba(212, 175, 55, 0.05) 0px, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-shimmer {
+            background: linear-gradient(45deg, #f2ca50 0%, #d4af37 50%, #f2ca50 100%);
+            background-size: 200% auto;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High-end portrait of a sophisticated high roller player with dramatic lighting and gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgmWzM4P3hwA1lihxhz0MT-QOZLM9VMOTs4U_uK2T_JWYjC2pAbwtas6QYitu8xBLaNXU48sTSWx2JFOvt65Y3SYboAnWOwHUQSk_W9NyAmrixtZHAx_xIXkBae53pXbooGFsT3OtE21pLd96s8OY9bAoqm-4hKYj8CPVvce08BBgKnFz4jbqsHDtv0Qxby8ATnRFwr7lR-kd_OnsCBmwd4nj3v1SAYFb3Zrqm2FFzG94VMazB1UXfR4TUSVdGN0k8DijGZ0Wnp129"/>
+</div>
+<div class="flex flex-col">
+<span class="font-sans text-xs uppercase tracking-widest Inter text-on-surface-variant">PLAYER STATUS</span>
+<h1 class="font-serif text-2xl font-bold tracking-tight Noto Serif text-[#f2ca50]">$1,250,500</h1>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-[#f2ca50] font-bold font-sans text-xs uppercase tracking-widest Inter" href="#">Lobby</a>
+<a class="text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-3 py-1 rounded font-sans text-xs uppercase tracking-widest Inter" href="#">Slots</a>
+<a class="text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-3 py-1 rounded font-sans text-xs uppercase tracking-widest Inter" href="#">VIP</a>
+</nav>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant/10">
+<span class="text-[10px] font-bold text-tertiary">ES</span>
+<span class="w-px h-3 bg-outline-variant/30"></span>
+<span class="text-[10px] font-medium text-on-surface-variant">EN</span>
+<span class="w-px h-3 bg-outline-variant/30"></span>
+<span class="text-[10px] font-medium text-on-surface-variant">PT</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#2a2a2a] transition-colors duration-300 active:scale-95 text-[#f2ca50]">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="bg-[#1c1b1b] h-px w-full opacity-20"></div>
+</header>
+<main class="pt-24 pb-24 min-h-screen jungle-mesh px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Game Hero Section -->
+<section class="relative rounded-xl overflow-hidden mb-8 h-[353px] md:h-[442px] flex items-end">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Dense exotic jungle foliage with ancient gold artifacts hidden among giant green leaves and misty atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4vORs1-W-iVaC04hNymhjai3rVE9nMCfgQwKmN_sRuxBVEhuUTeHe7nK8B1v3cwSUbdiyNDm4M5r850TTqQHTc4DqdCFYFcleNjtpVg5A7HDXRVGhNtBLtravFaMNXAh0oj2mGnCi3QuNLBn6PxRn_5gp8ctxtSDCiGzLYAXBs8FpaEXo-9Hknkgr_77PL6Dg5nLgkPmnFpwZnYgUTMTlQF-uARL2Jr4mHpfPmTytWefFfFw1Qb8Qg8CGIBqcckDLwQz7nmKiiUoF"/>
+<div class="relative z-20 p-8 w-full flex flex-col md:flex-row justify-between items-end gap-6">
+<div>
+<span class="font-sans text-xs uppercase tracking-widest Inter text-primary-fixed mb-2 block">NEW RELEASE</span>
+<h2 class="font-serif text-5xl md:text-7xl font-bold tracking-tighter text-on-surface italic uppercase">Jungle Quest</h2>
+<p class="text-on-surface-variant max-w-md mt-2 font-body text-sm">Venture into the heart of the Amazon to uncover lost treasures of the Sun Dynasty.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high/80 backdrop-blur-md p-4 rounded-lg border border-outline-variant/20 min-w-[140px]">
+<span class="text-[10px] uppercase tracking-widest block mb-1 text-tertiary">MAX WIN</span>
+<span class="font-serif text-2xl font-bold text-on-surface">x10,000</span>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-4 rounded-lg border border-outline-variant/20 min-w-[140px]">
+<span class="text-[10px] uppercase tracking-widest block mb-1 text-primary">JACKPOT</span>
+<span class="font-serif text-2xl font-bold text-on-surface">$85,200</span>
+</div>
+</div>
+</div>
+</section>
+<!-- The Slot Reels (Asymmetric Bento) -->
+<section class="grid grid-cols-12 gap-4 mb-12">
+<!-- Left Side: Mini Leaderboard -->
+<div class="col-span-12 lg:col-span-3 space-y-4">
+<div class="bg-surface-container-low p-6 rounded-lg border border-outline-variant/10">
+<h3 class="font-sans text-xs uppercase tracking-widest Inter text-primary mb-4">Recientes Ganadores</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface">M. Silva</span>
+<span class="text-sm font-bold font-serif text-tertiary">+$420.00</span>
+</div>
+<div class="flex justify-between items-center opacity-70">
+<span class="text-sm font-medium text-on-surface">Alex R.</span>
+<span class="text-sm font-bold font-serif text-tertiary">+$1,120.00</span>
+</div>
+<div class="flex justify-between items-center opacity-50">
+<span class="text-sm font-medium text-on-surface">Joao_7</span>
+<span class="text-sm font-bold font-serif text-tertiary">+$85.00</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden h-48">
+<img class="w-full h-full object-cover" data-alt="Vibrant tropical parrot perched on a golden branch against a dark forest background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuslZv_qPYrp5za7G3UI8TL6sQ0I0mwN_iV1Ptm7z3EjIq3mf8VCKOaEaywGvQ_mwrJnWhbXeBovt94tqX2NFkGe8h_equVItf1xNEsgsS_RQ-aqLu8P5V6zV2czbBb1C8so_1GNWBPDKem8QD6CE5WmQHUBgLIKNLBp7sNFJmYbE_y-bCLps85NT_F8-f6l1ZhXvU5F7YY1oAUC8tUNV3F8qlSUutQm8ZOvv2IAYrlLx9SorWzlcLqyz5eIrIt9RQipFHYQIHaWXR"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+<div class="absolute bottom-4 left-4">
+<span class="font-serif text-lg font-bold text-white drop-shadow-md">WILD FAUNA</span>
+</div>
+</div>
+</div>
+<!-- Center: Slot Interface Simulation -->
+<div class="col-span-12 lg:col-span-9 bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/20 shadow-2xl relative overflow-hidden">
+<!-- Background texture inside machine -->
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<div class="grid grid-cols-5 h-full w-full">
+<div class="border-r border-primary"></div>
+<div class="border-r border-primary"></div>
+<div class="border-r border-primary"></div>
+<div class="border-r border-primary"></div>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-2 h-80 md:h-[450px]">
+<!-- Reel 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="monetization_on">monetization_on</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="eco">eco</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="pets">pets</span>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="diamond">diamond</span>
+</div>
+<div class="flex-1 bg-tertiary-container/20 rounded border-2 border-tertiary/50 flex items-center justify-center shadow-[inset_0_0_20px_rgba(127,194,144,0.2)]">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="star" data-weight="fill">star</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="local_activity">local_activity</span>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="flex flex-col gap-2">
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-1 bg-tertiary-container/20 rounded border-2 border-tertiary/50 flex items-center justify-center shadow-[inset_0_0_20px_rgba(127,194,144,0.2)]">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="star" data-weight="fill">star</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="bolt">bolt</span>
+</div>
+</div>
+<!-- Reel 4 -->
+<div class="flex flex-col gap-2">
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="military_tech">military_tech</span>
+</div>
+<div class="flex-1 bg-tertiary-container/20 rounded border-2 border-tertiary/50 flex items-center justify-center shadow-[inset_0_0_20px_rgba(127,194,144,0.2)]">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="star" data-weight="fill">star</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="filter_vintage">filter_vintage</span>
+</div>
+</div>
+<!-- Reel 5 -->
+<div class="flex flex-col gap-2">
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="token">token</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded border border-outline-variant/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="skull">skull</span>
+</div>
+</div>
+</div>
+<!-- Footer Controls inside slot machine -->
+<div class="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-outline-variant/10 pt-4">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-sans">Bet Size</span>
+<div class="flex items-center gap-3">
+<button class="w-8 h-8 rounded-full border border-outline-variant/40 flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all">-</button>
+<span class="font-serif text-xl font-bold text-primary">$10.00</span>
+<button class="w-8 h-8 rounded-full border border-outline-variant/40 flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all">+</button>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-sans">Lines</span>
+<span class="font-serif text-xl font-bold text-on-surface">243</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-sans">Total Win</span>
+<span class="font-serif text-2xl font-bold text-tertiary">+$0.00</span>
+</div>
+<button class="gold-shimmer px-12 py-4 rounded font-serif text-xl font-extrabold text-on-primary uppercase tracking-tighter hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(242,202,80,0.3)]">
+                            GIRAR
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-serif text-2xl font-bold text-primary mb-2">Wild Totems</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Multiplicadores acumulativos que se desbloquean con cada giro consecutivo en verde.</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-primary font-sans text-[10px] uppercase tracking-widest font-bold">
+                    Learn More <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="bg-secondary-container/10 p-8 rounded-xl border border-secondary/20 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-secondary" data-icon="local_fire_department">local_fire_department</span>
+</div>
+<div>
+<h4 class="font-serif text-2xl font-bold text-secondary mb-2">Volcanic Bonus</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">3 símbolos de volcán activan 15 Giros Libres con carretes expansibles de hasta 7 filas.</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-secondary font-sans text-[10px] uppercase tracking-widest font-bold">
+                    Play Feature <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="map">map</span>
+</div>
+<div>
+<h4 class="font-serif text-2xl font-bold text-tertiary mb-2">Treasure Map</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Completa los hitos diarios para desbloquear cofres legendarios con premios en efectivo.</p>
+</div>
+<div class="mt-6 flex items-center gap-2 text-tertiary font-sans text-[10px] uppercase tracking-widest font-bold">
+                    View Progress <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Navigation Shell -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50">
+<div class="bg-[#131313]/95 backdrop-blur-xl border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] flex justify-around items-end px-4 pb-safe h-20 rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined" data-icon="casino">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter mt-1">Lobby</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#f2ca50] bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-t-lg pt-2 pb-1 active:scale-105">
+<span class="material-symbols-outlined" data-icon="slot_machine" data-weight="fill">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter mt-1">Slots</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter mt-1">VIP</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all active:scale-105">
+<span class="material-symbols-outlined" data-icon="local_offer">local_offer</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter mt-1">Promos</span>
+</button>
+</div>
+</footer>
+</body></html>

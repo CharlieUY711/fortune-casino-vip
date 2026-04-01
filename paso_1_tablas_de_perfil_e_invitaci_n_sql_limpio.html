@@ -1,0 +1,26 @@
+-- 1. EXTENSIONES (Copia desde aquí)
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- 2. TABLAS BASE
+CREATE TABLE IF NOT EXISTS public.profiles (
+    id UUID REFERENCES auth.users NOT NULL PRIMARY KEY,
+    username TEXT UNIQUE,
+    full_name TEXT,
+    avatar_url TEXT,
+    balance NUMERIC(15,2) DEFAULT 0.00 CHECK (balance >= 0),
+    vip_level TEXT DEFAULT 'Bronce',
+    is_approved BOOLEAN DEFAULT FALSE,
+    invite_code TEXT UNIQUE,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS public.invitations (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    code TEXT UNIQUE NOT NULL,
+    is_used BOOLEAN DEFAULT FALSE,
+    created_by UUID REFERENCES auth.users,
+    used_by UUID REFERENCES auth.users,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- (Fin de la Parte 1)

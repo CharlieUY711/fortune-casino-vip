@@ -1,0 +1,11 @@
+# Explicación del Error "web application..."
+
+El error `42601: syntax error at or near "web"` ocurre porque, al generar pantallas o documentos, el sistema a veces añade una cabecera interna invisible o metadatos que empiezan con la palabra "web". Cuando copias todo el contenido y lo pegas en Supabase, este intenta ejecutar esa primera línea como si fuera SQL y falla.
+
+### Cómo solucionarlo en pasos pequeños:
+
+1. **Ignora la primera línea:** Nunca copies la primera línea si ves que no empieza por `--`.
+2. **Busca el comentario inicial:** El código SQL real siempre empieza con `-- 1. EXTENSIONES`.
+3. **Copia desde ahí:** Selecciona el texto manualmente desde esa línea hasta el final.
+
+He preparado una serie de documentos divididos por secciones para que podamos ir probando poco a poco si prefieres, o un bloque único garantizado sin esa cabecera.

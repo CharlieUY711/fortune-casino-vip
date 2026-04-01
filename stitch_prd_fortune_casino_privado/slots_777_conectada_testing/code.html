@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Royale - Classic 777</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#4d4635",
+                        "on-tertiary": "#00391a",
+                        "surface-dim": "#131313",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-container": "#ff9a8a",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-secondary-fixed": "#410000",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed-variant": "#574500",
+                        "tertiary-fixed": "#adf2bc",
+                        "on-secondary": "#690000",
+                        "tertiary-container": "#7fc290",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "on-primary": "#3c2f00",
+                        "primary-fixed": "#ffe088",
+                        "surface-container": "#201f1f",
+                        "on-background": "#e5e2e1",
+                        "inverse-primary": "#735c00",
+                        "secondary-fixed": "#ffdad4",
+                        "primary": "#f2ca50",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#353534",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "outline": "#99907c",
+                        "tertiary": "#9adeaa",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed": "#241a00",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#3a3939",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-container": "#055029",
+                        "secondary-container": "#920703",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-primary-container": "#554300",
+                        "error": "#ffb4ab"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-leaf-gradient {
+            background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%);
+        }
+        .reel-inner-shadow {
+            box-shadow: inset 0 20px 40px -20px rgba(0,0,0,0.9), inset 0 -20px 40px -20px rgba(0,0,0,0.9);
+        }
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .noise-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen overflow-x-hidden">
+<div class="noise-overlay fixed inset-0 z-[100]"></div>
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_30px_rgba(212,175,55,0.05)] flex justify-between items-center px-6 h-20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up portrait of a sophisticated man in a dark suit with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBThebbPMSEA9aOAlTMKddZYclsxDeV_BvXcKCFgNFuwyF-BzJ6bEqLebUd1H6IL31Si1U1BEjFLM7x8AOC-mluIbRVUGHKaLreRZZDysUsqubSEcln6VoQE9f1k0w8O4ur2oD7i5hjaqiw6g0jmfX7csQDlah6aNyfmI_3w2D2_035S2zvAWOk9IwcHMoQrwwK3SyzHtVopiJLJJNnrgtyEABug_ACIRFNVSeodxIwLQmMNexgKZVW2UJgyhT1TwHcDb7oNh-wEtBx"/>
+</div>
+<span class="text-2xl font-['Noto_Serif'] font-bold italic text-[#f2ca50] tracking-widest">MIDNIGHT ROYALE</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8 mr-8">
+<a class="text-[#f2ca50] font-medium transition-opacity hover:opacity-80" href="#">Lobby</a>
+<a class="text-[#d0c5af] font-medium transition-opacity hover:opacity-80" href="#">Wallet</a>
+<a class="text-[#d0c5af] font-medium transition-opacity hover:opacity-80" href="#">VIP Lounge</a>
+</div>
+<div class="px-4 py-2 rounded border border-primary/20 bg-surface-container-low flex items-center gap-3 active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline font-bold text-[#f2ca50] tracking-tight">$25,430.00</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-4 max-w-7xl mx-auto flex flex-col items-center">
+<!-- Game Header Section -->
+<div class="text-center mb-12">
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface tracking-tighter mb-2">CLASSIC 777</h1>
+<div class="flex items-center justify-center gap-4 text-on-surface-variant uppercase tracking-[0.3em] text-[10px] font-bold">
+<span class="w-8 h-[1px] bg-outline-variant/40"></span>
+                The Velvet Vault Edition
+                <span class="w-8 h-[1px] bg-outline-variant/40"></span>
+</div>
+</div>
+<!-- Main Slot Machine Grid -->
+<div class="relative w-full max-w-4xl mx-auto">
+<!-- Machine Frame -->
+<div class="bg-surface-container-low border-x-4 border-outline-variant/20 rounded-xl overflow-hidden shadow-[0_48px_100px_rgba(0,0,0,0.8)] p-6 md:p-12 relative">
+<!-- Reel Housing -->
+<div class="grid grid-cols-3 gap-4 md:gap-8 bg-surface-container-lowest p-4 md:p-8 rounded-lg border border-outline-variant/10 reel-inner-shadow relative overflow-hidden">
+<!-- Reel 1 -->
+<div class="aspect-[3/4] bg-surface-container-high rounded flex flex-col items-center justify-around py-4 border-x border-outline-variant/5 relative overflow-hidden group">
+<div class="text-secondary-container transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">cheer</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-primary transform scale-150 py-4 drop-shadow-[0_0_15px_rgba(242,202,80,0.3)]">
+<span class="material-symbols-outlined text-7xl" style="font-variation-settings: 'FILL' 1;">7mp</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-tertiary-container transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">sunny</span>
+</div>
+<div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+<div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+</div>
+<!-- Reel 2 -->
+<div class="aspect-[3/4] bg-surface-container-high rounded flex flex-col items-center justify-around py-4 border-x border-outline-variant/5 relative overflow-hidden">
+<div class="text-primary transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-primary transform scale-150 py-4 drop-shadow-[0_0_15px_rgba(242,202,80,0.3)]">
+<span class="material-symbols-outlined text-7xl" style="font-variation-settings: 'FILL' 1;">7mp</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-secondary-container transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">cheer</span>
+</div>
+<div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+<div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+</div>
+<!-- Reel 3 -->
+<div class="aspect-[3/4] bg-surface-container-high rounded flex flex-col items-center justify-around py-4 border-x border-outline-variant/5 relative overflow-hidden">
+<div class="text-tertiary-container transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-primary transform scale-150 py-4 drop-shadow-[0_0_15px_rgba(242,202,80,0.3)]">
+<span class="material-symbols-outlined text-7xl" style="font-variation-settings: 'FILL' 1;">7mp</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/10"></div>
+<div class="text-primary transform scale-125">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+<div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-surface-container-lowest to-transparent z-10 opacity-60"></div>
+</div>
+<!-- Winning Line Overlay -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center z-20">
+<div class="w-full h-1 bg-primary/20 shadow-[0_0_20px_rgba(242,202,80,0.5)]"></div>
+</div>
+</div>
+<!-- Control Panel -->
+<div class="mt-8 flex flex-col md:flex-row items-center justify-between gap-8 bg-surface-container p-6 rounded-lg border border-outline-variant/20">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant tracking-widest mb-1">Total Bet</span>
+<div class="bg-surface-container-lowest px-6 py-3 rounded border border-outline-variant/30 text-primary font-headline text-xl font-bold flex items-center gap-2">
+<span class="text-sm opacity-60">$</span> 500.00
+                            </div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant tracking-widest mb-1">Last Win</span>
+<div class="bg-surface-container-lowest px-6 py-3 rounded border border-outline-variant/30 text-tertiary font-headline text-xl font-bold flex items-center gap-2">
+<span class="text-sm opacity-60">$</span> 2,500.00
+                            </div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-14 h-14 rounded-full border border-outline-variant/40 flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">remove</span>
+</button>
+<button class="gold-leaf-gradient px-12 py-5 rounded text-on-primary font-headline font-bold text-2xl tracking-widest shadow-[0_10px_40px_rgba(212,175,55,0.3)] active:scale-95 hover:brightness-110 transition-all duration-200 uppercase">
+                            GIRAR
+                        </button>
+<button class="w-14 h-14 rounded-full border border-outline-variant/40 flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">add</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-[10px] font-bold border border-outline-variant/20 hover:border-primary/50 text-on-surface-variant hover:text-primary transition-all rounded-full uppercase tracking-tighter">
+                            Auto
+                        </button>
+<button class="px-4 py-2 text-[10px] font-bold border border-outline-variant/20 hover:border-primary/50 text-on-surface-variant hover:text-primary transition-all rounded-full uppercase tracking-tighter">
+                            Turbo
+                        </button>
+</div>
+</div>
+</div>
+<!-- Side Decorations (Traditional Lever) -->
+<div class="hidden lg:block absolute -right-20 top-1/2 -translate-y-1/2">
+<div class="w-4 h-64 bg-gradient-to-b from-[#2a2a2a] via-[#4d4635] to-[#131313] rounded-full relative">
+<div class="absolute -top-12 -left-6 w-16 h-16 rounded-full gold-leaf-gradient shadow-2xl border-4 border-surface-container-high cursor-pointer active:translate-y-48 transition-transform duration-500 ease-in-out"></div>
+</div>
+</div>
+</div>
+<!-- Paytable & Rules Section (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full mt-24">
+<div class="md:col-span-2 glass-panel p-8 rounded-xl border border-outline-variant/10 shadow-xl">
+<h3 class="font-headline text-2xl font-bold text-primary mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined">military_tech</span>
+                    Paytable Legend
+                </h3>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">7mp</span>
+<span class="text-sm font-medium">777 Triple</span>
+</div>
+<span class="font-headline font-bold text-primary">50x</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="text-sm font-medium">Diamonds</span>
+</div>
+<span class="font-headline font-bold text-primary">25x</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">cheer</span>
+<span class="text-sm font-medium">Cherries</span>
+</div>
+<span class="font-headline font-bold text-primary">10x</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">sunny</span>
+<span class="text-sm font-medium">Lemons</span>
+</div>
+<span class="font-headline font-bold text-primary">5x</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl border border-outline-variant/10 shadow-xl flex flex-col justify-center text-center">
+<div class="text-primary-fixed mb-4">
+<span class="material-symbols-outlined text-5xl">language</span>
+</div>
+<h4 class="font-headline text-lg font-bold mb-4">Language Select</h4>
+<div class="flex flex-col gap-2">
+<button class="text-xs font-bold py-2 rounded border border-primary/20 text-primary bg-primary/5 uppercase tracking-widest">English</button>
+<button class="text-xs font-bold py-2 rounded border border-outline-variant/20 text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Español</button>
+<button class="text-xs font-bold py-2 rounded border border-outline-variant/20 text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest">Português</button>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-xl border border-outline-variant/10 shadow-xl overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700" data-alt="high contrast luxury casino interior with soft focus golden lights and dark velvet textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvsnvEr4crnr6ACWAxV789HIRBLlCT8bLFoLSNXw0IruQXgOrl17EJCrrtEGKA0F0lB5J8WX8P_P1Hie3DynUjZSALY9xDrjJPhiYWV3G9Y-wz6wLkEBeDfMAw0bkolNKk5gPdXp3FKUQ91yEaDy-kscwIsmU6EjaCoy8qFAi1oXDrMFr3pgWrpN2ZD9nkY7fsxMmcImCsBoWSVQiwkciWAII3gnCkCITuSzC44-ZzZBDAOQCdoX1Z_m9gY1whEXN3TQnLONZnpvub"/>
+<div class="relative z-10 h-full flex flex-col justify-end">
+<h4 class="font-headline text-lg font-bold text-primary mb-2">High Roller VIP</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Join the vault for exclusive limits and private tables.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 flex justify-around items-center px-4 h-16 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] border-t-2 border-[#f2ca50] pt-2 pb-1 transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] pt-2 pb-1 hover:text-[#ffe088] transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] pt-2 pb-1 hover:text-[#ffe088] transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

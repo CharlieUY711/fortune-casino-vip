@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#9adeaa",
+              "on-error-container": "#ffdad6",
+              "secondary-container": "#920703",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-highest": "#353534",
+              "on-tertiary": "#00391a",
+              "on-primary-container": "#554300",
+              "inverse-surface": "#e5e2e1",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "error": "#ffb4ab",
+              "surface-container-high": "#2a2a2a",
+              "surface-container": "#201f1f",
+              "outline": "#99907c",
+              "secondary": "#ffb4a8",
+              "on-tertiary-fixed": "#00210d",
+              "on-secondary-container": "#ff9a8a",
+              "tertiary-fixed": "#adf2bc",
+              "surface-dim": "#131313",
+              "on-error": "#690005",
+              "on-background": "#e5e2e1",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-secondary": "#690000",
+              "surface-container-low": "#1c1b1b",
+              "primary-container": "#d4af37",
+              "inverse-primary": "#735c00",
+              "surface-bright": "#3a3939",
+              "on-primary-fixed": "#241a00",
+              "primary-fixed": "#ffe088",
+              "tertiary-fixed-dim": "#92d6a2",
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "on-secondary-fixed": "#410000",
+              "background": "#131313",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#d0c5af",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-container": "#055029",
+              "on-secondary-fixed-variant": "#920703",
+              "surface-tint": "#e9c349",
+              "on-primary-fixed-variant": "#574500",
+              "inverse-on-surface": "#313030",
+              "on-primary": "#3c2f00",
+              "surface": "#131313",
+              "outline-variant": "#4d4635",
+              "surface-variant": "#353534",
+              "tertiary-container": "#7fc290"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .carbon-texture {
+            background-color: #131313;
+            background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%), linear-gradient(-45deg, #1a1a1a 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1a1a1a 75%), linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+            background-size: 4px 4px;
+            background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+        }
+        .glossy-gold {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 50%, #b8860b 100%);
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(42, 42, 42, 0.7);
+        }
+        .chip-active {
+            box-shadow: 0 0 20px rgba(242, 202, 80, 0.5);
+            border-color: #f2ca50 !important;
+            transform: scale(1.1);
+        }
+        .spinning {
+            animation: spin 3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(1080deg); }
+        }
+        .bet-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #f2ca50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: #000;
+            font-weight: 800;
+            pointer-events: none;
+            z-index: 50;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-[100] bg-[#1c1b1b] border-none shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer">menu</span>
+<h1 class="font-serif italic text-2xl text-[#f2ca50] tracking-tight">Noir Casino</h1>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label text-sm uppercase tracking-widest font-bold">
+<a class="text-[#f2ca50] transition-colors duration-300" href="#">Lobby</a>
+<a class="text-neutral-500 hover:text-[#f2ca50] transition-colors duration-300" href="#">Tables</a>
+<a class="text-neutral-500 hover:text-[#f2ca50] transition-colors duration-300" href="#">VIP Lounge</a>
+</div>
+<div class="flex items-center gap-4">
+<!-- Language Selector -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant/20">
+<span class="material-symbols-outlined text-xs text-primary">language</span>
+<select class="bg-transparent border-none text-[10px] font-bold uppercase tracking-tighter focus:ring-0 cursor-pointer p-0 text-on-surface" id="lang-selector">
+<option value="ES">ES</option>
+<option value="EN">EN</option>
+<option value="PT">PT</option>
+</select>
+</div>
+<div class="text-[#f2ca50] font-serif text-xl font-bold tracking-tight" id="balance-display">
+                $25,400
+            </div>
+</div>
+</div>
+</header>
+<main class="min-h-screen pb-24 carbon-texture">
+<!-- Hero Section / Roulette Visual -->
+<section class="relative h-[300px] md:h-[442px] flex items-center justify-center overflow-hidden border-b border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10"></div>
+<div class="relative z-20 text-center">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-primary/20 mb-6 flex items-center justify-center bg-surface-container-lowest relative" id="roulette-wheel">
+<div class="absolute w-4 h-4 bg-white rounded-full hidden" id="wheel-ball" style="top: 10px;"></div>
+<span class="font-headline text-5xl md:text-7xl font-bold text-primary italic opacity-0 transition-opacity duration-500" id="winning-number-display">-</span>
+</div>
+<h2 class="font-headline text-3xl md:text-5xl font-bold text-on-surface tracking-tighter mb-2">
+                Ruleta <span class="text-primary italic">Élite</span> Carbon
+            </h2>
+<p class="font-label text-[10px] md:text-xs uppercase tracking-[0.4em] text-on-surface-variant" id="status-text">Carbon Stealth Edition • High Stakes</p>
+</div>
+<!-- Decorative elements -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-primary/10 opacity-20 pointer-events-none"></div>
+</section>
+<!-- Betting Interface -->
+<div class="max-w-7xl mx-auto px-4 -mt-12 relative z-30">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left: Previous Results -->
+<div class="lg:col-span-2 space-y-4">
+<div class="glass-panel p-4 rounded shadow-2xl border border-outline-variant/10">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Last Results</h3>
+<div class="flex flex-col gap-3" id="history-container">
+<!-- Filled by JS -->
+</div>
+</div>
+</div>
+<!-- Center: Betting Table -->
+<div class="lg:col-span-8">
+<div class="glass-panel p-1 rounded-xl shadow-2xl border border-outline-variant/10 relative">
+<div class="absolute inset-0 z-40 bg-black/40 hidden flex items-center justify-center rounded-xl pointer-events-none" id="table-overlay"></div>
+<!-- Table Layout -->
+<div class="grid grid-cols-13 gap-px bg-outline-variant/20 rounded overflow-hidden">
+<!-- Zero -->
+<div class="bet-spot col-span-1 row-span-3 bg-tertiary-container/20 flex items-center justify-center border border-tertiary/30 min-h-[120px] md:min-h-[180px] hover:bg-tertiary-container/40 transition-colors cursor-pointer group relative" data-bet="0">
+<span class="font-headline text-2xl text-tertiary font-bold group-hover:scale-110 transition-transform">0</span>
+</div>
+<!-- Numbers -->
+<div class="col-span-12 grid grid-cols-12 grid-rows-3 gap-px bg-outline-variant/10">
+<!-- JS will generate these for brevity and cleaner logic if needed, but keeping manual to preserve user's look -->
+<!-- Values: 1..36 -->
+<!-- Row 3 (Top) -->
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="3">3</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="6">6</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="9">9</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="12">12</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="15">15</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="18">18</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="21">21</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="24">24</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="27">27</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="30">30</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="33">33</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="36">36</div>
+<!-- Row 2 (Mid) -->
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="2">2</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="5">5</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="8">8</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="11">11</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="14">14</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="17">17</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="20">20</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="23">23</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="26">26</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="29">29</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="32">32</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="35">35</div>
+<!-- Row 1 (Bottom) -->
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="1">1</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="4">4</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="7">7</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="10">10</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="13">13</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="16">16</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="19">19</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="22">22</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="25">25</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="28">28</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold relative" data-bet="31">31</div>
+<div class="bet-spot bg-surface-container-low aspect-square flex items-center justify-center hover:bg-surface-bright transition-colors cursor-pointer font-headline font-bold text-secondary-container relative" data-bet="34">34</div>
+</div>
+</div>
+<!-- Outside Bets -->
+<div class="grid grid-cols-6 gap-px mt-px bg-outline-variant/20">
+<div class="bet-spot bg-surface-container-low py-4 text-center hover:bg-surface-bright cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-on-surface-variant relative" data-bet="1to18">1 to 18</div>
+<div class="bet-spot bg-surface-container-low py-4 text-center hover:bg-surface-bright cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-on-surface-variant relative" data-bet="even">Even</div>
+<div class="bet-spot bg-secondary-container/20 py-4 text-center hover:bg-secondary-container/40 cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-secondary relative" data-bet="red">Red</div>
+<div class="bet-spot bg-surface-container-highest py-4 text-center hover:bg-surface-bright cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-on-surface relative" data-bet="black">Black</div>
+<div class="bet-spot bg-surface-container-low py-4 text-center hover:bg-surface-bright cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-on-surface-variant relative" data-bet="odd">Odd</div>
+<div class="bet-spot bg-surface-container-low py-4 text-center hover:bg-surface-bright cursor-pointer font-label text-[10px] uppercase font-bold tracking-widest text-on-surface-variant relative" data-bet="19to36">19 to 36</div>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+<!-- Chips -->
+<div class="flex items-center gap-4 bg-surface-container-lowest/50 p-3 rounded-full border border-outline-variant/10" id="chip-selector">
+<button class="chip-btn w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-primary/40 bg-surface-bright flex items-center justify-center text-[10px] font-bold text-primary shadow-lg transition-all hover:scale-110" data-value="10">10</button>
+<button class="chip-btn w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-primary bg-primary text-on-primary flex items-center justify-center text-xs font-extrabold shadow-lg transition-all hover:scale-110 chip-active" data-value="100">100</button>
+<button class="chip-btn w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-secondary-container bg-surface-bright flex items-center justify-center text-[10px] font-bold text-secondary transition-all hover:scale-110" data-value="500">500</button>
+<button class="chip-btn w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-tertiary bg-surface-bright flex items-center justify-center text-[10px] font-bold text-tertiary transition-all hover:scale-110" data-value="1000">1K</button>
+</div>
+<div class="flex gap-4">
+<button class="px-6 md:px-8 py-3 md:py-4 bg-surface-container-high text-on-surface-variant font-label text-xs md:text-sm uppercase tracking-widest font-bold border border-outline-variant/30 hover:bg-surface-bright transition-all active:scale-95" id="undo-btn">Deshacer</button>
+<button class="px-8 md:px-12 py-3 md:py-4 glossy-gold text-on-primary font-headline text-base md:text-lg uppercase tracking-tighter font-extrabold shadow-2xl active:scale-95 transition-all" id="spin-btn">GIRAR</button>
+</div>
+</div>
+</div>
+<!-- Right: Stats -->
+<div class="lg:col-span-2 space-y-4">
+<div class="glass-panel p-4 rounded shadow-2xl border border-outline-variant/10">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-6">Hot Numbers</h3>
+<div class="space-y-4" id="hot-numbers">
+<!-- Simulated Stats -->
+<div class="relative pt-1">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold text-secondary-container font-headline">32</span>
+<span class="text-[10px] font-bold text-primary">12%</span>
+</div>
+<div class="overflow-hidden h-1.5 text-xs flex rounded bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width:75%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/10">
+<h3 class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-4">Color Dist.</h3>
+<div class="flex h-4 rounded-full overflow-hidden">
+<div class="bg-secondary-container w-[48%]"></div>
+<div class="bg-tertiary-container w-[4%]"></div>
+<div class="bg-surface-container-highest w-[48%]"></div>
+</div>
+<div class="flex justify-between mt-2 text-[8px] font-bold uppercase tracking-widest">
+<span class="text-secondary">48%</span>
+<span class="text-tertiary">4%</span>
+<span class="text-on-surface-variant">48%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Extra Bento Cards -->
+<section class="max-w-7xl mx-auto px-4 mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-panel p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="text-primary material-symbols-outlined mb-4 text-4xl">workspace_premium</span>
+<h4 class="font-headline text-3xl font-bold mb-4">Privilegio Carbon</h4>
+<p class="text-on-surface-variant max-w-md leading-relaxed">Acceso exclusivo a mesas de alta fidelidad con límites de apuesta aumentados y crupieres VIP en vivo.</p>
+</div>
+<div class="absolute right-[-10%] top-[-10%] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px] text-primary">diamond</span>
+</div>
+<div class="mt-8">
+<button class="text-primary font-label text-xs uppercase tracking-widest font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                    Ver Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col items-center text-center justify-center">
+<span class="text-tertiary material-symbols-outlined text-5xl mb-4" data-weight="fill">verified_user</span>
+<h4 class="font-headline text-xl font-bold mb-2">Juego Seguro</h4>
+<p class="text-on-surface-variant text-xs leading-relaxed">Encriptación de grado militar para todas sus transacciones de Carbon Elite.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-[#131313]/90 backdrop-blur-md border-t border-[#4d4635]/20 md:hidden">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] scale-110" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-600 active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+    // Game State
+    let state = {
+        balance: 25400,
+        selectedChipValue: 100,
+        bets: {}, // { spotId: amount }
+        isSpinning: false,
+        history: [32, 15, 0, 19],
+        lang: 'ES'
+    };
+
+    // Translations
+    const i18n = {
+        ES: { status: 'Listo para apostar', spinning: 'La ruleta gira...', winner: 'Ganador: ', insufficient: 'Saldo insuficiente', undo: 'Deshacer', spin: 'GIRAR' },
+        EN: { status: 'Place your bets', spinning: 'Roulette spinning...', winner: 'Winner: ', insufficient: 'Insufficient balance', undo: 'Undo', spin: 'SPIN' },
+        PT: { status: 'Faça suas apostas', spinning: 'Roleta girando...', winner: 'Vencedor: ', insufficient: 'Saldo insuficiente', undo: 'Desfazer', spin: 'GIRAR' }
+    };
+
+    // Elements
+    const balanceEl = document.getElementById('balance-display');
+    const statusEl = document.getElementById('status-text');
+    const wheelEl = document.getElementById('roulette-wheel');
+    const winDisplayEl = document.getElementById('winning-number-display');
+    const ballEl = document.getElementById('wheel-ball');
+    const spinBtn = document.getElementById('spin-btn');
+    const undoBtn = document.getElementById('undo-btn');
+    const tableOverlay = document.getElementById('table-overlay');
+    const historyContainer = document.getElementById('history-container');
+    const langSelector = document.getElementById('lang-selector');
+
+    // Init
+    function init() {
+        updateBalanceUI();
+        updateHistoryUI();
+        setupEventListeners();
+    }
+
+    function setupEventListeners() {
+        // Chip selection
+        document.querySelectorAll('.chip-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('chip-active'));
+                btn.classList.add('chip-active');
+                state.selectedChipValue = parseInt(btn.dataset.value);
+            });
+        });
+
+        // Betting spots
+        document.querySelectorAll('.bet-spot').forEach(spot => {
+            spot.addEventListener('click', (e) => {
+                if (state.isSpinning) return;
+                const spotId = spot.dataset.bet;
+                placeBet(spotId, state.selectedChipValue, spot);
+            });
+        });
+
+        // Action buttons
+        spinBtn.addEventListener('click', handleSpin);
+        undoBtn.addEventListener('click', handleUndo);
+
+        // Lang
+        langSelector.addEventListener('change', (e) => {
+            state.lang = e.target.value;
+            updateStatusText(i18n[state.lang].status);
+        });
+    }
+
+    function placeBet(spotId, amount, element) {
+        const totalPending = Object.values(state.bets).reduce((a, b) => a + b, 0);
+        if (state.balance < totalPending + amount) {
+            alert(i18n[state.lang].insufficient);
+            return;
+        }
+
+        state.bets[spotId] = (state.bets[spotId] || 0) + amount;
+        
+        // Visual chip marker
+        let marker = element.querySelector('.bet-marker');
+        if (!marker) {
+            marker = document.createElement('div');
+            marker.className = 'bet-marker';
+            element.appendChild(marker);
+        }
+        marker.innerText = state.bets[spotId] >= 1000 ? (state.bets[spotId]/1000).toFixed(1) + 'K' : state.bets[spotId];
+        
+        updateBalanceUI();
+    }
+
+    function handleUndo() {
+        if (state.isSpinning) return;
+        state.bets = {};
+        document.querySelectorAll('.bet-marker').forEach(m => m.remove());
+        updateBalanceUI();
+    }
+
+    async function handleSpin() {
+        if (state.isSpinning) return;
+        const totalBet = Object.values(state.bets).reduce((a, b) => a + b, 0);
+        if (totalBet === 0) return;
+
+        state.isSpinning = true;
+        spinBtn.disabled = true;
+        undoBtn.disabled = true;
+        tableOverlay.classList.remove('hidden');
+        updateStatusText(i18n[state.lang].spinning);
+
+        // Visual animation
+        wheelEl.classList.add('spinning');
+        winDisplayEl.classList.remove('opacity-0');
+        winDisplayEl.classList.add('opacity-10');
+        winDisplayEl.innerText = '?';
+
+        try {
+            // Simulated Supabase RPC call: 'process_bet_secure'
+            // In real app: const { data, error } = await supabase.rpc('process_bet_secure', { bets: state.bets });
+            
+            // Mocking the result for the functional requirement
+            const result = await mockBetRPC(state.bets);
+            
+            setTimeout(() => {
+                // Finalize animation
+                wheelEl.classList.remove('spinning');
+                state.isSpinning = false;
+                spinBtn.disabled = false;
+                undoBtn.disabled = false;
+                tableOverlay.classList.add('hidden');
+
+                // Update results
+                state.balance = result.new_balance;
+                state.history.unshift(result.winning_number);
+                if (state.history.length > 5) state.history.pop();
+
+                // UI feedback
+                winDisplayEl.innerText = result.winning_number;
+                winDisplayEl.classList.remove('opacity-10');
+                winDisplayEl.classList.add('opacity-100');
+                updateStatusText(`${i18n[state.lang].winner} ${result.winning_number}`);
+                updateBalanceUI();
+                updateHistoryUI();
+                
+                // Clear table after 3s
+                setTimeout(() => {
+                    handleUndo();
+                    winDisplayEl.classList.add('opacity-0');
+                    updateStatusText(i18n[state.lang].status);
+                }, 3000);
+
+            }, 3000);
+
+        } catch (err) {
+            console.error(err);
+            state.isSpinning = false;
+            tableOverlay.classList.add('hidden');
+            updateStatusText('Error en servidor');
+        }
+    }
+
+    function mockBetRPC(bets) {
+        return new Promise((resolve) => {
+            const winNum = Math.floor(Math.random() * 37);
+            const totalBet = Object.values(bets).reduce((a, b) => a + b, 0);
+            
+            // Calculate payout (simplified)
+            let payout = 0;
+            for (let [spot, amount] of Object.entries(bets)) {
+                if (spot == winNum) payout += amount * 35; // Single
+                if (spot === 'red' && isRed(winNum)) payout += amount * 2;
+                if (spot === 'black' && isBlack(winNum)) payout += amount * 2;
+                if (spot === 'even' && winNum !== 0 && winNum % 2 === 0) payout += amount * 2;
+                if (spot === 'odd' && winNum !== 0 && winNum % 2 !== 0) payout += amount * 2;
+                if (spot === '1to18' && winNum >= 1 && winNum <= 18) payout += amount * 2;
+                if (spot === '19to36' && winNum >= 19 && winNum <= 36) payout += amount * 2;
+            }
+
+            resolve({
+                winning_number: winNum,
+                new_balance: state.balance - totalBet + payout,
+                payout: payout
+            });
+        });
+    }
+
+    function isRed(num) {
+        const reds = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+        return reds.includes(num);
+    }
+
+    function isBlack(num) {
+        return num !== 0 && !isRed(num);
+    }
+
+    function updateBalanceUI() {
+        const totalPending = Object.values(state.bets).reduce((a, b) => a + b, 0);
+        balanceEl.innerText = `$${(state.balance - totalPending).toLocaleString()}`;
+    }
+
+    function updateHistoryUI() {
+        historyContainer.innerHTML = '';
+        state.history.forEach(num => {
+            const colorClass = num === 0 ? 'text-tertiary' : (isRed(num) ? 'text-secondary-container' : 'text-on-surface');
+            const colorLabel = num === 0 ? 'Zero' : (isRed(num) ? 'Red' : 'Black');
+            const bgClass = num === 0 ? 'bg-tertiary-container/10 border border-tertiary/20' : 'bg-surface-container-lowest';
+            
+            const div = document.createElement('div');
+            div.className = `flex justify-between items-center ${bgClass} p-2 rounded`;
+            div.innerHTML = `
+                <span class="font-headline text-lg ${colorClass} font-bold">${num}</span>
+                <span class="text-[8px] uppercase font-bold text-on-surface-variant">${colorLabel}</span>
+            `;
+            historyContainer.appendChild(div);
+        });
+    }
+
+    function updateStatusText(txt) {
+        statusEl.innerText = txt;
+    }
+
+    init();
+</script>
+</body></html>
