@@ -1,1 +1,268 @@
-{{DATA:SCREEN:SCREEN_12}}
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MIDNIGHT ROYALE - Lobby Maestro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary": "#3c2f00",
+                        "surface-tint": "#e9c349",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-fixed": "#00210d",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-container": "#554300",
+                        "tertiary-container": "#7fc290",
+                        "primary-fixed": "#ffe088",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-secondary-fixed": "#410000",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e5e2e1",
+                        "outline": "#99907c",
+                        "on-secondary-fixed-variant": "#920703",
+                        "surface-dim": "#131313",
+                        "secondary-container": "#920703",
+                        "surface-bright": "#3a3939",
+                        "on-primary-fixed-variant": "#574500",
+                        "outline-variant": "#4d4635",
+                        "on-tertiary-container": "#055029",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "inverse-primary": "#735c00",
+                        "tertiary-fixed": "#adf2bc",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "tertiary": "#9adeaa",
+                        "primary-fixed-dim": "#e9c349",
+                        "primary": "#f2ca50",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary-container": "#d4af37",
+                        "on-secondary": "#690000",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary": "#00391a",
+                        "on-surface-variant": "#d0c5af",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#ff9a8a"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .glass-card {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .gold-gradient {
+            background: linear-gradient(45deg, #f2ca50, #d4af37);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary">
+<div class="noise-overlay"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md shadow-[0_4px_30px_rgba(212,175,55,0.05)] h-18">
+<div class="flex justify-between items-center px-6 h-full w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a sophisticated man in a dark tuxedo with cinematic lighting and soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEMnZFe0bCAqFSRp_KfA5g-fKjZ2qG53lkjLWauPc9wVAtHJ9DT525A1BX29gfK-cJZ98roZvLxarBjOciB7RuchnTKtIxFUO4U2BGpg8TN6_y2LWelo_C1ol5sSBZUIOzThoLiloJFBATB6sPhFN8pPupXo967ZAJAy5JCRmakghMLkRh_7qRJZtGHmzz_DLKl_uYfBCO0AW1iiuK2ubnybswWT-QKBdhI9Sg65xkrvbQKBZivb7jPvRgvvP7JivQW-yqcedsamDt"/>
+</div>
+<span class="font-serif italic text-xl text-amber-500 drop-shadow-sm">MIDNIGHT ROYALE</span>
+</div>
+<div class="bg-surface-container-low px-4 py-1.5 rounded-lg border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-serif tracking-widest text-sm uppercase text-amber-400">$12,450.00</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-screen-2xl mx-auto">
+<!-- Hero Promotion -->
+<section class="relative w-full aspect-[21/9] rounded-xl overflow-hidden mb-12 shadow-2xl">
+<img alt="VIP Lounge" class="w-full h-full object-cover" data-alt="Luxurious dark casino interior with golden glowing chandeliers, velvet textures, and a high-stakes atmosphere in deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNlSFCABMALWQxwk455r3p87Uq6Ltm62Uwi246L1VXj5PHar5VnPx7c6b4s5gAJztYLnLDnO9N3XvMohS1-eYSpT5_usG48_UJO9ABrzI0oJKAKDm_PDhfkMmP_LCVRPajLtPxTmyCIcQ8qrbayhcwaxsKKeaDsczLSDnnM6O_nrpz6cqfE25w1iiTwgSvPpQxM2vqcTATCtPTADYtHzaJ8PlPYlGhaAwlooGiovEyWo0jWSTQ0Mmjpmk-AVYn8egoFmlrPNaOpVnQ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/60 to-transparent flex flex-col justify-center px-12">
+<h2 class="font-serif text-display-lg text-primary mb-2 leading-tight max-w-lg">ELITE<br/>REWARDS</h2>
+<p class="text-on-surface-variant font-body mb-6 tracking-wide max-w-md">Vive la exclusividad del Nivel Diamante. Bonos semanales de hasta $5,000.</p>
+<button class="gold-gradient text-on-primary font-bold py-3 px-8 rounded-lg w-fit shadow-lg shadow-primary/20 hover:brightness-110 transition-all uppercase tracking-widest text-sm">
+                    Reclamar Ahora
+                </button>
+</div>
+</section>
+<!-- Category Carousel -->
+<section class="mb-12 overflow-x-auto hide-scrollbar">
+<div class="flex gap-4 min-w-max pb-4">
+<div class="flex flex-col items-center gap-2 px-6 py-4 rounded-xl bg-primary/10 border border-primary/20 group cursor-pointer transition-all hover:bg-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-serif text-sm text-primary uppercase tracking-widest">Inicio</span>
+</div>
+<div class="flex flex-col items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high border border-outline-variant/10 group cursor-pointer transition-all hover:border-primary/40">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl group-hover:text-primary transition-colors">casino</span>
+<span class="font-serif text-sm text-on-surface-variant uppercase tracking-widest group-hover:text-on-surface">Slots</span>
+</div>
+<div class="flex flex-col items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high border border-outline-variant/10 group cursor-pointer transition-all hover:border-primary/40">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl group-hover:text-primary transition-colors">style</span>
+<span class="font-serif text-sm text-on-surface-variant uppercase tracking-widest group-hover:text-on-surface">Cartas</span>
+</div>
+<div class="flex flex-col items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high border border-outline-variant/10 group cursor-pointer transition-all hover:border-primary/40">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl group-hover:text-primary transition-colors">poker_chip</span>
+<span class="font-serif text-sm text-on-surface-variant uppercase tracking-widest group-hover:text-on-surface">Ruleta</span>
+</div>
+<div class="flex flex-col items-center gap-2 px-6 py-4 rounded-xl bg-surface-container-high border border-outline-variant/10 group cursor-pointer transition-all hover:border-primary/40">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl group-hover:text-primary transition-colors">workspace_premium</span>
+<span class="font-serif text-sm text-on-surface-variant uppercase tracking-widest group-hover:text-on-surface">VIP</span>
+</div>
+</div>
+</section>
+<!-- Featured Games: Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Game 1 Large -->
+<div class="md:col-span-2 relative group rounded-xl overflow-hidden aspect-video border border-outline-variant/10 shadow-xl">
+<img alt="Ruleta Noir" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Elegant close-up of a luxury mahogany roulette wheel spinning with a single ivory ball, gold numbers glowing under spotlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAprWuRRiRteBdSyFPNKYKBKOHlmmP3y-CKyndIxzhx9XIGNwM0JRgnMPpM50qsR_HMQ9ZZH3D7tZNPg2nJY6wF78EkFlGTF9E3ez3dRrv3omKVc7krHAiHRE5F0r2wk02wyhosVXah-ZDYc1AOukF0CuMCdWlC8jaskW0tU5e2jMD9tQH-ww66-_Ax5i7IIN0JBo6DEjIM_sZR0I9WbzRg5jwCfm7AazJkEUvut8Q94v2VhfReo9ZGenVhgbcg2Yw2TMsmFJPrKyWx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-widest">En Vivo</span>
+<span class="bg-surface-bright/50 backdrop-blur-md text-on-surface text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-widest">Premium</span>
+</div>
+<h3 class="font-serif text-3xl text-on-surface mb-2">Ruleta Noir</h3>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm font-body">Mesa Privada • $10 - $5,000</span>
+<button class="gold-gradient text-on-primary p-3 rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Game 2 Vertical -->
+<div class="relative group rounded-xl overflow-hidden aspect-[3/4] md:aspect-auto border border-outline-variant/10 shadow-xl">
+<img alt="Slot Ancient Sphinx" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Stylized gold sphinx head with sapphire eyes, ancient egyptian artifacts floating in dark desert night with mystical golden dust" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzU-NGs19BrcaG7Vgwbde5TWulaXtwSCDz_AYX8Ugh_F-SiW4ovUsg3tH-VSxpoqtUkYIrFTNRKAcy2UR7-U1SXY4eTwYVnN4BvdNCbJxp1h2GmemUu1TAffJoEOvH2cSVMn78kue36N4ArcEvtOik8C2QLOWj4DejzPk-sE4hXazByegQok-kzSM_7XR2vaZQbKL3FRFteD2ba9-r3kJ4akRnCR2aP7V9agP7j_stCVw5buoBZlxWRhRblwEhgvgk9SEqUqyu6Ay8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8">
+<span class="bg-primary-container text-on-primary-container text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-widest w-fit mb-2">Jackpot</span>
+<h3 class="font-serif text-2xl text-on-surface mb-1">Ancient Sphinx</h3>
+<p class="text-primary font-serif font-bold text-lg mb-4">$45,210.00</p>
+<button class="w-full bg-surface-container-highest border border-outline-variant/30 text-on-surface py-3 rounded uppercase font-bold tracking-widest text-xs hover:bg-surface-bright transition-colors">
+                        Girar Ahora
+                    </button>
+</div>
+</div>
+<!-- More Games (Smaller Grid) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:col-span-3">
+<div class="relative rounded-lg overflow-hidden aspect-square border border-outline-variant/10 group cursor-pointer">
+<img alt="Blackjack Diamond" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Top down view of black playing cards with gold foil accents on a deep green velvet table, minimalist and moody" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmxlMR57hDJ-Dzd5Ym-sa1eNA2lhDJu63poSyaRGx3XCGXVTLRJx8ONxFHJI2KfNLf9lsSWaJosSNoODhDnsPHK_Y23PNKjqa46IYCU_dEwrMwe0GofL-85zAcg0hVHqCfQOxSP5O9dzECPDpZCvY4zgpvTtRISG290vhCch_zsp02Jt6Apa2fKrx_i0CqRdxngmMFc9p5tF3W7SwArnLswI6bBQx9_17JK2Nvd4RuM8LHBPWouzVSi5Xm_zGegdFwEbWjQYrlmb6K"/>
+<div class="absolute inset-0 bg-black/40 flex items-end p-4">
+<span class="font-serif text-sm text-on-surface">Blackjack Diamond</span>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden aspect-square border border-outline-variant/10 group cursor-pointer">
+<img alt="Mega Dice" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Crystal translucent red dice frozen in mid-air against a pitch black background with subtle gold light reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc0_LiiuhlxKS_CHQXYYW7Xil2dDxlMbuL-lE7dRxh_iMuUivfMVPY280jh7kRQFScDlztiJWAkcD2crNz-Q345GA5bMu0ZOWqcbF2z03eyOrenAaLebIVWPbTnf3BBIoReVL9TUxm99vniR_FCVeoSWiaA-E4teXlQYZxiF__kO0---3G1sfOh0HGXkkENxYbbi63XdFMzfvftnRgc276ulU5MvXY4R_O1W9Yv3XgXNlmX2myf38ffvLi3UswCF5neabDjKjuHP5n"/>
+<div class="absolute inset-0 bg-black/40 flex items-end p-4">
+<span class="font-serif text-sm text-on-surface">Mega Dice Royale</span>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden aspect-square border border-outline-variant/10 group cursor-pointer">
+<img alt="Baccarat" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Luxury baccarat game setup with professional hands dealing cards on an elegant dark table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcxokhPY7oPom89sHzJcm0cCyjbEbwvDdk5bIiETch1KLH_9AHA4M7LmBsRyykj1T5U8LolcVhjS1IR1-ZlX102oQX4uY5jyvHGaqwy1HDO0wlPSBxtuKhJ2JDtzNezTKczpPGkGkHyJP4Oq74enlQMIAsIJ7j7CKTDVood__XNH1t-BxMPq2FntX25hy0-oaGMko4C0fEQsYNM2WyetI_J_HYk78xkMU238Ju0-DPnh1IjfUKPCo-hSn1-gtC_DRh22NTqrorcPZx"/>
+<div class="absolute inset-0 bg-black/40 flex items-end p-4">
+<span class="font-serif text-sm text-on-surface">Baccarat Gold</span>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden aspect-square border border-outline-variant/10 group cursor-pointer">
+<img alt="Poker Masters" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A pile of high-value casino chips in gold and black with blurred poker cards in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd4VMCHhKgPZsPAX_nY12m6zmltwQeITu96e8ksRi9wdgDPB1bGGNPSbwBckLhSabF3N4aSCAikzB-AW2J8J0u69eUCE7sJgguTwsXGGu94vDOPY-4G-hGL7rjIYPY9FEcuUyE0KEizi4ZfCQ56i_QR09Dj0TLi4vog64v6SZjifWS1Vt8ZK_EPUzvxNv_DRElrC4yzBBXdWHnOUqASO1hFIq8rXvv7lib0hS1BYs3beZQooCQwYLPODk6flMLVQQl65LNYikhItO7"/>
+<div class="absolute inset-0 bg-black/40 flex items-end p-4">
+<span class="font-serif text-sm text-on-surface">Poker Masters</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 p-12 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">account_balance</span>
+<h4 class="font-serif text-display-lg text-on-surface tracking-tight">1.2M+</h4>
+<p class="text-on-surface-variant font-body uppercase text-xs tracking-widest">Pagos Realizados</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">verified_user</span>
+<h4 class="font-serif text-display-lg text-on-surface tracking-tight">99.9%</h4>
+<p class="text-on-surface-variant font-body uppercase text-xs tracking-widest">Seguridad Blindada</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">diamond</span>
+<h4 class="font-serif text-display-lg text-on-surface tracking-tight">VIP</h4>
+<p class="text-on-surface-variant font-body uppercase text-xs tracking-widest">Acceso Exclusivo</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only Logic via MD:HIDDEN) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-neutral-950 border-t border-amber-900/20 z-50 md:hidden shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
+<button class="flex flex-col items-center justify-center text-amber-400 brightness-110 scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-serif text-[10px] font-bold tracking-tight">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-neutral-600 grayscale hover:text-amber-200 transition-all">
+<span class="material-symbols-outlined text-2xl">casino</span>
+<span class="font-serif text-[10px] font-bold tracking-tight">Slots</span>
+</button>
+<button class="flex flex-col items-center justify-center text-neutral-600 grayscale hover:text-amber-200 transition-all">
+<span class="material-symbols-outlined text-2xl">style</span>
+<span class="font-serif text-[10px] font-bold tracking-tight">Cartas</span>
+</button>
+<button class="flex flex-col items-center justify-center text-neutral-600 grayscale hover:text-amber-200 transition-all">
+<span class="material-symbols-outlined text-2xl">poker_chip</span>
+<span class="font-serif text-[10px] font-bold tracking-tight">Ruleta</span>
+</button>
+<button class="flex flex-col items-center justify-center text-neutral-600 grayscale hover:text-amber-200 transition-all">
+<span class="material-symbols-outlined text-2xl">workspace_premium</span>
+<span class="font-serif text-[10px] font-bold tracking-tight">VIP</span>
+</button>
+</nav>
+<!-- Language Selector Floating (Mobile Friendly) -->
+<div class="fixed bottom-24 right-6 z-40">
+<div class="bg-neutral-950/80 backdrop-blur-xl border border-primary/20 p-2 rounded-full flex flex-col gap-3 shadow-2xl">
+<button class="w-8 h-8 rounded-full overflow-hidden border border-primary/40 brightness-110"><img alt="ES" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaN7veogHYMvszjQd-WW8ofo6Nc2DrR0M5EK8dbnauy_XLOIOjkL5kXeG34oahsemOt88EOP6mxE274T4Ua-lAhd4L1muqvo7YGjNGG0cOFrxPCWz59BqwhF1rGtbiZhrBrFsEZ-bRIrDeDdYqxW2-HFsb7zy4ychPYJRgdsgBGKWAIL85rFTvuxFgVVeKTnciBiT9nrgTF3teNyppd-7dMFyqY9aU3icx9y0S8X6fRfKv0dYNQdcvOTT5EQ5K6cYWJw6BeOj_-xQA"/></button>
+<button class="w-8 h-8 rounded-full overflow-hidden opacity-40 hover:opacity-100 transition-opacity"><img alt="EN" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOMNqtQrai-GIvjZnhOvqxXmwm3tkcDtw9WX1U_IljgCHzHHD3f5T82tQzKh0MkAHoMwH3EKdILo-myqRsBKjOVq_NbIIWmgcAAdk71wgIEIfXTlcwAWW6SMPgI43zOjee2RZyb-vpnp5n6mUCXqRtZ6cFuEnJE2BxX8N8eiYMujRU-t1R3F7rJUgQ9vE4gLve7VmXUKf2MtxlnigMdHyNqUWOggWN8-WohaEGp9etKltBBrNtEC0WsCMyHIKMcZBJDKn9i56r0qsj"/></button>
+<button class="w-8 h-8 rounded-full overflow-hidden opacity-40 hover:opacity-100 transition-opacity"><img alt="PT" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABw_eubvh0N376GWQSHF6aY1172VBdbTfFbs11ryuZBDe51578rGr7QvW4E-cuJ64SLEeyoe-DMLs1gW_RDImfG6ZWsFz7ipQ8jTfhsdvyBGa1L61GyL66XvKw7Rfj0WxvPeDrCTOQmjifeUOBd3Fs_jfoykyBC7iaB1Dd2vw9FriIqs0xhux8zRbWgVzfFxmyGUIj0r9UNcWxUVZDcmYRuEc_BXx7SWPPiz7YGW1ELqVrvfEb_45ggBy7mPDmfQGpmpR2AoDCkFTM"/></button>
+</div>
+</div>
+</body></html>
