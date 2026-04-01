@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOIR CASINO - Ruleta Élite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "inverse-primary": "#735c00",
+                        "on-secondary-fixed-variant": "#920703",
+                        "tertiary": "#9adeaa",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#adf2bc",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#131313",
+                        "secondary-container": "#920703",
+                        "on-background": "#e5e2e1",
+                        "outline": "#99907c",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "background": "#131313",
+                        "primary": "#f2ca50",
+                        "surface-tint": "#e9c349",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-tertiary-container": "#055029",
+                        "on-tertiary": "#00391a",
+                        "on-secondary-container": "#ff9a8a",
+                        "on-secondary-fixed": "#410000",
+                        "tertiary-container": "#7fc290",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#ffdad4",
+                        "on-secondary": "#690000",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#4d4635",
+                        "secondary": "#ffb4a8",
+                        "on-surface-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "primary-container": "#d4af37",
+                        "on-primary": "#3c2f00",
+                        "error": "#ffb4ab"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .noir-gradient-gold {
+            background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%);
+        }
+        .roulette-wheel-container {
+            perspective: 1000px;
+        }
+        .betting-grid-item {
+            aspect-ratio: 1/1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .betting-grid-item:active {
+            transform: scale(0.95);
+        }
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        body {
+            background-color: #131313;
+            background-image: radial-gradient(circle at 50% 50%, #1c1b1b 0%, #131313 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="bg-[#131313] dark:bg-[#131313] flex justify-between items-center w-full px-6 py-4 border-b border-[#4d4635]/20 shadow-[0_4px_20px_rgba(212,175,55,0.05)] sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center overflow-hidden bg-surface-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Close up of a sophisticated person in high-end evening wear, moody lighting, luxury casino atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOZ8kLxfTsHxe0H46aKD39M4jgbWhobsv8SENOzGprCLpZtK5uzrrUXYIe5ThFlT67vaUGyxFN9fQZJpTp_YfF9yrz-RGjCbRiwlk9LMRPOdcdKV80SMgHZFRyomF1W5XmCg7EhaRkzXuDYXRiy9NxURZ90_HU9QBchABCG_hTzSMQ4N6Q_mKmUOYBCHArN--BMIC0ThI_xcURhX6ENSl6zGvckEqZAAFwLLuj5KRtruNwjQ-2IiFdIgNiy4PrIo5sF2Fl4H6-AnW5"/>
+</div>
+<span class="font-headline font-bold tracking-tight text-2xl italic text-[#f2ca50]">NOIR CASINO</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 items-center mr-4">
+<button class="text-[#f2ca50] font-label text-xs tracking-widest flex items-center gap-2 hover:bg-[#1c1b1b] px-3 py-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">language</span>
+                    ESPAÑOL
+                </button>
+</div>
+<div class="bg-surface-container-high px-4 py-2 rounded border border-outline-variant/20 shadow-inner">
+<span class="font-headline font-bold text-[#f2ca50]">$25,450.00</span>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-8 md:py-12 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Roulette Cylinder Section -->
+<div class="lg:col-span-5 flex flex-col items-center">
+<div class="relative w-full max-w-md aspect-square roulette-wheel-container mb-8">
+<div class="absolute inset-0 rounded-full border-8 border-[#2a2a2a] shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden">
+<img alt="Roulette" class="w-full h-full object-cover opacity-90" data-alt="Luxury mahogany and gold roulette wheel top view, polished wood, high-end casino lighting, shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4GrrzqxmMJhBK5DH_mITnkxUQorOVuVtQAbzn8LtrnMiVLAGTvh2uhB0UeCSUhBEqdmsYH9m_QPzHJt62usU2YZlrhgwpe1K1_1iKFNyYK36CEEYYLJs-mqnv4iBv4VCoZyaH1ndLwRHokXkCgzgNkOyS6QMUtEz6-oheOv-X0WuNTxriAhF3AV3FP7o9bxcVQB3Yex7rC-bfNwV-pRHCKo_7B-V8HxFPDOMpAlAnFVRFujBOD7Uc6akj-toa-ZFyki2NivQlbVCo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<!-- Decorative Golden Rim -->
+<div class="absolute -inset-2 rounded-full border-2 border-primary/20 pointer-events-none"></div>
+<!-- The Winning Number Display -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-24 h-24 rounded-full glass-panel border border-primary/30 flex flex-col items-center justify-center shadow-2xl">
+<span class="font-headline text-4xl font-bold text-primary">32</span>
+<span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">Rojo</span>
+</div>
+</div>
+</div>
+<!-- Last Numbers History -->
+<div class="w-full bg-surface-container-low p-4 rounded-lg border border-outline-variant/10">
+<h3 class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span> Últimos Resultados
+                    </h3>
+<div class="flex gap-2 overflow-x-auto pb-2">
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-secondary-container text-on-surface font-bold">32</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-surface-container-highest text-on-surface font-bold border border-outline-variant/20">15</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-secondary-container text-on-surface font-bold">19</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-surface-container-lowest text-on-surface font-bold border border-tertiary-container/40">0</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-surface-container-highest text-on-surface font-bold border border-outline-variant/20">4</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-secondary-container text-on-surface font-bold">21</div>
+<div class="min-w-[40px] h-10 rounded flex items-center justify-center bg-surface-container-highest text-on-surface font-bold border border-outline-variant/20">2</div>
+</div>
+</div>
+</div>
+<!-- Betting Board Section -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Main Grid -->
+<div class="bg-surface-container-lowest rounded-xl p-1 border border-outline-variant/20 overflow-hidden shadow-2xl">
+<div class="grid grid-cols-13 text-[12px] md:text-sm font-bold text-center">
+<!-- Zero Row -->
+<div class="col-span-1 row-span-3 bg-tertiary-container/20 border border-outline-variant/10 flex items-center justify-center text-tertiary-fixed h-full min-h-[120px] cursor-pointer hover:bg-tertiary-container/30 transition-all">0</div>
+<!-- Numbers Row 3, 6, 9... -->
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">3</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">6</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">9</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">12</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">15</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">18</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">21</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">24</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">27</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">30</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">33</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">36</div>
+<!-- Numbers Row 2, 5, 8... -->
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">2</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">5</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">8</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">11</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">14</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">17</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">20</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">23</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">26</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">29</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">32</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">35</div>
+<!-- Numbers Row 1, 4, 7... -->
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">1</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">4</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">7</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">10</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">13</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">16</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">19</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">22</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">25</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">28</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-surface-container-highest text-on-surface">31</div>
+<div class="betting-grid-item border border-outline-variant/10 bg-secondary-container/40 text-on-surface">34</div>
+</div>
+<!-- Outside Bets Bottom -->
+<div class="grid grid-cols-13 text-[10px] uppercase font-bold tracking-tighter">
+<div class="col-start-2 col-span-4 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors cursor-pointer">1st 12</div>
+<div class="col-span-4 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors cursor-pointer">2nd 12</div>
+<div class="col-span-4 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary transition-colors cursor-pointer">3rd 12</div>
+</div>
+<div class="grid grid-cols-13 text-[10px] uppercase font-bold tracking-tighter">
+<div class="col-start-2 col-span-2 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary cursor-pointer">1-18</div>
+<div class="col-span-2 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary cursor-pointer">Even</div>
+<div class="col-span-2 py-3 border border-outline-variant/10 bg-secondary-container/30 text-secondary hover:bg-secondary-container/50 cursor-pointer">Red</div>
+<div class="col-span-2 py-3 border border-outline-variant/10 bg-surface-container-highest/50 text-on-surface hover:bg-surface-container-highest cursor-pointer">Black</div>
+<div class="col-span-2 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary cursor-pointer">Odd</div>
+<div class="col-span-2 py-3 border border-outline-variant/10 bg-surface-container-low text-on-surface-variant hover:text-primary cursor-pointer">19-36</div>
+</div>
+</div>
+<!-- Control Panel -->
+<div class="glass-panel rounded-xl p-6 border border-primary/10 shadow-lg">
+<div class="flex flex-wrap items-center justify-between gap-6 mb-8">
+<!-- Chip Selector -->
+<div class="flex gap-3">
+<button class="w-12 h-12 rounded-full bg-white/5 border-2 border-primary flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(242,202,80,0.3)] scale-110">10</button>
+<button class="w-12 h-12 rounded-full bg-white/5 border-2 border-secondary-container flex items-center justify-center font-bold text-secondary-fixed-dim hover:scale-105 transition-transform">50</button>
+<button class="w-12 h-12 rounded-full bg-white/5 border-2 border-tertiary-container flex items-center justify-center font-bold text-tertiary-fixed hover:scale-105 transition-transform">100</button>
+<button class="w-12 h-12 rounded-full bg-white/5 border-2 border-primary-container flex items-center justify-center font-bold text-primary-fixed hover:scale-105 transition-transform">500</button>
+</div>
+<!-- Spin Button -->
+<button class="noir-gradient-gold text-on-primary font-headline font-bold text-lg px-12 py-3 rounded tracking-widest shadow-xl hover:opacity-90 active:scale-95 transition-all">
+                            GIRAR
+                        </button>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant border-t border-outline-variant/20 pt-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest">Apuesta Total</span>
+<span class="font-headline font-bold text-xl text-on-surface">$500.00</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant/30 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">undo</span>
+</button>
+<button class="p-2 border border-outline-variant/30 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2 bg-[#1c1b1b]/95 backdrop-blur-md border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] z-50">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-xl px-6 py-1 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-6 py-1 hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Billetera</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-6 py-1 hover:text-[#f2ca50] transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Perfil</span>
+</a>
+</nav>
+<!-- Language Selector Modal (Hidden) -->
+<div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-6 hidden">
+<div class="bg-surface-container rounded-lg w-full max-w-sm border border-outline-variant/30 overflow-hidden">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center">
+<h2 class="font-headline font-bold text-primary uppercase tracking-widest">Idioma</h2>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-2">
+<button class="w-full text-left px-4 py-3 rounded hover:bg-surface-container-high flex justify-between items-center transition-colors">
+<span class="font-medium">Español (ES)</span>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded hover:bg-surface-container-high transition-colors">
+<span class="font-medium text-on-surface-variant">English (US)</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded hover:bg-surface-container-high transition-colors">
+<span class="font-medium text-on-surface-variant">Português (BR)</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

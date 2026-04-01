@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fortune Casino | Management Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f1f",
+                        "secondary": "#ffb4a8",
+                        "error": "#ffb4ab",
+                        "on-primary": "#3c2f00",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-tertiary-fixed": "#00210d",
+                        "outline": "#99907c",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-variant": "#353534",
+                        "on-secondary": "#690000",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-container": "#d4af37",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#4d4635",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#735c00",
+                        "tertiary-container": "#7fc290",
+                        "on-tertiary": "#00391a",
+                        "tertiary": "#9adeaa",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#f2ca50",
+                        "on-secondary-container": "#ff9a8a",
+                        "background": "#131313",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "secondary-container": "#920703",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-container": "#055029",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-fixed": "#adf2bc",
+                        "surface": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#554300",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed": "#410000",
+                        "on-background": "#e5e2e1"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDIQR4A55LmslP4ib2MQi3QHSRYHvDuC7a7sLVf1cfzcoO6jAVBcYqFHekYZCp9Ad5iUX4UOm34bGd8pmpEtNw0yaTPjDwi9GJr2BAfoX-5e1jBovD8DAQ86pQbAVFu4MCo4D_ahjNXi1JkyZ--J9sL0bAwIbMuMQUnf0baVSVK0vLyxDpeiZjxSOSQE28eytcTtZbSWG0xIG0yNP25r-TShm2oCI5CBfRs6kMdWPKy2SBA5IVtPR8yCQCUHzkZGQ3A9uG4sV97qVQp);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.gold-gradient-cta {
+    background: linear-gradient(45deg, #f2ca50, #d4af37)
+    }
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px
+    }
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #131313
+    }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4d4635
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
+<div class="fixed inset-0 grain-overlay z-[9999]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_10px_30px_-15px_rgba(212,175,55,0.1)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-none bg-[#1c1b1b]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f2ca50] cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="text-[#f2ca50] font-serif text-xl tracking-[0.2em] uppercase">FORTUNE CASINO</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 font-serif tracking-widest uppercase text-sm">
+<a class="text-[#d0c5af] hover:text-[#f2ca50] transition-colors duration-300" href="#">Lounge</a>
+<a class="text-[#d0c5af] hover:text-[#f2ca50] transition-colors duration-300" href="#">Wallet</a>
+<a class="text-[#f2ca50] transition-colors duration-300" href="#">Management</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right hidden sm:block">
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Admin Level</p>
+<p class="text-xs font-headline text-primary">SUPERUSER</p>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a sophisticated man in a tuxedo, luxury aesthetic, dark moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiDSOx9DfelXmOswcv71OP3pJfDluquchtGTyNU_VL-Cvd_lnSWH0_aaQAEUNmPy2CCDM7pCc9mJOfHjve3smaze__-3Cj67H0UBHm7y93NYpsfOZF6P4Hf3ViKKLeBUn6EccDaPR9_R5c79sktnhukoTuzYJ-42b5lNyWZD60ZwyWV4MT1oZPL3tjddcaNX9M58WuEv319YRnoxmKXynu2zxIXdg0U-w1pE3unDFuF6UkOIuLhbOxQVE7kbYUfg_Tu-e0WeEKDrjr"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Visible on Large Screens) -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex flex-col h-full w-80 bg-[#131313] border-r border-[#4d4635]/20 shadow-2xl mt-16">
+<div class="p-6 flex flex-col gap-1 border-b border-[#4d4635]/10">
+<h2 class="text-[#f2ca50] font-serif text-lg">Midnight Royale</h2>
+<p class="text-[#d0c5af] opacity-80 text-sm italic">Exclusive Access</p>
+<div class="mt-4 flex items-center justify-between bg-surface-container-low p-3 rounded-lg border border-outline-variant/10">
+<span class="text-xs uppercase tracking-widest text-on-surface-variant">Active Slots</span>
+<span class="text-primary font-headline">12 slots</span>
+</div>
+</div>
+<nav class="flex-1 py-6">
+<ul class="flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">casino</span>
+<span class="font-serif">Lounge</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-serif">Wallet</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#1c1b1b] text-[#f2ca50] border-l-4 border-[#f2ca50] font-serif" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span>Management</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-serif">Invitations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-4 text-[#d0c5af] opacity-80 hover:bg-[#1c1b1b] hover:text-[#f2ca50] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="font-serif">Language</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-6 border-t border-[#4d4635]/10">
+<div class="bg-secondary-container/10 p-4 rounded-lg border border-secondary-container/20">
+<p class="text-secondary text-xs font-bold uppercase tracking-widest mb-1">System Health</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></div>
+<span class="text-[10px] text-tertiary uppercase">All Systems Nominal</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-80 pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Dashboard Header & Stats -->
+<header class="mb-12">
+<h2 class="font-headline text-display-lg text-on-surface mb-2 leading-tight">System Oversight</h2>
+<p class="text-on-surface-variant font-body">SuperAdmin Dashboard &amp; User Control Matrix</p>
+</header>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+<div class="col-span-1 md:col-span-2 bg-surface-container-low p-8 rounded-lg border-l-4 border-primary relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">Total System Credits</p>
+<h3 class="font-headline text-4xl text-primary mb-4">₿ 1,482,905.00</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-1 text-tertiary text-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+4.2% today</span>
+</div>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 opacity-5">
+<span class="material-symbols-outlined text-[120px]">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-8 rounded-lg border border-outline-variant/10">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">Active Users</p>
+<h3 class="font-headline text-4xl text-on-surface mb-1">842</h3>
+<p class="text-[10px] text-on-surface-variant italic">Peak: 1,024 today</p>
+</div>
+<div class="bg-surface-container-high/80 backdrop-blur-md p-8 rounded-lg border border-outline-variant/10 border-b-4 border-secondary-container">
+<p class="text-xs uppercase tracking-[0.2em] text-on-surface-variant mb-2">Pending Approvals</p>
+<h3 class="font-headline text-4xl text-secondary mb-1">12</h3>
+<p class="text-[10px] text-on-surface-variant italic">Priority review required</p>
+</div>
+</div>
+<!-- Management Sections -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-12">
+<!-- User Management Table -->
+<section class="xl:col-span-2">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">group</span>
+<h4 class="font-headline text-2xl">User Registry</h4>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input class="bg-surface-container-lowest border-none border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-sm py-2 pl-2 pr-8 w-48 transition-all duration-300" placeholder="Search UUID..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-2 text-on-surface-variant text-sm">search</span>
+</div>
+<button class="p-2 bg-surface-container-high rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">
+<th class="px-6 py-4">User Identity</th>
+<th class="px-6 py-4">Balance</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-primary">MR</div>
+<div>
+<p class="text-sm font-semibold">Midnight_Royale</p>
+<p class="text-[10px] text-on-surface-variant">ID: 8829-XJ2</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-headline text-primary text-sm">₿ 12,450.00</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/10 text-tertiary uppercase tracking-tighter">Verified</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" title="Adjust Balance">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors" title="Settings">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-secondary">EK</div>
+<div>
+<p class="text-sm font-semibold">Emerald_King</p>
+<p class="text-[10px] text-on-surface-variant">ID: 1104-QL9</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-headline text-primary text-sm">₿ 2,800.50</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container/10 text-secondary uppercase tracking-tighter">Suspended</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-on-surface">VN</div>
+<div>
+<p class="text-sm font-semibold">Velvet_Noir</p>
+<p class="text-[10px] text-on-surface-variant">ID: 9942-BA1</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<p class="font-headline text-primary text-sm">₿ 45,000.00</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-container/10 text-tertiary uppercase tracking-tighter">VIP Active</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">settings</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bg-surface-container-low px-6 py-4 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant">Showing 3 of 842 records</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest text-xs text-on-surface-variant border border-outline-variant/20">Prev</button>
+<button class="px-3 py-1 bg-primary text-on-primary text-xs font-bold">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pending Approvals & Maintenance Sidebar -->
+<section class="flex flex-col gap-8">
+<!-- Pending Approvals -->
+<div class="bg-surface-container p-6 rounded-lg border border-secondary-container/20">
+<div class="flex items-center justify-between mb-6">
+<h5 class="font-headline text-lg text-secondary">Pending Invites</h5>
+<span class="bg-secondary-container text-on-error-container text-[10px] px-2 py-1 rounded font-bold">12 ACTIONABLE</span>
+</div>
+<div class="space-y-4 max-h-[320px] overflow-y-auto custom-scrollbar pr-2">
+<!-- Invite Item -->
+<div class="flex flex-col gap-3 p-4 bg-surface-container-low rounded border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-semibold">valencia_04@luxury.it</p>
+<p class="text-[10px] text-on-surface-variant">Requested 2h ago</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-tertiary-container/20 text-tertiary text-[10px] uppercase font-bold tracking-widest hover:bg-tertiary-container/30 transition-colors">Approve</button>
+<button class="flex-1 py-2 bg-secondary-container/20 text-secondary text-[10px] uppercase font-bold tracking-widest hover:bg-secondary-container/30 transition-colors">Deny</button>
+</div>
+</div>
+<!-- Invite Item -->
+<div class="flex flex-col gap-3 p-4 bg-surface-container-low rounded border border-outline-variant/10 opacity-70">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-semibold">marcos.casino@pt.mail</p>
+<p class="text-[10px] text-on-surface-variant">Requested 5h ago</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-tertiary-container/20 text-tertiary text-[10px] uppercase font-bold tracking-widest hover:bg-tertiary-container/30 transition-colors">Approve</button>
+<button class="flex-1 py-2 bg-secondary-container/20 text-secondary text-[10px] uppercase font-bold tracking-widest hover:bg-secondary-container/30 transition-colors">Deny</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Maintenance Controls -->
+<div class="bg-surface-container-high p-6 rounded-lg border border-outline-variant/20">
+<h5 class="font-headline text-lg text-on-surface mb-6">Maintenance Matrix</h5>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-semibold">Global Bet Lock</p>
+<p class="text-[10px] text-on-surface-variant">Freezes all active tables</p>
+</div>
+<div class="w-12 h-6 bg-surface-container-lowest rounded-full relative cursor-pointer border border-outline-variant/20">
+<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full transition-all"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-semibold">Purge Guest Accounts</p>
+<p class="text-[10px] text-on-surface-variant">Automated daily at 04:00 UTC</p>
+</div>
+<button class="text-primary text-[10px] font-bold uppercase border-b border-primary/40 pb-0.5 tracking-widest">Execute Now</button>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">System Language Override</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-[10px] font-bold bg-primary text-on-primary">EN</button>
+<button class="py-2 text-[10px] font-bold bg-surface-container-lowest text-on-surface-variant hover:text-on-surface">ES</button>
+<button class="py-2 text-[10px] font-bold bg-surface-container-lowest text-on-surface-variant hover:text-on-surface">PT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RPC Integration Hook Preview (Invisible task but visual indicator) -->
+<div class="p-4 rounded-lg bg-[#0e0e0e] border-l-2 border-primary/30 flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#f2ca50]"></div>
+<span class="text-[10px] font-mono text-primary/80">SUPABASE_RPC_CONNECTED::v2.4.0</span>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-[#131313]/90 backdrop-blur-md z-50 border-t border-[#4d4635]/20 shadow-[0_-8px_25px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60 hover:opacity-100 active:translate-y-[-2px] transition-transform" href="#">
+<span class="material-symbols-outlined">home_pin</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter">Lobby</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60 hover:opacity-100 active:translate-y-[-2px] transition-transform" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter">Wallet</span>
+</a>
+<a class="flex flex-col items-center text-[#f2ca50] scale-110 active:translate-y-[-2px] transition-transform" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter">Admin</span>
+</a>
+<a class="flex flex-col items-center text-[#d0c5af] opacity-60 hover:opacity-100 active:translate-y-[-2px] transition-transform" href="#">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-sans text-[10px] uppercase font-bold tracking-tighter">Invites</span>
+</a>
+</nav>
+<!-- Floating Action Button (Supressed based on Management context rules, but included for completeness if needed elsewhere) -->
+<!-- Suppressed: The screen is a detailed management view, FAB is not allowed per instructions. -->
+</body></html>
