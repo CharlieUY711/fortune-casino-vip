@@ -284,4 +284,94 @@
 <span class="material-symbols-outlined text-3xl">chat</span>
 </button>
 </div>
+<script>
+(function(){
+  let saldo=1000, apuesta=10, girando=false;
+
+  // Símbolos por tema — se detecta automáticamente
+  const temas = {
+    sphinx:  ['🦁','🏺','👁️','⭐','💎','🐍','🌙','🔱'],
+    '777':   ['7️⃣','🍒','🍋','🔔','💎','⭐','🍀','🎰'],
+    cyber:   ['🤖','⚡','💻','🔮','🎮','💠','🌐','🔷'],
+    deep:    ['🐠','🐙','⚓','🦑','🐡','🦀','🌊','💎'],
+    galactic:['🚀','⭐','🌙','💫','🛸','🪐','☄️','💎'],
+    jungle:  ['🦁','🐘','🌿','🦋','🍃','🐸','🌺','💎'],
+  };
+
+  function detectarTema(){
+    const url = location.pathname.toLowerCase();
+    for(const t of Object.keys(temas)) if(url.includes(t)) return temas[t];
+    return temas['777'];
+  }
+  const simbolos = detectarTema();
+
+  function rand(){ return simbolos[Math.floor(Math.random()*simbolos.length)]; }
+
+  function showToast(msg, color='#f2ca50'){
+    let t=document.getElementById('_slot_toast');
+    if(!t){
+      t=document.createElement('div');
+      t.id='_slot_toast';
+      t.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);padding:14px 28px;border-radius:10px;font-weight:bold;z-index:9999;font-size:1.2rem;background:#111;border:2px solid #f2ca50;color:#f2ca50;font-family:serif';
+      document.body.appendChild(t);
+    }
+    t.style.color=color; t.style.borderColor=color; t.textContent=msg; t.style.opacity='1';
+    clearTimeout(t._t); t._t=setTimeout(()=>{ t.style.opacity='0'; },3000);
+  }
+
+  function updateUI(){
+    document.querySelectorAll('[data-saldo]').forEach(el=>el.textContent='</html>+saldo.toLocaleString());
+    document.querySelectorAll('[data-apuesta]').forEach(el=>el.textContent='</html>+apuesta.toLocaleString());
+  }
+
+  // Crear o reutilizar display de carretes
+  function getReels(){
+    let container = document.getElementById('_reels');
+    if(!container){
+      container = document.createElement('div');
+      container.id='_reels';
+      container.style.cssText='display:flex;justify-content:center;gap:12px;margin:16px auto;font-size:3rem;background:#0a0a0a;border:2px solid #f2ca5044;border-radius:16px;padding:20px;max-width:300px;letter-spacing:4px';
+      // Insertar antes del primer botón grande
+      const anchor = document.querySelector('button[class*="rounded-full"]') || document.querySelector('button');
+      if(anchor) anchor.parentNode.insertBefore(container, anchor);
+      else document.body.appendChild(container);
+    }
+    return container;
+  }
+
+  function spin(){
+    if(girando||saldo<apuesta){ if(saldo<apuesta) showToast('❌ Saldo insuficiente','#ef4444'); return; }
+    girando=true; saldo-=apuesta; updateUI();
+    const reels=getReels();
+    let ticks=0;
+    const interval=setInterval(()=>{
+      reels.textContent = rand()+' '+rand()+' '+rand();
+      ticks++;
+      if(ticks>20){
+        clearInterval(interval);
+        const r1=rand(), r2=rand(), r3=rand();
+        reels.textContent=r1+' '+r2+' '+r3;
+        let ganancia=0;
+        if(r1===r2&&r2===r3){ ganancia=apuesta*10; showToast('🎰 JACKPOT! +</html>+ganancia); }
+        else if(r1===r2||r2===r3||r1===r3){ ganancia=apuesta*2; showToast('✨ Par! +</html>+ganancia); }
+        else { showToast('😞 Sin suerte, intentá de nuevo','#9ca3af'); }
+        saldo+=ganancia; girando=false; updateUI();
+      }
+    },80);
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    getReels();
+    updateUI();
+    document.querySelectorAll('button').forEach(btn=>{
+      const txt=btn.textContent.trim().toUpperCase();
+      if(['SPIN','GIRAR','JUGAR','TIRAR'].some(k=>txt.includes(k))) btn.addEventListener('click',spin);
+      if(['10','20','25','50','100'].includes(txt)) btn.addEventListener('click',()=>{ apuesta=parseInt(txt); updateUI(); });
+    });
+    // El botón redondo principal (suele ser el de girar)
+    const bigBtn=document.querySelector('button[class*="w-24"],button[class*="w-32"],button[class*="rounded-full"][class*="gold"],button[class*="gold-shimmer"]');
+    if(bigBtn && !bigBtn._bound){ bigBtn.addEventListener('click',spin); bigBtn._bound=true; }
+  });
+})();
+</script>
 </body></html>

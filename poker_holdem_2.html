@@ -317,4 +317,84 @@
             border-radius: 10px;
         }
     </style>
+<script>
+(function(){
+  const PALOS=['♠','♥','♦','♣'], VALS=['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+  let mazo=[], mano=[], comunitarias=[], saldo=1000, pot=0, apuesta=20, fase=0;
+
+  function crearMazo(){
+    mazo=[];
+    for(let p of PALOS) for(let v of VALS) mazo.push(v+p);
+    for(let i=mazo.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[mazo[i],mazo[j]]=[mazo[j],mazo[i]]; }
+  }
+
+  function showToast(msg, color='#f2ca50'){
+    let t=document.getElementById('_pk_toast');
+    if(!t){
+      t=document.createElement('div');
+      t.id='_pk_toast';
+      t.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);padding:14px 28px;border-radius:10px;font-weight:bold;z-index:9999;font-family:serif;font-size:1.1rem;background:#111;border:2px solid '+color+';color:'+color;
+      document.body.appendChild(t);
+    }
+    t.style.color=color; t.style.borderColor=color; t.textContent=msg; t.style.opacity='1';
+    clearTimeout(t._t); t._t=setTimeout(()=>{ t.style.opacity='0'; },3500);
+  }
+
+  function renderCartas(){
+    // Mano del jugador
+    const manoEl = document.querySelector('[data-mano],[class*="hole-cards"],[class*="mano-jugador"]');
+    if(manoEl) manoEl.textContent = mano.join(' ');
+    // Cartas comunitarias
+    const commEl = document.querySelector('[data-community],[class*="community"],[class*="comunitarias"],[class*="board"]');
+    if(commEl) commEl.textContent = comunitarias.join(' ');
+    // Pot y saldo
+    document.querySelectorAll('[data-pot],[class*="pot"]').forEach(el=>{ if(el.tagName!=='BUTTON') el.textContent='Pot: </html>+pot; });
+    document.querySelectorAll('[data-saldo]').forEach(el=>el.textContent='</html>+saldo.toLocaleString());
+  }
+
+  function nuevaMano(){
+    crearMazo(); pot=0; comunitarias=[];
+    mano=[mazo.pop(),mazo.pop()];
+    saldo-=apuesta; pot+=apuesta*2; // blind simple
+    fase=1;
+    renderCartas();
+    showToast('🃏 Mano repartida — Preflop');
+  }
+
+  function call_(){
+    if(saldo<apuesta){ showToast('❌ Sin saldo','#ef4444'); return; }
+    saldo-=apuesta; pot+=apuesta;
+    if(fase===1){ comunitarias=[mazo.pop(),mazo.pop(),mazo.pop()]; fase=2; showToast('🔁 Flop'); }
+    else if(fase===2){ comunitarias.push(mazo.pop()); fase=3; showToast('🔁 Turn'); }
+    else if(fase===3){ comunitarias.push(mazo.pop()); fase=4; showToast('🔁 River'); }
+    else if(fase===4){ resolverMano(); return; }
+    renderCartas();
+  }
+
+  function fold_(){ showToast('🏳️ Te retiraste — Perdiste </html>+pot,'#ef4444'); pot=0; fase=0; renderCartas(); }
+
+  function resolverMano(){
+    // Resultado simplificado (50/50)
+    const gana = Math.random()>0.45;
+    if(gana){ saldo+=pot; showToast('🏆 Ganaste el pot! +</html>+pot,'#f2ca50'); }
+    else { showToast('😞 La casa gana el pot de </html>+pot,'#ef4444'); }
+    pot=0; fase=0; renderCartas();
+  }
+
+  function raise_(){ apuesta=Math.min(apuesta*2, saldo); call_(); }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    renderCartas();
+    document.querySelectorAll('button').forEach(btn=>{
+      const txt=btn.textContent.trim().toUpperCase();
+      if(['DEAL','REPARTIR','NUEVA MANO','JUGAR','NEW HAND','INICIAR'].some(k=>txt.includes(k))) btn.addEventListener('click',nuevaMano);
+      if(['CALL','IGUALAR','VER'].some(k=>txt.includes(k))) btn.addEventListener('click',call_);
+      if(['FOLD','RETIRARSE','PASAR'].some(k=>txt.includes(k))) btn.addEventListener('click',fold_);
+      if(['RAISE','SUBIR','APOSTAR MÁS'].some(k=>txt.includes(k))) btn.addEventListener('click',raise_);
+      if(['CHECK','PASAR'].some(k=>txt.includes(k))) btn.addEventListener('click',()=>{ if(fase>0) call_(); });
+      if(['20','50','100','200','500'].includes(txt)) btn.addEventListener('click',()=>{ apuesta=parseInt(txt); renderCartas(); });
+    });
+  });
+})();
+</script>
 </body></html>

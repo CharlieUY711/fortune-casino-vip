@@ -545,4 +545,29 @@
 
     init();
 </script>
+<script>
+(function(){
+  // Refuerzo: asegurar que los botones de chips funcionen
+  let apuesta = 10;
+  function showToast(msg){
+    let t = document.getElementById('_toast');
+    if(!t){ 
+      t = document.createElement('div');
+      t.id = '_toast';
+      t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1c1a12;border:1px solid #f2ca50;color:#f2ca50;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;font-family:serif';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg; t.style.opacity='1';
+    setTimeout(()=>{ t.style.opacity='0'; }, 3000);
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('button').forEach(btn => {
+      const txt = btn.textContent.trim();
+      if(['10','50','100','500','1000'].includes(txt)){
+        btn.addEventListener('click', ()=>{ apuesta = parseInt(txt); showToast('Apuesta: </html>+txt); });
+      }
+    });
+  });
+})();
+</script>
 </body></html>

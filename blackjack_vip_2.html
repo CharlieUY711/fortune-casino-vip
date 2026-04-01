@@ -302,4 +302,110 @@
 </div>
 </div>
 </aside>
+<script>
+(function(){
+  const PALOS = ['♠','♥','♦','♣'];
+  const VALORES = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+  let mazo=[], manoJugador=[], manoCasa=[], saldo=1000, apuesta=10, enJuego=false;
+
+  function crearMazo(){
+    mazo=[];
+    for(let p of PALOS) for(let v of VALORES) mazo.push({p,v});
+    for(let i=mazo.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[mazo[i],mazo[j]]=[mazo[j],mazo[i]]; }
+  }
+
+  function valorCarta(c){
+    if(['J','Q','K'].includes(c.v)) return 10;
+    if(c.v==='A') return 11;
+    return parseInt(c.v);
+  }
+
+  function sumarMano(mano){
+    let total=0, ases=0;
+    for(let c of mano){ total+=valorCarta(c); if(c.v==='A') ases++; }
+    while(total>21 && ases>0){ total-=10; ases--; }
+    return total;
+  }
+
+  function cartaStr(c){ return c.v+c.p; }
+
+  function renderManos(){
+    const jEl = document.querySelector('[data-mano-jugador],[id*="jugador"],[class*="jugador-cartas"]');
+    const cEl = document.querySelector('[data-mano-casa],[id*="casa"],[class*="casa-cartas"]');
+    const jPts = document.querySelector('[data-pts-jugador],[id*="pts-jugador"]');
+    const cPts = document.querySelector('[data-pts-casa],[id*="pts-casa"]');
+    if(jEl) jEl.textContent = manoJugador.map(cartaStr).join(' ');
+    if(cEl) cEl.textContent = manoCasa.map(cartaStr).join(' ');
+    if(jPts) jPts.textContent = sumarMano(manoJugador);
+    if(cPts) cPts.textContent = sumarMano(manoCasa);
+    document.querySelectorAll('[data-saldo]').forEach(el => el.textContent='</html>+saldo.toLocaleString());
+    document.querySelectorAll('[data-apuesta]').forEach(el => el.textContent='</html>+apuesta.toLocaleString());
+  }
+
+  function showToast(msg, color='#f2ca50'){
+    let t=document.getElementById('_bj_toast');
+    if(!t){
+      t=document.createElement('div');
+      t.id='_bj_toast';
+      t.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);padding:14px 28px;border-radius:10px;font-weight:bold;z-index:9999;font-family:serif;font-size:1.1rem;border:2px solid '+color+';background:#111;transition:opacity 0.3s';
+      document.body.appendChild(t);
+    }
+    t.style.color=color; t.style.borderColor=color; t.textContent=msg; t.style.opacity='1';
+    clearTimeout(t._t); t._t=setTimeout(()=>{ t.style.opacity='0'; },3000);
+  }
+
+  function deal(){
+    if(saldo<apuesta){ showToast('❌ Saldo insuficiente','#ef4444'); return; }
+    crearMazo();
+    saldo-=apuesta;
+    manoJugador=[mazo.pop(),mazo.pop()];
+    manoCasa=[mazo.pop(),mazo.pop()];
+    enJuego=true;
+    renderManos();
+    if(sumarMano(manoJugador)===21){ setTimeout(resolver,500); }
+  }
+
+  function pedir(){
+    if(!enJuego) return;
+    manoJugador.push(mazo.pop());
+    renderManos();
+    if(sumarMano(manoJugador)>21){ showToast('💥 Te pasaste de 21!','#ef4444'); enJuego=false; }
+  }
+
+  function plantarse(){
+    if(!enJuego) return;
+    enJuego=false;
+    // Casa juega
+    while(sumarMano(manoCasa)<17) manoCasa.push(mazo.pop());
+    renderManos();
+    resolver();
+  }
+
+  function resolver(){
+    const pj=sumarMano(manoJugador), pc=sumarMano(manoCasa);
+    let msg, ganancia=0;
+    if(pj>21){ msg='💥 Bust! Perdiste'; }
+    else if(pc>21){ msg='🎉 Casa se pasa! Ganaste'; ganancia=apuesta*2; }
+    else if(pj>pc){ msg='🏆 Ganaste!'; ganancia=apuesta*2; }
+    else if(pj===pc){ msg='🤝 Empate'; ganancia=apuesta; }
+    else { msg='😞 Casa gana'; }
+    saldo+=ganancia;
+    renderManos();
+    showToast(msg + (ganancia>0?' +</html>+ganancia:''), ganancia>0?'#f2ca50':'#ef4444');
+    enJuego=false;
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    renderManos();
+    document.querySelectorAll('button').forEach(btn=>{
+      const txt=btn.textContent.trim().toUpperCase();
+      if(['DEAL','REPARTIR','NUEVA MANO','JUGAR','INICIAR'].some(k=>txt.includes(k))) btn.addEventListener('click',deal);
+      if(['HIT','PEDIR','CARTA'].some(k=>txt.includes(k))) btn.addEventListener('click',pedir);
+      if(['STAND','PLANTARSE','PARAR'].some(k=>txt.includes(k))) btn.addEventListener('click',plantarse);
+      if(['DOUBLE','DOBLAR'].some(k=>txt.includes(k))) btn.addEventListener('click',()=>{ apuesta*=2; pedir(); setTimeout(plantarse,500); });
+      if(['10','25','50','100','500'].includes(txt)) btn.addEventListener('click',()=>{ apuesta=parseInt(txt); renderManos(); });
+    });
+  });
+})();
+</script>
 </body></html>
