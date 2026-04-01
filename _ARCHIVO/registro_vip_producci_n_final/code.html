@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Royale | VIP Membership Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-container": "#554300",
+                        "inverse-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary": "#9adeaa",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#920703",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary": "#00391a",
+                        "tertiary-fixed": "#adf2bc",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-secondary-container": "#ff9a8a",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "on-secondary": "#690000",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "on-background": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "outline": "#99907c",
+                        "secondary-fixed": "#ffdad4",
+                        "primary": "#f2ca50",
+                        "on-secondary-fixed": "#410000",
+                        "on-surface-variant": "#d0c5af",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-tertiary-container": "#055029",
+                        "background": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "primary-container": "#d4af37",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "inverse-primary": "#735c00",
+                        "surface-bright": "#3a3939",
+                        "on-primary-fixed": "#241a00",
+                        "surface": "#131313",
+                        "tertiary-container": "#7fc290",
+                        "outline-variant": "#4d4635",
+                        "surface-variant": "#353534",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed-variant": "#920703",
+                        "on-primary": "#3c2f00",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.noise-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAYBB8c3Qtq1iDzmo50XyFwQQkRlo0kxcR5ac7clgP5C8nLSbV_4NcXwVMO1z6mAuDivM4Ih-PVyVFFYNqUbOF06kgR-q_HbKghfgzya_fWVAqhV6OKTSWqJd7x-t8T44_10QOCnrM3VyhviZ-mbn68n8Ljipa_dHAX2IYnAq1mED9KFhbKVDiFqiJtSu-azvU6d3D7B9wIzujeEsxiLhsUvflwR093Z7VWiUrieD84ge2uGibzakgX37fFWVfGg044zPOz-S-EkP5E);
+    opacity: 0.03;
+    pointer-events: none
+    }
+.gold-gradient {
+    background: linear-gradient(45deg, #f2ca50 0%, #d4af37 100%)
+    }
+.gold-glow:focus-within {
+    box-shadow: 0 0 15px rgba(242, 202, 80, 0.15)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<div class="fixed inset-0 noise-overlay z-0"></div>
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] shadow-[0_4px_20px_rgba(212,175,55,0.05)] border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-16 px-6 w-full max-w-none">
+<div class="flex items-center gap-2 text-[#f2ca50] hover:opacity-80 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+<span class="font-label text-xs tracking-widest uppercase">ES / EN / PT</span>
+</div>
+<div class="font-['Noto_Serif'] tracking-[0.2em] uppercase text-xl font-bold text-[#f2ca50]">
+                MIDNIGHT ROYALE
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-[#d0c5af] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Registration Content -->
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-4 relative z-10">
+<div class="w-full max-w-[480px]">
+<!-- Hero Branding Section -->
+<div class="text-center mb-10">
+<h1 class="font-headline text-display-lg text-primary mb-2 italic">Exclusividad</h1>
+<p class="text-on-surface-variant font-label tracking-[0.3em] uppercase text-xs">Acceso solo por invitación</p>
+</div>
+<!-- Glassmorphism Card -->
+<div class="bg-surface-container-high/80 backdrop-blur-xl border border-outline-variant/20 p-8 md:p-10 shadow-2xl relative">
+<!-- Decorative Gold Corners -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/40"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary/40"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/40"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/40"></div>
+<form class="space-y-6">
+<!-- Invitation Code Field -->
+<div class="space-y-1.5 group">
+<label class="block text-[10px] font-bold text-primary tracking-widest uppercase">Código de Invitación</label>
+<div class="relative gold-glow">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-lg" data-icon="key">key</span>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 pl-8 text-on-surface focus:border-primary focus:ring-0 transition-all placeholder:text-outline/30 font-mono tracking-widest" placeholder="VIP-XXXX-XXXX" type="text"/>
+</div>
+<p class="text-[9px] text-on-surface-variant/60 italic">Ingrese el código proporcionado por su conserje.</p>
+</div>
+<!-- User and Email Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Usuario</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-lg" data-icon="person">person</span>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 pl-8 text-on-surface focus:border-primary focus:ring-0 transition-all" type="text"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Email</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-lg" data-icon="alternate_email">alternate_email</span>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 pl-8 text-on-surface focus:border-primary focus:ring-0 transition-all" type="email"/>
+</div>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<label class="block text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">Password</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-lg" data-icon="lock_open">lock_open</span>
+<input class="w-full bg-transparent border-b border-outline-variant/40 py-3 pl-8 text-on-surface focus:border-primary focus:ring-0 transition-all" type="password"/>
+<span class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-3 py-2">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 border-outline-variant bg-surface-container rounded-none text-primary focus:ring-offset-background focus:ring-primary" type="checkbox"/>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                            Acepto los <span class="text-primary hover:underline cursor-pointer">Términos de Prestigio</span> y confirmo que soy mayor de 21 años.
+                        </p>
+</div>
+<!-- Submit Button -->
+<button class="w-full gold-gradient py-5 font-headline text-on-primary font-bold tracking-[0.2em] text-sm uppercase shadow-lg active:scale-[0.98] transition-all hover:brightness-110" type="submit">
+                        SOLICITAR MEMBRESÍA
+                    </button>
+</form>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 text-center space-y-4">
+<p class="text-on-surface-variant text-xs">
+                    ¿Ya posee una llave? <a class="text-primary font-bold hover:underline" href="#">INICIAR SESIÓN</a>
+</p>
+<div class="flex justify-center items-center gap-6 opacity-40">
+<img alt="Responsible Gaming" class="h-6 filter grayscale brightness-200" data-alt="minimalist professional logo for responsible gaming organization in white and gold silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD4b20pbGn0YoeLJm0oo1bZxS1feqTvkIOQDSjSWKT1p5A_9YYD_NtZ7xf_WCUi2nYm40JKkP9lqfcdL8wOS_pJ2pUT0_qqiTLdVnZeTSpJGUGYr1v1gkVWOWvHOFNuumUSAtdI1dlswWkOOH4OyyA45IwEwxjgeLY_R-YRrc92ZSFvi7sKwtWa44ZiFZGzwUpOpCwBKpq44GpSZwzxBppocEYXBdweK9EZH8okXfTuUaC5iSa7gWg_KZDaNTWEsTR8NFTg4-_1S0B"/>
+<img alt="Secure SSL" class="h-6 filter grayscale brightness-200" data-alt="security shield icon and ssl certified text in professional luxury gold and white style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_JHLS5K3CYO8lsyLEPlaqPN0Vbhxi7lzCLxulJk52mDqqzUuToC7pR5vohskxKETywaw0DtW5C9u2B1hMW0yk0dWEMr1I9Hha3ouCcUvKmtuSSysA9proziPdcbmJguH5EJ1dop08RxtBa7ZxOh40YHsZnti5dVjx0LdXLmDVDS_6bAQoVL8aQtum_xMkxp8H638vgAMrZe3vGfcLh_GMEj2G4ULBoQOHffHwXDpC9Jtbbl-nPUDr84tZUFJGRJEq3PsIjCIM2NlE"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Decoration (Ambient Visuals) -->
+<div class="fixed left-0 bottom-0 p-12 hidden lg:block opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-[12rem] text-primary select-none" data-icon="shield_person" style="font-variation-settings: 'FILL' 0;">shield_person</span>
+</div>
+<!-- Scripts (Inyectados como placeholders para integración posterior) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+        // Supabase Initialization Logic (Template Placeholder)
+        // const supabaseUrl = 'YOUR_SUPABASE_URL'
+        // const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'
+        // const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+        
+        // Validation logic for Invitation Code: VIP-XXXX-XXXX
+        // Realtime validation and table checking logic would go here.
+    </script>
+</body></html>

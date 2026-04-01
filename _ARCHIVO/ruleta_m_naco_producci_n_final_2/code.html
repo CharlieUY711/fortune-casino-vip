@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOIR CASINO - Monaco Royal Roulette</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "inverse-primary": "#735c00",
+                        "on-secondary-fixed-variant": "#920703",
+                        "tertiary": "#9adeaa",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "surface-variant": "#353534",
+                        "tertiary-fixed": "#adf2bc",
+                        "primary-fixed": "#ffe088",
+                        "surface": "#131313",
+                        "secondary-container": "#920703",
+                        "on-background": "#e5e2e1",
+                        "outline": "#99907c",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "background": "#131313",
+                        "primary": "#f2ca50",
+                        "surface-tint": "#e9c349",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary-fixed": "#00210d",
+                        "on-tertiary-container": "#055029",
+                        "on-tertiary": "#00391a",
+                        "on-secondary-container": "#ff9a8a",
+                        "on-secondary-fixed": "#410000",
+                        "tertiary-container": "#7fc290",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#ffdad4",
+                        "on-secondary": "#690000",
+                        "surface-container-low": "#1c1b1b",
+                        "outline-variant": "#4d4635",
+                        "secondary": "#ffb4a8",
+                        "on-surface-variant": "#d0c5af",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#554300",
+                        "primary-container": "#d4af37",
+                        "on-primary": "#3c2f00",
+                        "error": "#ffb4ab"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .gold-gradient { background: linear-gradient(45deg, #f2ca50, #d4af37); }
+        .glass-panel { backdrop-filter: blur(12px); background: rgba(42, 42, 42, 0.8); }
+        .roulette-cell { aspect-ratio: 1/1.4; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 700; transition: all 0.2s; }
+        .roulette-cell:active { transform: scale(0.95); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-[#131313] dark:bg-[#131313] docked full-width top-0 border-b border-[#4d4635]/20 shadow-[0_4px_20px_rgba(212,175,55,0.05)] z-50 sticky">
+<div class="flex justify-between items-center w-full px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a sophisticated gentleman in a tuxedo, luxury casino profile avatar, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcqYc2cvBXO0DIDlof8jdhumIzNr54tvYmWGK8ngnelI0rK1IFSsXrATHppNXtGFhcAXOKI5eK_8aUVkmhfoBjjJwMDv3ImhH4FfUoCxcSeedi1QEm2Q9-TeVivJuTt4WoImZ2Bvvf_mgY-ZAFwb4FVKobZBmhz8OIxmLON6sVqxrV24DpsZ4edb5Yw-gSGfIBp7FDzPa4LxroF951ji9vJjARAcJFMJm5D28L5t0E_k34RaLGqCraP8AxQErQJLhiTtJThNxrWI2u"/>
+</div>
+<h1 class="font-['Noto_Serif'] font-bold tracking-tight text-2xl font-serif italic text-[#f2ca50]">NOIR CASINO</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4">
+<button class="text-[#f2ca50] font-label text-sm tracking-widest uppercase">ES</button>
+<button class="text-[#d0c5af] font-label text-sm tracking-widest uppercase hover:text-primary transition-colors">EN</button>
+</div>
+<div class="bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline font-bold text-[#f2ca50] tracking-tight">$25,450.00</span>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-6 pt-8 pb-12">
+<!-- Roulette Hero Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 items-center">
+<!-- Interavtive Cylinder Visualizer -->
+<div class="lg:col-span-5 flex flex-col items-center">
+<div class="relative w-full max-w-sm aspect-square">
+<div class="absolute inset-0 rounded-full border-[12px] border-outline-variant/30 animate-spin-slow"></div>
+<div class="absolute inset-4 rounded-full border-[1px] border-primary/20 bg-surface-container-lowest flex items-center justify-center shadow-[inset_0_0_60px_rgba(0,0,0,0.8)]">
+<!-- Decorative Wheel Center -->
+<div class="w-4/5 h-4/5 rounded-full border border-outline-variant/10 flex items-center justify-center relative overflow-hidden">
+<div class="absolute w-full h-full opacity-20" style="background-image: conic-gradient(from 0deg, transparent, #f2ca50, transparent 30%, transparent);"></div>
+<div class="z-10 text-center">
+<p class="text-on-surface-variant text-xs uppercase tracking-[0.2em] mb-1">Último Resultado</p>
+<div class="font-headline text-6xl font-bold text-tertiary">22</div>
+<div class="text-tertiary-container text-sm font-semibold tracking-widest mt-2">PARE / NEGRO</div>
+</div>
+</div>
+</div>
+<!-- Metal Indicators -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-8 bg-primary rounded-full shadow-[0_0_15px_#f2ca50]"></div>
+</div>
+<div class="mt-8 flex gap-2 overflow-x-auto no-scrollbar pb-4 w-full justify-center">
+<div class="flex-shrink-0 w-10 h-10 rounded bg-secondary-container flex items-center justify-center font-bold border border-white/10 shadow-lg">14</div>
+<div class="flex-shrink-0 w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center font-bold border border-white/10 opacity-80">31</div>
+<div class="flex-shrink-0 w-10 h-10 rounded bg-secondary-container flex items-center justify-center font-bold border border-white/10 opacity-60">2</div>
+<div class="flex-shrink-0 w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center font-bold border border-white/10 opacity-40">35</div>
+<div class="flex-shrink-0 w-10 h-10 rounded bg-secondary-container flex items-center justify-center font-bold border border-white/10 opacity-20">3</div>
+</div>
+</div>
+<!-- Betting Console -->
+<div class="lg:col-span-7 bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 shadow-2xl">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline text-2xl font-bold text-on-surface">Mesa Monaco Royal</h2>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>124 Jugadores</span>
+</div>
+</div>
+<!-- Roulette Table Grid (Simplified Mobile View Logic) -->
+<div class="grid grid-cols-14 gap-0.5 border border-outline-variant/20 p-0.5 bg-outline-variant/10 rounded overflow-hidden">
+<!-- Zero -->
+<div class="col-span-2 row-span-3 roulette-cell bg-tertiary-container text-on-tertiary-container border border-outline-variant/20 text-2xl">0</div>
+<!-- 1 to 36 Grid Pattern -->
+<!-- Row 3 -->
+<div class="col-span-1 roulette-cell bg-secondary-container">3</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">6</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">9</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">12</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">15</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">18</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">21</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">24</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">27</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">30</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">33</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">36</div>
+<!-- Row 2 -->
+<div class="col-span-1 roulette-cell bg-surface-container-highest">2</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">5</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">8</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">11</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">14</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">17</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">20</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">23</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">26</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">29</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">32</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">35</div>
+<!-- Row 1 -->
+<div class="col-span-1 roulette-cell bg-secondary-container">1</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">4</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">7</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">10</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">13</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">16</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">19</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">22</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">25</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">28</div>
+<div class="col-span-1 roulette-cell bg-surface-container-highest">31</div>
+<div class="col-span-1 roulette-cell bg-secondary-container">34</div>
+</div>
+<!-- Outside Bets -->
+<div class="grid grid-cols-6 gap-2 mt-4">
+<div class="roulette-cell bg-surface-container-highest/50 rounded-lg border border-outline-variant/10 text-xs py-3">1st 12</div>
+<div class="roulette-cell bg-surface-container-highest/50 rounded-lg border border-outline-variant/10 text-xs py-3">2nd 12</div>
+<div class="roulette-cell bg-surface-container-highest/50 rounded-lg border border-outline-variant/10 text-xs py-3">3rd 12</div>
+<div class="roulette-cell bg-surface-container-highest/50 rounded-lg border border-outline-variant/10 text-xs py-3">1-18</div>
+<div class="roulette-cell bg-surface-container-highest/50 rounded-lg border border-outline-variant/10 text-xs py-3">EVEN</div>
+<div class="roulette-cell bg-secondary-container/40 rounded-lg border border-secondary-container/30 text-xs py-3 font-bold text-red-500">RED</div>
+</div>
+<!-- Betting Controls -->
+<div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+<div class="flex gap-3">
+<button class="w-12 h-12 rounded-full border-2 border-primary-fixed-dim bg-surface-container-highest flex items-center justify-center text-primary font-bold shadow-lg scale-110">10</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/40 bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-bold">50</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/40 bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-bold">100</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant/40 bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-bold">500</button>
+</div>
+<div class="flex-1 min-w-[200px]">
+<button class="w-full gold-gradient py-4 rounded-lg text-on-primary font-headline font-bold text-xl tracking-widest shadow-[0_8px_24px_rgba(212,175,55,0.3)] transition-transform active:scale-95">GIRAR</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Information / Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-semibold mb-4 text-primary">Historial de Ganancias</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-sm border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant italic">#4021-9</span>
+<span class="font-headline font-bold text-tertiary">+$120.00</span>
+</div>
+<div class="flex justify-between items-center text-sm border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant italic">#4021-8</span>
+<span class="font-headline font-bold text-secondary-container">-$50.00</span>
+</div>
+<div class="flex justify-between items-center text-sm border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant italic">#4021-7</span>
+<span class="font-headline font-bold text-tertiary">+$340.00</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10 relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" data-alt="Close up of a roulette wheel with golden numbers and luxury mahogany wood, soft focus background, elegant atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh8bspzMi-dAI-U95mISXDoIgCvsTIDCEWRBXdS2XaD_RWhbb-5JqXW_dO6dkL6wSF38lv8W4l2kYDgWrlzWwda6jfgKvOhbt_ecDFlrl-o9NE8veCZsN2g5Q6rrQFHmTDvw3rpl-UEE8O8n3EKBH1TrvfK54NY5Ckhr__Z1_zIFkBT1Ar9p1Y4Ywlp-Y9SKvb2_SUPGycniqcbvCKR6w5HdCMuIgBOia7Hb7eQ3LUmoy9fxWI3fK71AkNVg9NzpnhZ6SKXi49fIgh"/>
+<div class="relative z-10">
+<h3 class="font-headline font-semibold mb-2 text-primary">Estadísticas Calientes</h3>
+<div class="grid grid-cols-4 gap-2 mt-4">
+<div class="text-center">
+<div class="text-2xl font-headline font-bold text-on-surface">32</div>
+<div class="text-[10px] text-on-surface-variant uppercase">8x</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-headline font-bold text-on-surface">17</div>
+<div class="text-[10px] text-on-surface-variant uppercase">6x</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-headline font-bold text-on-surface">0</div>
+<div class="text-[10px] text-on-surface-variant uppercase">5x</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-headline font-bold text-on-surface">21</div>
+<div class="text-[10px] text-on-surface-variant uppercase">4x</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<h3 class="font-headline font-semibold mb-4 text-primary">Acceso VIP</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Usted se encuentra en la sala real. Los límites de apuesta están incrementados para su comodidad.</p>
+<button class="w-full border border-primary/40 text-primary font-label text-xs tracking-widest uppercase py-3 rounded hover:bg-primary/5 transition-colors">Solicitar Concierge</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="bg-[#1c1b1b]/95 backdrop-blur-md fixed bottom-0 w-full z-50 rounded-t-xl border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-2">
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-[#2a2a2a]/80 rounded-xl px-6 py-1 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="casino" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-6 py-1 hover:text-[#f2ca50] transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Billetera</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] px-6 py-1 hover:text-[#f2ca50] transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Perfil</span>
+</a>
+</div>
+</nav>
+<!-- Visual Polish: Decorative Ambient Shadow Glow -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-1/2 h-1/2 bg-secondary-container/5 blur-[160px] rounded-full pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#ffdad4",
+              "primary": "#f2ca50",
+              "primary-fixed-dim": "#e9c349",
+              "on-tertiary-fixed-variant": "#08522a",
+              "surface-container-low": "#1c1b1b",
+              "tertiary-fixed-dim": "#92d6a2",
+              "outline": "#99907c",
+              "surface-container-highest": "#353534",
+              "primary-container": "#d4af37",
+              "on-error-container": "#ffdad6",
+              "tertiary": "#9adeaa",
+              "surface-variant": "#353534",
+              "on-primary-fixed": "#241a00",
+              "on-error": "#690005",
+              "surface-bright": "#3a3939",
+              "secondary-container": "#920703",
+              "secondary": "#ffb4a8",
+              "on-tertiary-container": "#055029",
+              "secondary-fixed-dim": "#ffb4a8",
+              "on-surface": "#e5e2e1",
+              "background": "#131313",
+              "on-primary-container": "#554300",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#00210d",
+              "inverse-surface": "#e5e2e1",
+              "surface-dim": "#131313",
+              "outline-variant": "#4d4635",
+              "on-tertiary": "#00391a",
+              "surface-tint": "#e9c349",
+              "on-secondary-container": "#ff9a8a",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "on-secondary-fixed-variant": "#920703",
+              "on-secondary-fixed": "#410000",
+              "on-primary-fixed-variant": "#574500",
+              "on-surface-variant": "#d0c5af",
+              "inverse-on-surface": "#313030",
+              "on-secondary": "#690000",
+              "tertiary-fixed": "#adf2bc",
+              "surface-container": "#201f1f",
+              "on-background": "#e5e2e1",
+              "inverse-primary": "#735c00",
+              "primary-fixed": "#ffe088",
+              "tertiary-container": "#7fc290",
+              "surface-container-lowest": "#0e0e0e",
+              "surface": "#131313",
+              "on-primary": "#3c2f00"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(20, 0, 40, 0.4) 0%, transparent 70%),
+                radial-gradient(circle at 10% 20%, rgba(242, 202, 80, 0.03) 0%, transparent 40%);
+            color: #e5e2e1;
+        }
+        .slot-reel-mask {
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+        .star-field {
+            background-image: radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#131313] dark:bg-[#131313] flex justify-between items-center px-6 py-4 w-full shadow-[0_4px_30px_rgba(212,175,55,0.05)]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-primary/20 overflow-hidden bg-surface-container-high">
+<img alt="High Roller Profile" class="w-full h-full object-cover" data-alt="close up profile portrait of a sophisticated person in a luxury casino environment with warm low light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFdSDEqgQtU6h4eaPf9FWVnYXAnQ4CzVZPDkpNZb0BRvB8EbWgX_FDlnZqYpRXH1oGGM1g8NvUviw4XhFBJqmX22PgQ9A8MRuDGEDcIbdfVQ0nsgcjpL4UxOcq7e8DPNstCJu6aDefML22PjMUCuiNSpcavSWTzqb7AFKxsomVXejQYoLX92A-IYIflQg3mBgJNCJpzB5C2mNUj6k-cvoeGUVGiSp_7NusJwNpL-1esJpG5zbvJJiyXNz0gqbLo9iVTd8BqIgc9kcL"/>
+</div>
+<div class="flex flex-col">
+<span class="font-sans text-xs uppercase tracking-widest Inter text-[#d0c5af] opacity-70">Balance</span>
+<h1 class="font-serif text-3xl font-bold tracking-tight Noto Serif text-[#f2ca50] dark:text-[#f2ca50]">$1,250,500</h1>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-serif text-[#f2ca50] uppercase italic tracking-tighter text-xl" href="#">GALACTIC VOID</a>
+<div class="h-4 w-px bg-outline-variant/30"></div>
+<div class="flex gap-4">
+<button class="font-sans text-xs uppercase tracking-widest Inter text-[#f2ca50] font-bold">LOBBY</button>
+<button class="font-sans text-xs uppercase tracking-widest Inter text-[#d0c5af] opacity-70 hover:bg-[#2a2a2a] transition-colors duration-300 px-2 py-1">SLOTS</button>
+</div>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-[#2a2a2a] transition-colors duration-300 rounded-lg active:scale-95 transition-transform duration-150 ease-out">
+<span class="material-symbols-outlined text-[#f2ca50]">translate</span>
+</button>
+<button class="p-2 hover:bg-[#2a2a2a] transition-colors duration-300 rounded-lg active:scale-95 transition-transform duration-150 ease-out">
+<span class="material-symbols-outlined text-[#f2ca50]">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 min-h-screen relative overflow-hidden star-field">
+<!-- Hero Ambient Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="container mx-auto px-4">
+<!-- Slot Interface Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Win History Sidebar (Left) -->
+<div class="hidden lg:flex lg:col-span-2 flex-col gap-4">
+<h3 class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-primary-fixed opacity-60 px-2">Recientes</h3>
+<div class="flex flex-col gap-2">
+<div class="bg-surface-container-low p-3 border-l-2 border-tertiary shadow-lg">
+<p class="text-[10px] text-on-surface-variant uppercase">Big Win</p>
+<p class="font-serif text-lg text-tertiary">+$4,200</p>
+</div>
+<div class="bg-surface-container-low/50 p-3 border-l-2 border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Bet</p>
+<p class="font-serif text-lg text-on-surface">$500</p>
+</div>
+<div class="bg-surface-container-low/50 p-3 border-l-2 border-outline-variant">
+<p class="text-[10px] text-on-surface-variant uppercase">Bet</p>
+<p class="font-serif text-lg text-on-surface">$500</p>
+</div>
+</div>
+</div>
+<!-- Main Game Canvas (Center) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title Area -->
+<div class="text-center mb-4">
+<h2 class="font-serif text-5xl md:text-7xl font-extrabold tracking-tighter italic text-transparent bg-clip-text bg-gradient-to-b from-primary via-primary-fixed-dim to-transparent uppercase">
+                            GALACTIC VOID
+                        </h2>
+</div>
+<!-- The Reels -->
+<div class="relative bg-surface-container-lowest p-2 rounded-xl shadow-2xl border border-outline-variant/20">
+<div class="grid grid-cols-5 gap-2 slot-reel-mask h-[400px] md:h-[500px]">
+<!-- Reel 1 -->
+<div class="flex flex-col gap-4 items-center py-4 bg-surface-container-low">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-secondary">flare</span>
+<span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-primary">circle_notifications</span>
+</div>
+<!-- Reel 2 -->
+<div class="flex flex-col gap-4 items-center py-4 bg-surface-container-low">
+<span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-secondary">flare</span>
+<span class="material-symbols-outlined text-5xl text-primary">public</span>
+</div>
+<!-- Reel 3 (Winning Glow) -->
+<div class="flex flex-col gap-4 items-center py-4 bg-surface-container-high shadow-[inset_0_0_30px_rgba(242,202,80,0.1)]">
+<span class="material-symbols-outlined text-5xl text-primary animate-pulse" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-primary">rocket_launch</span>
+</div>
+<!-- Reel 4 -->
+<div class="flex flex-col gap-4 items-center py-4 bg-surface-container-low">
+<span class="material-symbols-outlined text-5xl text-secondary">flare</span>
+<span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-primary">nights_stay</span>
+</div>
+<!-- Reel 5 -->
+<div class="flex flex-col gap-4 items-center py-4 bg-surface-container-low">
+<span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-5xl text-secondary">flare</span>
+<span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="material-symbols-outlined text-5xl text-primary">stream</span>
+</div>
+</div>
+<!-- Win Line Overlay -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 z-10"></div>
+</div>
+<!-- Controls Area -->
+<div class="bg-surface-container-high/80 backdrop-blur-xl p-6 rounded-xl grid grid-cols-2 md:grid-cols-4 gap-6 items-center shadow-2xl">
+<div class="flex flex-col gap-1">
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-on-surface-variant">Aposta Total</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded border border-outline-variant hover:border-primary text-on-surface">-</button>
+<p class="font-serif text-2xl text-on-surface">$500</p>
+<button class="w-8 h-8 rounded border border-outline-variant hover:border-primary text-on-surface">+</button>
+</div>
+</div>
+<div class="hidden md:flex flex-col gap-1">
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-on-surface-variant">Linhas</span>
+<p class="font-serif text-2xl text-on-surface">243</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-on-surface-variant">Último Ganho</span>
+<p class="font-serif text-2xl text-tertiary">$0.00</p>
+</div>
+<div class="col-span-2 md:col-span-1">
+<button class="w-full h-16 bg-gradient-to-br from-primary to-primary-container text-on-primary font-serif text-2xl font-bold rounded-lg shadow-[0_0_20px_rgba(242,202,80,0.3)] hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-tighter italic">
+                                GIRAR
+                            </button>
+</div>
+</div>
+</div>
+<!-- Hot Stats (Right) -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<h4 class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-primary-fixed mb-4">Hot Galaxy</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-serif text-on-surface">88%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%] shadow-[0_0_8px_rgba(242,202,80,0.6)]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary text-xl">flare</span>
+<span class="font-serif text-on-surface">42%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[42%] shadow-[0_0_8px_rgba(146,7,3,0.6)]"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/10 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">auto_awesome</span>
+<p class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-on-surface-variant">Bonus Proximo</p>
+<p class="font-serif text-xl text-primary">3 Símbolos</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-safe h-20 bg-[#131313]/95 backdrop-blur-xl border-t border-[#4d4635]/20 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">Lobby</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f2ca50] bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-t-lg pt-2 pb-1" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">casino</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter text-[#f2ca50] font-bold">Slots</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">diamond</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">VIP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#d0c5af] opacity-50 pb-1 hover:text-[#f2ca50] hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">local_offer</span>
+<span class="font-sans text-[10px] font-semibold uppercase tracking-widest Inter">Promos</span>
+</a>
+</nav>
+<!-- FAB for Quick Multiplier -->
+<button class="fixed right-6 bottom-28 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center md:hidden z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">bolt</span>
+</button>
+</body></html>
