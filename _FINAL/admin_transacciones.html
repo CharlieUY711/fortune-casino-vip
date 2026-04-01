@@ -318,8 +318,32 @@
 </div>
 <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-[#d0c5af]/30">© 2024 MIDNIGHT ROYALE ENCRYPTION. ALL RIGHTS RESERVED.</p>
 </footer>
-<!-- Placeholders para Inyección Supabase -->
-<!-- SUPABASE_CONFIG_PLACEHOLDER -->
-<!-- REALTIME_LOGIC_PLACEHOLDER -->
-<!-- TRANSACTIONS_FETCH_PLACEHOLDER -->
+<!-- SUPABASE CONFIG -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const _supabase = window.supabase.createClient('https://gfxxhquajzcdslayhnhs.supabase.co', 'sb_publishable_tMqbgx9XihYJG84UfJ_e1g_zU1lJiRp');
+
+  // REALTIME: escuchar nuevas transacciones
+  _supabase
+    .channel('transactions-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'transactions' }, payload => {
+      console.log('Transacción nueva:', payload);
+      loadTransactions();
+    })
+    .subscribe();
+
+  // FETCH: cargar transacciones al iniciar
+  async function loadTransactions() {
+    const { data, error } = await _supabase
+      .from('transactions')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (error) { console.error('Error cargando transacciones:', error); return; }
+    console.log('Transacciones cargadas:', data?.length);
+    // Aqui se pueden renderizar en la tabla del DOM
+  }
+
+  document.addEventListener('DOMContentLoaded', loadTransactions);
+</script>
 </body></html>
