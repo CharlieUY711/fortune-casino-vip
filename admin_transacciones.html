@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MIDNIGHT ROYALE ADMIN - Transacciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-container": "#055029",
+                        "inverse-primary": "#735c00",
+                        "outline-variant": "#4d4635",
+                        "on-surface-variant": "#d0c5af",
+                        "inverse-on-surface": "#313030",
+                        "on-secondary-fixed": "#410000",
+                        "on-primary-container": "#554300",
+                        "surface-variant": "#353534",
+                        "on-background": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-fixed-dim": "#ffb4a8",
+                        "secondary": "#ffb4a8",
+                        "on-tertiary": "#00391a",
+                        "on-primary-fixed": "#241a00",
+                        "tertiary": "#9adeaa",
+                        "on-primary": "#3c2f00",
+                        "outline": "#99907c",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#920703",
+                        "tertiary-fixed-dim": "#92d6a2",
+                        "on-tertiary-fixed": "#00210d",
+                        "primary-fixed": "#ffe088",
+                        "surface-bright": "#3a3939",
+                        "tertiary-fixed": "#adf2bc",
+                        "on-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "tertiary-container": "#7fc290",
+                        "inverse-surface": "#e5e2e1",
+                        "primary": "#f2ca50",
+                        "on-secondary": "#690000",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#e9c349",
+                        "on-secondary-container": "#ff9a8a",
+                        "surface-tint": "#e9c349",
+                        "on-secondary-fixed-variant": "#920703",
+                        "primary-container": "#d4af37",
+                        "surface-dim": "#131313",
+                        "secondary-fixed": "#ffdad4",
+                        "on-tertiary-fixed-variant": "#08522a",
+                        "surface-container": "#201f1f"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(circle at 50% 50%, rgba(242, 202, 80, 0.02) 0%, transparent 70%);
+        }
+        .noir-glass {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full border-b border-[#4d4635]/20 bg-[#131313] z-50 flex justify-between items-center px-6 h-16 shadow-[0_4px_20px_rgba(212,175,55,0.05)]">
+<div class="flex items-center gap-8">
+<span class="font-serif text-xl font-bold text-[#f2ca50] tracking-tighter">MIDNIGHT ROYALE ADMIN</span>
+<div class="hidden md:flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#d0c5af]/40 text-sm">search</span>
+<input class="bg-[#1c1b1b] border-none text-xs py-2 pl-9 pr-4 w-64 rounded focus:ring-1 focus:ring-[#f2ca50]/50 text-[#d0c5af]" placeholder="Buscar transacción..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<select class="bg-transparent border-none text-[10px] font-bold tracking-widest text-[#f2ca50] focus:ring-0 cursor-pointer uppercase">
+<option value="es">ES</option>
+<option value="en">EN</option>
+<option value="pt">PT</option>
+</select>
+<div class="flex items-center gap-4 text-[#d0c5af]/60">
+<button class="hover:text-[#f2ca50] transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-[#f2ca50] transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<div class="h-8 w-8 rounded-full border border-[#f2ca50]/30 overflow-hidden bg-[#2a2a2a]">
+<img class="w-full h-full object-cover" data-alt="Administrator profile portrait with professional attire in a dimly lit high-end office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXTr5PsSBDdywM5S5S8sxhz9VPv5rnR4sgMw2B16-vC5CB7CfYXVKjBwUXwgQxp5AlIXa6upLaZ68wypbWtbbWqbdJHFxHC0DSOtHe3diTkPhZw3fWy2CjwYVO3M1_b0zLEedNUtVlkdYljq4OkYEw6fSekT7Hv-H7m8m-vAsQn9A98Gn50IueC-AsJu7vTawJiwhfitkzXltbD0QzUfD5vuzKJHR_L8VKb7OsyJK_NQcRRhsbRhk8VzEhiBBSfTu4mdiGYdMUa32u"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-[#4d4635]/20 bg-[#1c1b1b] flex flex-col pt-4 z-40">
+<div class="px-6 mb-8">
+<p class="font-serif text-[#f2ca50] text-lg uppercase tracking-widest">System Console</p>
+<p class="text-[10px] text-[#d0c5af]/40 tracking-[0.2em] uppercase">Elite Access Only</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#d0c5af]/50 px-6 py-3 flex items-center gap-3 hover:bg-[#2a2a2a]/50 hover:text-[#f2ca50] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-sans text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="bg-[#2a2a2a] text-[#f2ca50] border-l-4 border-[#f2ca50] px-6 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-sans text-sm font-medium tracking-wide">Deployment</span>
+</a>
+<a class="text-[#d0c5af]/50 px-6 py-3 flex items-center gap-3 hover:bg-[#2a2a2a]/50 hover:text-[#f2ca50] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">dns</span>
+<span class="font-sans text-sm font-medium tracking-wide">Server Status</span>
+</a>
+<a class="text-[#d0c5af]/50 px-6 py-3 flex items-center gap-3 hover:bg-[#2a2a2a]/50 hover:text-[#f2ca50] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">language</span>
+<span class="font-sans text-sm font-medium tracking-wide">Domain Config</span>
+</a>
+<a class="text-[#d0c5af]/50 px-6 py-3 flex items-center gap-3 hover:bg-[#2a2a2a]/50 hover:text-[#f2ca50] transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-xl">confirmation_number</span>
+<span class="font-sans text-sm font-medium tracking-wide">Support Tickets</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full py-3 bg-gradient-to-r from-[#f2ca50] to-[#d4af37] text-[#3c2f00] font-bold text-xs tracking-widest rounded-sm hover:opacity-90 active:scale-95 transition-all">
+                    REBOOT SERVERS
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1 p-8 bg-[#131313]">
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="font-serif text-4xl text-[#f2ca50] mb-2">Transacciones Históricas</h1>
+<p class="text-[#d0c5af]/60 font-light max-w-lg">Monitoreo en tiempo real de flujos financieros, depósitos y retiros de alta prioridad.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-[#1c1b1b] p-4 border-l-2 border-[#7fc290]">
+<p class="text-[10px] text-[#d0c5af]/40 uppercase tracking-tighter">Total Win Rate</p>
+<p class="text-xl font-serif text-[#7fc290]">+12.4%</p>
+</div>
+<div class="bg-[#1c1b1b] p-4 border-l-2 border-[#f2ca50]">
+<p class="text-[10px] text-[#d0c5af]/40 uppercase tracking-tighter">Active Volume</p>
+<p class="text-xl font-serif text-[#f2ca50]">$42,900.00</p>
+</div>
+</div>
+</header>
+<!-- Transactions Table Container -->
+<section class="noir-glass rounded-lg border border-[#4d4635]/10 overflow-hidden shadow-2xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#1c1b1b]/80 border-b border-[#4d4635]/20">
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest">Usuario</th>
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest">Monto</th>
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest">Método</th>
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest">Tipo</th>
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest">Estado</th>
+<th class="px-6 py-5 font-serif text-[#f2ca50] text-sm uppercase tracking-widest text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#4d4635]/10" id="transaction-body">
+<!-- Row 1: Deposit Pending -->
+<tr class="hover:bg-[#2a2a2a]/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-[#1c1b1b] flex items-center justify-center border border-[#4d4635]/30">
+<span class="material-symbols-outlined text-[#f2ca50] text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#e5e2e1]">Julian Rossi</p>
+<p class="text-[10px] text-[#d0c5af]/40 uppercase">ID: MR-9921</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-serif text-lg text-[#f2ca50]">$2,500.00</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2 text-xs text-[#d0c5af]">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span> PayPal
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-sm bg-[#7fc290]/10 text-[#7fc290] text-[10px] font-bold uppercase tracking-widest">Depósito</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+<span class="text-[10px] text-amber-500 font-bold uppercase tracking-wider">Pendiente</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="h-8 w-8 rounded-full border border-[#f2ca50]/20 flex items-center justify-center text-[#f2ca50] hover:bg-[#f2ca50] hover:text-[#3c2f00] transition-all">
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+<button class="h-8 w-8 rounded-full border border-secondary-container/20 flex items-center justify-center text-secondary-container hover:bg-secondary-container hover:text-[#e5e2e1] transition-all">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Withdrawal Pending -->
+<tr class="hover:bg-[#2a2a2a]/40 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-[#1c1b1b] flex items-center justify-center border border-[#4d4635]/30">
+<span class="material-symbols-outlined text-[#f2ca50] text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#e5e2e1]">Elena Vance</p>
+<p class="text-[10px] text-[#d0c5af]/40 uppercase">ID: MR-1044</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-serif text-lg text-[#f2ca50]">$850.00</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2 text-xs text-[#d0c5af]">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span> Binance
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-sm bg-secondary-container/10 text-secondary-container text-[10px] font-bold uppercase tracking-widest">Retiro</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+<span class="text-[10px] text-amber-500 font-bold uppercase tracking-wider">Pendiente</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="h-8 w-8 rounded-full border border-[#f2ca50]/20 flex items-center justify-center text-[#f2ca50] hover:bg-[#f2ca50] hover:text-[#3c2f00] transition-all">
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+<button class="h-8 w-8 rounded-full border border-secondary-container/20 flex items-center justify-center text-secondary-container hover:bg-secondary-container hover:text-[#e5e2e1] transition-all">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Deposit Approved -->
+<tr class="hover:bg-[#2a2a2a]/40 transition-colors group opacity-60">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-[#1c1b1b] flex items-center justify-center border border-[#4d4635]/30">
+<span class="material-symbols-outlined text-[#f2ca50] text-sm">person</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#e5e2e1]">Marcus Cole</p>
+<p class="text-[10px] text-[#d0c5af]/40 uppercase">ID: MR-7723</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-serif text-lg text-[#f2ca50]">$12,000.00</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-2 text-xs text-[#d0c5af]">
+<span class="material-symbols-outlined text-sm">currency_bitcoin</span> Binance
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 rounded-sm bg-[#7fc290]/10 text-[#7fc290] text-[10px] font-bold uppercase tracking-widest">Depósito</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-1.5 w-1.5 rounded-full bg-[#7fc290]"></span>
+<span class="text-[10px] text-[#7fc290] font-bold uppercase tracking-wider">Aprobado</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="text-[10px] text-[#d0c5af]/30 font-bold uppercase">Procesado</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Realtime Alert -->
+<div class="mt-6 flex items-center justify-center gap-2 text-[10px] text-[#f2ca50]/40 uppercase tracking-[0.3em]">
+<span class="h-1 w-1 rounded-full bg-[#f2ca50] animate-ping"></span>
+                Conectado a Realtime Transaction Stream
+            </div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-[#4d4635]/10 py-4 flex justify-between items-center px-8 bg-[#131313] mt-auto">
+<div class="flex gap-6">
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-[#d0c5af]/30 hover:text-[#f2ca50] transition-colors" href="#">Security Protocol</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-[#d0c5af]/30 hover:text-[#f2ca50] transition-colors" href="#">API Docs</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-[#d0c5af]/30 hover:text-[#f2ca50] transition-colors" href="#">System Logs</a>
+</div>
+<p class="font-sans text-[10px] uppercase tracking-[0.2em] text-[#d0c5af]/30">© 2024 MIDNIGHT ROYALE ENCRYPTION. ALL RIGHTS RESERVED.</p>
+</footer>
+<!-- SUPABASE CONFIG -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const _supabase = window.supabase.createClient('https://gfxxhquajzcdslayhnhs.supabase.co', 'sb_publishable_tMqbgx9XihYJG84UfJ_e1g_zU1lJiRp');
+
+  // REALTIME: escuchar nuevas transacciones
+  _supabase
+    .channel('transactions-changes')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'transactions' }, payload => {
+      console.log('Transacción nueva:', payload);
+      loadTransactions();
+    })
+    .subscribe();
+
+  // FETCH: cargar transacciones al iniciar
+  async function loadTransactions() {
+    const { data, error } = await _supabase
+      .from('transactions')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (error) { console.error('Error cargando transacciones:', error); return; }
+    console.log('Transacciones cargadas:', data?.length);
+    // Aqui se pueden renderizar en la tabla del DOM
+  }
+
+  document.addEventListener('DOMContentLoaded', loadTransactions);
+</script>
+</body></html>
